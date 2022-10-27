@@ -1,5 +1,6 @@
 package com.switchfully.eurder.domain;
 
+import com.switchfully.eurder.domain.customer.Customer;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;

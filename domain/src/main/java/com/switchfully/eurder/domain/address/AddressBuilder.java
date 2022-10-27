@@ -1,4 +1,4 @@
-package com.switchfully.eurder.domain;
+package com.switchfully.eurder.domain.address;
 
 public class AddressBuilder {
     private String streetName;
