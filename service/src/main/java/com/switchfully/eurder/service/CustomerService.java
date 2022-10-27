@@ -1,6 +1,6 @@
 package com.switchfully.eurder.service;
 
-import com.switchfully.eurder.domain.Customer;
+import com.switchfully.eurder.domain.customer.Customer;
 import com.switchfully.eurder.domain.CustomerRepository;
 import com.switchfully.eurder.service.dto.CreateCustomerDTO;
 import com.switchfully.eurder.service.dto.CustomerDTO;

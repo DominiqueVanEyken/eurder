@@ -17,4 +17,8 @@ public class CustomerRepository {
     public void addCustomer(Customer customer) {
         customerRepository.put(customer.getCustomerID(), customer);
     }
+
+    public int getAmountOfCustomersInRepository() {
+        return customerRepository.values().size();
+    }
 }

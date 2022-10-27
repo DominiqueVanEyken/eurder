@@ -1,8 +1,8 @@
 package com.switchfully.eurder.service;
 
-import com.switchfully.eurder.domain.AddressBuilder;
-import com.switchfully.eurder.domain.Customer;
-import com.switchfully.eurder.domain.CustomerBuilder;
+import com.switchfully.eurder.domain.address.AddressBuilder;
+import com.switchfully.eurder.domain.customer.Customer;
+import com.switchfully.eurder.domain.customer.CustomerBuilder;
 import com.switchfully.eurder.service.dto.CreateCustomerDTO;
 import com.switchfully.eurder.service.dto.CustomerDTO;
 
