@@ -1,5 +1,7 @@
 package com.switchfully.eurder.domain;
 
+import com.switchfully.eurder.domain.address.Address;
+import com.switchfully.eurder.domain.address.AddressBuilder;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
