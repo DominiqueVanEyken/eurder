@@ -12,6 +12,12 @@
     <artifactId>api</artifactId>
 
     <dependencies>
+        <!-- Internal Modules -->
+        <dependency>
+            <groupId>com.switchfully.eurder</groupId>
+            <artifactId>service</artifactId>
+        </dependency>
+        <!-- External Modules -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
