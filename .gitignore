@@ -1,6 +1,12 @@
+# directories
 /.idea
 /.assignment
 target
 .log
 war/.log
+
+# documents
 *.iml
+
+# temporary classes
+api/src/main/java/com/switchfully/eurder/api/SecurityController.java
