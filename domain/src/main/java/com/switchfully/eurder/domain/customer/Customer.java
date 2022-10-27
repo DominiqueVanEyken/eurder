@@ -14,9 +14,9 @@ public class Customer {
     private final Address address;
     private final String phoneNumber;
     private final String password;
-    private Role role;
+    private final Role role;
 
-    public Customer(String firstname, String lastname, String emailAddress, Address address, String phoneNumber, String password) {
+    public Customer(String firstname, String lastname, String emailAddress, Address address, String phoneNumber, String password, Role role) {
         customerID = CUSTOMER_ID_PREFIX + LocalDate.now().getYear() + customer_id_suffix++;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -24,7 +24,7 @@ public class Customer {
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.password = password;
-        role = Role.CUSTOMER;
+        this.role = role;
     }
 
     public String getCustomerID() {
@@ -51,12 +51,12 @@ public class Customer {
         return phoneNumber;
     }
 
-    public boolean doesPasswordMatch(String passwordToMatch) {
-        return this.password.equals(passwordToMatch);
+    public Role getRole() {
+        return role;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public boolean doesPasswordMatch(String passwordToMatch) {
+        return this.password.equals(passwordToMatch);
     }
 
     public boolean canHaveAccessTo(Feature feature) {

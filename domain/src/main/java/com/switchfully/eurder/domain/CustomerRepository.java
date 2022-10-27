@@ -19,8 +19,8 @@ public class CustomerRepository {
                 .setFirstname("admin")
                 .setEmailAddress("admin@eurder.com")
                 .setPassword("password")
+                .setRole(Role.ADMIN)
                 .build();
-        admin.setRole(Role.ADMIN);
         customerRepository.put(admin.getCustomerID(), admin);
     }
 

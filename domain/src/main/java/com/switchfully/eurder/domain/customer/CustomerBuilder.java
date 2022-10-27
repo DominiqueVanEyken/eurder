@@ -10,6 +10,7 @@ public class CustomerBuilder {
     private String phoneNumber;
 
     private String password;
+    private Role role;
 
     public CustomerBuilder setFirstname(String firstname) {
         this.firstname = firstname;
@@ -41,7 +42,12 @@ public class CustomerBuilder {
         return this;
     }
 
+    public CustomerBuilder setRole(Role role) {
+        this.role = role;
+        return this;
+    }
+
     public Customer build() {
-        return new Customer(firstname, lastname, emailAddress, address, phoneNumber, password);
+        return new Customer(firstname, lastname, emailAddress, address, phoneNumber, password, role);
     }
 }

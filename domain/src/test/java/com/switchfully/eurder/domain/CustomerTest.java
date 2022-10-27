@@ -3,6 +3,7 @@ package com.switchfully.eurder.domain;
 import com.switchfully.eurder.domain.address.Address;
 import com.switchfully.eurder.domain.customer.Customer;
 import com.switchfully.eurder.domain.customer.CustomerBuilder;
+import com.switchfully.eurder.domain.customer.Role;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -18,7 +19,7 @@ class CustomerTest {
 
     @Test
     void creatingCustomer() {
-        Customer customer = new Customer(firstname, lastname, emailAddress, address, phoneNumber, password);
+        Customer customer = new Customer(firstname, lastname, emailAddress, address, phoneNumber, password, Role.CUSTOMER);
 
         assertThat(customer).isNotNull();
         assertThat(customer.getCustomerID()).isNotNull();
@@ -31,7 +32,7 @@ class CustomerTest {
 
     @Test
     void creatingCustomerWithBuilderPattern() {
-        Customer testCustomer = new Customer(firstname, lastname, emailAddress, address, phoneNumber, password);
+        Customer testCustomer = new Customer(firstname, lastname, emailAddress, address, phoneNumber, password, Role.CUSTOMER);
 
         Customer customerBuilder = new CustomerBuilder()
                 .setFirstname(firstname)

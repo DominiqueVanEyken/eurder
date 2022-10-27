@@ -2,6 +2,7 @@ package com.switchfully.eurder.domain;
 
 import com.switchfully.eurder.domain.address.Address;
 import com.switchfully.eurder.domain.customer.Customer;
+import com.switchfully.eurder.domain.customer.Role;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -9,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CustomerRepositoryTest {
 
-    private final Customer customer = new Customer("firstname", "lastname", "user@test.be", new Address("street", 1,"1111", "city"), "012 34 56 78", "password");
+    private final Customer customer = new Customer("firstname", "lastname", "user@test.be", new Address("street", 1,"1111", "city"), "012 34 56 78", "password", Role.CUSTOMER);
 
     @Test
     void addCustomerToRepository() {

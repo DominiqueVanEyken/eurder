@@ -1,4 +1,6 @@
 /.idea
 /.assignment
 target
+.log
+war/.log
 *.iml

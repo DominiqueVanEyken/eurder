@@ -3,6 +3,7 @@ package com.switchfully.eurder.service.customer;
 import com.switchfully.eurder.domain.address.AddressBuilder;
 import com.switchfully.eurder.domain.customer.Customer;
 import com.switchfully.eurder.domain.customer.CustomerBuilder;
+import com.switchfully.eurder.domain.customer.Role;
 import com.switchfully.eurder.service.customer.dto.CreateCustomerDTO;
 import com.switchfully.eurder.service.customer.dto.CustomerDTO;
 
@@ -22,6 +23,7 @@ public class CustomerMapper {
                         )
                 .setPhoneNumber(createCustomerDTO.getPhoneNumber())
                 .setPassword(createCustomerDTO.getPassword())
+                .setRole(Role.CUSTOMER)
                 .build();
     }
 

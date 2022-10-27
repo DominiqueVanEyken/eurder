@@ -2,6 +2,7 @@ package com.switchfully.eurder.service;
 
 import com.switchfully.eurder.domain.address.Address;
 import com.switchfully.eurder.domain.customer.Customer;
+import com.switchfully.eurder.domain.customer.Role;
 import com.switchfully.eurder.service.customer.CustomerMapper;
 import com.switchfully.eurder.service.customer.dto.CreateCustomerDTO;
 import com.switchfully.eurder.service.customer.dto.CustomerDTO;
@@ -66,7 +67,7 @@ class CustomerMapperTest {
 
     @Test
     void mappingCustomerToDTO() {
-        Customer customer = new Customer(firstname, lastname, email, address, phoneNumber, password);
+        Customer customer = new Customer(firstname, lastname, email, address, phoneNumber, password, Role.CUSTOMER);
 
         CustomerDTO customerDTO = customerMapper.mapCustomerToDTO(customer);
 
@@ -98,6 +99,7 @@ class CustomerMapperTest {
         assertThat(customer.getFullAddress()).isEqualTo(address.getFullAddressAsString());
         assertThat(customer.getPhoneNumber()).isEqualTo(phoneNumber);
         assertThat(customer.doesPasswordMatch(password)).isTrue();
+        assertThat(customer.getRole()).isEqualTo(Role.CUSTOMER);
     }
 
 }
