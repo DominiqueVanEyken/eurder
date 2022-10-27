@@ -22,7 +22,6 @@ pipeline {
     post {
         always {
             publishCoverage adapters: [jacocoAdapter('**/target/site/jacoco/jacoco.xml')]
-            junit allowEmptyResults: true, testResults: '**/target/surefire-reports/*.xml'
         }
     }
 }
