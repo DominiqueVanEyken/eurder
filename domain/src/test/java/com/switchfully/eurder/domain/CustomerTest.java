@@ -9,15 +9,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CustomerTest {
 
+    private final String firstname = "firstname";
+    private final String lastname = "lastname";
+    private final String emailAddress = "user@test.be";
+    private final Address address = new Address("street", 1, "3020", "city");
+    private final String phoneNumber = "012 34 56 78";
+    private final String password = "password";
+
     @Test
     void creatingCustomer() {
-        String firstname = "firstname";
-        String lastname = "lastname";
-        String emailAddress = "user@test.be";
-        Address address = new Address("street", 1, "3020", "city");
-        String phoneNumber = "012 34 56 78";
-
-        Customer customer = new Customer(firstname, lastname, emailAddress, address, phoneNumber);
+        Customer customer = new Customer(firstname, lastname, emailAddress, address, phoneNumber, password);
 
         assertThat(customer).isNotNull();
         assertThat(customer.getCustomerID()).isNotNull();
@@ -30,13 +31,7 @@ class CustomerTest {
 
     @Test
     void creatingCustomerWithBuilderPattern() {
-        String firstname = "firstname";
-        String lastname = "lastname";
-        String emailAddress = "user@test.be";
-        Address address = new Address("street", 1, "3020", "city");
-        String phoneNumber = "012 34 56 78";
-
-        Customer testCustomer = new Customer(firstname, lastname, emailAddress, address, phoneNumber);
+        Customer testCustomer = new Customer(firstname, lastname, emailAddress, address, phoneNumber, password);
 
         Customer customerBuilder = new CustomerBuilder()
                 .setFirstname(firstname)

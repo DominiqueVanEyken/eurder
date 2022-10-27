@@ -1,4 +1,4 @@
-package com.switchfully.eurder.service.dto;
+package com.switchfully.eurder.service.customer.dto;
 
 public class CreateCustomerDTO {
     private String firstname;
@@ -9,6 +9,7 @@ public class CreateCustomerDTO {
     private String postalCode;
     private String cityName;
     private String phoneNumber;
+    private String password;
 
     public CreateCustomerDTO setFirstname(String firstname) {
         this.firstname = firstname;
@@ -50,6 +51,11 @@ public class CreateCustomerDTO {
         return this;
     }
 
+    public CreateCustomerDTO setPassword(String password) {
+        this.password = password;
+        return this;
+    }
+
     public String getFirstname() {
         return firstname;
     }
@@ -80,5 +86,9 @@ public class CreateCustomerDTO {
 
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }

@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CustomerRepositoryTest {
 
-    private final Customer customer = new Customer("firstname", "lastname", "user@test.be", new Address("street", 1,"1111", "city"), "012 34 56 78");
+    private final Customer customer = new Customer("firstname", "lastname", "user@test.be", new Address("street", 1,"1111", "city"), "012 34 56 78", "password");
 
     @Test
     void addCustomerToRepository() {

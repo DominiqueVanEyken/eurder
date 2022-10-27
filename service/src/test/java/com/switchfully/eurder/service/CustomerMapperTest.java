@@ -2,8 +2,9 @@ package com.switchfully.eurder.service;
 
 import com.switchfully.eurder.domain.address.Address;
 import com.switchfully.eurder.domain.customer.Customer;
-import com.switchfully.eurder.service.dto.CreateCustomerDTO;
-import com.switchfully.eurder.service.dto.CustomerDTO;
+import com.switchfully.eurder.service.customer.CustomerMapper;
+import com.switchfully.eurder.service.customer.dto.CreateCustomerDTO;
+import com.switchfully.eurder.service.customer.dto.CustomerDTO;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,6 +22,7 @@ class CustomerMapperTest {
     private final String city = "city";
     private final Address address = new Address(streetName, streetNumber, postalCode, city);
     private final String phoneNumber = "012 34 56 78";
+    private final String password = "password";
 
     @Test
     void creatingCreateCustomerDTO() {
@@ -32,7 +34,8 @@ class CustomerMapperTest {
                 .setStreetNumber(streetNumber)
                 .setPostalCode(postalCode)
                 .setCityName(city)
-                .setPhoneNumber(phoneNumber);
+                .setPhoneNumber(phoneNumber)
+                .setPassword(password);
 
         assertThat(createCustomerDTO.getFirstname()).isEqualTo(firstname);
         assertThat(createCustomerDTO.getLastname()).isEqualTo(lastname);
@@ -42,6 +45,7 @@ class CustomerMapperTest {
         assertThat(createCustomerDTO.getPostalCode()).isEqualTo(postalCode);
         assertThat(createCustomerDTO.getCityName()).isEqualTo(city);
         assertThat(createCustomerDTO.getPhoneNumber()).isEqualTo(phoneNumber);
+        assertThat(createCustomerDTO.getPassword()).isEqualTo(password);
     }
 
     @Test
@@ -62,7 +66,7 @@ class CustomerMapperTest {
 
     @Test
     void mappingCustomerToDTO() {
-        Customer customer = new Customer(firstname, lastname, email, address, phoneNumber);
+        Customer customer = new Customer(firstname, lastname, email, address, phoneNumber, password);
 
         CustomerDTO customerDTO = customerMapper.mapCustomerToDTO(customer);
 
@@ -83,7 +87,8 @@ class CustomerMapperTest {
                 .setStreetNumber(streetNumber)
                 .setPostalCode(postalCode)
                 .setCityName(city)
-                .setPhoneNumber(phoneNumber);
+                .setPhoneNumber(phoneNumber)
+                .setPassword(password);
 
         Customer customer = customerMapper.mapDTOtoCustomer(createCustomerDTO);
 
@@ -92,6 +97,7 @@ class CustomerMapperTest {
         assertThat(customer.getEmailAddress()).isEqualTo(email);
         assertThat(customer.getFullAddress()).isEqualTo(address.getFullAddressAsString());
         assertThat(customer.getPhoneNumber()).isEqualTo(phoneNumber);
+        assertThat(customer.doesPasswordMatch(password)).isTrue();
     }
 
 }

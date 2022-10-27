@@ -1,9 +1,9 @@
-package com.switchfully.eurder.service;
+package com.switchfully.eurder.service.customer;
 
 import com.switchfully.eurder.domain.customer.Customer;
 import com.switchfully.eurder.domain.CustomerRepository;
-import com.switchfully.eurder.service.dto.CreateCustomerDTO;
-import com.switchfully.eurder.service.dto.CustomerDTO;
+import com.switchfully.eurder.service.customer.dto.CreateCustomerDTO;
+import com.switchfully.eurder.service.customer.dto.CustomerDTO;
 import org.springframework.stereotype.Service;
 
 @Service

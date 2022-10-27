@@ -9,6 +9,8 @@ public class CustomerBuilder {
     private Address address;
     private String phoneNumber;
 
+    private String password;
+
     public CustomerBuilder setFirstname(String firstname) {
         this.firstname = firstname;
         return this;
@@ -34,7 +36,12 @@ public class CustomerBuilder {
         return this;
     }
 
+    public CustomerBuilder setPassword(String password) {
+        this.password = password;
+        return this;
+    }
+
     public Customer build() {
-        return new Customer(firstname, lastname, emailAddress, address, phoneNumber);
+        return new Customer(firstname, lastname, emailAddress, address, phoneNumber, password);
     }
 }

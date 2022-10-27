@@ -17,6 +17,10 @@
             <groupId>com.switchfully.eurder</groupId>
             <artifactId>service</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.switchfully.eurder</groupId>
+            <artifactId>domain</artifactId>
+        </dependency>
         <!-- External Modules -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

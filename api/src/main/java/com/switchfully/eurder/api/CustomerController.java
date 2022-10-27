@@ -1,8 +1,8 @@
 package com.switchfully.eurder.api;
 
-import com.switchfully.eurder.service.CustomerService;
-import com.switchfully.eurder.service.dto.CreateCustomerDTO;
-import com.switchfully.eurder.service.dto.CustomerDTO;
+import com.switchfully.eurder.service.customer.CustomerService;
+import com.switchfully.eurder.service.customer.dto.CreateCustomerDTO;
+import com.switchfully.eurder.service.customer.dto.CustomerDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package com.switchfully.eurder.service.dto;
+package com.switchfully.eurder.service.customer.dto;
 
 public class CustomerDTO {
     private String customerID;

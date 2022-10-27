@@ -1,8 +1,8 @@
 package com.switchfully.eurder;
 
 import com.switchfully.eurder.domain.address.Address;
-import com.switchfully.eurder.service.dto.CreateCustomerDTO;
-import com.switchfully.eurder.service.dto.CustomerDTO;
+import com.switchfully.eurder.service.customer.dto.CreateCustomerDTO;
+import com.switchfully.eurder.service.customer.dto.CustomerDTO;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

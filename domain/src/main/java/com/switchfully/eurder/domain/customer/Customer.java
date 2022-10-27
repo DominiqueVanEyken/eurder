@@ -7,20 +7,24 @@ import java.time.LocalDate;
 public class Customer {
     private static final String CUSTOMER_ID_PREFIX = "CID";
     private static int customer_id_suffix = 1001;
-    private String customerID;
-    private String firstname;
-    private String lastname;
-    private String emailAddress;
-    private Address address;
-    private String phoneNumber;
+    private final String customerID;
+    private final String firstname;
+    private final String lastname;
+    private final String emailAddress;
+    private final Address address;
+    private final String phoneNumber;
+    private final String password;
+    private Role role;
 
-    public Customer(String firstname, String lastname, String emailAddress, Address address, String phoneNumber) {
+    public Customer(String firstname, String lastname, String emailAddress, Address address, String phoneNumber, String password) {
         customerID = CUSTOMER_ID_PREFIX + LocalDate.now().getYear() + customer_id_suffix++;
         this.firstname = firstname;
         this.lastname = lastname;
         this.emailAddress = emailAddress;
         this.address = address;
         this.phoneNumber = phoneNumber;
+        this.password = password;
+        role = Role.CUSTOMER;
     }
 
     public String getCustomerID() {
@@ -45,5 +49,17 @@ public class Customer {
 
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+
+    public boolean doesPasswordMatch(String passwordToMatch) {
+        return this.password.equals(passwordToMatch);
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public boolean canHaveAccessTo(Feature feature) {
+        return role.containsFeature(feature);
     }
 }
