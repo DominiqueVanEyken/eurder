@@ -1,5 +1,6 @@
 package com.switchfully.eurder.domain.customer;
 
 public enum Feature {
-DEFAULT, CREATE_ITEM;
+    CREATE_ITEM,
+    ORDER_ITEMS;
 }
