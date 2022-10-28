@@ -6,6 +6,7 @@ import com.switchfully.eurder.domain.customer.CustomerRepository;
 import com.switchfully.eurder.domain.customer.Role;
 import com.switchfully.eurder.domain.phonenumber.CountryCode;
 import com.switchfully.eurder.domain.phonenumber.PhoneNumber;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,8 +25,6 @@ class CustomerRepositoryTest {
         customerRepository = new CustomerRepository();
     }
 
-
-
     @Test
     void addCustomerToRepository() {
         int before = customerRepository.getAmountOfCustomersInRepository();
@@ -33,6 +32,15 @@ class CustomerRepositoryTest {
         int after = customerRepository.getAmountOfCustomersInRepository();
 
         assertThat(before).isLessThan(after);
+    }
+
+    @Test
+    void addCustomerWithEmailThatAlreadyExists() {
+        Customer duplicate = new Customer("firstname", "lastname", "user@test.be", new Address("street",  "1","1111", "city"), new PhoneNumber(CountryCode.BEL, "123 45 67 89"), "password", Role.CUSTOMER);
+        customerRepository.addCustomer(testCustomer);
+        assertThatThrownBy(() -> customerRepository.addCustomer(duplicate))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("Customer already exists");
     }
 
     @Test
@@ -47,5 +55,10 @@ class CustomerRepositoryTest {
         assertThatThrownBy(() -> customerRepository.getMemberByEmail("user@test.be"))
                 .isInstanceOf(NoSuchElementException.class)
                 .hasMessageContaining("Wrong credentials");
+    }
+
+    @AfterEach
+    void clear() {
+//        customerRepository.clear();
     }
 }
