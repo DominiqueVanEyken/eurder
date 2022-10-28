@@ -4,6 +4,8 @@ import com.switchfully.eurder.domain.address.Address;
 import com.switchfully.eurder.domain.address.AddressBuilder;
 import com.switchfully.eurder.domain.phonenumber.CountryCode;
 import com.switchfully.eurder.domain.phonenumber.PhoneNumber;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
@@ -12,6 +14,7 @@ import java.util.NoSuchElementException;
 
 @Repository
 public class CustomerRepository {
+    private final Logger log = LoggerFactory.getLogger(CustomerRepository.class);
     private final Map<String, Customer> customerRepository;
 
     public CustomerRepository() {
@@ -22,6 +25,7 @@ public class CustomerRepository {
     public void addCustomer(Customer customer) {
         if (isCustomerUnique(customer)) {
             customerRepository.put(customer.getCustomerID(), customer);
+            log.info("Created ".concat(customer.toString()));
         }
     }
 

@@ -18,7 +18,6 @@ public class PhoneNumber {
 
     public String validateLocalNumber(String localNumber) {
         String formatedLocalNumber = localNumber.startsWith("0") ? localNumber.trim().replace(" ", "").substring(1) : localNumber.trim().replace(" ", "");
-        System.out.println(formatedLocalNumber);
         boolean isValidLocalNumber = Pattern.matches("[0-9]{8,9}", formatedLocalNumber);
         if (!isValidLocalNumber) {
             throw new IllegalArgumentException("The provided phone number is not valid");

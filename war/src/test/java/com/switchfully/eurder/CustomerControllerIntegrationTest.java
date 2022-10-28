@@ -1,6 +1,7 @@
 package com.switchfully.eurder;
 
 import com.switchfully.eurder.domain.address.Address;
+import com.switchfully.eurder.domain.phonenumber.PhoneNumber;
 import com.switchfully.eurder.service.customer.dto.CreateCustomerDTO;
 import com.switchfully.eurder.service.customer.dto.CustomerDTO;
 import io.restassured.RestAssured;
@@ -29,7 +30,9 @@ public class CustomerControllerIntegrationTest {
                 .setStreetNumber("1")
                 .setPostalCode("1111")
                 .setCityName("city")
-                .setLocalNumber("012 34 56 78");
+                .setCountryCode("+32")
+                .setLocalNumber("12 34 56 78")
+                .setPassword("password");
 
         Address address = new Address("streetname", "1", "1111", "city");
 
@@ -54,6 +57,6 @@ public class CustomerControllerIntegrationTest {
         assertThat(result.getLastname()).isEqualTo(createCustomerDTO.getLastname());
         assertThat(result.getEmailAddress()).isEqualTo(createCustomerDTO.getEmailAddress());
         assertThat(result.getAddress()).isEqualTo(address.getFullAddressAsString());
-        assertThat(result.getPhoneNumber()).isEqualTo(createCustomerDTO.getLocalNumber());
+        assertThat(result.getPhoneNumber()).isEqualTo("+32 12 34 56 78");
     }
 }

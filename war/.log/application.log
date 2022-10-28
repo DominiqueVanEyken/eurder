@@ -1,72 +1,79 @@
-2022-10-27 16:10:08.707  INFO 17104 --- [main] c.s.e.CustomerControllerIntegrationTest  : Starting CustomerControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 17104 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
-2022-10-27 16:10:08.708  INFO 17104 --- [main] c.s.e.CustomerControllerIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
-2022-10-27 16:10:10.067  INFO 17104 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-2022-10-27 16:10:10.078  INFO 17104 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-10-27 16:10:10.081  INFO 17104 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-10-27 16:10:10.183  INFO 17104 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-10-27 16:10:10.183  INFO 17104 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1210 ms
-2022-10-27 16:10:11.297  INFO 17104 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 54790 (http) with context path ''
-2022-10-27 16:10:11.316  INFO 17104 --- [main] c.s.e.CustomerControllerIntegrationTest  : Started CustomerControllerIntegrationTest in 3.002 seconds (JVM running for 4.438)
-2022-10-27 16:10:13.847  INFO 17104 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-10-27 16:10:13.848  INFO 17104 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-10-27 16:10:13.850  INFO 17104 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-2022-10-27 16:10:45.664  INFO 1120 --- [main] c.s.e.CustomerControllerIntegrationTest  : Starting CustomerControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 1120 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
-2022-10-27 16:10:45.666  INFO 1120 --- [main] c.s.e.CustomerControllerIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
-2022-10-27 16:10:47.711  INFO 1120 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-2022-10-27 16:10:47.728  INFO 1120 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-10-27 16:10:47.729  INFO 1120 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-10-27 16:10:47.892  INFO 1120 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-10-27 16:10:47.892  INFO 1120 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1863 ms
-2022-10-27 16:10:49.234  INFO 1120 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 54798 (http) with context path ''
-2022-10-27 16:10:49.253  INFO 1120 --- [main] c.s.e.CustomerControllerIntegrationTest  : Started CustomerControllerIntegrationTest in 3.974 seconds (JVM running for 5.143)
-2022-10-27 16:10:51.826  INFO 1120 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-10-27 16:10:51.827  INFO 1120 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-10-27 16:10:51.828  INFO 1120 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-10-27 16:11:18.693  INFO 11472 --- [main] c.s.e.CustomerControllerIntegrationTest  : Starting CustomerControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 11472 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
-2022-10-27 16:11:18.695  INFO 11472 --- [main] c.s.e.CustomerControllerIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
-2022-10-27 16:11:20.835  INFO 11472 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-2022-10-27 16:11:20.851  INFO 11472 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-10-27 16:11:20.851  INFO 11472 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-10-27 16:11:21.020  INFO 11472 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-10-27 16:11:21.020  INFO 11472 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1928 ms
-2022-10-27 16:11:22.528  INFO 11472 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 54804 (http) with context path ''
-2022-10-27 16:11:22.547  INFO 11472 --- [main] c.s.e.CustomerControllerIntegrationTest  : Started CustomerControllerIntegrationTest in 4.276 seconds (JVM running for 5.423)
-2022-10-27 16:11:25.113  INFO 11472 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-10-27 16:11:25.114  INFO 11472 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-10-27 16:11:25.115  INFO 11472 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-10-27 16:32:15.231  INFO 4856 --- [main] c.s.e.CustomerControllerIntegrationTest  : Starting CustomerControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 4856 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
-2022-10-27 16:32:15.232  INFO 4856 --- [main] c.s.e.CustomerControllerIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
-2022-10-27 16:32:16.910  INFO 4856 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-2022-10-27 16:32:16.926  INFO 4856 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-10-27 16:32:16.926  INFO 4856 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-10-27 16:32:17.089  INFO 4856 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-10-27 16:32:17.090  INFO 4856 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1602 ms
-2022-10-27 16:32:18.488  INFO 4856 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 54899 (http) with context path ''
-2022-10-27 16:32:18.519  INFO 4856 --- [main] c.s.e.CustomerControllerIntegrationTest  : Started CustomerControllerIntegrationTest in 3.644 seconds (JVM running for 4.9)
-2022-10-27 16:32:21.400  INFO 4856 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-10-27 16:32:21.401  INFO 4856 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-10-27 16:32:21.403  INFO 4856 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-10-27 17:40:41.554  INFO 8508 --- [main] c.s.e.CustomerControllerIntegrationTest  : Starting CustomerControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 8508 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
-2022-10-27 17:40:41.556  INFO 8508 --- [main] c.s.e.CustomerControllerIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
-2022-10-27 17:40:43.200  INFO 8508 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-2022-10-27 17:40:43.215  INFO 8508 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-10-27 17:40:43.216  INFO 8508 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-10-27 17:40:43.406  INFO 8508 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-10-27 17:40:43.406  INFO 8508 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1547 ms
-2022-10-27 17:40:44.511  INFO 8508 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 61013 (http) with context path ''
-2022-10-27 17:40:44.525  INFO 8508 --- [main] c.s.e.CustomerControllerIntegrationTest  : Started CustomerControllerIntegrationTest in 3.408 seconds (JVM running for 4.723)
-2022-10-27 17:40:46.391  INFO 8508 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-10-27 17:40:46.391  INFO 8508 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-10-27 17:40:46.392  INFO 8508 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-10-27 19:39:09.879  INFO 1276 --- [main] c.s.e.CustomerControllerIntegrationTest  : Starting CustomerControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 1276 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
-2022-10-27 19:39:09.881  INFO 1276 --- [main] c.s.e.CustomerControllerIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
-2022-10-27 19:39:11.515  INFO 1276 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-2022-10-27 19:39:11.534  INFO 1276 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-10-27 19:39:11.534  INFO 1276 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-10-27 19:39:11.671  INFO 1276 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-10-27 19:39:11.671  INFO 1276 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1477 ms
-2022-10-27 19:39:12.742  INFO 1276 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 56014 (http) with context path ''
-2022-10-27 19:39:12.754  INFO 1276 --- [main] c.s.e.CustomerControllerIntegrationTest  : Started CustomerControllerIntegrationTest in 3.32 seconds (JVM running for 4.672)
-2022-10-27 19:39:14.475  INFO 1276 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-10-27 19:39:14.476  INFO 1276 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-10-27 19:39:14.476  INFO 1276 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-10-28 14:45:08.969  INFO 17952 --- [main] c.s.e.CustomerControllerIntegrationTest  : Starting CustomerControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 17952 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
+2022-10-28 14:45:08.987  INFO 17952 --- [main] c.s.e.CustomerControllerIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
+2022-10-28 14:45:12.115  INFO 17952 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2022-10-28 14:45:12.142  INFO 17952 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-28 14:45:12.146  INFO 17952 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-28 14:45:12.398  INFO 17952 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-28 14:45:12.399  INFO 17952 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2767 ms
+2022-10-28 14:45:14.475  INFO 17952 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 64043 (http) with context path ''
+2022-10-28 14:45:14.501  INFO 17952 --- [main] c.s.e.CustomerControllerIntegrationTest  : Started CustomerControllerIntegrationTest in 6.403 seconds (JVM running for 8.826)
+2022-10-28 14:45:18.171  INFO 17952 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-28 14:45:18.171  INFO 17952 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-28 14:45:18.173  INFO 17952 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-10-28 14:45:18.360  INFO 17952 --- [http-nio-auto-1-exec-1] c.s.e.d.e.ControllerExceptionHandler     : The provided country code could not be found
+2022-10-28 14:45:54.892  INFO 16004 --- [main] c.s.e.CustomerControllerIntegrationTest  : Starting CustomerControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 16004 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
+2022-10-28 14:45:54.895  INFO 16004 --- [main] c.s.e.CustomerControllerIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
+2022-10-28 14:45:57.887  INFO 16004 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2022-10-28 14:45:57.910  INFO 16004 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-28 14:45:57.912  INFO 16004 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-28 14:45:58.127  INFO 16004 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-28 14:45:58.129  INFO 16004 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2587 ms
+2022-10-28 14:46:00.227  INFO 16004 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 64050 (http) with context path ''
+2022-10-28 14:46:00.254  INFO 16004 --- [main] c.s.e.CustomerControllerIntegrationTest  : Started CustomerControllerIntegrationTest in 6.204 seconds (JVM running for 8.288)
+2022-10-28 14:46:03.700  INFO 16004 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-28 14:46:03.701  INFO 16004 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-28 14:46:03.703  INFO 16004 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-10-28 14:46:03.898  INFO 16004 --- [http-nio-auto-1-exec-1] c.s.e.d.e.ControllerExceptionHandler     : The provided country code could not be found
+2022-10-28 14:48:46.690  INFO 2512 --- [main] c.s.e.CustomerControllerIntegrationTest  : Starting CustomerControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 2512 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
+2022-10-28 14:48:46.694  INFO 2512 --- [main] c.s.e.CustomerControllerIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
+2022-10-28 14:48:50.695  INFO 2512 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2022-10-28 14:48:50.726  INFO 2512 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-28 14:48:50.728  INFO 2512 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-28 14:48:51.062  INFO 2512 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-28 14:48:51.062  INFO 2512 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3588 ms
+2022-10-28 14:48:54.008  INFO 2512 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 64066 (http) with context path ''
+2022-10-28 14:48:54.040  INFO 2512 --- [main] c.s.e.CustomerControllerIntegrationTest  : Started CustomerControllerIntegrationTest in 8.651 seconds (JVM running for 11.405)
+2022-10-28 14:48:59.967  INFO 2512 --- [http-nio-auto-1-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-28 14:48:59.968  INFO 2512 --- [http-nio-auto-1-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-28 14:48:59.973  INFO 2512 --- [http-nio-auto-1-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2022-10-28 14:49:00.229  INFO 2512 --- [http-nio-auto-1-exec-2] c.s.e.d.e.ControllerExceptionHandler     : The provided country code could not be found
+2022-10-28 14:51:28.572  INFO 10816 --- [main] c.s.e.CustomerControllerIntegrationTest  : Starting CustomerControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 10816 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
+2022-10-28 14:51:28.576  INFO 10816 --- [main] c.s.e.CustomerControllerIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
+2022-10-28 14:51:31.681  INFO 10816 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2022-10-28 14:51:31.701  INFO 10816 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-28 14:51:31.702  INFO 10816 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-28 14:51:31.933  INFO 10816 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-28 14:51:31.934  INFO 10816 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2721 ms
+2022-10-28 14:51:33.675  INFO 10816 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 62185 (http) with context path ''
+2022-10-28 14:51:33.697  INFO 10816 --- [main] c.s.e.CustomerControllerIntegrationTest  : Started CustomerControllerIntegrationTest in 6.037 seconds (JVM running for 8.572)
+2022-10-28 14:51:37.071  INFO 10816 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-28 14:51:37.073  INFO 10816 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-28 14:51:37.074  INFO 10816 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-10-28 14:51:37.258  INFO 10816 --- [http-nio-auto-1-exec-1] c.s.eurder.api.CustomerController        : request for creation of new customer
+2022-10-28 14:51:37.262  INFO 10816 --- [http-nio-auto-1-exec-1] c.s.e.d.e.ControllerExceptionHandler     : The provided country code could not be found
+2022-10-28 14:53:04.131  INFO 10532 --- [main] c.s.e.CustomerControllerIntegrationTest  : Starting CustomerControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 10532 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
+2022-10-28 14:53:04.135  INFO 10532 --- [main] c.s.e.CustomerControllerIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
+2022-10-28 14:53:07.207  INFO 10532 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2022-10-28 14:53:07.227  INFO 10532 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-28 14:53:07.228  INFO 10532 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-28 14:53:07.478  INFO 10532 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-28 14:53:07.479  INFO 10532 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2714 ms
+2022-10-28 14:53:09.309  INFO 10532 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 62197 (http) with context path ''
+2022-10-28 14:53:09.334  INFO 10532 --- [main] c.s.e.CustomerControllerIntegrationTest  : Started CustomerControllerIntegrationTest in 6.195 seconds (JVM running for 9.413)
+2022-10-28 14:53:12.892  INFO 10532 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-28 14:53:12.893  INFO 10532 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-28 14:53:12.895  INFO 10532 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-10-28 14:53:13.076  INFO 10532 --- [http-nio-auto-1-exec-1] c.s.eurder.api.CustomerController        : request for creation of new customer
+2022-10-28 15:01:15.033  INFO 16640 --- [main] c.s.e.CustomerControllerIntegrationTest  : Starting CustomerControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 16640 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
+2022-10-28 15:01:15.036  INFO 16640 --- [main] c.s.e.CustomerControllerIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
+2022-10-28 15:01:17.930  INFO 16640 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2022-10-28 15:01:17.951  INFO 16640 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-28 15:01:17.951  INFO 16640 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-28 15:01:18.183  INFO 16640 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-28 15:01:18.183  INFO 16640 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2553 ms
+2022-10-28 15:01:20.110  INFO 16640 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 53393 (http) with context path ''
+2022-10-28 15:01:20.133  INFO 16640 --- [main] c.s.e.CustomerControllerIntegrationTest  : Started CustomerControllerIntegrationTest in 5.947 seconds (JVM running for 8.3)
+2022-10-28 15:01:23.418  INFO 16640 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-28 15:01:23.419  INFO 16640 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-28 15:01:23.420  INFO 16640 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-10-28 15:01:23.581  INFO 16640 --- [http-nio-auto-1-exec-1] c.s.e.d.customer.CustomerRepository      : Created CUSTOMER{customerID:CID20221005}

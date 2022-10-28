@@ -17,6 +17,6 @@ public class ItemRepository {
     }
     public void addItem(Item item) {
         itemRepository.put(item.getName(), item);
-        log.info("create item " + item);
+        log.info("Created " + item);
     }
 }

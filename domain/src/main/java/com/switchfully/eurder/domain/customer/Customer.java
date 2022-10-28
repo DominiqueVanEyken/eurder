@@ -90,4 +90,9 @@ public class Customer {
     public Role getRole() {
         return role;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s{customerID:%s}", role, customerID);
+    }
 }

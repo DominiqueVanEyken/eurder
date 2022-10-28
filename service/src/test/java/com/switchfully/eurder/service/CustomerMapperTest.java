@@ -49,7 +49,7 @@ class CustomerMapperTest {
         assertThat(createCustomerDTO.getStreetNumber()).isEqualTo(streetNumber);
         assertThat(createCustomerDTO.getPostalCode()).isEqualTo(postalCode);
         assertThat(createCustomerDTO.getCityName()).isEqualTo(city);
-        assertThat(createCustomerDTO.getLocalNumber()).isEqualTo(phoneNumber);
+        assertThat(createCustomerDTO.getLocalNumber()).isEqualTo(localNumber);
         assertThat(createCustomerDTO.getPassword()).isEqualTo(password);
     }
 
@@ -102,7 +102,7 @@ class CustomerMapperTest {
         assertThat(customer.getLastname()).isEqualTo(lastname);
         assertThat(customer.getEmailAddress()).isEqualTo(email);
         assertThat(customer.getFullAddress()).isEqualTo(address.getFullAddressAsString());
-        assertThat(customer.getPhoneNumber()).isEqualTo(phoneNumber);
+        assertThat(customer.getPhoneNumber()).isEqualTo(localNumber);
         assertThat(customer.doesPasswordMatch(password)).isTrue();
         assertThat(customer.getRole()).isEqualTo(Role.CUSTOMER);
     }
