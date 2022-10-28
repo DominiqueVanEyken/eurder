@@ -1,4 +1,4 @@
-package com.switchfully.eurder.service;
+package com.switchfully.eurder.service.customer;
 
 import com.switchfully.eurder.domain.address.Address;
 import com.switchfully.eurder.domain.customer.Customer;
