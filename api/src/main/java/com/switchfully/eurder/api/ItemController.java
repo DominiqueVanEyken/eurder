@@ -28,7 +28,7 @@ public class ItemController {
     @ResponseStatus(HttpStatus.CREATED)
     public ItemDTO addNewItemToStock(@RequestHeader String authorization, @RequestBody CreateItemDTO createItemDTO) {
         securityService.validateAuthorization(authorization, Feature.CREATE_ITEM);
-        log.debug("request to add new item to stock");
+        log.info("request to add new item to stock");
         return itemService.addNewItemToStock(createItemDTO);
     }
 

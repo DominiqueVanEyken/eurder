@@ -1,7 +1,6 @@
 package com.switchfully.eurder;
 
 import com.switchfully.eurder.domain.address.Address;
-import com.switchfully.eurder.domain.phonenumber.PhoneNumber;
 import com.switchfully.eurder.service.customer.dto.CreateCustomerDTO;
 import com.switchfully.eurder.service.customer.dto.CustomerDTO;
 import io.restassured.RestAssured;
