@@ -35,7 +35,7 @@ class CustomerMapperTest {
                 .setStreetNumber(streetNumber)
                 .setPostalCode(postalCode)
                 .setCityName(city)
-                .setPhoneNumber(phoneNumber)
+                .setLocalNumber(phoneNumber)
                 .setPassword(password);
 
         assertThat(createCustomerDTO.getFirstname()).isEqualTo(firstname);
@@ -45,7 +45,7 @@ class CustomerMapperTest {
         assertThat(createCustomerDTO.getStreetNumber()).isEqualTo(streetNumber);
         assertThat(createCustomerDTO.getPostalCode()).isEqualTo(postalCode);
         assertThat(createCustomerDTO.getCityName()).isEqualTo(city);
-        assertThat(createCustomerDTO.getPhoneNumber()).isEqualTo(phoneNumber);
+        assertThat(createCustomerDTO.getLocalNumber()).isEqualTo(phoneNumber);
         assertThat(createCustomerDTO.getPassword()).isEqualTo(password);
     }
 
@@ -88,7 +88,7 @@ class CustomerMapperTest {
                 .setStreetNumber(streetNumber)
                 .setPostalCode(postalCode)
                 .setCityName(city)
-                .setPhoneNumber(phoneNumber)
+                .setLocalNumber(phoneNumber)
                 .setPassword(password);
 
         Customer customer = customerMapper.mapDTOtoCustomer(createCustomerDTO);

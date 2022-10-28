@@ -4,11 +4,14 @@ import com.switchfully.eurder.domain.address.AddressBuilder;
 import com.switchfully.eurder.domain.customer.Customer;
 import com.switchfully.eurder.domain.customer.CustomerBuilder;
 import com.switchfully.eurder.domain.customer.Role;
+import com.switchfully.eurder.domain.phonenumber.CountryCode;
+import com.switchfully.eurder.domain.phonenumber.PhoneNumber;
 import com.switchfully.eurder.service.customer.dto.CreateCustomerDTO;
 import com.switchfully.eurder.service.customer.dto.CustomerDTO;
 
 public class CustomerMapper {
     public Customer mapDTOtoCustomer(CreateCustomerDTO createCustomerDTO) {
+        PhoneNumber phoneNumber = new PhoneNumber(CountryCode.findCountryCode(createCustomerDTO.getCountryCode()), createCustomerDTO.getLocalNumber());
         return new CustomerBuilder()
                 .setFirstname(createCustomerDTO.getFirstname())
                 .setLastname(createCustomerDTO.getLastname())
@@ -21,7 +24,7 @@ public class CustomerMapper {
                                 .setCityName(createCustomerDTO.getCityName())
                                 .build()
                         )
-                .setPhoneNumber(createCustomerDTO.getPhoneNumber())
+                .setPhoneNumber(phoneNumber)
                 .setPassword(createCustomerDTO.getPassword())
                 .setRole(Role.CUSTOMER)
                 .build();

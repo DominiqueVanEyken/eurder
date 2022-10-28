@@ -29,7 +29,7 @@ public class CustomerControllerIntegrationTest {
                 .setStreetNumber(1)
                 .setPostalCode("1111")
                 .setCityName("city")
-                .setPhoneNumber("012 34 56 78");
+                .setLocalNumber("012 34 56 78");
 
         Address address = new Address("streetname", 1, "1111", "city");
 
@@ -54,6 +54,6 @@ public class CustomerControllerIntegrationTest {
         assertThat(result.getLastname()).isEqualTo(createCustomerDTO.getLastname());
         assertThat(result.getEmailAddress()).isEqualTo(createCustomerDTO.getEmailAddress());
         assertThat(result.getAddress()).isEqualTo(address.getFullAddressAsString());
-        assertThat(result.getPhoneNumber()).isEqualTo(createCustomerDTO.getPhoneNumber());
+        assertThat(result.getPhoneNumber()).isEqualTo(createCustomerDTO.getLocalNumber());
     }
 }

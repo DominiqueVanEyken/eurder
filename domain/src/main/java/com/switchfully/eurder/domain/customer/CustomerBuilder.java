@@ -1,13 +1,14 @@
 package com.switchfully.eurder.domain.customer;
 
 import com.switchfully.eurder.domain.address.Address;
+import com.switchfully.eurder.domain.phonenumber.PhoneNumber;
 
 public class CustomerBuilder {
     private String firstname;
     private String lastname;
     private String emailAddress;
     private Address address;
-    private String phoneNumber;
+    private PhoneNumber phoneNumber;
 
     private String password;
     private Role role;
@@ -32,7 +33,7 @@ public class CustomerBuilder {
         return this;
     }
 
-    public CustomerBuilder setPhoneNumber(String phoneNumber) {
+    public CustomerBuilder setPhoneNumber(PhoneNumber phoneNumber) {
         this.phoneNumber = phoneNumber;
         return this;
     }

@@ -8,7 +8,8 @@ public class CreateCustomerDTO {
     private int streetNumber;
     private String postalCode;
     private String cityName;
-    private String phoneNumber;
+    private String countryCode;
+    private String localNumber;
     private String password;
 
     public CreateCustomerDTO setFirstname(String firstname) {
@@ -46,8 +47,13 @@ public class CreateCustomerDTO {
         return this;
     }
 
-    public CreateCustomerDTO setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public CreateCustomerDTO setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
+        return this;
+    }
+
+    public CreateCustomerDTO setLocalNumber(String localNumber) {
+        this.localNumber = localNumber;
         return this;
     }
 
@@ -84,8 +90,12 @@ public class CreateCustomerDTO {
         return cityName;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getCountryCode() {
+        return countryCode;
+    }
+    public String getLocalNumber() {
+        return localNumber;
+
     }
 
     public String getPassword() {

@@ -1,6 +1,7 @@
 package com.switchfully.eurder.domain.customer;
 
 import com.switchfully.eurder.domain.address.Address;
+import com.switchfully.eurder.domain.phonenumber.PhoneNumber;
 
 import java.time.LocalDate;
 import java.util.regex.Pattern;
@@ -13,11 +14,11 @@ public class Customer {
     private final String lastname;
     private final String emailAddress;
     private final Address address;
-    private final String phoneNumber;
+    private final PhoneNumber phoneNumber;
     private final String password;
     private final Role role;
 
-    public Customer(String firstname, String lastname, String emailAddress, Address address, String phoneNumber, String password, Role role) {
+    public Customer(String firstname, String lastname, String emailAddress, Address address, PhoneNumber phoneNumber, String password, Role role) {
         customerID = CUSTOMER_ID_PREFIX + LocalDate.now().getYear() + customer_id_suffix++;
         this.firstname = firstname;
         this.lastname = validateName(lastname);
@@ -79,7 +80,7 @@ public class Customer {
     }
 
     public String getPhoneNumber() {
-        return phoneNumber;
+        return phoneNumber.getFullPhoneNumberAsString();
     }
 
     public Role getRole() {
