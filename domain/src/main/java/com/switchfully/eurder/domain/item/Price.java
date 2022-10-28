@@ -13,4 +13,8 @@ public class Price {
     public String toString() {
         return String.format("%.2f %s", price, currencyUnit);
     }
+
+    public double getPrice() {
+        return price;
+    }
 }

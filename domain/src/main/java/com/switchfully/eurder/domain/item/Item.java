@@ -7,10 +7,24 @@ public class Item {
     private final int stockCount;
 
     public Item(String name, String description, Price price, int stockCount) {
-        this.name = name;
+        this.name = validateName(name);
         this.description = description;
-        this.price = price;
+        this.price = validatePrice(price);
         this.stockCount = stockCount;
+    }
+
+    public String validateName(String name) {
+        if (name == null || name.trim().length() < 2) {
+            throw new IllegalArgumentException("The provided item name is not valid");
+        }
+        return name;
+    }
+
+    public Price validatePrice(Price price) {
+        if (price == null || price.getPrice() <= 0) {
+            throw new IllegalArgumentException("The provided price cannot be 0");
+        }
+        return price;
     }
 
     public String getName() {

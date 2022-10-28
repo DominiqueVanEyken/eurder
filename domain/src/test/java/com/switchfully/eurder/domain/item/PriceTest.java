@@ -11,6 +11,7 @@ class PriceTest {
         Price price = new Price(1.1);
 
         assertThat(price.toString()).isEqualToNormalizingPunctuationAndWhitespace("1.10 EUR");
+        assertThat(price.getPrice()).isEqualTo(1.1);
     }
 
 }
