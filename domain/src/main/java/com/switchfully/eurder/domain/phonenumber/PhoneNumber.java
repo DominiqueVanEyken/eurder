@@ -12,6 +12,10 @@ public class PhoneNumber {
         this.localNumber = validateLocalNumber(localNumber);
     }
 
+    public PhoneNumber(String countryCode, String localNumber) {
+        this(CountryCode.findCountryCode(countryCode), localNumber);
+    }
+
     public String validateLocalNumber(String localNumber) {
         String formatedLocalNumber = localNumber.startsWith("0") ? localNumber.trim().replace(" ", "").substring(1) : localNumber.trim().replace(" ", "");
         System.out.println(formatedLocalNumber);

@@ -26,12 +26,12 @@ public class CustomerControllerIntegrationTest {
                 .setLastname("lastname")
                 .setEmailAddress("user@test.be")
                 .setStreetName("streetname")
-                .setStreetNumber(1)
+                .setStreetNumber("1")
                 .setPostalCode("1111")
                 .setCityName("city")
                 .setLocalNumber("012 34 56 78");
 
-        Address address = new Address("streetname", 1, "1111", "city");
+        Address address = new Address("streetname", "1", "1111", "city");
 
         CustomerDTO result = RestAssured
                 .given()

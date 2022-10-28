@@ -4,7 +4,6 @@ import com.switchfully.eurder.domain.address.Address;
 import com.switchfully.eurder.domain.customer.Customer;
 import com.switchfully.eurder.domain.customer.CustomerBuilder;
 import com.switchfully.eurder.domain.customer.Role;
-import com.switchfully.eurder.domain.phonenumber.CountryCode;
 import com.switchfully.eurder.domain.phonenumber.PhoneNumber;
 import org.junit.jupiter.api.Test;
 
@@ -15,10 +14,10 @@ class CustomerTest {
     private final String firstname = "firstname";
     private final String lastname = "lastname";
     private final String emailAddress = "user@test.be";
-    private final Address address = new Address("street", 1, "3020", "city");
+    private final Address address = new Address("street", "1", "3020", "city");
     private final String countryCode = "+32";
     private final String localNumber = "012 34 56 78";
-    private final PhoneNumber phoneNumber = new PhoneNumber(CountryCode.findCountryCode(countryCode), localNumber);
+    private final PhoneNumber phoneNumber = new PhoneNumber(countryCode, localNumber);
     private final String password = "password";
 
     @Test

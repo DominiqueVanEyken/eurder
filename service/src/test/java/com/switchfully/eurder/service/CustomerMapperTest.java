@@ -3,6 +3,7 @@ package com.switchfully.eurder.service;
 import com.switchfully.eurder.domain.address.Address;
 import com.switchfully.eurder.domain.customer.Customer;
 import com.switchfully.eurder.domain.customer.Role;
+import com.switchfully.eurder.domain.phonenumber.PhoneNumber;
 import com.switchfully.eurder.service.customer.CustomerMapper;
 import com.switchfully.eurder.service.customer.dto.CreateCustomerDTO;
 import com.switchfully.eurder.service.customer.dto.CustomerDTO;
@@ -18,11 +19,13 @@ class CustomerMapperTest {
     private final String lastname = "lastname";
     private final String email = "user@test.be";
     private final String streetName = "streetName";
-    private final int streetNumber = 1;
+    private final String streetNumber = "1";
     private final String postalCode = "1111";
     private final String city = "city";
     private final Address address = new Address(streetName, streetNumber, postalCode, city);
-    private final String phoneNumber = "012 34 56 78";
+    private final String countryCode = "+32";
+    private final String localNumber = "12 34 56 78";
+    private final PhoneNumber phoneNumber = new PhoneNumber(countryCode, localNumber);
     private final String password = "password";
 
     @Test
@@ -35,7 +38,8 @@ class CustomerMapperTest {
                 .setStreetNumber(streetNumber)
                 .setPostalCode(postalCode)
                 .setCityName(city)
-                .setLocalNumber(phoneNumber)
+                .setCountryCode(countryCode)
+                .setLocalNumber(localNumber)
                 .setPassword(password);
 
         assertThat(createCustomerDTO.getFirstname()).isEqualTo(firstname);
@@ -56,13 +60,13 @@ class CustomerMapperTest {
                 .setLastname(lastname)
                 .setEmailAddress(email)
                 .setAddress(address.getFullAddressAsString())
-                .setPhoneNumber(phoneNumber);
+                .setPhoneNumber(phoneNumber.getFullPhoneNumberAsString());
 
         assertThat(customerDTO.getFirstname()).isEqualTo(firstname);
         assertThat(customerDTO.getLastname()).isEqualTo(lastname);
         assertThat(customerDTO.getEmailAddress()).isEqualTo(email);
         assertThat(customerDTO.getAddress()).isEqualTo(address.getFullAddressAsString());
-        assertThat(customerDTO.getPhoneNumber()).isEqualTo(phoneNumber);
+        assertThat(customerDTO.getPhoneNumber()).isEqualTo(phoneNumber.getFullPhoneNumberAsString());
     }
 
     @Test
@@ -75,7 +79,7 @@ class CustomerMapperTest {
         assertThat(customerDTO.getLastname()).isEqualTo(lastname);
         assertThat(customerDTO.getEmailAddress()).isEqualTo(email);
         assertThat(customerDTO.getAddress()).isEqualTo(address.getFullAddressAsString());
-        assertThat(customerDTO.getPhoneNumber()).isEqualTo(phoneNumber);
+        assertThat(customerDTO.getPhoneNumber()).isEqualTo(phoneNumber.getFullPhoneNumberAsString());
     }
 
     @Test
@@ -88,7 +92,8 @@ class CustomerMapperTest {
                 .setStreetNumber(streetNumber)
                 .setPostalCode(postalCode)
                 .setCityName(city)
-                .setLocalNumber(phoneNumber)
+                .setCountryCode(countryCode)
+                .setLocalNumber(localNumber)
                 .setPassword(password);
 
         Customer customer = customerMapper.mapDTOtoCustomer(createCustomerDTO);

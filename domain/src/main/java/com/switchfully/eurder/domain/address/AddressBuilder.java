@@ -2,7 +2,7 @@ package com.switchfully.eurder.domain.address;
 
 public class AddressBuilder {
     private String streetName;
-    private int streetNumber;
+    private String streetNumber;
     private String postalCode;
     private String cityName;
 
@@ -11,7 +11,7 @@ public class AddressBuilder {
         return this;
     }
 
-    public AddressBuilder setStreetNumber(int streetNumber) {
+    public AddressBuilder setStreetNumber(String streetNumber) {
         this.streetNumber = streetNumber;
         return this;
     }

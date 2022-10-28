@@ -6,11 +6,11 @@ import java.util.regex.Pattern;
 public class Address {
 
     private final String streetName;
-    private final int streetNumber;
+    private final String streetNumber;
     private final String postalCode;
     private final String cityName;
 
-    public Address(String streetName, int streetNumber, String postalCode, String cityName) {
+    public Address(String streetName, String streetNumber, String postalCode, String cityName) {
         this.streetName = streetName;
         this.streetNumber = streetNumber;
         this.postalCode = validatePostalCode(postalCode);
@@ -33,7 +33,7 @@ public class Address {
     }
 
     public String getFullAddressAsString() {
-        return String.format("%s %d, %s %s", streetName, streetNumber, postalCode, cityName);
+        return String.format("%s %s, %s %s", streetName, streetNumber, postalCode, cityName);
     }
 
     @Override

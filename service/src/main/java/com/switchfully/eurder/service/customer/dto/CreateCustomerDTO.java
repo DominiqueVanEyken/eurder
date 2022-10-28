@@ -5,7 +5,7 @@ public class CreateCustomerDTO {
     private String lastname;
     private String emailAddress;
     private String streetName;
-    private int streetNumber;
+    private String streetNumber;
     private String postalCode;
     private String cityName;
     private String countryCode;
@@ -32,7 +32,7 @@ public class CreateCustomerDTO {
         return this;
     }
 
-    public CreateCustomerDTO setStreetNumber(int streetNumber) {
+    public CreateCustomerDTO setStreetNumber(String streetNumber) {
         this.streetNumber = streetNumber;
         return this;
     }
@@ -78,7 +78,7 @@ public class CreateCustomerDTO {
         return streetName;
     }
 
-    public int getStreetNumber() {
+    public String getStreetNumber() {
         return streetNumber;
     }
 
