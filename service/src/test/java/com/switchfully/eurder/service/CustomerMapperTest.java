@@ -102,7 +102,7 @@ class CustomerMapperTest {
         assertThat(customer.getLastname()).isEqualTo(lastname);
         assertThat(customer.getEmailAddress()).isEqualTo(email);
         assertThat(customer.getFullAddress()).isEqualTo(address.getFullAddressAsString());
-        assertThat(customer.getPhoneNumber()).isEqualTo(localNumber);
+        assertThat(customer.getPhoneNumber()).isEqualTo(phoneNumber.getFullPhoneNumberAsString());
         assertThat(customer.doesPasswordMatch(password)).isTrue();
         assertThat(customer.getRole()).isEqualTo(Role.CUSTOMER);
     }
