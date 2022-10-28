@@ -1,6 +1,6 @@
 package com.switchfully.eurder.service.security;
 
-import com.switchfully.eurder.domain.CustomerRepository;
+import com.switchfully.eurder.domain.customer.CustomerRepository;
 import com.switchfully.eurder.domain.customer.Customer;
 import com.switchfully.eurder.domain.customer.Feature;
 import com.switchfully.eurder.domain.exceptions.UnauthorizedException;

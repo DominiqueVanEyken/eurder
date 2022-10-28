@@ -2,6 +2,7 @@ package com.switchfully.eurder.domain;
 
 import com.switchfully.eurder.domain.address.Address;
 import com.switchfully.eurder.domain.customer.Customer;
+import com.switchfully.eurder.domain.customer.CustomerRepository;
 import com.switchfully.eurder.domain.customer.Role;
 import org.junit.jupiter.api.Test;
 
