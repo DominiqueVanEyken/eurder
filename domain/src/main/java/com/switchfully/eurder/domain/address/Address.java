@@ -1,6 +1,7 @@
 package com.switchfully.eurder.domain.address;
 
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 public class Address {
 
@@ -12,8 +13,23 @@ public class Address {
     public Address(String streetName, int streetNumber, String postalCode, String cityName) {
         this.streetName = streetName;
         this.streetNumber = streetNumber;
-        this.postalCode = postalCode;
-        this.cityName = cityName;
+        this.postalCode = validatePostalCode(postalCode);
+        this.cityName = validateCityName(cityName);
+    }
+
+    public String validatePostalCode(String postalCode) {
+        boolean isValidPostalCode = Pattern.matches("[0-9]{4}", postalCode);
+        if (!isValidPostalCode) {
+            throw new IllegalArgumentException("The provided postal code is not valid");
+        }
+        return postalCode;
+    }
+
+    public String validateCityName(String cityName) {
+        if (cityName == null || cityName.trim().length() < 2) {
+            throw new IllegalArgumentException("The provided city is not valid");
+        }
+        return cityName;
     }
 
     public String getFullAddressAsString() {

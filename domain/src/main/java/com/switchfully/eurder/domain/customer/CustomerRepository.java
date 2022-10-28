@@ -1,5 +1,6 @@
 package com.switchfully.eurder.domain.customer;
 
+import com.switchfully.eurder.domain.address.AddressBuilder;
 import com.switchfully.eurder.domain.customer.Customer;
 import com.switchfully.eurder.domain.customer.CustomerBuilder;
 import com.switchfully.eurder.domain.customer.Role;
@@ -16,9 +17,13 @@ public class CustomerRepository {
     public CustomerRepository() {
         this.customerRepository = new HashMap<>();
         Customer admin = new CustomerBuilder()
-                .setFirstname("admin")
+                .setLastname("admin")
                 .setEmailAddress("admin@eurder.com")
                 .setPassword("password")
+                .setAddress(new AddressBuilder()
+                        .setPostalCode("0000")
+                        .setCityName("EURDER")
+                        .build())
                 .setRole(Role.ADMIN)
                 .build();
         customerRepository.put(admin.getCustomerID(), admin);
