@@ -1,4 +1,4 @@
-package com.switchfully.eurder.domain;
+package com.switchfully.eurder.domain.address;
 
 import com.switchfully.eurder.domain.address.Address;
 import com.switchfully.eurder.domain.address.AddressBuilder;

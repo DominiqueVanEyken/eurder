@@ -1,4 +1,4 @@
-package com.switchfully.eurder.domain;
+package com.switchfully.eurder.domain.phonenumber;
 
 import com.switchfully.eurder.domain.phonenumber.CountryCode;
 import com.switchfully.eurder.domain.phonenumber.PhoneNumber;
