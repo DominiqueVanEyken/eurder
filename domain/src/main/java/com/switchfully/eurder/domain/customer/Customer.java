@@ -30,9 +30,13 @@ public class Customer {
     }
 
     private String validateEmailAddress(String emailAddress) {
+        String exceptionMessage = "The provided email address is not valid";
+        if (emailAddress == null) {
+            throw new IllegalArgumentException(exceptionMessage);
+        }
         boolean isValidEmailAddress = Pattern.matches("\\b[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}\\b", emailAddress);
         if (!isValidEmailAddress) {
-            throw new IllegalArgumentException("The provided email address is not valid");
+            throw new IllegalArgumentException(exceptionMessage);
         }
         return emailAddress;
     }
