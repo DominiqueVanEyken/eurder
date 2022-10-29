@@ -26,7 +26,7 @@ public class SecurityService {
         Customer user = customerRepository.getMemberByEmail(usernamePassword.getUsername());
         if (user == null) {
             log.error("Unknown user" + usernamePassword.getUsername());
-            throw new NoSuchElementException("Username does not exist");
+            throw new NoSuchElementException("Wrong credentials");
         }
         if (!user.doesPasswordMatch(usernamePassword.getPassword())) {
             log.error("Password does not match for user " + usernamePassword.getUsername());

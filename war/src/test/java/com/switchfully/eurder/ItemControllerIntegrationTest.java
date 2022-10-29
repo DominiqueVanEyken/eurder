@@ -15,7 +15,6 @@ import java.util.Base64;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-
 public class ItemControllerIntegrationTest {
     @LocalServerPort
     private int port;

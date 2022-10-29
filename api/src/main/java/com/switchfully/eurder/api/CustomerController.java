@@ -37,6 +37,7 @@ public class CustomerController {
     }
 
     @PostMapping(value = "{customerID}/order", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
     public OrderDTO orderItems(@RequestHeader String authorization, @PathVariable String customerID, @RequestBody CreateOrderDTO createOrderDTO) {
         securityService.validateAuthorization(authorization, Feature.ORDER_ITEMS);
         log.debug("Request for ordering items");
