@@ -1,12 +1,20 @@
 package com.switchfully.eurder.domain.item;
 
+import org.apache.logging.log4j.util.StringBuilders;
+
+import java.time.LocalDate;
+
 public class Item {
+    public static final String ITEM_ID_PREFIX = "IID";
+    private static int itemIDSuffix = 1001;
+    private final String itemID;
     private final String name;
     private final String description;
     private final Price price;
     private final int stockCount;
 
     public Item(String name, String description, Price price, int stockCount) {
+        itemID = ITEM_ID_PREFIX + LocalDate.now().getYear() + itemIDSuffix++;
         this.name = validateName(name);
         this.description = description;
         this.price = validatePrice(price);
@@ -27,6 +35,10 @@ public class Item {
         return price;
     }
 
+    public String getItemID() {
+        return itemID;
+    }
+
     public String getName() {
         return name;
     }
@@ -43,8 +55,13 @@ public class Item {
         return stockCount;
     }
 
+    public Price getPrice() {
+        return price;
+    }
+
     @Override
     public String toString() {
         return String.format("Item{name=%s, description=%s, price=%s, stockCount=%d", name, description, price, stockCount);
     }
+
 }
