@@ -4,8 +4,10 @@ import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.item.Price;
 
 import java.time.LocalDate;
+import java.util.regex.Pattern;
 
 public class ItemGroup {
+    public static final int MINIMUM_ORDER_AMOUNT_REQUIREMENT = 1;
     private final String itemID;
     private final int amount;
     private LocalDate shippingDate;
@@ -13,14 +15,29 @@ public class ItemGroup {
     private Price totalPrice;
 
     public ItemGroup(String itemID, int amount) {
-        this.itemID = itemID;
-        this.amount = amount;
+        this.itemID = validateItemID(itemID);
+        this.amount = validateAmount(amount);
+    }
+
+    private int validateAmount(int amount) {
+        if (amount < MINIMUM_ORDER_AMOUNT_REQUIREMENT) {
+            throw new IllegalArgumentException("The minimum requirement to order is " + MINIMUM_ORDER_AMOUNT_REQUIREMENT);
+        }
+        return amount;
     }
 
     public void setShippingDateAndPrice(Item item) {
         shippingDate = setShippingDate(item);
         pricePerUnit = setPricePerUnit(item);
         totalPrice = new Price(calculateTotalPrice());
+    }
+
+    public String validateItemID(String itemID) {
+        boolean isValidItemID = Pattern.matches("IID[0-9]{8}", itemID);
+        if (itemID == null || !isValidItemID) {
+            throw new IllegalArgumentException("The provided itemID is not valid");
+        }
+        return itemID;
     }
 
     private Price setPricePerUnit(Item item) {

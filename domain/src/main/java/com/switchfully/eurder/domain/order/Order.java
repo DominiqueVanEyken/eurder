@@ -48,6 +48,6 @@ public class Order {
 
     @Override
     public String toString() {
-        return String.format("Order{orderID=%s, customerID=%s, orderDate=%s, orderList=%s}", orderID, customerID, orderDate, orderList);
+        return String.format("Order{orderID=%s, customerID=%s, orderDate=%s}", orderID, customerID, orderDate);
     }
 }
