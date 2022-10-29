@@ -4,7 +4,6 @@ import com.switchfully.eurder.domain.address.Address;
 import com.switchfully.eurder.domain.customer.Customer;
 import com.switchfully.eurder.domain.customer.Role;
 import com.switchfully.eurder.domain.phonenumber.PhoneNumber;
-import com.switchfully.eurder.service.customer.CustomerMapper;
 import com.switchfully.eurder.service.customer.dto.CreateCustomerDTO;
 import com.switchfully.eurder.service.customer.dto.CustomerDTO;
 import org.junit.jupiter.api.Test;
