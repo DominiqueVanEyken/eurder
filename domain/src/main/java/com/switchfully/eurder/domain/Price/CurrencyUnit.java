@@ -1,4 +1,4 @@
-package com.switchfully.eurder.domain.item;
+package com.switchfully.eurder.domain.Price;
 
 public enum CurrencyUnit {
     EUR("euro", '€');

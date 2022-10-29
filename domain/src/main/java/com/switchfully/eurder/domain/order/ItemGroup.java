@@ -1,7 +1,7 @@
 package com.switchfully.eurder.domain.order;
 
 import com.switchfully.eurder.domain.item.Item;
-import com.switchfully.eurder.domain.item.Price;
+import com.switchfully.eurder.domain.Price.Price;
 
 import java.time.LocalDate;
 import java.util.regex.Pattern;
@@ -33,8 +33,11 @@ public class ItemGroup {
     }
 
     public String validateItemID(String itemID) {
+        if (itemID == null) {
+            throw new IllegalArgumentException("The provided itemID is not valid");
+        }
         boolean isValidItemID = Pattern.matches("IID[0-9]{8}", itemID);
-        if (itemID == null || !isValidItemID) {
+        if (!isValidItemID) {
             throw new IllegalArgumentException("The provided itemID is not valid");
         }
         return itemID;

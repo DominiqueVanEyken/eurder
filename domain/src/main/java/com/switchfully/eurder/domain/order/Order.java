@@ -1,6 +1,6 @@
 package com.switchfully.eurder.domain.order;
 
-import com.switchfully.eurder.domain.item.Price;
+import com.switchfully.eurder.domain.Price.Price;
 
 import java.time.LocalDate;
 import java.util.List;

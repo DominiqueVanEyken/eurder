@@ -1,5 +1,6 @@
 package com.switchfully.eurder.domain.item;
 
+import com.switchfully.eurder.domain.Price.Price;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;

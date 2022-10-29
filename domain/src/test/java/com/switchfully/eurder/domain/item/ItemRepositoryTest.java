@@ -1,5 +1,6 @@
 package com.switchfully.eurder.domain.item;
 
+import com.switchfully.eurder.domain.Price.Price;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

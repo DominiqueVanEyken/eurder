@@ -1,5 +1,7 @@
 package com.switchfully.eurder.domain.item;
 
+import com.switchfully.eurder.domain.Price.Price;
+
 public class ItemBuilder {
     private String name;
     private String description;

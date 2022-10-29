@@ -2,7 +2,7 @@ package com.switchfully.eurder.service.item;
 
 import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.item.ItemBuilder;
-import com.switchfully.eurder.domain.item.Price;
+import com.switchfully.eurder.domain.Price.Price;
 import com.switchfully.eurder.service.item.dto.CreateItemDTO;
 import com.switchfully.eurder.service.item.dto.ItemDTO;
 
