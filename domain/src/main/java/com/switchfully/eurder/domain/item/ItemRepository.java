@@ -16,6 +16,31 @@ public class ItemRepository {
 
     public ItemRepository() {
         itemRepository = new HashMap<>();
+        fillRepository();
+    }
+
+    private void fillRepository() {
+        Item item1 = new ItemBuilder()
+                .setName("name1")
+                .setDescription("description")
+                .setPrice(new Price(10.2))
+                .setStockCount(100)
+                .build();
+        Item item2 = new ItemBuilder()
+                .setName("name1")
+                .setDescription("description")
+                .setPrice(new Price(10.2))
+                .setStockCount(100)
+                .build();
+        Item item3 = new ItemBuilder()
+                .setName("name1")
+                .setDescription("description")
+                .setPrice(new Price(10.2))
+                .setStockCount(100)
+                .build();
+        itemRepository.put(item1.getItemID(), item1);
+        itemRepository.put(item2.getItemID(), item2);
+        itemRepository.put(item3.getItemID(), item3);
     }
 
     public Collection<Item> getAllItemsFromRepository() {

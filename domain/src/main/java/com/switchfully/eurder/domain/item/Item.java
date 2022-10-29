@@ -64,4 +64,7 @@ public class Item {
         return String.format("Item{name=%s, description=%s, price=%s, stockCount=%d", name, description, price, stockCount);
     }
 
+    public boolean isInStock(int amount) {
+        return stockCount > amount;
+    }
 }

@@ -9,7 +9,7 @@ public class OrderDTO {
     private String orderID;
     private String customerID;
     private LocalDate orderDate;
-    private List<ItemGroup> orderList;
+    private List<ItemGroupDTO> orderList;
     private String totalPrice;
 
     public String getOrderID() {
@@ -39,11 +39,11 @@ public class OrderDTO {
         return this;
     }
 
-    public List<ItemGroup> getOrderList() {
+    public List<ItemGroupDTO> getOrderList() {
         return orderList;
     }
 
-    public OrderDTO setOrderList(List<ItemGroup> orderList) {
+    public OrderDTO setOrderList(List<ItemGroupDTO> orderList) {
         this.orderList = orderList;
         return this;
     }

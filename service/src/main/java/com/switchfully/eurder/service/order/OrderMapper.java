@@ -16,11 +16,12 @@ public class OrderMapper {
     }
 
     public OrderDTO mapOrderToDTO(Order order) {
+        System.out.println("OrderMapper: Order -> DTO");
         return new OrderDTO()
                 .setOrderID(order.getOrderID())
                 .setCustomerID(order.getCustomerID())
                 .setOrderDate(order.getOrderDate())
-                .setOrderList(order.getOrderList())
+                .setOrderList(itemGroupMapper.mapItemGroupToDTO(order.getOrderList()))
                 .setTotalPrice(order.getTotalPrice().toString());
 
     }

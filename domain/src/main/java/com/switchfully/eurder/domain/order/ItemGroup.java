@@ -1,39 +1,38 @@
 package com.switchfully.eurder.domain.order;
 
-import com.switchfully.eurder.domain.item.ItemRepository;
+import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.item.Price;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
 public class ItemGroup {
     private final String itemID;
     private final int amount;
-    private final LocalDate shippingDate;
-    private final Price pricePerUnit;
-    private final Price totalPrice;
-    @Autowired
-    private ItemRepository itemRepostitory;
+    private LocalDate shippingDate;
+    private Price pricePerUnit;
+    private Price totalPrice;
 
     public ItemGroup(String itemID, int amount) {
         this.itemID = itemID;
         this.amount = amount;
-        shippingDate = setShippingDate(itemID);
-        pricePerUnit = setPricePerUnit(itemID);
+    }
+
+    public void setShippingDateAndPrice(Item item) {
+        shippingDate = setShippingDate(item);
+        pricePerUnit = setPricePerUnit(item);
         totalPrice = new Price(calculateTotalPrice());
     }
 
-    private Price setPricePerUnit(String itemID) {
-        return itemRepostitory.getItemPriceByItemID(itemID);
+    private Price setPricePerUnit(Item item) {
+        return item.getPrice();
     }
 
     public double calculateTotalPrice() {
         return pricePerUnit.getPrice() * amount;
     }
 
-    private LocalDate setShippingDate(String itemID) {
-        boolean itemIsInStock = itemRepostitory.isItemInStock(itemID);
+    private LocalDate setShippingDate(Item item) {
+        boolean itemIsInStock = item.isInStock(amount);
         if (itemIsInStock) {
             return LocalDate.now().plusDays(1);
         }
@@ -61,6 +60,7 @@ public class ItemGroup {
     }
 
     public double getTotalPriceAsDouble() {
+        System.out.println("ItemGroup: " + totalPrice.toString());
         return totalPrice.getPrice();
     }
 

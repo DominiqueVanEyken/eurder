@@ -28,6 +28,7 @@ public class ItemGroupMapper {
     }
 
     public List<ItemGroupDTO> mapItemGroupToDTO(List<ItemGroup> itemGroups) {
+        System.out.println("ItemGroup: ItemGroup -> DTO");
         return itemGroups.stream()
                 .map(this::mapItemGroupToDTO)
                 .toList();

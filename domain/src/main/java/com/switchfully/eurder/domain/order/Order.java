@@ -12,16 +12,19 @@ public class Order {
     private final String customerID;
     private final LocalDate orderDate;
     private final List<ItemGroup> orderList;
-    private final Price totalPrice;
+    private Price totalPrice;
 
     public Order(String customerID, List<ItemGroup> orderList) {
         this.customerID = customerID;
         this.orderList = orderList;
         this.orderDate = LocalDate.now();
         orderID = ORDER_ID_PREFIX + orderDate.getYear() + order_id_suffix++;
+    }
+    public void calculateTotalPrice() {
         totalPrice = new Price(orderList.stream()
                 .mapToDouble(ItemGroup::getTotalPriceAsDouble)
                 .sum());
+        System.out.println("order: " + totalPrice);
     }
 
     public String getOrderID() {
