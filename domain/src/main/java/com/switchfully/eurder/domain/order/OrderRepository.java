@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 @Repository
 public class OrderRepository {
@@ -19,13 +20,17 @@ public class OrderRepository {
         orderRepository = new HashMap<>();
     }
 
-    public Order createOrder(Order order) {
-        for (ItemGroup itemGroup : order.getOrderList()) {
-            itemGroup.setShippingDateAndPrice(itemRepository.getItemByID(itemGroup.getItemID()));
-        }
-        order.calculateTotalPrice();
+    public void createOrder(Order order) {
+        order.getOrderList().forEach(itemGroup -> itemGroup.setShippingDateAndPrice(itemRepository.getItemByID(itemGroup.getItemID())));
+        Order.calculateTotalPrice(order);
         orderRepository.put(order.getOrderID(), order);
         log.info("Created ".concat(order.toString()));
-        return order;
+    }
+
+    public Order findOrderByID(String orderID) {
+        if (!orderRepository.containsKey(orderID)) {
+            throw new NoSuchElementException("Order with ID " + orderID + " does not exist");
+        }
+        return orderRepository.get(orderID);
     }
 }

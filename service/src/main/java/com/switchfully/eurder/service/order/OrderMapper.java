@@ -16,7 +16,6 @@ public class OrderMapper {
     }
 
     public OrderDTO mapOrderToDTO(Order order) {
-        System.out.println("OrderMapper: Order -> DTO");
         return new OrderDTO()
                 .setOrderID(order.getOrderID())
                 .setCustomerID(order.getCustomerID())

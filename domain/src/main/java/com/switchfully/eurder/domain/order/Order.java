@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Order {
     private static final String ORDER_ID_PREFIX = "OID";
-    private static int order_id_suffix;
+    private static int order_id_suffix = 1001;
     private final String orderID;
     private final String customerID;
     private final LocalDate orderDate;
@@ -20,11 +20,10 @@ public class Order {
         this.orderDate = LocalDate.now();
         orderID = ORDER_ID_PREFIX + orderDate.getYear() + order_id_suffix++;
     }
-    public void calculateTotalPrice() {
-        totalPrice = new Price(orderList.stream()
+    public static void calculateTotalPrice(Order order) {
+        order.totalPrice = new Price(order.getOrderList().stream()
                 .mapToDouble(ItemGroup::getTotalPriceAsDouble)
                 .sum());
-        System.out.println("order: " + totalPrice);
     }
 
     public String getOrderID() {

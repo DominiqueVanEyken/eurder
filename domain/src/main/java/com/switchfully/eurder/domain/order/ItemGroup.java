@@ -60,7 +60,6 @@ public class ItemGroup {
     }
 
     public double getTotalPriceAsDouble() {
-        System.out.println("ItemGroup: " + totalPrice.toString());
         return totalPrice.getPrice();
     }
 

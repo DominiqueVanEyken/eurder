@@ -1,6 +1,5 @@
 package com.switchfully.eurder.service.order;
 
-import com.switchfully.eurder.domain.item.ItemRepository;
 import com.switchfully.eurder.domain.order.Order;
 import com.switchfully.eurder.domain.order.OrderRepository;
 import com.switchfully.eurder.service.order.dto.CreateOrderDTO;
@@ -19,8 +18,8 @@ public class OrderService {
 
     public OrderDTO orderItems(String customerID, CreateOrderDTO createOrderDTO) {
         Order order = orderMapper.mapDTOToOrder(customerID, createOrderDTO);
-        System.out.println("orderService: " + order);
-        order = orderRepository.createOrder(order);
+        orderRepository.createOrder(order);
+        order = orderRepository.findOrderByID(order.getOrderID());
         return orderMapper.mapOrderToDTO(order);
     }
 }
