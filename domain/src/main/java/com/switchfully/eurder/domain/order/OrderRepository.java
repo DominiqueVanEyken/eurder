@@ -21,8 +21,8 @@ public class OrderRepository {
     }
 
     public void createOrder(Order order) {
-        order.getOrderList().forEach(itemGroup -> itemGroup.setShippingDateAndPrice(itemRepository.getItemByID(itemGroup.getItemID())));
-        Order.calculateTotalPrice(order);
+
+        Order.calculateTotalPrice(order, itemRepository);
         orderRepository.put(order.getOrderID(), order);
         log.info("Created ".concat(order.toString()));
     }

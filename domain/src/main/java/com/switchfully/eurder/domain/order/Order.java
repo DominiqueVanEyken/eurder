@@ -1,6 +1,7 @@
 package com.switchfully.eurder.domain.order;
 
 import com.switchfully.eurder.domain.Price.Price;
+import com.switchfully.eurder.domain.item.ItemRepository;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -20,7 +21,8 @@ public class Order {
         this.orderDate = LocalDate.now();
         orderID = ORDER_ID_PREFIX + orderDate.getYear() + order_id_suffix++;
     }
-    public static void calculateTotalPrice(Order order) {
+    public static void calculateTotalPrice(Order order, ItemRepository itemRepository) {
+        order.getOrderList().forEach(itemGroup -> itemGroup.setShippingDateAndPrice(itemRepository.getItemByID(itemGroup.getItemID())));
         order.totalPrice = new Price(order.getOrderList().stream()
                 .mapToDouble(ItemGroup::getTotalPriceAsDouble)
                 .sum());
