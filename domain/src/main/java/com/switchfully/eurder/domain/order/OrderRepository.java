@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -18,6 +19,10 @@ public class OrderRepository {
     public OrderRepository(ItemRepository itemRepository) {
         this.itemRepository = itemRepository;
         orderRepository = new HashMap<>();
+    }
+
+    public Collection<Order> getOrders() {
+        return orderRepository.values();
     }
 
     public void createOrder(Order order) {

@@ -44,6 +44,8 @@ class OrderTest {
             assertThat(order.getOrderList()).isEqualTo(orderList);
             assertThat(order.getTotalPrice().toString()).isEqualTo(new Price(6.6).toString());
             assertThat(order.toString()).isEqualTo(String.format("Order{orderID=%s, customerID=%s, orderDate=%s}", order.getOrderID(), customerID, orderDate));
+            assertThat(order.equals(new Order(customerID, orderList))).isFalse();
+            assertThat(order.hashCode()).isNotEqualTo(new Order(customerID, orderList).hashCode());
         }
     }
 

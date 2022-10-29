@@ -5,6 +5,7 @@ import com.switchfully.eurder.domain.item.ItemRepository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 public class Order {
     private static final String ORDER_ID_PREFIX = "OID";
@@ -51,5 +52,18 @@ public class Order {
     @Override
     public String toString() {
         return String.format("Order{orderID=%s, customerID=%s, orderDate=%s}", orderID, customerID, orderDate);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Order order = (Order) o;
+        return Objects.equals(orderID, order.orderID);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(orderID);
     }
 }
