@@ -6,6 +6,8 @@ import com.switchfully.eurder.service.customer.dto.CreateCustomerDTO;
 import com.switchfully.eurder.service.customer.dto.CustomerDTO;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CustomerService {
     private final CustomerRepository customerRepository;
@@ -28,5 +30,9 @@ public class CustomerService {
 
     public void validateIfCustomerIDExists(String customerID) {
         customerRepository.findCustomerByID(customerID);
+    }
+
+    public List<CustomerDTO> getAllCustomers() {
+        return customerMapper.mapCustomerToDTO(customerRepository.getAllCustomers());
     }
 }

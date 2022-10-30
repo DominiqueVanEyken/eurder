@@ -23,7 +23,7 @@ public class SecurityService {
 
     public void validateAuthorization(String authorization, Feature feature) {
         UsernamePassword usernamePassword = getUsernamePassword(authorization);
-        Customer user = customerRepository.getMemberByEmail(usernamePassword.getUsername());
+        Customer user = customerRepository.getCustomerByEmail(usernamePassword.getUsername());
         if (user == null) {
             log.error("Unknown user" + usernamePassword.getUsername());
             throw new NoSuchElementException("Wrong credentials");

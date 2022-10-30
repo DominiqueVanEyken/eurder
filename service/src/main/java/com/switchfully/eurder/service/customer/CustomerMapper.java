@@ -8,6 +8,9 @@ import com.switchfully.eurder.domain.phonenumber.PhoneNumber;
 import com.switchfully.eurder.service.customer.dto.CreateCustomerDTO;
 import com.switchfully.eurder.service.customer.dto.CustomerDTO;
 
+import java.util.Collection;
+import java.util.List;
+
 public class CustomerMapper {
     public Customer mapDTOtoCustomer(CreateCustomerDTO createCustomerDTO) {
         return new CustomerBuilder()
@@ -37,5 +40,11 @@ public class CustomerMapper {
                 .setEmailAddress(customer.getEmailAddress())
                 .setAddress(customer.getFullAddress())
                 .setPhoneNumber(customer.getPhoneNumber());
+    }
+
+    public List<CustomerDTO> mapCustomerToDTO(Collection<Customer> customers) {
+        return customers.stream()
+                .map(this::mapCustomerToDTO)
+                .toList();
     }
 }

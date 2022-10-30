@@ -14,6 +14,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
+
 @RestController
 @RequestMapping("customers")
 public class CustomerController {
@@ -27,6 +29,12 @@ public class CustomerController {
         this.customerService = customerService;
         this.securityService = securityService;
         this.orderService = orderService;
+    }
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public Collection<CustomerDTO> getAllCustomers(@RequestHeader String authorization) {
+        securityService.validateAuthorization(authorization, Feature.GET_ALL_CUSTOMERS);
+        return customerService.getAllCustomers();
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

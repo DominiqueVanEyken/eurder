@@ -1,9 +1,6 @@
 package com.switchfully.eurder.domain.customer;
 
 import com.switchfully.eurder.domain.address.Address;
-import com.switchfully.eurder.domain.customer.Customer;
-import com.switchfully.eurder.domain.customer.CustomerRepository;
-import com.switchfully.eurder.domain.customer.Role;
 import com.switchfully.eurder.domain.phonenumber.CountryCode;
 import com.switchfully.eurder.domain.phonenumber.PhoneNumber;
 import org.junit.jupiter.api.AfterEach;
@@ -46,14 +43,14 @@ class CustomerRepositoryTest {
     @Test
     void getCustomerByEmail_givenValidEmailAddress() {
         customerRepository.addCustomer(testCustomer);
-        Customer result = customerRepository.getMemberByEmail("user@test.be");
+        Customer result = customerRepository.getCustomerByEmail("user@test.be");
 
         assertThat(result).isEqualTo(testCustomer);
     }
 
     @Test
     void getCustomerByEmail_givenInvalidEmailAddress() {
-        assertThatThrownBy(() -> customerRepository.getMemberByEmail("user@test.be"))
+        assertThatThrownBy(() -> customerRepository.getCustomerByEmail("user@test.be"))
                 .isInstanceOf(NoSuchElementException.class)
                 .hasMessageContaining("Wrong credentials");
     }

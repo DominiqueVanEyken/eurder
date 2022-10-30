@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -20,6 +21,10 @@ public class CustomerRepository {
     public CustomerRepository() {
         this.customerRepository = new HashMap<>();
         fillCustomerRepository();
+    }
+
+    public Collection<Customer> getAllCustomers() {
+        return customerRepository.values();
     }
 
     public void addCustomer(Customer customer) {
@@ -42,7 +47,7 @@ public class CustomerRepository {
         return customerRepository.values().size();
     }
 
-    public Customer getMemberByEmail(String emailAddress) {
+    public Customer getCustomerByEmail(String emailAddress) {
         for (Customer customer : customerRepository.values()) {
             if (customer.getEmailAddress().equals(emailAddress)) {
                 return customer;
