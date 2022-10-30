@@ -7,6 +7,7 @@ import com.switchfully.eurder.service.customer.dto.CustomerDTO;
 import com.switchfully.eurder.service.order.OrderService;
 import com.switchfully.eurder.service.order.dto.CreateOrderDTO;
 import com.switchfully.eurder.service.order.dto.OrderDTO;
+import com.switchfully.eurder.service.order.dto.ReportDTO;
 import com.switchfully.eurder.service.security.SecurityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,6 +42,12 @@ public class CustomerController {
     public CustomerDTO getCustomerByID(@RequestHeader String authorization, @PathVariable String customerID) {
         securityService.validateAuthorization(authorization, Feature.GET_CUSTOMER_DETAILS);
         return customerService.getCustomerByID(customerID);
+    }
+
+    @GetMapping(value = "{customerID}/report", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ReportDTO getReport(@RequestHeader String authorization, @PathVariable String customerID) {
+        securityService.validateAuthorization(authorization, Feature.VIEW_REPORT);
+        return orderService.getReportForCustomer(customerID);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

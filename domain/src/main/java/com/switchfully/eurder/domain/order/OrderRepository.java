@@ -40,4 +40,9 @@ public class OrderRepository {
         itemGroupList.forEach(itemGroup -> itemRepository.reduceStockForItemByAmount(itemGroup.getItemID(), itemGroup.getAmount()));
     }
 
+    public List<Order> getOrdersByCustomerID(String customerID) {
+        return orderRepository.values().stream()
+                .filter(order -> order.getCustomerID().equals(customerID))
+                .toList();
+    }
 }
