@@ -25,4 +25,8 @@ public class CustomerService {
     public CustomerDTO getCustomerByID(String customerID) {
         return customerMapper.mapCustomerToDTO(customerRepository.findCustomerByID(customerID));
     }
+
+    public void validateIfCustomerIDExists(String customerID) {
+        customerRepository.findCustomerByID(customerID);
+    }
 }

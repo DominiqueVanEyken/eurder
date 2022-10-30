@@ -3,7 +3,7 @@
 /.assignment
 target
 .log
-war/.log
+/war/.log
 
 # documents
 *.iml
