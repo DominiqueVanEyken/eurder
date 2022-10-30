@@ -27,6 +27,7 @@ class ItemGroupTest {
 
             assertThat(itemGroup).isNotNull();
             assertThat(itemGroup.getItemID()).isEqualTo(itemIDHighStock);
+            assertThat(itemGroup.getItemName()).isEqualTo(itemHighStock.getName());
             assertThat(itemGroup.getAmount()).isEqualTo(amount);
             assertThat(itemGroup.getPricePerUnit()).isEqualTo(itemHighStock.getPrice().toString());
             assertThat(itemGroup.getShippingDate()).isEqualTo(LocalDate.now().plusDays(1));
@@ -42,6 +43,7 @@ class ItemGroupTest {
 
             assertThat(itemGroup).isNotNull();
             assertThat(itemGroup.getItemID()).isEqualTo(itemIDLowStock);
+            assertThat(itemGroup.getItemName()).isEqualTo(itemLowStock.getName());
             assertThat(itemGroup.getAmount()).isEqualTo(amount);
             assertThat(itemGroup.getPricePerUnit()).isEqualTo(itemHighStock.getPrice().toString());
             assertThat(itemGroup.getShippingDate()).isEqualTo(LocalDate.now().plusDays(7));

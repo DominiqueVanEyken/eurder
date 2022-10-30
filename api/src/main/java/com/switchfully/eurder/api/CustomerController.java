@@ -47,6 +47,7 @@ public class CustomerController {
     @GetMapping(value = "{customerID}/report", produces = MediaType.APPLICATION_JSON_VALUE)
     public ReportDTO getReport(@RequestHeader String authorization, @PathVariable String customerID) {
         securityService.validateAuthorization(authorization, Feature.VIEW_REPORT);
+        customerService.validateIfCustomerIDExists(customerID);
         return orderService.getReportForCustomer(customerID);
     }
 

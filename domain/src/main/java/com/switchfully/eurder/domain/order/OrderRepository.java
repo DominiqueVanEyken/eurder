@@ -38,6 +38,7 @@ public class OrderRepository {
 
     public void reduceStock(List<ItemGroup> itemGroupList) {
         itemGroupList.forEach(itemGroup -> itemRepository.reduceStockForItemByAmount(itemGroup.getItemID(), itemGroup.getAmount()));
+        log.debug("Reducing stock");
     }
 
     public List<Order> getOrdersByCustomerID(String customerID) {

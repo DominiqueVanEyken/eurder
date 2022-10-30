@@ -6,6 +6,7 @@ import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.order.ItemGroup;
 import com.switchfully.eurder.service.order.dto.CreateItemGroupDTO;
 import com.switchfully.eurder.service.order.dto.ItemGroupDTO;
+import com.switchfully.eurder.service.order.dto.ItemGroupReportDTO;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -17,6 +18,7 @@ class ItemGroupMapperTest {
     private final ItemGroupMapper itemGroupMapper = new ItemGroupMapper();
     private final Item item = new Item("name", null, new Price(1.1), 100);
     private final String itemID = item.getItemID();
+    private final String itemName = "itemName";
     private final int amount = 1;
     private final LocalDate shippingDate = LocalDate.now().plusDays(1);
     private final Price pricePerUnit = new Price(1.1);
@@ -37,6 +39,7 @@ class ItemGroupMapperTest {
     void creatingItemGroupDTO() {
         ItemGroupDTO itemGroupDTO = new ItemGroupDTO()
                 .setItemID(itemID)
+                .setItemName(itemName)
                 .setAmount(amount)
                 .setShippingDate(shippingDate)
                 .setPricePerUnit(pricePerUnit.toString())
@@ -44,10 +47,27 @@ class ItemGroupMapperTest {
 
         assertThat(itemGroupDTO).isNotNull();
         assertThat(itemGroupDTO.getItemID()).isEqualTo(itemID);
+        assertThat(itemGroupDTO.getItemName()).isEqualTo(itemName);
         assertThat(itemGroupDTO.getAmount()).isEqualTo(amount);
         assertThat(itemGroupDTO.getShippingDate()).isEqualTo(shippingDate);
         assertThat(itemGroupDTO.getPricePerUnit()).isEqualTo(pricePerUnit.toString());
         assertThat(itemGroupDTO.getTotalPrice()).isEqualTo(totalPrice.toString());
+    }
+
+    @Test
+    void creatingItemGroupReportDTO(){
+        String name = "name";
+        int amount = 2;
+        Price price = new Price(2.2);
+        ItemGroupReportDTO reportDTO = new ItemGroupReportDTO()
+                .setName(name)
+                .setAmount(amount)
+                .setTotalPrice(price.toString());
+
+        assertThat(reportDTO).isNotNull();
+        assertThat(reportDTO.getName()).isEqualTo(name);
+        assertThat(reportDTO.getAmount()).isEqualTo(amount);
+        assertThat(reportDTO.getTotalPrice()).isEqualTo(price.toString());
     }
 
     @Test
@@ -96,6 +116,30 @@ class ItemGroupMapperTest {
         ItemGroup itemGroup2 = new ItemGroup(itemID, amount);
         itemGroup2.setShippingDateAndPrice(item);
         List<ItemGroupDTO> orderList = itemGroupMapper.mapItemGroupToDTO(List.of(itemGroup1, itemGroup2));
+
+        assertThat(orderList).isNotNull();
+        assertThat(orderList.size()).isEqualTo(2);
+    }
+
+    @Test
+    void mappingItemGroupToItemGroupReportDTO() {
+        ItemGroup itemGroup = new ItemGroup(itemID, amount);
+        itemGroup.setShippingDateAndPrice(item);
+        ItemGroupReportDTO reportDTO = itemGroupMapper.mapItemGroupToItemGroupReportDTO(itemGroup);
+
+        assertThat(reportDTO).isNotNull();
+        assertThat(reportDTO.getName()).isEqualTo(itemGroup.getItemName());
+        assertThat(reportDTO.getAmount()).isEqualTo(itemGroup.getAmount());
+        assertThat(reportDTO.getTotalPrice()).isEqualTo(itemGroup.getTotalPrice().toString());
+    }
+
+    @Test
+    void mappingItemGroupToItemGroupReportDTO_givenList() {
+        ItemGroup itemGroup1 = new ItemGroup(itemID, amount);
+        itemGroup1.setShippingDateAndPrice(item);
+        ItemGroup itemGroup2 = new ItemGroup(itemID, amount);
+        itemGroup2.setShippingDateAndPrice(item);
+        List<ItemGroupReportDTO> orderList = itemGroupMapper.mapItemGroupToItemGroupReportDTO(List.of(itemGroup1, itemGroup2));
 
         assertThat(orderList).isNotNull();
         assertThat(orderList.size()).isEqualTo(2);

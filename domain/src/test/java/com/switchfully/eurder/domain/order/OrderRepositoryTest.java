@@ -1,11 +1,9 @@
 package com.switchfully.eurder.domain.order;
 
 import com.switchfully.eurder.domain.Price.Price;
-import com.switchfully.eurder.domain.customer.Customer;
 import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.item.ItemRepository;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -60,5 +58,14 @@ class OrderRepositoryTest {
         assertThatThrownBy(() -> orderRepository.findOrderByID(orderID))
                 .isInstanceOf(NoSuchElementException.class)
                 .hasMessageContaining("Order with ID " + orderID + " does not exist");
+    }
+
+    @Test
+    void gettingOrdersByCustomerID() {
+        orderRepository.createOrder(order);
+        List<Order> orders = orderRepository.getOrdersByCustomerID(customerID);
+
+        assertThat(orders).isNotNull();
+        assertThat(orders).isEqualTo(List.of(order));
     }
 }

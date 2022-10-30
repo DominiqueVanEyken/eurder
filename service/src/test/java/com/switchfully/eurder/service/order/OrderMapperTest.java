@@ -5,10 +5,7 @@ import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.item.ItemRepository;
 import com.switchfully.eurder.domain.order.ItemGroup;
 import com.switchfully.eurder.domain.order.Order;
-import com.switchfully.eurder.service.order.dto.CreateItemGroupDTO;
-import com.switchfully.eurder.service.order.dto.CreateOrderDTO;
-import com.switchfully.eurder.service.order.dto.ItemGroupDTO;
-import com.switchfully.eurder.service.order.dto.OrderDTO;
+import com.switchfully.eurder.service.order.dto.*;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -18,6 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class OrderMapperTest {
     private final String customerID = "CID20221001";
+    private final String orderID = "IID20221001";
     private final Item item = new Item("name", null, new Price(1.1), 100);
     private final int amount = 2;
     private final LocalDate orderDate = LocalDate.now();
@@ -65,6 +63,32 @@ class OrderMapperTest {
     }
 
     @Test
+    void creatingOrderReportDTO() {
+        String name = "name";
+        int amount = 2;
+        Price itemGroupPrice = new Price(2.2);
+        Price orderPrice = new Price(4.4);
+        ItemGroupReportDTO itemGroupReportDTO1 = new ItemGroupReportDTO()
+                .setName(name)
+                .setAmount(amount)
+                .setTotalPrice(itemGroupPrice.toString());
+        ItemGroupReportDTO itemGroupReportDTO2 = new ItemGroupReportDTO()
+                .setName(name)
+                .setAmount(amount)
+                .setTotalPrice(itemGroupPrice.toString());
+        List<ItemGroupReportDTO> itemGroupList = List.of(itemGroupReportDTO1, itemGroupReportDTO2);
+        OrderReportDTO reportDTO = new OrderReportDTO()
+                .setOrderID(orderID)
+                .setItemGroupReports(itemGroupList)
+                .setTotalOrderPrice(orderPrice.toString());
+
+        assertThat(reportDTO).isNotNull();
+        assertThat(reportDTO.getOrderID()).isEqualTo(orderID);
+        assertThat(reportDTO.getItemGroupReports()).isEqualTo(itemGroupList);
+        assertThat(reportDTO.getTotalOrderPrice()).isEqualTo(orderPrice.toString());
+    }
+
+    @Test
     void mappingDTOToOrder() {
         CreateOrderDTO createOrderDTO = new CreateOrderDTO()
                 .setOrderList(createItemGroupDTOS);
@@ -94,4 +118,31 @@ class OrderMapperTest {
         assertThat(orderDTO.getOrderDate()).isEqualTo(orderDate);
         assertThat(orderDTO.getTotalPrice()).isEqualTo(totalPrice.toString());
     }
+
+    @Test
+    void mappingOrdersToOrderReportDTO() {
+        itemRepository.addItem(item);
+        Order order = new Order(customerID, List.of(new ItemGroup(item.getItemID(), amount)));
+        Order.calculateTotalPrice(order, itemRepository);
+        OrderReportDTO reportDTO = orderMapper.mapOrderToOrderReportDTO(order);
+
+        assertThat(reportDTO).isNotNull();
+        assertThat(reportDTO.getOrderID()).isEqualTo(order.getOrderID());
+        assertThat(reportDTO.getItemGroupReports()).isNotNull();
+        assertThat(reportDTO.getTotalOrderPrice()).isEqualTo(order.getTotalPrice().toString());
+    }
+
+    @Test
+    void mappingOrdersToReportDTO() {
+        itemRepository.addItem(item);
+        Order order1 = new Order(customerID, List.of(new ItemGroup(item.getItemID(), amount)));
+        Order.calculateTotalPrice(order1, itemRepository);
+
+        ReportDTO reportDTO = orderMapper.mapOrdersToReportDTO(List.of(order1, order1));
+
+        assertThat(reportDTO).isNotNull();
+        assertThat(reportDTO.getTotalPrice()).isEqualTo(new Price(order1.getTotalPrice().getPrice() * 2).toString());
+        assertThat(reportDTO.getOrderReports()).isNotNull();
+    }
+
 }
