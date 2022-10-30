@@ -7,6 +7,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collection;
 import java.util.NoSuchElementException;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -20,6 +21,14 @@ class CustomerRepositoryTest {
     @BeforeEach
     void createAndFillCustomerRepository() {
         customerRepository = new CustomerRepository();
+    }
+
+    @Test
+    void gettingAllCustomers() {
+        Collection<Customer> customerList = customerRepository.getAllCustomers();
+
+        assertThat(customerList).isNotNull();
+        assertThat(customerList.size()).isGreaterThan(0);
     }
 
     @Test

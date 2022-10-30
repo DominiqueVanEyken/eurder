@@ -33,6 +33,41 @@ public class CustomerControllerIntegrationTest {
             .setAmount(2));
 
     @Test
+    void gettingAllCustomers_givenValidAdmin() {
+        String base64 = Base64.getEncoder().encodeToString("admin@eurder.com:password".getBytes());
+        CustomerDTO[] result = RestAssured
+                .given()
+                .baseUri(BASE_URI)
+                .port(port)
+                .headers("Authorization", "Basic " + base64)
+                .when()
+                .get("customers")
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.OK.value())
+                .extract()
+                .as(CustomerDTO[].class);
+
+        assertThat(result).isNotNull();
+        assertThat(result.length).isGreaterThan(0);
+    }
+
+    @Test
+    void gettingAllCustomers_givenNotAuthorized() {
+        String base64 = Base64.getEncoder().encodeToString("user1@test.be:password".getBytes());
+        RestAssured
+                .given()
+                .baseUri(BASE_URI)
+                .port(port)
+                .headers("Authorization", "Basic " + base64)
+                .when()
+                .get("customers")
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.FORBIDDEN.value());
+    }
+
+    @Test
     void createCustomer_givenValidCustomer() {
         CreateCustomerDTO createCustomerDTO = new CreateCustomerDTO()
                 .setFirstname("firstname")

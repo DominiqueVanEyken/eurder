@@ -8,6 +8,9 @@ import com.switchfully.eurder.service.customer.dto.CreateCustomerDTO;
 import com.switchfully.eurder.service.customer.dto.CustomerDTO;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collection;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CustomerMapperTest {
@@ -83,6 +86,15 @@ class CustomerMapperTest {
         assertThat(customerDTO.getEmailAddress()).isEqualTo(email);
         assertThat(customerDTO.getAddress()).isEqualTo(address.getFullAddressAsString());
         assertThat(customerDTO.getPhoneNumber()).isEqualTo(phoneNumber.getFullPhoneNumberAsString());
+    }
+
+    @Test
+    void mappingCustomersToDTO_givenList() {
+        Collection<Customer> customerList = List.of(new Customer(firstname, lastname, email, address, phoneNumber, password, Role.CUSTOMER));
+        List<CustomerDTO> result = customerMapper.mapCustomerToDTO(customerList);
+
+        assertThat(result).isNotNull();
+        assertThat(result.size()).isEqualTo(customerList.size());
     }
 
     @Test
