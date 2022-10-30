@@ -7,7 +7,7 @@ import com.switchfully.eurder.service.customer.dto.CustomerDTO;
 import com.switchfully.eurder.service.order.OrderService;
 import com.switchfully.eurder.service.order.dto.CreateOrderDTO;
 import com.switchfully.eurder.service.order.dto.OrderDTO;
-import com.switchfully.eurder.service.order.dto.ReportDTO;
+import com.switchfully.eurder.service.order.dto.report.ReportDTO;
 import com.switchfully.eurder.service.security.SecurityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

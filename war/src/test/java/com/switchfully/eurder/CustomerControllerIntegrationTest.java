@@ -1,15 +1,13 @@
 package com.switchfully.eurder;
 
 import com.switchfully.eurder.domain.address.Address;
-import com.switchfully.eurder.domain.customer.Customer;
 import com.switchfully.eurder.domain.customer.CustomerRepository;
 import com.switchfully.eurder.service.customer.CustomerMapper;
 import com.switchfully.eurder.service.customer.dto.CreateCustomerDTO;
 import com.switchfully.eurder.service.customer.dto.CustomerDTO;
-import com.switchfully.eurder.service.order.dto.CreateItemGroupDTO;
+import com.switchfully.eurder.service.order.dto.itemgroup.CreateItemGroupDTO;
 import com.switchfully.eurder.service.order.dto.CreateOrderDTO;
 import com.switchfully.eurder.service.order.dto.OrderDTO;
-import com.switchfully.eurder.service.order.dto.ReportDTO;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

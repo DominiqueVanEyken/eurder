@@ -5,7 +5,7 @@ import com.switchfully.eurder.domain.order.Order;
 import com.switchfully.eurder.service.order.dto.CreateOrderDTO;
 import com.switchfully.eurder.service.order.dto.OrderDTO;
 import com.switchfully.eurder.service.order.dto.OrderReportDTO;
-import com.switchfully.eurder.service.order.dto.ReportDTO;
+import com.switchfully.eurder.service.order.dto.report.ReportDTO;
 
 import java.util.List;
 
