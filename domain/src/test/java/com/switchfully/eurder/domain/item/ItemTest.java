@@ -43,6 +43,14 @@ class ItemTest {
             assertThat(item.getStockCount()).isEqualTo(stockCount);
             assertThat(item.toString()).isEqualTo(String.format("Item{name=%s, description=%s, price=%s, stockCount=%d", name, description, price, stockCount));
         }
+
+        @Test
+        void reduceStock() {
+            int amountToReduce = 1;
+            Item item = new Item(name, description, price, stockCount);
+            item.reduceStockByAmount(amountToReduce);
+            assertThat(item.getStockCount() == stockCount - amountToReduce).isTrue();
+        }
     }
 
     @Nested

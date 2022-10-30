@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CustomerRepositoryTest {
     private CustomerRepository customerRepository;
-    private final Customer testCustomer = new Customer("firstname", "lastname", "user@test.be", new Address("street",  "1","1111", "city"), new PhoneNumber(CountryCode.BEL, "123 45 67 89"), "password", Role.CUSTOMER);
+    private final Customer testCustomer = new Customer("firstname", "lastname", "user@test.be", new Address("street", "1", "1111", "city"), new PhoneNumber(CountryCode.BEL, "123 45 67 89"), "password", Role.CUSTOMER);
 
     @BeforeEach
     void createAndFillCustomerRepository() {
@@ -36,7 +36,7 @@ class CustomerRepositoryTest {
 
     @Test
     void addCustomerWithEmailThatAlreadyExists() {
-        Customer duplicate = new Customer("firstname", "lastname", "user@test.be", new Address("street",  "1","1111", "city"), new PhoneNumber(CountryCode.BEL, "123 45 67 89"), "password", Role.CUSTOMER);
+        Customer duplicate = new Customer("firstname", "lastname", "user@test.be", new Address("street", "1", "1111", "city"), new PhoneNumber(CountryCode.BEL, "123 45 67 89"), "password", Role.CUSTOMER);
         customerRepository.addCustomer(testCustomer);
         assertThatThrownBy(() -> customerRepository.addCustomer(duplicate))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -50,11 +50,28 @@ class CustomerRepositoryTest {
 
         assertThat(result).isEqualTo(testCustomer);
     }
+
     @Test
     void getCustomerByEmail_givenInvalidEmailAddress() {
         assertThatThrownBy(() -> customerRepository.getMemberByEmail("user@test.be"))
                 .isInstanceOf(NoSuchElementException.class)
                 .hasMessageContaining("Wrong credentials");
+    }
+
+    @Test
+    void getCustomerByID_givenValidID() {
+        customerRepository.addCustomer(testCustomer);
+        Customer result = customerRepository.findCustomerByID(testCustomer.getCustomerID());
+
+        assertThat(result).isEqualTo(testCustomer);
+    }
+
+    @Test
+    void getCustomerByID_givenInvalidID() {
+        String invalidID = "invalidID";
+        assertThatThrownBy(() -> customerRepository.findCustomerByID(invalidID))
+                .isInstanceOf(NoSuchElementException.class)
+                .hasMessageContaining("Customer with ID " + invalidID + " does not exist");
     }
 
     @AfterEach

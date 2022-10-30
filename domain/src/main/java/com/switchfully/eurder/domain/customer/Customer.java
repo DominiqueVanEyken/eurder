@@ -80,10 +80,16 @@ public class Customer {
     }
 
     public String getFullAddress() {
+        if (address == null) {
+            return "";
+        }
         return address.getFullAddressAsString();
     }
 
     public String getPhoneNumber() {
+        if (phoneNumber == null) {
+            return "";
+        }
         return phoneNumber.getFullPhoneNumberAsString();
     }
 

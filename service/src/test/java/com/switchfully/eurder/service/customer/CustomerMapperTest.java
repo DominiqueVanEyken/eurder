@@ -13,6 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CustomerMapperTest {
 
     private final CustomerMapper customerMapper = new CustomerMapper();
+    private final String customerID = "CID20221001";
 
     private final String firstname = "firstname";
     private final String lastname = "lastname";
@@ -55,12 +56,15 @@ class CustomerMapperTest {
     @Test
     void creatingCustomerDTO() {
         CustomerDTO customerDTO = new CustomerDTO()
+                .setCustomerID(customerID)
                 .setFirstname(firstname)
                 .setLastname(lastname)
                 .setEmailAddress(email)
                 .setAddress(address.getFullAddressAsString())
                 .setPhoneNumber(phoneNumber.getFullPhoneNumberAsString());
 
+        assertThat(customerDTO).isNotNull();
+        assertThat(customerDTO.getCustomerID()).isEqualTo(customerID);
         assertThat(customerDTO.getFirstname()).isEqualTo(firstname);
         assertThat(customerDTO.getLastname()).isEqualTo(lastname);
         assertThat(customerDTO.getEmailAddress()).isEqualTo(email);

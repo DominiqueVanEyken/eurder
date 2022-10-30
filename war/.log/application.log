@@ -1,275 +1,668 @@
-2022-10-29 17:18:53.741  INFO 1976 --- [main] c.s.e.OrderControllerIntegrationTest     : Starting OrderControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 1976 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
-2022-10-29 17:18:53.747  INFO 1976 --- [main] c.s.e.OrderControllerIntegrationTest     : No active profile set, falling back to 1 default profile: "default"
-2022-10-29 17:18:55.028  INFO 1976 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-2022-10-29 17:18:55.037  INFO 1976 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-10-29 17:18:55.041  INFO 1976 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-10-29 17:18:55.137  INFO 1976 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-10-29 17:18:55.137  INFO 1976 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1166 ms
-2022-10-29 17:18:56.025  INFO 1976 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 49206 (http) with context path ''
-2022-10-29 17:18:56.034  INFO 1976 --- [main] c.s.e.OrderControllerIntegrationTest     : Started OrderControllerIntegrationTest in 2.655 seconds (JVM running for 3.74)
-2022-10-29 17:21:07.325  INFO 12276 --- [main] c.s.e.OrderControllerIntegrationTest     : Starting OrderControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 12276 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
-2022-10-29 17:21:07.327  INFO 12276 --- [main] c.s.e.OrderControllerIntegrationTest     : No active profile set, falling back to 1 default profile: "default"
-2022-10-29 17:21:08.571  INFO 12276 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-2022-10-29 17:21:08.582  INFO 12276 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-10-29 17:21:08.582  INFO 12276 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-10-29 17:21:08.685  INFO 12276 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-10-29 17:21:08.686  INFO 12276 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1132 ms
-2022-10-29 17:21:09.532  INFO 12276 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 49270 (http) with context path ''
-2022-10-29 17:21:09.542  INFO 12276 --- [main] c.s.e.OrderControllerIntegrationTest     : Started OrderControllerIntegrationTest in 2.555 seconds (JVM running for 3.657)
-2022-10-29 17:22:08.506  INFO 1608 --- [main] c.s.e.OrderControllerIntegrationTest     : Starting OrderControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 1608 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
-2022-10-29 17:22:08.508  INFO 1608 --- [main] c.s.e.OrderControllerIntegrationTest     : No active profile set, falling back to 1 default profile: "default"
-2022-10-29 17:22:09.753  INFO 1608 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-2022-10-29 17:22:09.764  INFO 1608 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-10-29 17:22:09.764  INFO 1608 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-10-29 17:22:09.860  INFO 1608 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-10-29 17:22:09.860  INFO 1608 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1131 ms
-2022-10-29 17:22:10.705  INFO 1608 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 49276 (http) with context path ''
-2022-10-29 17:22:10.714  INFO 1608 --- [main] c.s.e.OrderControllerIntegrationTest     : Started OrderControllerIntegrationTest in 2.559 seconds (JVM running for 3.607)
-2022-10-29 17:22:12.174  INFO 1608 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-10-29 17:22:12.175  INFO 1608 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-10-29 17:22:12.176  INFO 1608 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-10-29 17:23:32.688  INFO 16176 --- [main] c.s.e.OrderControllerIntegrationTest     : Starting OrderControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 16176 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
-2022-10-29 17:23:32.689  INFO 16176 --- [main] c.s.e.OrderControllerIntegrationTest     : No active profile set, falling back to 1 default profile: "default"
-2022-10-29 17:23:33.923  INFO 16176 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-2022-10-29 17:23:33.933  INFO 16176 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-10-29 17:23:33.935  INFO 16176 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-10-29 17:23:34.035  INFO 16176 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-10-29 17:23:34.035  INFO 16176 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1126 ms
-2022-10-29 17:23:34.876  INFO 16176 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 49286 (http) with context path ''
-2022-10-29 17:23:34.887  INFO 16176 --- [main] c.s.e.OrderControllerIntegrationTest     : Started OrderControllerIntegrationTest in 2.55 seconds (JVM running for 3.605)
-2022-10-29 17:23:36.324  INFO 16176 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-10-29 17:23:36.325  INFO 16176 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-10-29 17:23:36.325  INFO 16176 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2022-10-29 17:23:36.411  INFO 16176 --- [http-nio-auto-1-exec-1] c.s.eurder.domain.order.OrderRepository  : Created Order{orderID=OID20221001, customerID=CID20221001, orderDate=2022-10-29}
-2022-10-29 17:27:03.507  INFO 5140 --- [main] c.s.e.OrderControllerIntegrationTest     : Starting OrderControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 5140 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
-2022-10-29 17:27:03.508  INFO 5140 --- [main] c.s.e.OrderControllerIntegrationTest     : No active profile set, falling back to 1 default profile: "default"
-2022-10-29 17:27:04.775  INFO 5140 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-2022-10-29 17:27:04.786  INFO 5140 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-10-29 17:27:04.787  INFO 5140 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-10-29 17:27:04.885  INFO 5140 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-10-29 17:27:04.885  INFO 5140 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1142 ms
-2022-10-29 17:27:05.719  INFO 5140 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 49308 (http) with context path ''
-2022-10-29 17:27:05.728  INFO 5140 --- [main] c.s.e.OrderControllerIntegrationTest     : Started OrderControllerIntegrationTest in 2.566 seconds (JVM running for 3.603)
-2022-10-29 17:27:07.205  INFO 5140 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-10-29 17:27:07.206  INFO 5140 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-10-29 17:27:07.206  INFO 5140 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2022-10-29 17:27:07.300  INFO 5140 --- [http-nio-auto-1-exec-1] c.s.eurder.domain.order.OrderRepository  : Created Order{orderID=OID20221001, customerID=CID20221001, orderDate=2022-10-29}
-2022-10-29 17:28:35.134  INFO 1976 --- [main] c.s.e.OrderControllerIntegrationTest     : Starting OrderControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 1976 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
-2022-10-29 17:28:35.136  INFO 1976 --- [main] c.s.e.OrderControllerIntegrationTest     : No active profile set, falling back to 1 default profile: "default"
-2022-10-29 17:28:36.522  INFO 1976 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-2022-10-29 17:28:36.533  INFO 1976 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-10-29 17:28:36.533  INFO 1976 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-10-29 17:28:36.628  INFO 1976 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-10-29 17:28:36.629  INFO 1976 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1237 ms
-2022-10-29 17:28:37.486  INFO 1976 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 49314 (http) with context path ''
-2022-10-29 17:28:37.497  INFO 1976 --- [main] c.s.e.OrderControllerIntegrationTest     : Started OrderControllerIntegrationTest in 2.819 seconds (JVM running for 3.814)
-2022-10-29 17:28:39.261  INFO 1976 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-10-29 17:28:39.262  INFO 1976 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-10-29 17:28:39.263  INFO 1976 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-10-29 17:28:39.354  INFO 1976 --- [http-nio-auto-1-exec-1] c.s.eurder.domain.order.OrderRepository  : Created Order{orderID=OID20221001, customerID=CID20221001, orderDate=2022-10-29}
-2022-10-29 17:30:12.948  INFO 10544 --- [main] c.s.e.OrderControllerIntegrationTest     : Starting OrderControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 10544 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
-2022-10-29 17:30:12.950  INFO 10544 --- [main] c.s.e.OrderControllerIntegrationTest     : No active profile set, falling back to 1 default profile: "default"
-2022-10-29 17:30:14.191  INFO 10544 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-2022-10-29 17:30:14.203  INFO 10544 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-10-29 17:30:14.204  INFO 10544 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-10-29 17:30:14.301  INFO 10544 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-10-29 17:30:14.302  INFO 10544 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1125 ms
-2022-10-29 17:30:15.126  INFO 10544 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 49321 (http) with context path ''
-2022-10-29 17:30:15.136  INFO 10544 --- [main] c.s.e.OrderControllerIntegrationTest     : Started OrderControllerIntegrationTest in 2.529 seconds (JVM running for 3.566)
-2022-10-29 17:30:16.577  INFO 10544 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-10-29 17:30:16.577  INFO 10544 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-10-29 17:30:16.578  INFO 10544 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2022-10-29 17:30:16.660  INFO 10544 --- [http-nio-auto-1-exec-1] c.s.eurder.domain.order.OrderRepository  : Created Order{orderID=OID20221001, customerID=CID20221001, orderDate=2022-10-29}
-2022-10-29 17:41:19.089  INFO 14656 --- [main] c.s.e.OrderControllerIntegrationTest     : Starting OrderControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 14656 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
-2022-10-29 17:41:19.090  INFO 14656 --- [main] c.s.e.OrderControllerIntegrationTest     : No active profile set, falling back to 1 default profile: "default"
-2022-10-29 17:41:20.351  INFO 14656 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-2022-10-29 17:41:20.361  INFO 14656 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-10-29 17:41:20.362  INFO 14656 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-10-29 17:41:20.462  INFO 14656 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-10-29 17:41:20.463  INFO 14656 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1142 ms
-2022-10-29 17:41:21.294  INFO 14656 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 62352 (http) with context path ''
-2022-10-29 17:41:21.304  INFO 14656 --- [main] c.s.e.OrderControllerIntegrationTest     : Started OrderControllerIntegrationTest in 2.582 seconds (JVM running for 3.631)
-2022-10-29 17:41:22.745  INFO 14656 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-10-29 17:41:22.745  INFO 14656 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-10-29 17:41:22.747  INFO 14656 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-10-29 17:41:22.828  INFO 14656 --- [http-nio-auto-1-exec-1] c.s.eurder.domain.order.OrderRepository  : Created Order{orderID=OID20221001, customerID=CID20221001, orderDate=2022-10-29}
-2022-10-29 17:41:23.050  INFO 14656 --- [http-nio-auto-1-exec-2] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
-2022-10-29 17:41:23.103  INFO 14656 --- [http-nio-auto-1-exec-3] c.s.eurder.domain.order.OrderRepository  : Created Order{orderID=OID20221002, customerID=invalidID, orderDate=2022-10-29}
-2022-10-29 17:41:23.141 ERROR 14656 --- [http-nio-auto-1-exec-4] c.s.e.service.security.SecurityService   : Password does not match for user user1@test.be
-2022-10-29 17:41:23.143  INFO 14656 --- [http-nio-auto-1-exec-4] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
-2022-10-29 17:46:47.898  INFO 16164 --- [main] c.s.e.OrderControllerIntegrationTest     : Starting OrderControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 16164 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
-2022-10-29 17:46:47.900  INFO 16164 --- [main] c.s.e.OrderControllerIntegrationTest     : No active profile set, falling back to 1 default profile: "default"
-2022-10-29 17:46:49.158  INFO 16164 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-2022-10-29 17:46:49.169  INFO 16164 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-10-29 17:46:49.169  INFO 16164 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-10-29 17:46:49.266  INFO 16164 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-10-29 17:46:49.267  INFO 16164 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1139 ms
-2022-10-29 17:46:50.078  INFO 16164 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 62363 (http) with context path ''
-2022-10-29 17:46:50.091  INFO 16164 --- [main] c.s.e.OrderControllerIntegrationTest     : Started OrderControllerIntegrationTest in 2.55 seconds (JVM running for 3.608)
-2022-10-29 17:46:51.547  INFO 16164 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-10-29 17:46:51.548  INFO 16164 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-10-29 17:46:51.548  INFO 16164 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2022-10-29 17:46:51.625  INFO 16164 --- [http-nio-auto-1-exec-1] c.s.eurder.domain.order.OrderRepository  : Created Order{orderID=OID20221001, customerID=CID20221001, orderDate=2022-10-29}
-2022-10-29 17:46:51.838  INFO 16164 --- [http-nio-auto-1-exec-2] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
-2022-10-29 17:46:51.894 ERROR 16164 --- [http-nio-auto-1-exec-3] c.s.e.service.security.SecurityService   : Password does not match for user user1@test.be
-2022-10-29 17:46:51.895  INFO 16164 --- [http-nio-auto-1-exec-3] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
-2022-10-29 17:47:48.226  INFO 880 --- [main] c.s.e.OrderControllerIntegrationTest     : Starting OrderControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 880 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
-2022-10-29 17:47:48.227  INFO 880 --- [main] c.s.e.OrderControllerIntegrationTest     : No active profile set, falling back to 1 default profile: "default"
-2022-10-29 17:47:49.491  INFO 880 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-2022-10-29 17:47:49.502  INFO 880 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-10-29 17:47:49.502  INFO 880 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-10-29 17:47:49.606  INFO 880 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-10-29 17:47:49.606  INFO 880 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1164 ms
-2022-10-29 17:47:50.421  INFO 880 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 62371 (http) with context path ''
-2022-10-29 17:47:50.430  INFO 880 --- [main] c.s.e.OrderControllerIntegrationTest     : Started OrderControllerIntegrationTest in 2.572 seconds (JVM running for 3.644)
-2022-10-29 17:47:51.907  INFO 880 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-10-29 17:47:51.907  INFO 880 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-10-29 17:47:51.907  INFO 880 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2022-10-29 17:47:52.001  INFO 880 --- [http-nio-auto-1-exec-1] c.s.eurder.domain.order.OrderRepository  : Created Order{orderID=OID20221001, customerID=CID20221001, orderDate=2022-10-29}
-2022-10-29 17:47:52.209  INFO 880 --- [http-nio-auto-1-exec-2] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
-2022-10-29 17:47:52.263 ERROR 880 --- [http-nio-auto-1-exec-3] c.s.e.service.security.SecurityService   : Password does not match for user user1@test.be
-2022-10-29 17:47:52.264  INFO 880 --- [http-nio-auto-1-exec-3] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
-2022-10-29 17:49:21.629  INFO 7504 --- [main] c.s.e.OrderControllerIntegrationTest     : Starting OrderControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 7504 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
-2022-10-29 17:49:21.631  INFO 7504 --- [main] c.s.e.OrderControllerIntegrationTest     : No active profile set, falling back to 1 default profile: "default"
-2022-10-29 17:49:22.877  INFO 7504 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-2022-10-29 17:49:22.888  INFO 7504 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-10-29 17:49:22.888  INFO 7504 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-10-29 17:49:22.982  INFO 7504 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-10-29 17:49:22.983  INFO 7504 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1127 ms
-2022-10-29 17:49:23.820  INFO 7504 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 62379 (http) with context path ''
-2022-10-29 17:49:23.829  INFO 7504 --- [main] c.s.e.OrderControllerIntegrationTest     : Started OrderControllerIntegrationTest in 2.552 seconds (JVM running for 3.58)
-2022-10-29 17:49:25.249  INFO 7504 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-10-29 17:49:25.250  INFO 7504 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-10-29 17:49:25.250  INFO 7504 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2022-10-29 17:49:25.328  INFO 7504 --- [http-nio-auto-1-exec-1] c.s.eurder.domain.order.OrderRepository  : Created Order{orderID=OID20221001, customerID=CID20221001, orderDate=2022-10-29}
-2022-10-29 17:49:25.542  INFO 7504 --- [http-nio-auto-1-exec-2] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
-2022-10-29 17:49:25.587 ERROR 7504 --- [http-nio-auto-1-exec-3] c.s.e.service.security.SecurityService   : Password does not match for user user1@test.be
-2022-10-29 17:49:25.588  INFO 7504 --- [http-nio-auto-1-exec-3] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
-2022-10-29 17:51:47.901  INFO 9008 --- [main] c.s.e.OrderControllerIntegrationTest     : Starting OrderControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 9008 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
-2022-10-29 17:51:47.902  INFO 9008 --- [main] c.s.e.OrderControllerIntegrationTest     : No active profile set, falling back to 1 default profile: "default"
-2022-10-29 17:51:49.196  INFO 9008 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-2022-10-29 17:51:49.206  INFO 9008 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-10-29 17:51:49.207  INFO 9008 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-10-29 17:51:49.310  INFO 9008 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-10-29 17:51:49.310  INFO 9008 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1169 ms
-2022-10-29 17:51:50.127  INFO 9008 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 62388 (http) with context path ''
-2022-10-29 17:51:50.138  INFO 9008 --- [main] c.s.e.OrderControllerIntegrationTest     : Started OrderControllerIntegrationTest in 2.563 seconds (JVM running for 3.576)
-2022-10-29 17:51:51.586  INFO 9008 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-10-29 17:51:51.586  INFO 9008 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-10-29 17:51:51.587  INFO 9008 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-10-29 17:51:51.665  INFO 9008 --- [http-nio-auto-1-exec-1] c.s.eurder.domain.order.OrderRepository  : Created Order{orderID=OID20221001, customerID=CID20221001, orderDate=2022-10-29}
-2022-10-29 17:51:51.878  INFO 9008 --- [http-nio-auto-1-exec-2] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
-2022-10-29 17:51:51.936 ERROR 9008 --- [http-nio-auto-1-exec-3] c.s.e.service.security.SecurityService   : Password does not match for user user1@test.be
-2022-10-29 17:51:51.937  INFO 9008 --- [http-nio-auto-1-exec-3] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
-2022-10-29 17:54:34.001  INFO 15792 --- [main] c.s.e.OrderControllerIntegrationTest     : Starting OrderControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 15792 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
-2022-10-29 17:54:34.003  INFO 15792 --- [main] c.s.e.OrderControllerIntegrationTest     : No active profile set, falling back to 1 default profile: "default"
-2022-10-29 17:54:35.268  INFO 15792 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-2022-10-29 17:54:35.279  INFO 15792 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-10-29 17:54:35.280  INFO 15792 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-10-29 17:54:35.384  INFO 15792 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-10-29 17:54:35.384  INFO 15792 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1139 ms
-2022-10-29 17:54:36.228  INFO 15792 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 62432 (http) with context path ''
-2022-10-29 17:54:36.239  INFO 15792 --- [main] c.s.e.OrderControllerIntegrationTest     : Started OrderControllerIntegrationTest in 2.586 seconds (JVM running for 3.588)
-2022-10-29 17:54:37.690  INFO 15792 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-10-29 17:54:37.690  INFO 15792 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-10-29 17:54:37.691  INFO 15792 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2022-10-29 17:54:37.772  INFO 15792 --- [http-nio-auto-1-exec-1] c.s.eurder.domain.order.OrderRepository  : Created Order{orderID=OID20221001, customerID=CID20221001, orderDate=2022-10-29}
-2022-10-29 17:54:37.985  INFO 15792 --- [http-nio-auto-1-exec-2] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
-2022-10-29 17:54:38.036 ERROR 15792 --- [http-nio-auto-1-exec-3] c.s.e.service.security.SecurityService   : Password does not match for user user1@test.be
-2022-10-29 17:54:38.037  INFO 15792 --- [http-nio-auto-1-exec-3] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
-2022-10-29 17:55:24.049  INFO 9724 --- [main] c.s.e.OrderControllerIntegrationTest     : Starting OrderControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 9724 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
-2022-10-29 17:55:24.050  INFO 9724 --- [main] c.s.e.OrderControllerIntegrationTest     : No active profile set, falling back to 1 default profile: "default"
-2022-10-29 17:55:25.281  INFO 9724 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-2022-10-29 17:55:25.291  INFO 9724 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-10-29 17:55:25.292  INFO 9724 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-10-29 17:55:25.393  INFO 9724 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-10-29 17:55:25.394  INFO 9724 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1132 ms
-2022-10-29 17:55:26.209  INFO 9724 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 62452 (http) with context path ''
-2022-10-29 17:55:26.217  INFO 9724 --- [main] c.s.e.OrderControllerIntegrationTest     : Started OrderControllerIntegrationTest in 2.517 seconds (JVM running for 3.538)
-2022-10-29 17:55:27.645  INFO 9724 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-10-29 17:55:27.646  INFO 9724 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-10-29 17:55:27.646  INFO 9724 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2022-10-29 17:55:27.723  INFO 9724 --- [http-nio-auto-1-exec-1] c.s.eurder.domain.order.OrderRepository  : Created Order{orderID=OID20221001, customerID=CID20221001, orderDate=2022-10-29}
-2022-10-29 17:55:27.937  INFO 9724 --- [http-nio-auto-1-exec-2] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
-2022-10-29 17:55:27.974 ERROR 9724 --- [http-nio-auto-1-exec-3] c.s.e.service.security.SecurityService   : Password does not match for user user1@test.be
-2022-10-29 17:55:27.975  INFO 9724 --- [http-nio-auto-1-exec-3] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
-2022-10-29 17:56:02.532  INFO 7428 --- [main] c.s.e.OrderControllerIntegrationTest     : Starting OrderControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 7428 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
-2022-10-29 17:56:02.534  INFO 7428 --- [main] c.s.e.OrderControllerIntegrationTest     : No active profile set, falling back to 1 default profile: "default"
-2022-10-29 17:56:03.798  INFO 7428 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-2022-10-29 17:56:03.808  INFO 7428 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-10-29 17:56:03.808  INFO 7428 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-10-29 17:56:03.916  INFO 7428 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-10-29 17:56:03.916  INFO 7428 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1158 ms
-2022-10-29 17:56:04.822  INFO 7428 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 62463 (http) with context path ''
-2022-10-29 17:56:04.832  INFO 7428 --- [main] c.s.e.OrderControllerIntegrationTest     : Started OrderControllerIntegrationTest in 2.636 seconds (JVM running for 3.833)
-2022-10-29 17:56:06.306  INFO 7428 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-10-29 17:56:06.307  INFO 7428 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-10-29 17:56:06.308  INFO 7428 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-10-29 17:56:06.390  INFO 7428 --- [http-nio-auto-1-exec-1] c.s.eurder.domain.order.OrderRepository  : Created Order{orderID=OID20221001, customerID=CID20221001, orderDate=2022-10-29}
-2022-10-29 17:56:06.597  INFO 7428 --- [http-nio-auto-1-exec-2] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
-2022-10-29 17:56:06.637  INFO 7428 --- [http-nio-auto-1-exec-3] c.s.eurder.domain.order.OrderRepository  : Created Order{orderID=OID20221002, customerID=invalidID, orderDate=2022-10-29}
-2022-10-29 17:56:06.682 ERROR 7428 --- [http-nio-auto-1-exec-4] c.s.e.service.security.SecurityService   : Password does not match for user user1@test.be
-2022-10-29 17:56:06.683  INFO 7428 --- [http-nio-auto-1-exec-4] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
-2022-10-29 17:56:06.691  INFO 7428 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.switchfully.eurder.CustomerControllerIntegrationTest], using SpringBootContextLoader
-2022-10-29 17:56:06.692  INFO 7428 --- [main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.switchfully.eurder.CustomerControllerIntegrationTest]: no resource found for suffixes {-context.xml, Context.groovy}.
-2022-10-29 17:56:06.692  INFO 7428 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.switchfully.eurder.CustomerControllerIntegrationTest]: CustomerControllerIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2022-10-29 17:56:06.694  INFO 7428 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.switchfully.eurder.Application for test class com.switchfully.eurder.CustomerControllerIntegrationTest
-2022-10-29 17:56:06.695  INFO 7428 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-2022-10-29 17:56:06.696  INFO 7428 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@4d3990a5, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@18df26a1, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@5c459194, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@61d8a491, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6065bcb7, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1ee6434, org.springframework.test.context.event.EventPublishingTestExecutionListener@71d78cac, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@550f522b, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@1842dc39, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@6a7fc4c1, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@270097ce, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@8b1170f, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@69cb134]
-2022-10-29 17:56:06.714  INFO 7428 --- [http-nio-auto-1-exec-5] c.s.e.d.customer.CustomerRepository      : Created CUSTOMER{customerID:CID20221005}
-2022-10-29 17:56:06.725  INFO 7428 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.switchfully.eurder.ItemControllerIntegrationTest], using SpringBootContextLoader
-2022-10-29 17:56:06.726  INFO 7428 --- [main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.switchfully.eurder.ItemControllerIntegrationTest]: no resource found for suffixes {-context.xml, Context.groovy}.
-2022-10-29 17:56:06.727  INFO 7428 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.switchfully.eurder.ItemControllerIntegrationTest]: ItemControllerIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2022-10-29 17:56:06.728  INFO 7428 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.switchfully.eurder.Application for test class com.switchfully.eurder.ItemControllerIntegrationTest
-2022-10-29 17:56:06.729  INFO 7428 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-2022-10-29 17:56:06.730  INFO 7428 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@450f0d89, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@50a1af86, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@3e0327dd, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@ebff59d, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@3361d286, org.springframework.test.context.support.DirtiesContextTestExecutionListener@6ee186f3, org.springframework.test.context.event.EventPublishingTestExecutionListener@49fb693d, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@38197e82, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@5516ee5, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@6765b6a2, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@75c589f2, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@6db04a6, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@8f374de]
-2022-10-29 17:56:06.754  INFO 7428 --- [http-nio-auto-1-exec-6] c.switchfully.eurder.api.ItemController  : request to add new item to stock
-2022-10-29 17:56:06.754  INFO 7428 --- [http-nio-auto-1-exec-6] c.s.eurder.domain.item.ItemRepository    : Created Item{name=name, description=description, price=1,10 EUR, stockCount=3
-2022-10-29 17:56:32.615  INFO 12072 --- [main] c.s.e.OrderControllerIntegrationTest     : Starting OrderControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 12072 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
-2022-10-29 17:56:32.616  INFO 12072 --- [main] c.s.e.OrderControllerIntegrationTest     : No active profile set, falling back to 1 default profile: "default"
-2022-10-29 17:56:33.899  INFO 12072 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-2022-10-29 17:56:33.910  INFO 12072 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-10-29 17:56:33.910  INFO 12072 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-10-29 17:56:34.015  INFO 12072 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-10-29 17:56:34.016  INFO 12072 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1162 ms
-2022-10-29 17:56:34.931  INFO 12072 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 62476 (http) with context path ''
-2022-10-29 17:56:34.941  INFO 12072 --- [main] c.s.e.OrderControllerIntegrationTest     : Started OrderControllerIntegrationTest in 2.676 seconds (JVM running for 3.823)
-2022-10-29 17:56:36.438  INFO 12072 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-10-29 17:56:36.439  INFO 12072 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-10-29 17:56:36.439  INFO 12072 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2022-10-29 17:56:36.524  INFO 12072 --- [http-nio-auto-1-exec-1] c.s.eurder.domain.order.OrderRepository  : Created Order{orderID=OID20221001, customerID=CID20221001, orderDate=2022-10-29}
-2022-10-29 17:56:36.737  INFO 12072 --- [http-nio-auto-1-exec-2] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
-2022-10-29 17:56:36.777 ERROR 12072 --- [http-nio-auto-1-exec-3] c.s.e.service.security.SecurityService   : Password does not match for user user1@test.be
-2022-10-29 17:56:36.777  INFO 12072 --- [http-nio-auto-1-exec-3] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
-2022-10-29 17:56:36.784  INFO 12072 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.switchfully.eurder.CustomerControllerIntegrationTest], using SpringBootContextLoader
-2022-10-29 17:56:36.785  INFO 12072 --- [main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.switchfully.eurder.CustomerControllerIntegrationTest]: no resource found for suffixes {-context.xml, Context.groovy}.
-2022-10-29 17:56:36.785  INFO 12072 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.switchfully.eurder.CustomerControllerIntegrationTest]: CustomerControllerIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2022-10-29 17:56:36.787  INFO 12072 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.switchfully.eurder.Application for test class com.switchfully.eurder.CustomerControllerIntegrationTest
-2022-10-29 17:56:36.789  INFO 12072 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-2022-10-29 17:56:36.790  INFO 12072 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@f83d121, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@165454f7, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@2a19c36b, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@38856d6e, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@299ea986, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1dd9a3ae, org.springframework.test.context.event.EventPublishingTestExecutionListener@79bf39e5, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@6ac2c5a1, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@364c93e6, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@66589252, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@66a8ff6d, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@1abbc1d4, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@48bab2c6]
-2022-10-29 17:56:36.813  INFO 12072 --- [http-nio-auto-1-exec-4] c.s.e.d.customer.CustomerRepository      : Created CUSTOMER{customerID:CID20221005}
-2022-10-29 17:56:36.821  INFO 12072 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.switchfully.eurder.ItemControllerIntegrationTest], using SpringBootContextLoader
-2022-10-29 17:56:36.822  INFO 12072 --- [main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.switchfully.eurder.ItemControllerIntegrationTest]: no resource found for suffixes {-context.xml, Context.groovy}.
-2022-10-29 17:56:36.822  INFO 12072 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.switchfully.eurder.ItemControllerIntegrationTest]: ItemControllerIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2022-10-29 17:56:36.823  INFO 12072 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.switchfully.eurder.Application for test class com.switchfully.eurder.ItemControllerIntegrationTest
-2022-10-29 17:56:36.825  INFO 12072 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-2022-10-29 17:56:36.826  INFO 12072 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@121dac1a, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6d946eee, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@23dc70c1, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@53b907d9, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@2c3b0cc8, org.springframework.test.context.support.DirtiesContextTestExecutionListener@6296e4bf, org.springframework.test.context.event.EventPublishingTestExecutionListener@220cda54, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@39109603, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@4d3990a5, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@18df26a1, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@5c459194, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@61d8a491, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@6065bcb7]
-2022-10-29 17:56:36.843  INFO 12072 --- [http-nio-auto-1-exec-5] c.switchfully.eurder.api.ItemController  : request to add new item to stock
-2022-10-29 17:56:36.844  INFO 12072 --- [http-nio-auto-1-exec-5] c.s.eurder.domain.item.ItemRepository    : Created Item{name=name, description=description, price=1,10 EUR, stockCount=3
-2022-10-29 18:00:28.571  INFO 11044 --- [main] c.s.e.CustomerControllerIntegrationTest  : Starting CustomerControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 11044 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
-2022-10-29 18:00:28.572  INFO 11044 --- [main] c.s.e.CustomerControllerIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
-2022-10-29 18:00:29.822  INFO 11044 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-2022-10-29 18:00:29.832  INFO 11044 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-10-29 18:00:29.833  INFO 11044 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-10-29 18:00:29.930  INFO 11044 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-10-29 18:00:29.930  INFO 11044 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1129 ms
-2022-10-29 18:00:30.773  INFO 11044 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 62519 (http) with context path ''
-2022-10-29 18:00:30.782  INFO 11044 --- [main] c.s.e.CustomerControllerIntegrationTest  : Started CustomerControllerIntegrationTest in 2.576 seconds (JVM running for 3.657)
-2022-10-29 18:00:32.161  INFO 11044 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-10-29 18:00:32.162  INFO 11044 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-10-29 18:00:32.163  INFO 11044 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-10-29 18:00:32.230  INFO 11044 --- [http-nio-auto-1-exec-1] c.s.e.d.customer.CustomerRepository      : Created CUSTOMER{customerID:CID20221005}
-2022-10-29 18:00:32.470  INFO 11044 --- [http-nio-auto-1-exec-2] c.s.eurder.domain.order.OrderRepository  : Created Order{orderID=OID20221001, customerID=CID20221001, orderDate=2022-10-29}
-2022-10-29 18:00:32.510  INFO 11044 --- [http-nio-auto-1-exec-3] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
-2022-10-29 18:00:32.550 ERROR 11044 --- [http-nio-auto-1-exec-4] c.s.e.service.security.SecurityService   : Password does not match for user user1@test.be
-2022-10-29 18:00:32.551  INFO 11044 --- [http-nio-auto-1-exec-4] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
+2022-10-30 08:25:08.298  INFO 14484 --- [main] c.s.e.CustomerControllerIntegrationTest  : Starting CustomerControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 14484 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
+2022-10-30 08:25:08.304  INFO 14484 --- [main] c.s.e.CustomerControllerIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
+2022-10-30 08:25:10.371  INFO 14484 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2022-10-30 08:25:10.389  INFO 14484 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-30 08:25:10.405  INFO 14484 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-30 08:25:10.560  INFO 14484 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-30 08:25:10.561  INFO 14484 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1790 ms
+2022-10-30 08:25:11.842  INFO 14484 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 52397 (http) with context path ''
+2022-10-30 08:25:11.858  INFO 14484 --- [main] c.s.e.CustomerControllerIntegrationTest  : Started CustomerControllerIntegrationTest in 4.101 seconds (JVM running for 5.97)
+2022-10-30 08:25:14.339  INFO 14484 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-30 08:25:14.340  INFO 14484 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-30 08:25:14.342  INFO 14484 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-10-30 08:25:14.475  INFO 14484 --- [http-nio-auto-1-exec-1] c.s.e.d.customer.CustomerRepository      : Created CUSTOMER{customerID:CID20221005}
+2022-10-30 08:25:14.858 ERROR 14484 --- [http-nio-auto-1-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException: Cannot invoke "com.switchfully.eurder.domain.phonenumber.PhoneNumber.getFullPhoneNumberAsString()" because "this.phoneNumber" is null] with root cause
+
+java.lang.NullPointerException: Cannot invoke "com.switchfully.eurder.domain.phonenumber.PhoneNumber.getFullPhoneNumberAsString()" because "this.phoneNumber" is null
+	at com.switchfully.eurder.domain.customer.Customer.getPhoneNumber(Customer.java:87) ~[classes/:na]
+	at com.switchfully.eurder.service.customer.CustomerMapper.mapCustomerToDTO(CustomerMapper.java:38) ~[classes/:na]
+	at com.switchfully.eurder.service.customer.CustomerService.getCustomerByID(CustomerService.java:26) ~[classes/:na]
+	at com.switchfully.eurder.api.CustomerController.orderItems(CustomerController.java:43) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) ~[tomcat-embed-core-9.0.65.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.65.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2022-10-30 08:25:14.976  INFO 14484 --- [http-nio-auto-1-exec-3] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
+2022-10-30 08:25:15.034  INFO 14484 --- [http-nio-auto-1-exec-5] c.s.e.d.e.ControllerExceptionHandler     : Customer with ID invalidCustomerID does not exist
+2022-10-30 08:25:15.063 ERROR 14484 --- [http-nio-auto-1-exec-6] c.s.e.service.security.SecurityService   : Password does not match for user user1@test.be
+2022-10-30 08:25:15.066  INFO 14484 --- [http-nio-auto-1-exec-6] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
+2022-10-30 08:25:15.078  INFO 14484 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.switchfully.eurder.ItemControllerIntegrationTest], using SpringBootContextLoader
+2022-10-30 08:25:15.079  INFO 14484 --- [main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.switchfully.eurder.ItemControllerIntegrationTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2022-10-30 08:25:15.080  INFO 14484 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.switchfully.eurder.ItemControllerIntegrationTest]: ItemControllerIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2022-10-30 08:25:15.083  INFO 14484 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.switchfully.eurder.Application for test class com.switchfully.eurder.ItemControllerIntegrationTest
+2022-10-30 08:25:15.085  INFO 14484 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2022-10-30 08:25:15.087  INFO 14484 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@ee49f34, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6e74986c, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@1f112da2, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@377f0737, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1dc823d3, org.springframework.test.context.support.DirtiesContextTestExecutionListener@57b57ffe, org.springframework.test.context.event.EventPublishingTestExecutionListener@41df3497, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@e56c524, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@525cb986, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@2eea76bc, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@1629947a, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@2e6e0c7e, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@194910bc]
+2022-10-30 08:25:15.128  INFO 14484 --- [http-nio-auto-1-exec-7] c.switchfully.eurder.api.ItemController  : request to add new item to stock
+2022-10-30 08:25:15.129  INFO 14484 --- [http-nio-auto-1-exec-7] c.s.eurder.domain.item.ItemRepository    : Created Item{name=name, description=description, price=1,10 EUR, stockCount=3
+2022-10-30 08:27:51.688  INFO 11732 --- [main] c.s.e.CustomerControllerIntegrationTest  : Starting CustomerControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 11732 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
+2022-10-30 08:27:51.690  INFO 11732 --- [main] c.s.e.CustomerControllerIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
+2022-10-30 08:27:53.176  INFO 11732 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2022-10-30 08:27:53.203  INFO 11732 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-30 08:27:53.204  INFO 11732 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-30 08:27:53.342  INFO 11732 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-30 08:27:53.343  INFO 11732 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1389 ms
+2022-10-30 08:27:54.348  INFO 11732 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 52429 (http) with context path ''
+2022-10-30 08:27:54.361  INFO 11732 --- [main] c.s.e.CustomerControllerIntegrationTest  : Started CustomerControllerIntegrationTest in 3.078 seconds (JVM running for 4.338)
+2022-10-30 08:27:56.062  INFO 11732 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-30 08:27:56.062  INFO 11732 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-30 08:27:56.064  INFO 11732 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-10-30 08:27:56.150  INFO 11732 --- [http-nio-auto-1-exec-1] c.s.e.d.e.ControllerExceptionHandler     : Customer with ID invalidCustomerID does not exist
+2022-10-30 08:28:08.378  INFO 7192 --- [main] c.s.e.CustomerControllerIntegrationTest  : Starting CustomerControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 7192 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
+2022-10-30 08:28:08.380  INFO 7192 --- [main] c.s.e.CustomerControllerIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
+2022-10-30 08:28:09.840  INFO 7192 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2022-10-30 08:28:09.852  INFO 7192 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-30 08:28:09.853  INFO 7192 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-30 08:28:09.989  INFO 7192 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-30 08:28:09.990  INFO 7192 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1336 ms
+2022-10-30 08:28:10.999  INFO 7192 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 52435 (http) with context path ''
+2022-10-30 08:28:11.009  INFO 7192 --- [main] c.s.e.CustomerControllerIntegrationTest  : Started CustomerControllerIntegrationTest in 3.021 seconds (JVM running for 4.238)
+2022-10-30 08:28:12.663  INFO 7192 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-30 08:28:12.664  INFO 7192 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-30 08:28:12.665  INFO 7192 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-10-30 08:28:12.746  INFO 7192 --- [http-nio-auto-1-exec-1] c.s.e.d.customer.CustomerRepository      : Created CUSTOMER{customerID:CID20221005}
+2022-10-30 08:28:13.006 ERROR 7192 --- [http-nio-auto-1-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException: Cannot invoke "com.switchfully.eurder.domain.phonenumber.PhoneNumber.getFullPhoneNumberAsString()" because "this.phoneNumber" is null] with root cause
+
+java.lang.NullPointerException: Cannot invoke "com.switchfully.eurder.domain.phonenumber.PhoneNumber.getFullPhoneNumberAsString()" because "this.phoneNumber" is null
+	at com.switchfully.eurder.domain.customer.Customer.getPhoneNumber(Customer.java:87) ~[classes/:na]
+	at com.switchfully.eurder.service.customer.CustomerMapper.mapCustomerToDTO(CustomerMapper.java:38) ~[classes/:na]
+	at com.switchfully.eurder.service.customer.CustomerService.getCustomerByID(CustomerService.java:26) ~[classes/:na]
+	at com.switchfully.eurder.api.CustomerController.orderItems(CustomerController.java:43) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) ~[tomcat-embed-core-9.0.65.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.65.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2022-10-30 08:28:13.088  INFO 7192 --- [http-nio-auto-1-exec-3] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
+2022-10-30 08:28:13.113  INFO 7192 --- [http-nio-auto-1-exec-4] c.s.e.d.e.ControllerExceptionHandler     : Customer with ID invalidCustomerID does not exist
+2022-10-30 08:28:13.135 ERROR 7192 --- [http-nio-auto-1-exec-5] c.s.e.service.security.SecurityService   : Password does not match for user user1@test.be
+2022-10-30 08:28:13.136  INFO 7192 --- [http-nio-auto-1-exec-5] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
+2022-10-30 08:29:10.534  INFO 7012 --- [main] c.s.e.CustomerControllerIntegrationTest  : Starting CustomerControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 7012 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
+2022-10-30 08:29:10.536  INFO 7012 --- [main] c.s.e.CustomerControllerIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
+2022-10-30 08:29:12.041  INFO 7012 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2022-10-30 08:29:12.061  INFO 7012 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-30 08:29:12.061  INFO 7012 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-30 08:29:12.281  INFO 7012 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-30 08:29:12.282  INFO 7012 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1448 ms
+2022-10-30 08:29:13.202  INFO 7012 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 52446 (http) with context path ''
+2022-10-30 08:29:13.213  INFO 7012 --- [main] c.s.e.CustomerControllerIntegrationTest  : Started CustomerControllerIntegrationTest in 3.069 seconds (JVM running for 4.275)
+2022-10-30 08:29:14.949  INFO 7012 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-30 08:29:14.949  INFO 7012 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-30 08:29:14.950  INFO 7012 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-10-30 08:29:15.048 ERROR 7012 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException: Cannot invoke "com.switchfully.eurder.domain.phonenumber.PhoneNumber.getFullPhoneNumberAsString()" because "this.phoneNumber" is null] with root cause
+
+java.lang.NullPointerException: Cannot invoke "com.switchfully.eurder.domain.phonenumber.PhoneNumber.getFullPhoneNumberAsString()" because "this.phoneNumber" is null
+	at com.switchfully.eurder.domain.customer.Customer.getPhoneNumber(Customer.java:87) ~[classes/:na]
+	at com.switchfully.eurder.service.customer.CustomerMapper.mapCustomerToDTO(CustomerMapper.java:38) ~[classes/:na]
+	at com.switchfully.eurder.service.customer.CustomerService.getCustomerByID(CustomerService.java:26) ~[classes/:na]
+	at com.switchfully.eurder.api.CustomerController.orderItems(CustomerController.java:43) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) ~[tomcat-embed-core-9.0.65.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.65.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2022-10-30 08:35:11.141  INFO 15308 --- [main] c.s.e.CustomerControllerIntegrationTest  : Starting CustomerControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 15308 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
+2022-10-30 08:35:11.143  INFO 15308 --- [main] c.s.e.CustomerControllerIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
+2022-10-30 08:35:12.661  INFO 15308 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2022-10-30 08:35:12.673  INFO 15308 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-30 08:35:12.674  INFO 15308 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-30 08:35:12.791  INFO 15308 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-30 08:35:12.792  INFO 15308 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1379 ms
+2022-10-30 08:35:13.790  INFO 15308 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 50173 (http) with context path ''
+2022-10-30 08:35:13.804  INFO 15308 --- [main] c.s.e.CustomerControllerIntegrationTest  : Started CustomerControllerIntegrationTest in 3.037 seconds (JVM running for 4.279)
+2022-10-30 08:35:15.529  INFO 15308 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-30 08:35:15.530  INFO 15308 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-30 08:35:15.531  INFO 15308 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-10-30 08:35:15.618 ERROR 15308 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException: Cannot invoke "com.switchfully.eurder.domain.phonenumber.PhoneNumber.getFullPhoneNumberAsString()" because "this.phoneNumber" is null] with root cause
+
+java.lang.NullPointerException: Cannot invoke "com.switchfully.eurder.domain.phonenumber.PhoneNumber.getFullPhoneNumberAsString()" because "this.phoneNumber" is null
+	at com.switchfully.eurder.domain.customer.Customer.getPhoneNumber(Customer.java:87) ~[classes/:na]
+	at com.switchfully.eurder.service.customer.CustomerMapper.mapCustomerToDTO(CustomerMapper.java:38) ~[classes/:na]
+	at com.switchfully.eurder.service.customer.CustomerService.getCustomerByID(CustomerService.java:26) ~[classes/:na]
+	at com.switchfully.eurder.api.CustomerController.orderItems(CustomerController.java:43) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) ~[tomcat-embed-core-9.0.65.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.65.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2022-10-30 08:37:51.495  INFO 15412 --- [main] c.s.e.CustomerControllerIntegrationTest  : Starting CustomerControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 15412 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
+2022-10-30 08:37:51.497  INFO 15412 --- [main] c.s.e.CustomerControllerIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
+2022-10-30 08:37:52.957  INFO 15412 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2022-10-30 08:37:52.968  INFO 15412 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-30 08:37:52.969  INFO 15412 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-30 08:37:53.083  INFO 15412 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-30 08:37:53.083  INFO 15412 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1307 ms
+2022-10-30 08:37:54.075  INFO 15412 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 50183 (http) with context path ''
+2022-10-30 08:37:54.087  INFO 15412 --- [main] c.s.e.CustomerControllerIntegrationTest  : Started CustomerControllerIntegrationTest in 2.989 seconds (JVM running for 4.219)
+2022-10-30 08:37:55.742  INFO 15412 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-30 08:37:55.743  INFO 15412 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-30 08:37:55.744  INFO 15412 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-10-30 08:37:55.821  INFO 15412 --- [http-nio-auto-1-exec-1] c.s.e.d.customer.CustomerRepository      : Created CUSTOMER{customerID:CID20221005}
+2022-10-30 08:37:56.092 ERROR 15412 --- [http-nio-auto-1-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException: Cannot invoke "com.switchfully.eurder.domain.phonenumber.PhoneNumber.getFullPhoneNumberAsString()" because "this.phoneNumber" is null] with root cause
+
+java.lang.NullPointerException: Cannot invoke "com.switchfully.eurder.domain.phonenumber.PhoneNumber.getFullPhoneNumberAsString()" because "this.phoneNumber" is null
+	at com.switchfully.eurder.domain.customer.Customer.getPhoneNumber(Customer.java:87) ~[classes/:na]
+	at com.switchfully.eurder.service.customer.CustomerMapper.mapCustomerToDTO(CustomerMapper.java:38) ~[classes/:na]
+	at com.switchfully.eurder.service.customer.CustomerService.getCustomerByID(CustomerService.java:26) ~[classes/:na]
+	at com.switchfully.eurder.api.CustomerController.orderItems(CustomerController.java:43) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) ~[tomcat-embed-core-9.0.65.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.65.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2022-10-30 08:37:56.165  INFO 15412 --- [http-nio-auto-1-exec-3] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
+2022-10-30 08:37:56.189  INFO 15412 --- [http-nio-auto-1-exec-4] c.s.e.d.e.ControllerExceptionHandler     : Customer with ID invalidCustomerID does not exist
+2022-10-30 08:37:56.208 ERROR 15412 --- [http-nio-auto-1-exec-5] c.s.e.service.security.SecurityService   : Password does not match for user user1@test.be
+2022-10-30 08:37:56.209  INFO 15412 --- [http-nio-auto-1-exec-5] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
+2022-10-30 08:39:32.516  INFO 16432 --- [main] c.s.e.CustomerControllerIntegrationTest  : Starting CustomerControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 16432 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
+2022-10-30 08:39:32.518  INFO 16432 --- [main] c.s.e.CustomerControllerIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
+2022-10-30 08:39:34.060  INFO 16432 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2022-10-30 08:39:34.072  INFO 16432 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-30 08:39:34.073  INFO 16432 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-30 08:39:34.190  INFO 16432 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-30 08:39:34.191  INFO 16432 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1404 ms
+2022-10-30 08:39:35.177  INFO 16432 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 50195 (http) with context path ''
+2022-10-30 08:39:35.188  INFO 16432 --- [main] c.s.e.CustomerControllerIntegrationTest  : Started CustomerControllerIntegrationTest in 3.081 seconds (JVM running for 4.295)
+2022-10-30 08:39:36.828  INFO 16432 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-30 08:39:36.828  INFO 16432 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-30 08:39:36.829  INFO 16432 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-10-30 08:39:36.904  INFO 16432 --- [http-nio-auto-1-exec-1] c.s.e.d.customer.CustomerRepository      : Created CUSTOMER{customerID:CID20221005}
+2022-10-30 08:39:37.176 ERROR 16432 --- [http-nio-auto-1-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException: Cannot invoke "com.switchfully.eurder.domain.phonenumber.PhoneNumber.getFullPhoneNumberAsString()" because "this.phoneNumber" is null] with root cause
+
+java.lang.NullPointerException: Cannot invoke "com.switchfully.eurder.domain.phonenumber.PhoneNumber.getFullPhoneNumberAsString()" because "this.phoneNumber" is null
+	at com.switchfully.eurder.domain.customer.Customer.getPhoneNumber(Customer.java:87) ~[classes/:na]
+	at com.switchfully.eurder.service.customer.CustomerMapper.mapCustomerToDTO(CustomerMapper.java:33) ~[classes/:na]
+	at com.switchfully.eurder.service.customer.CustomerService.getCustomerByID(CustomerService.java:26) ~[classes/:na]
+	at com.switchfully.eurder.api.CustomerController.orderItems(CustomerController.java:43) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) ~[tomcat-embed-core-9.0.65.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.65.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2022-10-30 08:39:37.241  INFO 16432 --- [http-nio-auto-1-exec-3] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
+2022-10-30 08:39:37.263  INFO 16432 --- [http-nio-auto-1-exec-4] c.s.e.d.e.ControllerExceptionHandler     : Customer with ID invalidCustomerID does not exist
+2022-10-30 08:39:37.281 ERROR 16432 --- [http-nio-auto-1-exec-5] c.s.e.service.security.SecurityService   : Password does not match for user user1@test.be
+2022-10-30 08:39:37.282  INFO 16432 --- [http-nio-auto-1-exec-5] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
+2022-10-30 08:48:08.260  INFO 15124 --- [main] c.s.e.CustomerControllerIntegrationTest  : Starting CustomerControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 15124 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
+2022-10-30 08:48:08.262  INFO 15124 --- [main] c.s.e.CustomerControllerIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
+2022-10-30 08:48:09.785  INFO 15124 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2022-10-30 08:48:09.796  INFO 15124 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-30 08:48:09.796  INFO 15124 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-30 08:48:10.017  INFO 15124 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-30 08:48:10.018  INFO 15124 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1491 ms
+2022-10-30 08:48:10.933  INFO 15124 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 50217 (http) with context path ''
+2022-10-30 08:48:10.947  INFO 15124 --- [main] c.s.e.CustomerControllerIntegrationTest  : Started CustomerControllerIntegrationTest in 3.081 seconds (JVM running for 4.31)
+2022-10-30 08:48:12.581  INFO 15124 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-30 08:48:12.582  INFO 15124 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-30 08:48:12.583  INFO 15124 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-10-30 08:48:12.663  INFO 15124 --- [http-nio-auto-1-exec-1] c.s.e.d.customer.CustomerRepository      : Created CUSTOMER{customerID:CID20221005}
+2022-10-30 08:48:12.929  INFO 15124 --- [http-nio-auto-1-exec-2] c.s.eurder.domain.order.OrderRepository  : Created Order{orderID=OID20221001, customerID=CID20221001, orderDate=2022-10-30}
+2022-10-30 08:48:12.996  INFO 15124 --- [http-nio-auto-1-exec-3] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
+2022-10-30 08:48:13.042  INFO 15124 --- [http-nio-auto-1-exec-4] c.s.e.d.e.ControllerExceptionHandler     : Customer with ID invalidCustomerID does not exist
+2022-10-30 08:48:13.067 ERROR 15124 --- [http-nio-auto-1-exec-5] c.s.e.service.security.SecurityService   : Password does not match for user user1@test.be
+2022-10-30 08:48:13.068  INFO 15124 --- [http-nio-auto-1-exec-5] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
+2022-10-30 08:48:27.907  INFO 12672 --- [main] c.s.e.CustomerControllerIntegrationTest  : Starting CustomerControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 12672 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
+2022-10-30 08:48:27.909  INFO 12672 --- [main] c.s.e.CustomerControllerIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
+2022-10-30 08:48:29.407  INFO 12672 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2022-10-30 08:48:29.421  INFO 12672 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-30 08:48:29.421  INFO 12672 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-30 08:48:29.563  INFO 12672 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-30 08:48:29.564  INFO 12672 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1382 ms
+2022-10-30 08:48:30.545  INFO 12672 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 50227 (http) with context path ''
+2022-10-30 08:48:30.559  INFO 12672 --- [main] c.s.e.CustomerControllerIntegrationTest  : Started CustomerControllerIntegrationTest in 3.054 seconds (JVM running for 4.266)
+2022-10-30 08:48:32.240  INFO 12672 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-30 08:48:32.241  INFO 12672 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-30 08:48:32.242  INFO 12672 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-10-30 08:48:32.326  INFO 12672 --- [http-nio-auto-1-exec-1] c.s.e.d.customer.CustomerRepository      : Created CUSTOMER{customerID:CID20221005}
+2022-10-30 08:48:32.597 ERROR 12672 --- [http-nio-auto-1-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException: Cannot invoke "com.switchfully.eurder.domain.phonenumber.PhoneNumber.getFullPhoneNumberAsString()" because "this.phoneNumber" is null] with root cause
+
+java.lang.NullPointerException: Cannot invoke "com.switchfully.eurder.domain.phonenumber.PhoneNumber.getFullPhoneNumberAsString()" because "this.phoneNumber" is null
+	at com.switchfully.eurder.domain.customer.Customer.getPhoneNumber(Customer.java:90) ~[classes/:na]
+	at com.switchfully.eurder.service.customer.CustomerMapper.mapCustomerToDTO(CustomerMapper.java:33) ~[classes/:na]
+	at com.switchfully.eurder.service.customer.CustomerService.getCustomerByID(CustomerService.java:26) ~[classes/:na]
+	at com.switchfully.eurder.api.CustomerController.orderItems(CustomerController.java:43) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) ~[tomcat-embed-core-9.0.65.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.65.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2022-10-30 08:48:32.667  INFO 12672 --- [http-nio-auto-1-exec-3] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
+2022-10-30 08:48:32.694  INFO 12672 --- [http-nio-auto-1-exec-4] c.s.e.d.e.ControllerExceptionHandler     : Customer with ID invalidCustomerID does not exist
+2022-10-30 08:48:32.715 ERROR 12672 --- [http-nio-auto-1-exec-5] c.s.e.service.security.SecurityService   : Password does not match for user user1@test.be
+2022-10-30 08:48:32.716  INFO 12672 --- [http-nio-auto-1-exec-5] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
+2022-10-30 08:48:40.434  INFO 872 --- [main] c.s.e.CustomerControllerIntegrationTest  : Starting CustomerControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 872 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
+2022-10-30 08:48:40.436  INFO 872 --- [main] c.s.e.CustomerControllerIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
+2022-10-30 08:48:41.950  INFO 872 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2022-10-30 08:48:41.962  INFO 872 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-30 08:48:41.962  INFO 872 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-30 08:48:42.076  INFO 872 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-30 08:48:42.076  INFO 872 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1379 ms
+2022-10-30 08:48:43.087  INFO 872 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 50238 (http) with context path ''
+2022-10-30 08:48:43.098  INFO 872 --- [main] c.s.e.CustomerControllerIntegrationTest  : Started CustomerControllerIntegrationTest in 3.062 seconds (JVM running for 4.292)
+2022-10-30 08:48:44.765  INFO 872 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-30 08:48:44.765  INFO 872 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-30 08:48:44.766  INFO 872 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-10-30 08:48:44.846  INFO 872 --- [http-nio-auto-1-exec-1] c.s.e.d.customer.CustomerRepository      : Created CUSTOMER{customerID:CID20221005}
+2022-10-30 08:48:45.107 ERROR 872 --- [http-nio-auto-1-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException: Cannot invoke "com.switchfully.eurder.domain.phonenumber.PhoneNumber.getFullPhoneNumberAsString()" because "this.phoneNumber" is null] with root cause
+
+java.lang.NullPointerException: Cannot invoke "com.switchfully.eurder.domain.phonenumber.PhoneNumber.getFullPhoneNumberAsString()" because "this.phoneNumber" is null
+	at com.switchfully.eurder.domain.customer.Customer.getPhoneNumber(Customer.java:90) ~[classes/:na]
+	at com.switchfully.eurder.service.customer.CustomerMapper.mapCustomerToDTO(CustomerMapper.java:33) ~[classes/:na]
+	at com.switchfully.eurder.service.customer.CustomerService.getCustomerByID(CustomerService.java:26) ~[classes/:na]
+	at com.switchfully.eurder.api.CustomerController.orderItems(CustomerController.java:43) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) ~[tomcat-embed-core-9.0.65.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.65.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2022-10-30 08:48:45.174  INFO 872 --- [http-nio-auto-1-exec-3] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
+2022-10-30 08:48:45.199  INFO 872 --- [http-nio-auto-1-exec-4] c.s.e.d.e.ControllerExceptionHandler     : Customer with ID invalidCustomerID does not exist
+2022-10-30 08:48:45.218 ERROR 872 --- [http-nio-auto-1-exec-5] c.s.e.service.security.SecurityService   : Password does not match for user user1@test.be
+2022-10-30 08:48:45.219  INFO 872 --- [http-nio-auto-1-exec-5] c.s.e.d.e.ControllerExceptionHandler     : Wrong credentials
+2022-10-30 08:54:36.654  INFO 8704 --- [main] c.s.e.CustomerControllerIntegrationTest  : Starting CustomerControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 8704 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
+2022-10-30 08:54:36.655  INFO 8704 --- [main] c.s.e.CustomerControllerIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
+2022-10-30 08:54:38.149  INFO 8704 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2022-10-30 08:54:38.160  INFO 8704 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-30 08:54:38.161  INFO 8704 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-30 08:54:38.273  INFO 8704 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-30 08:54:38.274  INFO 8704 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1360 ms
+2022-10-30 08:54:39.236  INFO 8704 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 50072 (http) with context path ''
+2022-10-30 08:54:39.247  INFO 8704 --- [main] c.s.e.CustomerControllerIntegrationTest  : Started CustomerControllerIntegrationTest in 2.98 seconds (JVM running for 4.181)
+2022-10-30 08:54:40.920  INFO 8704 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-30 08:54:40.920  INFO 8704 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-30 08:54:40.921  INFO 8704 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-10-30 08:54:41.006  INFO 8704 --- [http-nio-auto-1-exec-1] c.s.eurder.domain.order.OrderRepository  : Created Order{orderID=OID20221001, customerID=CID20221001, orderDate=2022-10-30}
+2022-10-30 08:55:03.431  INFO 11296 --- [main] c.s.e.CustomerControllerIntegrationTest  : Starting CustomerControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 11296 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
+2022-10-30 08:55:03.432  INFO 11296 --- [main] c.s.e.CustomerControllerIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
+2022-10-30 08:55:04.954  INFO 11296 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2022-10-30 08:55:04.965  INFO 11296 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-30 08:55:04.966  INFO 11296 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-30 08:55:05.084  INFO 11296 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-30 08:55:05.084  INFO 11296 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1381 ms
+2022-10-30 08:55:06.058  INFO 11296 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 50079 (http) with context path ''
+2022-10-30 08:55:06.068  INFO 11296 --- [main] c.s.e.CustomerControllerIntegrationTest  : Started CustomerControllerIntegrationTest in 3.045 seconds (JVM running for 4.255)
+2022-10-30 08:55:07.819  INFO 11296 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-30 08:55:07.819  INFO 11296 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-30 08:55:07.821  INFO 11296 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-10-30 08:55:07.917  INFO 11296 --- [http-nio-auto-1-exec-1] c.s.eurder.domain.order.OrderRepository  : Created Order{orderID=OID20221001, customerID=CID20221001, orderDate=2022-10-30}
+2022-10-30 08:56:10.685  INFO 8820 --- [main] c.s.e.CustomerControllerIntegrationTest  : Starting CustomerControllerIntegrationTest using Java 17 on DESKTOP-HAJB8D8 with PID 8820 (started by Dominique Van Eyken in C:\_development\switchfully\eurder\war)
+2022-10-30 08:56:10.687  INFO 8820 --- [main] c.s.e.CustomerControllerIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
+2022-10-30 08:56:12.193  INFO 8820 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2022-10-30 08:56:12.204  INFO 8820 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-30 08:56:12.205  INFO 8820 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-30 08:56:12.327  INFO 8820 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-30 08:56:12.327  INFO 8820 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1368 ms
+2022-10-30 08:56:13.270  INFO 8820 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 50086 (http) with context path ''
+2022-10-30 08:56:13.281  INFO 8820 --- [main] c.s.e.CustomerControllerIntegrationTest  : Started CustomerControllerIntegrationTest in 3.003 seconds (JVM running for 4.193)
+2022-10-30 08:56:14.987  INFO 8820 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-30 08:56:14.987  INFO 8820 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-30 08:56:14.987  INFO 8820 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-10-30 08:56:15.094  INFO 8820 --- [http-nio-auto-1-exec-1] c.s.eurder.domain.order.OrderRepository  : Created Order{orderID=OID20221001, customerID=CID20221001, orderDate=2022-10-30}

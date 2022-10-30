@@ -21,4 +21,8 @@ public class CustomerService {
         customerRepository.addCustomer(customer);
         return customerMapper.mapCustomerToDTO(customer);
     }
+
+    public CustomerDTO getCustomerByID(String customerID) {
+        return customerMapper.mapCustomerToDTO(customerRepository.findCustomerByID(customerID));
+    }
 }

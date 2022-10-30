@@ -1,10 +1,6 @@
 package com.switchfully.eurder.domain.customer;
 
 import com.switchfully.eurder.domain.address.Address;
-import com.switchfully.eurder.domain.customer.Customer;
-import com.switchfully.eurder.domain.customer.CustomerBuilder;
-import com.switchfully.eurder.domain.customer.Feature;
-import com.switchfully.eurder.domain.customer.Role;
 import com.switchfully.eurder.domain.phonenumber.PhoneNumber;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -41,6 +37,18 @@ class CustomerTest {
             assertThat(customer.doesPasswordMatch(password)).isTrue();
             assertThat(customer.getRole()).isEqualTo(role);
             assertThat(customer.canHaveAccessTo(Feature.CREATE_ITEM)).isFalse();
+        }
+
+        @Test
+        void returningPhoneNumber_givenPhoneNumberIsNull() {
+            Customer customer = new Customer(firstname, lastname, emailAddress, address, null, password, role);
+            assertThat(customer.getPhoneNumber()).isEqualTo("");
+        }
+
+        @Test
+        void returningPhoneNumber_givenAddressIsNull() {
+            Customer customer = new Customer(firstname, lastname, emailAddress, null, phoneNumber, password, role);
+            assertThat(customer.getFullAddress()).isEqualTo("");
         }
 
         @Test

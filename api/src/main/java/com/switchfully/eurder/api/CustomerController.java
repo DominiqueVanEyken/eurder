@@ -40,6 +40,9 @@ public class CustomerController {
     @ResponseStatus(HttpStatus.CREATED)
     public OrderDTO orderItems(@RequestHeader String authorization, @PathVariable String customerID, @RequestBody CreateOrderDTO createOrderDTO) {
         securityService.validateAuthorization(authorization, Feature.ORDER_ITEMS);
+        if (customerService.getCustomerByID(customerID) == null) {
+            log.debug("Request for customer could not be handled because Customer with ID " + customerID + " does not exist");
+        }
         log.debug("Request for ordering items");
         return orderService.orderItems(customerID, createOrderDTO);
     }

@@ -51,6 +51,13 @@ public class CustomerRepository {
         throw new NoSuchElementException("Wrong credentials");
     }
 
+    public Customer findCustomerByID(String customerID) {
+        if (customerRepository.containsKey(customerID)) {
+            return customerRepository.get(customerID);
+        }
+        throw new NoSuchElementException("Customer with ID " + customerID + " does not exist");
+    }
+
     private void fillCustomerRepository() {
         Customer admin = new CustomerBuilder()
                 .setLastname("admin")
@@ -64,6 +71,7 @@ public class CustomerRepository {
                 .build();
         customerRepository.put(admin.getCustomerID(), admin);
         Customer customer1 = new Customer("firstname1", "lastname1", "user1@test.be", new Address("street", "1", "1111", "city1"), new PhoneNumber(CountryCode.BEL, "123 45 67 89"), "password", Role.CUSTOMER);
+        System.out.println(customer1);
         Customer customer2 = new Customer("firstname2", "lastname2", "user2@test.be", new Address("street", "1", "1111", "city2"), new PhoneNumber(CountryCode.BEL, "123 45 67 89"), "password", Role.CUSTOMER);
         Customer customer3 = new Customer("firstname3", "lastname3", "user3@test.be", new Address("street", "1", "1111", "city3"), new PhoneNumber(CountryCode.BEL, "123 45 67 89"), "password", Role.CUSTOMER);
         customerRepository.put(customer1.getCustomerID(), customer1);

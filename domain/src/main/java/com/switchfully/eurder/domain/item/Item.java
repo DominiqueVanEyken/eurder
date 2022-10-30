@@ -11,7 +11,7 @@ public class Item {
     private final String name;
     private final String description;
     private final Price price;
-    private final int stockCount;
+    private int stockCount;
 
     public Item(String name, String description, Price price, int stockCount) {
         itemID = ITEM_ID_PREFIX + LocalDate.now().getYear() + itemIDSuffix++;
@@ -66,5 +66,9 @@ public class Item {
 
     public boolean isInStock(int amount) {
         return stockCount > amount;
+    }
+
+    public void reduceStockByAmount(int amount) {
+        stockCount -= amount;
     }
 }

@@ -26,7 +26,7 @@ public class CustomerControllerIntegrationTest {
     private int port;
     private final static String BASE_URI = "http://localhost";
     private final String itemID = "IID20221001";
-    private final String customerID = "CID20221001";
+    private final String customerID = "CID20221002";
 
     private final List<CreateItemGroupDTO> createItemGroupDTOS = List.of(new CreateItemGroupDTO()
             .setItemID(itemID)
@@ -139,6 +139,27 @@ public class CustomerControllerIntegrationTest {
                 .headers("Authorization", "Basic " + authorization)
                 .when()
                 .post("customers/" + customerID + "/order")
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.BAD_REQUEST.value());
+    }
+
+    @Test
+    void orderItems_givenInvalidCustomerID() {
+        CreateOrderDTO createOrderDTO = new CreateOrderDTO()
+                .setOrderList(createItemGroupDTOS);
+        String authorization = Base64.getEncoder().encodeToString("user1@test.be:password".getBytes());
+
+        RestAssured
+                .given()
+                .baseUri(BASE_URI)
+                .port(port)
+                .body(createOrderDTO)
+                .accept(MediaType.APPLICATION_JSON_VALUE)
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .headers("Authorization", "Basic " + authorization)
+                .when()
+                .post("customers/invalidCustomerID/order")
                 .then()
                 .assertThat()
                 .statusCode(HttpStatus.BAD_REQUEST.value());

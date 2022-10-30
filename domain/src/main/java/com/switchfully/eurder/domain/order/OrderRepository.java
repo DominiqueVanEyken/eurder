@@ -5,10 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 @Repository
 public class OrderRepository {
@@ -26,8 +23,8 @@ public class OrderRepository {
     }
 
     public void createOrder(Order order) {
-
         Order.calculateTotalPrice(order, itemRepository);
+        reduceStock(order.getOrderList());
         orderRepository.put(order.getOrderID(), order);
         log.info("Created ".concat(order.toString()));
     }
@@ -38,4 +35,9 @@ public class OrderRepository {
         }
         return orderRepository.get(orderID);
     }
+
+    public void reduceStock(List<ItemGroup> itemGroupList) {
+        itemGroupList.forEach(itemGroup -> itemRepository.reduceStockForItemByAmount(itemGroup.getItemID(), itemGroup.getAmount()));
+    }
+
 }

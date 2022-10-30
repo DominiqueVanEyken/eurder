@@ -10,6 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ItemMapperTest {
     private final ItemMapper itemMapper = new ItemMapper();
+    private final String itemID = "IID20221001";
     private final String name = "name";
     private final String description = "description";
     private final double price = 1.1;
@@ -34,12 +35,14 @@ class ItemMapperTest {
     @Test
     void creatingCustomerDTO() {
         ItemDTO itemDTO = new ItemDTO()
+                .setItemID(itemID)
                 .setName(name)
                 .setDescription(description)
                 .setPrice(new Price(price).toString())
                 .setStockCount(stockCount);
 
         assertThat(itemDTO).isNotNull();
+        assertThat(itemDTO.getItemID()).isEqualTo(itemID);
         assertThat(itemDTO.getName()).isEqualTo(name);
         assertThat(itemDTO.getDescription()).isEqualTo(description);
         assertThat(itemDTO.getPrice()).isEqualTo(new Price(price).toString());

@@ -60,11 +60,7 @@ public class ItemRepository {
         return itemRepository.get(itemID);
     }
 
-    public Price getItemPriceByItemID(String itemID) {
-        return getItemByID(itemID).getPrice();
-    }
-
-    public boolean isItemInStock(String itemID) {
-        return getItemByID(itemID).getStockCount() > 0;
+    public void reduceStockForItemByAmount(String itemID, int amount) {
+        itemRepository.get(itemID).reduceStockByAmount(amount);
     }
 }
