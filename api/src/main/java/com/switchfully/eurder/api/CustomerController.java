@@ -37,6 +37,12 @@ public class CustomerController {
         return customerService.getAllCustomers();
     }
 
+    @GetMapping(value = "{customerID}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public CustomerDTO getCustomerByID(@RequestHeader String authorization, @PathVariable String customerID) {
+        securityService.validateAuthorization(authorization, Feature.GET_CUSTOMER_DETAILS);
+        return customerService.getCustomerByID(customerID);
+    }
+
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public CustomerDTO createNewCustomer(@RequestBody CreateCustomerDTO createCustomerDTO) {

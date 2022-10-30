@@ -32,7 +32,6 @@ public class CustomerMapper {
     }
 
     public CustomerDTO mapCustomerToDTO(Customer customer) {
-        System.out.println(customer.getPhoneNumber());
         return new CustomerDTO()
                 .setCustomerID(customer.getCustomerID())
                 .setFirstname(customer.getFirstname())
