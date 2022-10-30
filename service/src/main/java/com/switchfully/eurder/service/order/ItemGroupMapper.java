@@ -22,6 +22,7 @@ public class ItemGroupMapper {
     public ItemGroupDTO mapItemGroupToDTO(ItemGroup itemGroup) {
         return new ItemGroupDTO()
                 .setItemID(itemGroup.getItemID())
+                .setItemName(itemGroup.getItemName())
                 .setAmount(itemGroup.getAmount())
                 .setShippingDate(itemGroup.getShippingDate())
                 .setPricePerUnit(itemGroup.getPricePerUnit())
@@ -36,7 +37,7 @@ public class ItemGroupMapper {
 
     public ItemGroupReportDTO mapItemGroupToItemGroupReportDTO(ItemGroup itemGroup) {
         return new ItemGroupReportDTO()
-                .setName("name")
+                .setName(itemGroup.getItemName())
                 .setAmount(itemGroup.getAmount())
                 .setTotalPrice(itemGroup.getTotalPrice().toString());
     }

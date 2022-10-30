@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 public class ItemGroup {
     public static final int MINIMUM_ORDER_AMOUNT_REQUIREMENT = 1;
     private final String itemID;
+    private String itemName;
     private final int amount;
     private LocalDate shippingDate;
     private Price pricePerUnit;
@@ -27,9 +28,14 @@ public class ItemGroup {
     }
 
     public void setShippingDateAndPrice(Item item) {
+        itemName = setItemName(item);
         shippingDate = setShippingDate(item);
         pricePerUnit = setPricePerUnit(item);
         totalPrice = new Price(calculateTotalPrice());
+    }
+
+    private String setItemName(Item item) {
+        return item.getName();
     }
 
     public String validateItemID(String itemID) {
@@ -61,6 +67,10 @@ public class ItemGroup {
 
     public String getItemID() {
         return itemID;
+    }
+
+    public String getItemName() {
+        return itemName;
     }
 
     public int getAmount() {

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public class ItemGroupDTO {
     private String itemID;
+    private String itemName;
     private int amount;
     private LocalDate shippingDate;
     private String pricePerUnit;
@@ -12,6 +13,11 @@ public class ItemGroupDTO {
 
     public ItemGroupDTO setItemID(String itemID) {
         this.itemID = itemID;
+        return this;
+    }
+
+    public ItemGroupDTO setItemName(String itemName) {
+        this.itemName = itemName;
         return this;
     }
 
@@ -37,6 +43,10 @@ public class ItemGroupDTO {
 
     public String getItemID() {
         return itemID;
+    }
+
+    public String getItemName() {
+        return itemName;
     }
 
     public int getAmount() {

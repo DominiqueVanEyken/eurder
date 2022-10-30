@@ -23,7 +23,8 @@ public class Order {
         orderID = ORDER_ID_PREFIX + orderDate.getYear() + order_id_suffix++;
     }
     public static void calculateTotalPrice(Order order, ItemRepository itemRepository) {
-        order.getOrderList().forEach(itemGroup -> itemGroup.setShippingDateAndPrice(itemRepository.getItemByID(itemGroup.getItemID())));
+        order.getOrderList()
+                .forEach(itemGroup -> itemGroup.setShippingDateAndPrice(itemRepository.getItemByID(itemGroup.getItemID())));
         order.totalPrice = new Price(order.getOrderList().stream()
                 .mapToDouble(ItemGroup::getTotalPriceAsDouble)
                 .sum());
