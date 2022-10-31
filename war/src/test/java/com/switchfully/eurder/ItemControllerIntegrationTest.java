@@ -1,10 +1,13 @@
 package com.switchfully.eurder;
 
 import com.switchfully.eurder.domain.Price.Price;
+import com.switchfully.eurder.domain.item.ItemRepository;
 import com.switchfully.eurder.service.item.dto.CreateItemDTO;
 import com.switchfully.eurder.service.item.dto.ItemDTO;
 import io.restassured.RestAssured;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
@@ -22,29 +25,25 @@ public class ItemControllerIntegrationTest {
 
     String adminBase64 = Base64.getEncoder().encodeToString("admin@eurder.com:password".getBytes());
 
+    @Nested
+    class getAllCustomers {
+        @Autowired
+        ItemRepository itemRepository;
+
+        @Test
+        void getAllCustomer_givenValidAuthorization() {
+            ItemDTO[] result = RestAssured.given().baseUri(BASE_URI).port(port).contentType(MediaType.APPLICATION_JSON_VALUE).when().headers("Authorization", "Basic " + adminBase64).get("items").then().assertThat().statusCode(HttpStatus.OK.value()).extract().as(ItemDTO[].class);
+
+            assertThat(result).isNotNull();
+            assertThat(result.length).isEqualTo(itemRepository.getAllItemsFromRepository().size());
+        }
+    }
+
     @Test
     void createCustomer_givenValidCustomer() {
-        CreateItemDTO createItemDTO = new CreateItemDTO()
-                .setName("name")
-                .setDescription("description")
-                .setPrice(1.1)
-                .setStockCount(3);
+        CreateItemDTO createItemDTO = new CreateItemDTO().setName("name").setDescription("description").setPrice(1.1).setStockCount(3);
 
-        ItemDTO result = RestAssured
-                .given()
-                .baseUri(BASE_URI)
-                .port(port)
-                .body(createItemDTO)
-                .contentType(MediaType.APPLICATION_JSON_VALUE)
-                .accept(MediaType.APPLICATION_JSON_VALUE)
-                .when()
-                .headers("Authorization", "Basic " + adminBase64)
-                .post("items")
-                .then()
-                .assertThat()
-                .statusCode(HttpStatus.CREATED.value())
-                .extract()
-                .as(ItemDTO.class);
+        ItemDTO result = RestAssured.given().baseUri(BASE_URI).port(port).body(createItemDTO).contentType(MediaType.APPLICATION_JSON_VALUE).accept(MediaType.APPLICATION_JSON_VALUE).when().headers("Authorization", "Basic " + adminBase64).post("items").then().assertThat().statusCode(HttpStatus.CREATED.value()).extract().as(ItemDTO.class);
 
         assertThat(result).isNotNull();
         assertThat(result.getName()).isEqualTo(createItemDTO.getName());
