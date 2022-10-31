@@ -2,6 +2,7 @@ package com.switchfully.eurder.service.item;
 
 import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.Price.Price;
+import com.switchfully.eurder.domain.item.StockStatus;
 import com.switchfully.eurder.service.item.dto.CreateItemDTO;
 import com.switchfully.eurder.service.item.dto.ItemDTO;
 import org.junit.jupiter.api.Test;
@@ -17,6 +18,7 @@ class ItemMapperTest {
     private final String description = "description";
     private final double price = 1.1;
     private final int stockCount = 2;
+    private final StockStatus stockStatus = StockStatus.STOCK_LOW;
 
     @Test
     void creatingCreateItemDTO() {
@@ -41,14 +43,14 @@ class ItemMapperTest {
                 .setName(name)
                 .setDescription(description)
                 .setPrice(new Price(price).toString())
-                .setStockCount(stockCount);
+                .setStockStatus(stockStatus.toString());
 
         assertThat(itemDTO).isNotNull();
         assertThat(itemDTO.getItemID()).isEqualTo(itemID);
         assertThat(itemDTO.getName()).isEqualTo(name);
         assertThat(itemDTO.getDescription()).isEqualTo(description);
         assertThat(itemDTO.getPrice()).isEqualTo(new Price(price).toString());
-        assertThat(itemDTO.getStockCount()).isEqualTo(stockCount);
+        assertThat(itemDTO.getStockStatus()).isEqualTo(stockStatus.toString());
     }
 
     @Test
@@ -61,7 +63,7 @@ class ItemMapperTest {
         assertThat(itemDTO.getName()).isEqualTo(name);
         assertThat(itemDTO.getDescription()).isEqualTo(description);
         assertThat(itemDTO.getPrice()).isEqualTo(new Price(price).toString());
-        assertThat(itemDTO.getStockCount()).isEqualTo(stockCount);
+        assertThat(itemDTO.getStockStatus()).isEqualTo(stockStatus.toString());
     }
 
     @Test

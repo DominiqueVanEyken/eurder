@@ -5,7 +5,7 @@ public class ItemDTO {
     private String name;
     private String description;
     private String price;
-    private int stockCount;
+    private String stockStatus;
 
     public String getItemID() {
         return itemID;
@@ -31,8 +31,8 @@ public class ItemDTO {
         return this;
     }
 
-    public ItemDTO setStockCount(int stockCount) {
-        this.stockCount = stockCount;
+    public ItemDTO setStockStatus(String stockCount) {
+        this.stockStatus = stockCount;
         return this;
     }
 
@@ -48,7 +48,7 @@ public class ItemDTO {
         return price;
     }
 
-    public int getStockCount() {
-        return stockCount;
+    public String getStockStatus() {
+        return stockStatus;
     }
 }

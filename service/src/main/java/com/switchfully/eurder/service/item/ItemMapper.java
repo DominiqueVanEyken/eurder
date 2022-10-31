@@ -25,7 +25,7 @@ public class ItemMapper {
                 .setName(item.getName())
                 .setDescription(item.getDescription())
                 .setPrice(item.getPriceWithUnit())
-                .setStockCount(item.getStockCount());
+                .setStockStatus(item.getStockStatus());
     }
 
     public List<ItemDTO> mapItemToDTO(Collection<Item> items) {

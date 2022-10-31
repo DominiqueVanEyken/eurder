@@ -2,6 +2,7 @@ package com.switchfully.eurder;
 
 import com.switchfully.eurder.domain.Price.Price;
 import com.switchfully.eurder.domain.item.ItemRepository;
+import com.switchfully.eurder.domain.item.StockStatus;
 import com.switchfully.eurder.service.item.dto.CreateItemDTO;
 import com.switchfully.eurder.service.item.dto.ItemDTO;
 import io.restassured.RestAssured;
@@ -49,6 +50,6 @@ public class ItemControllerIntegrationTest {
         assertThat(result.getName()).isEqualTo(createItemDTO.getName());
         assertThat(result.getDescription()).isEqualTo(createItemDTO.getDescription());
         assertThat(result.getPrice()).isEqualTo(new Price(createItemDTO.getPrice()).toString());
-        assertThat(result.getStockCount()).isEqualTo(createItemDTO.getStockCount());
+        assertThat(result.getStockStatus()).isEqualTo(StockStatus.STOCK_LOW.toString());
     }
 }
