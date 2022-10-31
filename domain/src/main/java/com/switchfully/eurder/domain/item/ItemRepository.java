@@ -25,19 +25,19 @@ public class ItemRepository {
                 .setName("name1")
                 .setDescription("description")
                 .setPrice(new Price(10.2))
-                .setStockCount(100)
+                .setStockCount(1)
                 .build();
         Item item2 = new ItemBuilder()
-                .setName("name1")
+                .setName("name2")
                 .setDescription("description")
-                .setPrice(new Price(10.2))
-                .setStockCount(100)
+                .setPrice(new Price(5.5))
+                .setStockCount(5)
                 .build();
         Item item3 = new ItemBuilder()
-                .setName("name1")
+                .setName("name3")
                 .setDescription("description")
-                .setPrice(new Price(10.2))
-                .setStockCount(100)
+                .setPrice(new Price(1.1))
+                .setStockCount(15)
                 .build();
         itemRepository.put(item1.getItemID(), item1);
         itemRepository.put(item2.getItemID(), item2);
@@ -63,4 +63,6 @@ public class ItemRepository {
     public void reduceStockForItemByAmount(String itemID, int amount) {
         itemRepository.get(itemID).reduceStockByAmount(amount);
     }
+
+
 }
