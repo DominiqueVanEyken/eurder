@@ -30,7 +30,6 @@ public class ItemController {
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<ItemDTO> getAllItems(@RequestHeader String authorization) {
         securityService.validateAuthorization(authorization, Feature.CHECK_STOCK);
-        //todo
         return itemService.getAllItems();
     }
 

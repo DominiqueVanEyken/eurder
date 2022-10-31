@@ -1,5 +1,6 @@
 package com.switchfully.eurder.domain.order;
 
+import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.item.ItemRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,9 +21,13 @@ public class OrderRepository {
     }
 
     private void fillOrderRepository() {
-        ItemGroup itemGroup1 = new ItemGroup("IID20221001", 1);
-        ItemGroup itemGroup2 = new ItemGroup("IID20221002", 2);
-        ItemGroup itemGroup3 = new ItemGroup("IID20221003", 3);
+        List<String> itemIDs = itemRepository.getAllItemsFromRepository().stream()
+                .map(Item::getItemID)
+                .limit(3)
+                .toList();
+        ItemGroup itemGroup1 = new ItemGroup(itemIDs.get(0), 1);
+        ItemGroup itemGroup2 = new ItemGroup(itemIDs.get(1), 2);
+        ItemGroup itemGroup3 = new ItemGroup(itemIDs.get(2), 3);
         Order order1 = new Order("CID20221002", List.of(itemGroup1, itemGroup2, itemGroup3));
         Order.calculateTotalPrice(order1, itemRepository);
         Order order2 = new Order("CID20221003", List.of(itemGroup1, itemGroup2, itemGroup3));

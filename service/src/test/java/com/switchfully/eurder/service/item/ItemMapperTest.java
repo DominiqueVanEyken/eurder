@@ -6,6 +6,8 @@ import com.switchfully.eurder.service.item.dto.CreateItemDTO;
 import com.switchfully.eurder.service.item.dto.ItemDTO;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ItemMapperTest {
@@ -17,7 +19,7 @@ class ItemMapperTest {
     private final int stockCount = 2;
 
     @Test
-    void creatingCreateCustomerDTO() {
+    void creatingCreateItemDTO() {
         CreateItemDTO createItemDTO = new CreateItemDTO()
                 .setName(name)
                 .setDescription(description)
@@ -33,7 +35,7 @@ class ItemMapperTest {
     }
 
     @Test
-    void creatingCustomerDTO() {
+    void creatingItemDTO() {
         ItemDTO itemDTO = new ItemDTO()
                 .setItemID(itemID)
                 .setName(name)
@@ -50,7 +52,7 @@ class ItemMapperTest {
     }
 
     @Test
-    void mappingCustomerToDTO() {
+    void mappingItemToDTO() {
         Item item = new Item(name, description, new Price(price), stockCount);
 
         ItemDTO itemDTO = itemMapper.mapItemToDTO(item);
@@ -63,7 +65,19 @@ class ItemMapperTest {
     }
 
     @Test
-    void mappingDTOToCustomer() {
+    void mappingItemToDTO_givenList() {
+        Item item1 = new Item(name, description, new Price(price), stockCount);
+        Item item2 = new Item(name, description, new Price(price), stockCount);
+        List<Item> itemList = List.of(item1, item2);
+
+        List<ItemDTO> itemDTO = itemMapper.mapItemToDTO(itemList);
+
+        assertThat(itemDTO).isNotNull();
+        assertThat(itemDTO.size()).isGreaterThan(0);
+    }
+
+    @Test
+    void mappingDTOToItem() {
         CreateItemDTO createItemDTO = new CreateItemDTO()
                 .setName(name)
                 .setDescription(description)

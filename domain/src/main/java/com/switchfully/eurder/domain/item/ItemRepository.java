@@ -63,6 +63,4 @@ public class ItemRepository {
     public void reduceStockForItemByAmount(String itemID, int amount) {
         itemRepository.get(itemID).reduceStockByAmount(amount);
     }
-
-
 }

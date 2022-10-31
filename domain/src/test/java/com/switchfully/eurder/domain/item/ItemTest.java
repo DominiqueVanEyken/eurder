@@ -25,7 +25,7 @@ class ItemTest {
             assertThat(item.getDescription()).isEqualTo(description);
             assertThat(item.getPriceWithUnit()).isEqualTo(price.toString());
             assertThat(item.getStockCount()).isEqualTo(stockCount);
-            assertThat(item.toString()).isEqualTo(String.format("Item{name=%s, description=%s, price=%s, stockCount=%d", name, description, price, stockCount));
+            assertThat(item.toString()).isEqualTo(String.format("Item{itemID=%s, name=%s, description=%s, price=%s, stockCount=%d", "IID20221007", name, description, price, stockCount));
         }
         @Test
         void creatingAnItemWithItemBuilder() {
@@ -41,7 +41,7 @@ class ItemTest {
             assertThat(item.getDescription()).isEqualTo(description);
             assertThat(item.getPriceWithUnit()).isEqualTo(price.toString());
             assertThat(item.getStockCount()).isEqualTo(stockCount);
-            assertThat(item.toString()).isEqualTo(String.format("Item{name=%s, description=%s, price=%s, stockCount=%d", name, description, price, stockCount));
+            assertThat(item.toString()).isEqualTo(String.format("Item{itemID=%s, name=%s, description=%s, price=%s, stockCount=%d","IID20221006" ,name, description, price, stockCount));
         }
 
         @Test

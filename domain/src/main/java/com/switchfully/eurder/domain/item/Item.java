@@ -61,7 +61,7 @@ public class Item {
 
     @Override
     public String toString() {
-        return String.format("Item{name=%s, description=%s, price=%s, stockCount=%d", name, description, price, stockCount);
+        return String.format("Item{itemID=%s, name=%s, description=%s, price=%s, stockCount=%d", itemID, name, description, price, stockCount);
     }
 
     public boolean isInStock(int amount) {
