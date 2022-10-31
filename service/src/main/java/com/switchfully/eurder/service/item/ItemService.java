@@ -27,4 +27,8 @@ public class ItemService {
     public List<ItemDTO> getAllItems() {
         return itemMapper.mapItemToDTO(itemRepository.getAllItemsFromRepository());
     }
+
+    public List<ItemDTO> getItemsOnStockStatusFiler(String stockStatus) {
+        return itemMapper.mapItemToDTO(itemRepository.getAllItemsByStockStatusFilter(stockStatus));
+    }
 }

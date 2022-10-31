@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
@@ -31,6 +32,12 @@ public class ItemController {
     public List<ItemDTO> getAllItems(@RequestHeader String authorization) {
         securityService.validateAuthorization(authorization, Feature.CHECK_STOCK);
         return itemService.getAllItems();
+    }
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, params = "stockStatus")
+    public List<ItemDTO> getAllItemsOnStockStatusFilter(@RequestHeader String authorization, @RequestParam String stockStatus) {
+        securityService.validateAuthorization(authorization, Feature.CHECK_STOCK);
+        return itemService.getItemsOnStockStatusFiler(stockStatus);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

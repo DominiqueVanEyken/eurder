@@ -63,4 +63,10 @@ public class ItemRepository {
     public void reduceStockForItemByAmount(String itemID, int amount) {
         itemRepository.get(itemID).reduceStockByAmount(amount);
     }
+
+    public Collection<Item> getAllItemsByStockStatusFilter(String stockStatus) {
+        return itemRepository.values().stream()
+                .filter(item -> item.getStockStatus().equals(stockStatus.toUpperCase()))
+                .toList();
+    }
 }
