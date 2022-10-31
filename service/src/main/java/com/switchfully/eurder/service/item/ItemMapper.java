@@ -6,6 +6,9 @@ import com.switchfully.eurder.domain.Price.Price;
 import com.switchfully.eurder.service.item.dto.CreateItemDTO;
 import com.switchfully.eurder.service.item.dto.ItemDTO;
 
+import java.util.Collection;
+import java.util.List;
+
 public class ItemMapper {
     protected Item mapDTOToItem(CreateItemDTO createItemDTO) {
         return new ItemBuilder()
@@ -23,5 +26,11 @@ public class ItemMapper {
                 .setDescription(item.getDescription())
                 .setPrice(item.getPriceWithUnit())
                 .setStockCount(item.getStockCount());
+    }
+
+    public List<ItemDTO> mapItemToDTO(Collection<Item> items) {
+        return items.stream()
+                .map(this::mapItemToDTO)
+                .toList();
     }
 }
