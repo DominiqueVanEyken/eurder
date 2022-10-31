@@ -25,6 +25,7 @@ class ItemTest {
             assertThat(item.getDescription()).isEqualTo(description);
             assertThat(item.getPriceWithUnit()).isEqualTo(price.toString());
             assertThat(item.getStockCount()).isEqualTo(stockCount);
+            assertThat(item.getStockStatus()).isEqualTo(StockStatus.STOCK_HIGH.toString());
             assertThat(item.toString()).isEqualTo(String.format("Item{itemID=%s, name=%s, description=%s, price=%s, stockCount=%d", item.getItemID(), name, description, price, stockCount));
         }
 
@@ -37,6 +38,7 @@ class ItemTest {
             assertThat(item.getDescription()).isEqualTo(description);
             assertThat(item.getPriceWithUnit()).isEqualTo(price.toString());
             assertThat(item.getStockCount()).isEqualTo(stockCount);
+            assertThat(item.getStockStatus()).isEqualTo(StockStatus.STOCK_HIGH.toString());
             assertThat(item.toString()).isEqualTo(String.format("Item{itemID=%s, name=%s, description=%s, price=%s, stockCount=%d", item.getItemID(), name, description, price, stockCount));
         }
 

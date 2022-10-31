@@ -3,6 +3,8 @@ package com.switchfully.eurder.domain.item;
 import com.switchfully.eurder.domain.Price.Price;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -58,5 +60,13 @@ class ItemRepositoryTest {
         itemRepository.addItem(item);
         itemRepository.reduceStockForItemByAmount(item.getItemID(), amountToReduce);
         assertThat(item.getStockCount() == stockBefore - amountToReduce).isTrue();
+    }
+
+    @Test
+    void getAllItemsByStockStatusFilter() {
+        Collection<Item> itemList = itemRepository.getAllItemsByStockStatusFilter("low");
+
+        assertThat(itemList).isNotNull();
+        assertThat(itemList.size()).isEqualTo(1);
     }
 }
