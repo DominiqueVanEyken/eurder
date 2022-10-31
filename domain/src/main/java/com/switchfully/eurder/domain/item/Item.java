@@ -4,7 +4,7 @@ import com.switchfully.eurder.domain.Price.Price;
 
 import java.time.LocalDate;
 
-public class Item {
+public class Item implements Comparable<Item> {
     public static final String ITEM_ID_PREFIX = "IID";
     private static int itemIDSuffix = 1001;
     private final String itemID;
@@ -87,5 +87,10 @@ public class Item {
     @Override
     public String toString() {
         return String.format("Item{itemID=%s, name=%s, description=%s, price=%s, stockCount=%d", itemID, name, description, price, stockCount);
+    }
+
+    @Override
+    public int compareTo(Item other) {
+        return stockCount - other.getStockCount();
     }
 }

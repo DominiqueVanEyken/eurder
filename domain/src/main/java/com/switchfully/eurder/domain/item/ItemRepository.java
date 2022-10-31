@@ -45,7 +45,7 @@ public class ItemRepository {
     }
 
     public Collection<Item> getAllItemsFromRepository() {
-        return itemRepository.values();
+        return itemRepository.values().stream().sorted().toList();
     }
 
     public void addItem(Item item) {
