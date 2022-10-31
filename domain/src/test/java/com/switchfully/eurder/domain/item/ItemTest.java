@@ -25,23 +25,19 @@ class ItemTest {
             assertThat(item.getDescription()).isEqualTo(description);
             assertThat(item.getPriceWithUnit()).isEqualTo(price.toString());
             assertThat(item.getStockCount()).isEqualTo(stockCount);
-            assertThat(item.toString()).isEqualTo(String.format("Item{itemID=%s, name=%s, description=%s, price=%s, stockCount=%d", "IID20221007", name, description, price, stockCount));
+            assertThat(item.toString()).isEqualTo(String.format("Item{itemID=%s, name=%s, description=%s, price=%s, stockCount=%d", item.getItemID(), name, description, price, stockCount));
         }
+
         @Test
         void creatingAnItemWithItemBuilder() {
-            Item item = new ItemBuilder()
-                    .setName(name)
-                    .setDescription(description)
-                    .setPrice(price)
-                    .setStockCount(stockCount)
-                    .build();
+            Item item = new ItemBuilder().setName(name).setDescription(description).setPrice(price).setStockCount(stockCount).build();
 
             assertThat(item).isNotNull();
             assertThat(item.getName()).isEqualTo(name);
             assertThat(item.getDescription()).isEqualTo(description);
             assertThat(item.getPriceWithUnit()).isEqualTo(price.toString());
             assertThat(item.getStockCount()).isEqualTo(stockCount);
-            assertThat(item.toString()).isEqualTo(String.format("Item{itemID=%s, name=%s, description=%s, price=%s, stockCount=%d","IID20221006" ,name, description, price, stockCount));
+            assertThat(item.toString()).isEqualTo(String.format("Item{itemID=%s, name=%s, description=%s, price=%s, stockCount=%d", item.getItemID(), name, description, price, stockCount));
         }
 
         @Test
@@ -57,33 +53,27 @@ class ItemTest {
     class givenInvalidData {
         @Test
         void itemNameIsNull() {
-            assertThatThrownBy(() -> new Item(null, description, price, stockCount))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("The provided item name is not valid");
+            assertThatThrownBy(() -> new Item(null, description, price, stockCount)).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("The provided item name is not valid");
         }
+
         @Test
         void itemNameIsLessThanTwoCharacters() {
-            assertThatThrownBy(() -> new Item("a", description, price, stockCount))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("The provided item name is not valid");
+            assertThatThrownBy(() -> new Item("a", description, price, stockCount)).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("The provided item name is not valid");
         }
+
         @Test
         void itemNameContainsOnlySpaces() {
-            assertThatThrownBy(() -> new Item("  ", description, price, stockCount))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("The provided item name is not valid");
+            assertThatThrownBy(() -> new Item("  ", description, price, stockCount)).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("The provided item name is not valid");
         }
+
         @Test
         void priceIsZero() {
-            assertThatThrownBy(() -> new Item(name, description, new Price(0.0), stockCount))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("The provided price cannot be 0");
+            assertThatThrownBy(() -> new Item(name, description, new Price(0.0), stockCount)).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("The provided price cannot be 0");
         }
+
         @Test
         void priceIsNegative() {
-            assertThatThrownBy(() -> new Item(name, description, new Price(-1.0), stockCount))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("The provided price cannot be 0");
+            assertThatThrownBy(() -> new Item(name, description, new Price(-1.0), stockCount)).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("The provided price cannot be 0");
         }
     }
 
