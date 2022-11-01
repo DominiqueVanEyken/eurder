@@ -12,7 +12,7 @@ class ItemGroupShippingTest {
 
     @Test
     void creatingItemGroupShipping() {
-        String itemID = "IID20221001";
+        String itemID = itemRepository.getAllItemsFromRepository().stream().toList().get(0).getItemID();
         Address address = new Address("streetName", "1", "1111", "city");
         ItemGroup itemGroup = new ItemGroup(itemID, 2);
         itemGroup.setShippingDateAndPrice(itemRepository.getItemByID(itemID));
