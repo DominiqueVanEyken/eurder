@@ -1,11 +1,14 @@
 package com.switchfully.eurder.domain.order;
 
+import com.switchfully.eurder.domain.customer.Customer;
+import com.switchfully.eurder.domain.customer.CustomerRepository;
 import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.item.ItemRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.*;
 
 @Repository
@@ -13,9 +16,11 @@ public class OrderRepository {
     private final Logger log = LoggerFactory.getLogger(OrderRepository.class);
     private final Map<String, Order> orderRepository;
     private final ItemRepository itemRepository;
+    private final CustomerRepository customerRepository;
 
-    public OrderRepository(ItemRepository itemRepository) {
+    public OrderRepository(ItemRepository itemRepository, CustomerRepository customerRepository) {
         this.itemRepository = itemRepository;
+        this.customerRepository = customerRepository;
         orderRepository = new HashMap<>();
         fillOrderRepository();
     }
@@ -67,5 +72,34 @@ public class OrderRepository {
         return orderRepository.values().stream()
                 .filter(order -> order.getCustomerID().equals(customerID))
                 .toList();
+    }
+
+    private boolean itemGroupShipsToday(ItemGroup itemGroup) {
+        LocalDate shippingDate = itemGroup.getShippingDate();
+        LocalDate today = LocalDate.now();
+        return shippingDate.getYear() == today.getYear() && shippingDate.getMonth().equals(today.getMonth()) && shippingDate.getDayOfMonth() == today.getDayOfMonth();
+    }
+
+//    public List<ShippingReport> getItemGroupsShippingToday() {
+//        return orderRepository.values().stream()
+//                .map(order -> new ShippingReport(order.getCustomerID(), order.getOrderList().stream()
+//                        .filter(this::itemGroupShipsToday)
+//                        .toList()))
+//                .toList();
+//    }
+
+    public List<ShippingReport> getShippingReportPerItemGroup() {
+        log.info("Generating shipping report");
+        List<ShippingReport> shippingReports = new ArrayList<>();
+        for (Order order : orderRepository.values()) {
+            Customer customer = null;
+            for (ItemGroup itemGroup : order.getOrderList()) {
+                if (itemGroupShipsToday(itemGroup)) {
+                    customer = customerRepository.findCustomerByID(order.getCustomerID());
+                    shippingReports.add(new ShippingReport(customer.getFullAddress(), itemGroup));
+                }
+            }
+        }
+        return shippingReports;
     }
 }

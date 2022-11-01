@@ -9,7 +9,7 @@ import static com.switchfully.eurder.domain.customer.Feature.*;
 
 public enum Role {
     CUSTOMER(Lists.newArrayList(ORDER_ITEMS, VIEW_REPORT)),
-    ADMIN(Lists.newArrayList(CREATE_ITEM, UPDATE_ITEM, CHECK_STOCK, GET_ALL_CUSTOMERS, GET_CUSTOMER_DETAILS));
+    ADMIN(Lists.newArrayList(CREATE_ITEM, UPDATE_ITEM, CHECK_STOCK, GET_ALL_CUSTOMERS, GET_CUSTOMER_DETAILS, GET_SHIPPING_ORDER));
 
     private final List<Feature> features;
 

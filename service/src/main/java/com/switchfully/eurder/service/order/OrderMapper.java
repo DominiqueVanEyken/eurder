@@ -2,11 +2,14 @@ package com.switchfully.eurder.service.order;
 
 import com.switchfully.eurder.domain.Price.Price;
 import com.switchfully.eurder.domain.order.Order;
+import com.switchfully.eurder.domain.order.ShippingReport;
 import com.switchfully.eurder.service.order.dto.CreateOrderDTO;
 import com.switchfully.eurder.service.order.dto.OrderDTO;
 import com.switchfully.eurder.service.order.dto.OrderReportDTO;
+import com.switchfully.eurder.service.order.dto.ShippingReportDTO;
 import com.switchfully.eurder.service.order.dto.report.ReportDTO;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class OrderMapper {
@@ -49,5 +52,11 @@ public class OrderMapper {
                         .toList())
                 .setTotalPrice(totalPrice.toString());
 
+    }
+
+    public ShippingReportDTO mapShippingReportToShippingReportDTO(List<ShippingReport> shippingReportPerItemGroup) {
+        return new ShippingReportDTO()
+                .setShippingDate(LocalDate.now())
+                .setItemGroups(itemGroupMapper.mapItemGroupToItemGroupShippingDTO(shippingReportPerItemGroup));
     }
 }

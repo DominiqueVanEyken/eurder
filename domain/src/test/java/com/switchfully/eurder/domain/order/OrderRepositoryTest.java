@@ -1,6 +1,7 @@
 package com.switchfully.eurder.domain.order;
 
 import com.switchfully.eurder.domain.Price.Price;
+import com.switchfully.eurder.domain.customer.CustomerRepository;
 import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.item.ItemRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,6 +17,7 @@ class OrderRepositoryTest {
 
     private ItemRepository itemRepository;
     private OrderRepository orderRepository;
+    private CustomerRepository customerRepository;
     private final Item item1 = new Item("name1", "description", new Price(1.1), 100);
     private final Item item2 = new Item("name2", "description", new Price(2.2), 200);
     private final String customerID = "CID20221001";
@@ -25,7 +27,8 @@ class OrderRepositoryTest {
     @BeforeEach
     void createAndFillRepository() {
         itemRepository = new ItemRepository();
-        orderRepository = new OrderRepository(itemRepository);
+        customerRepository = new CustomerRepository();
+        orderRepository = new OrderRepository(itemRepository, customerRepository);
         itemRepository.addItem(item1);
         itemRepository.addItem(item2);
         orderList = List.of(
