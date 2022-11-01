@@ -37,6 +37,15 @@ class ItemGroupTest {
         }
 
         @Test
+        void setShippingDateManually() {
+            LocalDate date = LocalDate.of(2022, 11, 1);
+            ItemGroup itemGroup = new ItemGroup(itemIDHighStock, amount);
+            itemGroup.setShippingDate(date);
+
+            assertThat(itemGroup.getShippingDate()).isEqualTo(date);
+        }
+
+        @Test
         void creatingAnItemGroup_itemsNotInStock() {
             ItemGroup itemGroup = new ItemGroup(itemIDLowStock, amount);
             itemGroup.setShippingDateAndPrice(itemLowStock);

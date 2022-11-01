@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.regex.Pattern;
 
 public class ItemGroup {
-    public static final int MINIMUM_ORDER_AMOUNT_REQUIREMENT = 1;
+    private static final int MINIMUM_ORDER_AMOUNT_REQUIREMENT = 1;
     private final String itemID;
     private String itemName;
     private final int amount;
@@ -28,14 +28,10 @@ public class ItemGroup {
     }
 
     public void setShippingDateAndPrice(Item item) {
-        itemName = setItemName(item);
-        shippingDate = setShippingDate(item);
-        pricePerUnit = setPricePerUnit(item);
+        itemName = item.getName();
+        shippingDate = calculateShippingDate(item);
+        pricePerUnit = item.getPrice();
         totalPrice = new Price(calculateTotalPrice());
-    }
-
-    private String setItemName(Item item) {
-        return item.getName();
     }
 
     public String validateItemID(String itemID) {
@@ -49,20 +45,20 @@ public class ItemGroup {
         return itemID;
     }
 
-    private Price setPricePerUnit(Item item) {
-        return item.getPrice();
-    }
-
     public double calculateTotalPrice() {
         return pricePerUnit.getPrice() * amount;
     }
 
-    private LocalDate setShippingDate(Item item) {
+    private LocalDate calculateShippingDate(Item item) {
         boolean itemIsInStock = item.isInStock(amount);
         if (itemIsInStock) {
             return LocalDate.now().plusDays(1);
         }
         return LocalDate.now().plusWeeks(1);
+    }
+
+    public void setShippingDate(LocalDate shippingDate) {
+        this.shippingDate = shippingDate;
     }
 
     public String getItemID() {

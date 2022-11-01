@@ -84,7 +84,7 @@ public class OrderRepository {
         log.info("Generating shipping report");
         List<ItemGroupShipping> itemGroupShippings = new ArrayList<>();
         for (Order order : orderRepository.values()) {
-            Customer customer = null;
+            Customer customer;
             for (ItemGroup itemGroup : order.getOrderList()) {
                 if (itemGroupShipsToday(itemGroup)) {
                     customer = customerRepository.findCustomerByID(order.getCustomerID());
