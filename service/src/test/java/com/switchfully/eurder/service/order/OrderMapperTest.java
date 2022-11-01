@@ -4,6 +4,7 @@ import com.switchfully.eurder.domain.Price.Price;
 import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.item.ItemRepository;
 import com.switchfully.eurder.domain.order.ItemGroup;
+import com.switchfully.eurder.domain.order.ItemGroupShipping;
 import com.switchfully.eurder.domain.order.Order;
 import com.switchfully.eurder.service.order.dto.*;
 import com.switchfully.eurder.service.order.dto.itemgroup.CreateItemGroupDTO;
@@ -147,6 +148,20 @@ class OrderMapperTest {
         assertThat(reportDTO).isNotNull();
         assertThat(reportDTO.getTotalPrice()).isEqualTo(new Price(order1.getTotalPrice().getPrice() * 2).toString());
         assertThat(reportDTO.getOrderReports()).isNotNull();
+    }
+
+    @Test
+    void mapShippingReportToShippingReportDTO() {
+        String address = "address";
+        ItemGroup itemGroup = new ItemGroup(itemRepository.getAllItemsFromRepository().stream().toList().get(0).getItemID(), amount);
+        itemGroup.setShippingDateAndPrice(item);
+        List<ItemGroupShipping> itemGroupShipping = List.of(new ItemGroupShipping(address, itemGroup), new ItemGroupShipping(address, itemGroup));
+
+        ShippingReportDTO result = orderMapper.mapShippingReportToShippingReportDTO(itemGroupShipping);
+
+        assertThat(result).isNotNull();
+        assertThat(result.getShippingDate()).isEqualTo(LocalDate.now());
+        assertThat(result.getItemGroups().size()).isEqualTo(itemGroupShipping.size());
     }
 
 }

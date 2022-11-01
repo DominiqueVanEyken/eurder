@@ -4,9 +4,11 @@ package com.switchfully.eurder.service.order;
 import com.switchfully.eurder.domain.Price.Price;
 import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.order.ItemGroup;
+import com.switchfully.eurder.domain.order.ItemGroupShipping;
 import com.switchfully.eurder.service.order.dto.itemgroup.CreateItemGroupDTO;
 import com.switchfully.eurder.service.order.dto.itemgroup.ItemGroupDTO;
 import com.switchfully.eurder.service.order.dto.itemgroup.ItemGroupReportDTO;
+import com.switchfully.eurder.service.order.dto.itemgroup.ItemGroupShippingDTO;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -143,5 +145,35 @@ class ItemGroupMapperTest {
 
         assertThat(orderList).isNotNull();
         assertThat(orderList.size()).isEqualTo(2);
+    }
+
+    @Test
+    void mapItemGroupToItemGroupShippingDTO() {
+        String address = "address";
+        ItemGroup itemGroup = new ItemGroup(itemID, amount);
+        itemGroup.setShippingDateAndPrice(item);
+        ItemGroupShipping itemGroupShipping = new ItemGroupShipping(address, itemGroup);
+
+        ItemGroupShippingDTO result = itemGroupMapper.mapItemGroupToItemGroupShippingDTO(itemGroupShipping);
+
+        assertThat(result.getItemID()).isEqualTo(itemGroupShipping.getItemID());
+        assertThat(result.getItemName()).isEqualTo(itemGroupShipping.getItemName());
+        assertThat(result.getAmount()).isEqualTo(itemGroupShipping.getAmount());
+        assertThat(result.getTotalPrice()).isEqualTo(itemGroupShipping.getTotalPrice());
+        assertThat(result.getPricePerUnit()).isEqualTo(itemGroupShipping.getPricePerUnit());
+        assertThat(result.getShippingAddress()).isEqualTo(itemGroupShipping.getShippingAddress());
+    }
+
+    @Test
+    void mapItemGroupToItemGroupShippingDTO_givenList() {
+        String address = "address";
+        ItemGroup itemGroup = new ItemGroup(itemID, amount);
+        itemGroup.setShippingDateAndPrice(item);
+        List<ItemGroupShipping> itemGroupShipping = List.of(new ItemGroupShipping(address, itemGroup), new ItemGroupShipping(address, itemGroup));
+
+        List<ItemGroupShippingDTO> result = itemGroupMapper.mapItemGroupToItemGroupShippingDTO(itemGroupShipping);
+
+        assertThat(result).isNotNull();
+        assertThat(result.size()).isEqualTo(itemGroupShipping.size());
     }
 }
