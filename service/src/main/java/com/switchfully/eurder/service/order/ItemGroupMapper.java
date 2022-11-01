@@ -1,7 +1,7 @@
 package com.switchfully.eurder.service.order;
 
 import com.switchfully.eurder.domain.order.ItemGroup;
-import com.switchfully.eurder.domain.order.ShippingReport;
+import com.switchfully.eurder.domain.order.ItemGroupShipping;
 import com.switchfully.eurder.service.order.dto.itemgroup.CreateItemGroupDTO;
 import com.switchfully.eurder.service.order.dto.itemgroup.ItemGroupDTO;
 import com.switchfully.eurder.service.order.dto.itemgroup.ItemGroupReportDTO;
@@ -50,18 +50,18 @@ public class ItemGroupMapper {
                 .toList();
     }
 
-    public ItemGroupShippingDTO mapItemGroupToItemGroupShippingDTO(ShippingReport shippingReport) {
+    public ItemGroupShippingDTO mapItemGroupToItemGroupShippingDTO(ItemGroupShipping itemGroupShipping) {
         return new ItemGroupShippingDTO()
-                .setItemID(shippingReport.getItemID())
-                .setItemName(shippingReport.getItemName())
-                .setAmount(shippingReport.getAmount())
-                .setPricePerUnit(shippingReport.getPricePerUnit())
-                .setTotalPrice(shippingReport.getTotalPrice())
-                .setShippingAddress(shippingReport.getShippingAddress());
+                .setItemID(itemGroupShipping.getItemID())
+                .setItemName(itemGroupShipping.getItemName())
+                .setAmount(itemGroupShipping.getAmount())
+                .setPricePerUnit(itemGroupShipping.getPricePerUnit())
+                .setTotalPrice(itemGroupShipping.getTotalPrice())
+                .setShippingAddress(itemGroupShipping.getShippingAddress());
     }
 
-    public List<ItemGroupShippingDTO> mapItemGroupToItemGroupShippingDTO(List<ShippingReport> shippingReportPerItemGroup) {
-        return shippingReportPerItemGroup.stream()
+    public List<ItemGroupShippingDTO> mapItemGroupToItemGroupShippingDTO(List<ItemGroupShipping> itemGroupShippings) {
+        return itemGroupShippings.stream()
                 .map(this::mapItemGroupToItemGroupShippingDTO)
                 .toList();
     }

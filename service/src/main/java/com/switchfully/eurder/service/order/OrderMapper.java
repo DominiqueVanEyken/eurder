@@ -2,7 +2,7 @@ package com.switchfully.eurder.service.order;
 
 import com.switchfully.eurder.domain.Price.Price;
 import com.switchfully.eurder.domain.order.Order;
-import com.switchfully.eurder.domain.order.ShippingReport;
+import com.switchfully.eurder.domain.order.ItemGroupShipping;
 import com.switchfully.eurder.service.order.dto.CreateOrderDTO;
 import com.switchfully.eurder.service.order.dto.OrderDTO;
 import com.switchfully.eurder.service.order.dto.OrderReportDTO;
@@ -54,9 +54,9 @@ public class OrderMapper {
 
     }
 
-    public ShippingReportDTO mapShippingReportToShippingReportDTO(List<ShippingReport> shippingReportPerItemGroup) {
+    public ShippingReportDTO mapShippingReportToShippingReportDTO(List<ItemGroupShipping> itemGroupShippings) {
         return new ShippingReportDTO()
                 .setShippingDate(LocalDate.now())
-                .setItemGroups(itemGroupMapper.mapItemGroupToItemGroupShippingDTO(shippingReportPerItemGroup));
+                .setItemGroups(itemGroupMapper.mapItemGroupToItemGroupShippingDTO(itemGroupShippings));
     }
 }

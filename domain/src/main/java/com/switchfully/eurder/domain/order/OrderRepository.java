@@ -80,26 +80,18 @@ public class OrderRepository {
         return shippingDate.getYear() == today.getYear() && shippingDate.getMonth().equals(today.getMonth()) && shippingDate.getDayOfMonth() == today.getDayOfMonth();
     }
 
-//    public List<ShippingReport> getItemGroupsShippingToday() {
-//        return orderRepository.values().stream()
-//                .map(order -> new ShippingReport(order.getCustomerID(), order.getOrderList().stream()
-//                        .filter(this::itemGroupShipsToday)
-//                        .toList()))
-//                .toList();
-//    }
-
-    public List<ShippingReport> getShippingReportPerItemGroup() {
+    public List<ItemGroupShipping> getShippingReportPerItemGroup() {
         log.info("Generating shipping report");
-        List<ShippingReport> shippingReports = new ArrayList<>();
+        List<ItemGroupShipping> itemGroupShippings = new ArrayList<>();
         for (Order order : orderRepository.values()) {
             Customer customer = null;
             for (ItemGroup itemGroup : order.getOrderList()) {
                 if (itemGroupShipsToday(itemGroup)) {
                     customer = customerRepository.findCustomerByID(order.getCustomerID());
-                    shippingReports.add(new ShippingReport(customer.getFullAddress(), itemGroup));
+                    itemGroupShippings.add(new ItemGroupShipping(customer.getFullAddress(), itemGroup));
                 }
             }
         }
-        return shippingReports;
+        return itemGroupShippings;
     }
 }
