@@ -42,6 +42,7 @@ public class OrderRepository {
         orderRepository.put(order1.getOrderID(), order1);
         orderRepository.put(order2.getOrderID(), order2);
         orderRepository.put(order3.getOrderID(), order3);
+        orderRepository.get(order1.getOrderID()).getOrderList().get(0).setShippingDate(LocalDate.now());
     }
 
 

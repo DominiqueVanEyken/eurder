@@ -7,6 +7,7 @@ import com.switchfully.eurder.domain.item.ItemRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -20,7 +21,7 @@ class OrderRepositoryTest {
     private CustomerRepository customerRepository;
     private final Item item1 = new Item("name1", "description", new Price(1.1), 100);
     private final Item item2 = new Item("name2", "description", new Price(2.2), 200);
-    private final String customerID = "CID20221001";
+    private String customerID;
     private List<ItemGroup> orderList;
     private Order order;
 
@@ -35,6 +36,7 @@ class OrderRepositoryTest {
                 new ItemGroup(item1.getItemID(), 1),
                 new ItemGroup(item2.getItemID(), 2)
         );
+        customerID = customerRepository.getAllCustomers().stream().toList().get(0).getCustomerID();
         order = new Order(customerID, orderList);
     }
 
@@ -70,5 +72,15 @@ class OrderRepositoryTest {
 
         assertThat(orders).isNotNull();
         assertThat(orders).isEqualTo(List.of(order));
+    }
+
+    @Test
+    void itemGroupShipsToday() {
+        orderRepository.createOrder(order);
+        order.getOrderList().get(0).setShippingDate(LocalDate.now());
+        List<ItemGroupShipping> itemGroupShippings = orderRepository.getShippingReportPerItemGroup();
+
+        assertThat(itemGroupShippings).isNotNull();
+        assertThat(itemGroupShippings.size()).isEqualTo(1);
     }
 }
