@@ -5,6 +5,7 @@ import com.switchfully.eurder.domain.Price.Price;
 import com.switchfully.eurder.domain.item.StockStatus;
 import com.switchfully.eurder.service.item.dto.CreateItemDTO;
 import com.switchfully.eurder.service.item.dto.ItemDTO;
+import com.switchfully.eurder.service.item.dto.UpdateItemDTO;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -33,7 +34,6 @@ class ItemMapperTest {
         assertThat(createItemDTO.getDescription()).isEqualTo(description);
         assertThat(createItemDTO.getPrice()).isEqualTo(price);
         assertThat(createItemDTO.getStockCount()).isEqualTo(stockCount);
-
     }
 
     @Test
@@ -51,6 +51,21 @@ class ItemMapperTest {
         assertThat(itemDTO.getDescription()).isEqualTo(description);
         assertThat(itemDTO.getPrice()).isEqualTo(new Price(price).toString());
         assertThat(itemDTO.getStockStatus()).isEqualTo(stockStatus.toString());
+    }
+
+    @Test
+    void creatingUpdateItemDTO() {
+        UpdateItemDTO updateItemDTO = new UpdateItemDTO()
+                .setName(name)
+                .setDescription(description)
+                .setPrice(price)
+                .setStockCount(stockCount);
+
+        assertThat(updateItemDTO).isNotNull();
+        assertThat(updateItemDTO.getName()).isEqualTo(name);
+        assertThat(updateItemDTO.getDescription()).isEqualTo(description);
+        assertThat(updateItemDTO.getPrice()).isEqualTo(price);
+        assertThat(updateItemDTO.getStockCount()).isEqualTo(stockCount);
     }
 
     @Test

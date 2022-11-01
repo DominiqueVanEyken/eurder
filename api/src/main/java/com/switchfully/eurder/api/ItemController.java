@@ -1,10 +1,10 @@
 package com.switchfully.eurder.api;
 
 import com.switchfully.eurder.domain.customer.Feature;
-import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.service.item.ItemService;
 import com.switchfully.eurder.service.item.dto.CreateItemDTO;
 import com.switchfully.eurder.service.item.dto.ItemDTO;
+import com.switchfully.eurder.service.item.dto.UpdateItemDTO;
 import com.switchfully.eurder.service.security.SecurityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
@@ -31,12 +30,14 @@ public class ItemController {
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<ItemDTO> getAllItems(@RequestHeader String authorization) {
         securityService.validateAuthorization(authorization, Feature.CHECK_STOCK);
+        log.debug("Request for all items in stock");
         return itemService.getAllItems();
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, params = "stockStatus")
     public List<ItemDTO> getAllItemsOnStockStatusFilter(@RequestHeader String authorization, @RequestParam String stockStatus) {
         securityService.validateAuthorization(authorization, Feature.CHECK_STOCK);
+        log.debug("Request for all items in stock with stockStatus filter on " + stockStatus);
         return itemService.getItemsOnStockStatusFiler(stockStatus);
     }
 
@@ -44,8 +45,16 @@ public class ItemController {
     @ResponseStatus(HttpStatus.CREATED)
     public ItemDTO addNewItemToStock(@RequestHeader String authorization, @RequestBody CreateItemDTO createItemDTO) {
         securityService.validateAuthorization(authorization, Feature.CREATE_ITEM);
-        log.info("request to add new item to stock");
+        log.debug("request to add new item to stock");
         return itemService.addNewItemToStock(createItemDTO);
+    }
+
+    @PutMapping(value = "{itemID}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public ItemDTO updateAnExistingItem(@RequestHeader String authorization,@PathVariable String itemID, @RequestBody UpdateItemDTO updateItemDTO) {
+        securityService.validateAuthorization(authorization, Feature.UPDATE_ITEM);
+        log.debug("Request to update item with ID " + itemID);
+        return itemService.updateItemByID(itemID, updateItemDTO);
     }
 
 }

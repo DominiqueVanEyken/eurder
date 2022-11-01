@@ -8,9 +8,9 @@ public class Item implements Comparable<Item> {
     public static final String ITEM_ID_PREFIX = "IID";
     private static int itemIDSuffix = 1001;
     private final String itemID;
-    private final String name;
-    private final String description;
-    private final Price price;
+    private String name;
+    private String description;
+    private Price price;
     private int stockCount;
     private StockStatus stockStatus;
 
@@ -54,6 +54,14 @@ public class Item implements Comparable<Item> {
         } else {
             stockStatus = StockStatus.STOCK_HIGH;
         }
+    }
+
+    public void updateItem(String name, String description, double price, int stockCount) {
+        this.name = validateName(name);
+        this.description = description;
+        this.price = validatePrice(new Price(price));
+        this.stockCount = stockCount;
+        setStockStatus();
     }
 
     public String getItemID() {

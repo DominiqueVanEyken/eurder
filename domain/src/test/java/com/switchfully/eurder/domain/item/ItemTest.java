@@ -49,6 +49,20 @@ class ItemTest {
             item.reduceStockByAmount(amountToReduce);
             assertThat(item.getStockCount() == stockCount - amountToReduce).isTrue();
         }
+
+        @Test
+        void updateItem() {
+            Item item = new ItemBuilder().setName(name).setDescription(description).setPrice(price).setStockCount(stockCount).build();
+            String updateName = "update";
+
+            item.updateItem(updateName, description, price.getPrice(), stockCount);
+            assertThat(item.getName()).isEqualTo(updateName);
+            assertThat(item.getDescription()).isEqualTo(description);
+            assertThat(item.getPriceWithUnit()).isEqualTo(price.toString());
+            assertThat(item.getStockCount()).isEqualTo(stockCount);
+            assertThat(item.getStockStatus()).isEqualTo(StockStatus.STOCK_HIGH.toString());
+            assertThat(item.toString()).isEqualTo(String.format("Item{itemID=%s, name=%s, description=%s, price=%s, stockCount=%d", item.getItemID(), updateName, description, price, stockCount));
+        }
     }
 
     @Nested

@@ -4,6 +4,7 @@ import com.switchfully.eurder.domain.item.ItemRepository;
 import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.service.item.dto.CreateItemDTO;
 import com.switchfully.eurder.service.item.dto.ItemDTO;
+import com.switchfully.eurder.service.item.dto.UpdateItemDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,5 +31,11 @@ public class ItemService {
 
     public List<ItemDTO> getItemsOnStockStatusFiler(String stockStatus) {
         return itemMapper.mapItemToDTO(itemRepository.getAllItemsByStockStatusFilter(stockStatus));
+    }
+
+    public ItemDTO updateItemByID(String itemID, UpdateItemDTO updateItemDTO) {
+        Item itemToUpdate = itemRepository.getItemByID(itemID);
+        itemToUpdate.updateItem(updateItemDTO.getName(), updateItemDTO.getDescription(), updateItemDTO.getPrice(), updateItemDTO.getStockCount());
+        return itemMapper.mapItemToDTO(itemToUpdate);
     }
 }
