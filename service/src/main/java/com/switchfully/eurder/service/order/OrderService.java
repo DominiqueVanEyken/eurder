@@ -35,4 +35,8 @@ public class OrderService {
     public ShippingReportDTO getShippingReportForToday() {
         return orderMapper.mapShippingReportToShippingReportDTO(orderRepository.getShippingReportPerItemGroup());
     }
+
+    public OrderDTO getOrderByID(String customerID, String orderID, String username) {
+        return orderMapper.mapOrderToDTO(orderRepository.reorderOrderByID(customerID, orderID, username));
+    }
 }

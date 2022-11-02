@@ -2,6 +2,7 @@ package com.switchfully.eurder.domain.customer;
 
 import com.switchfully.eurder.domain.address.Address;
 import com.switchfully.eurder.domain.address.AddressBuilder;
+import com.switchfully.eurder.domain.exceptions.UnauthorizedException;
 import com.switchfully.eurder.domain.phonenumber.CountryCode;
 import com.switchfully.eurder.domain.phonenumber.PhoneNumber;
 import org.slf4j.Logger;
@@ -81,5 +82,12 @@ public class CustomerRepository {
         customerRepository.put(customer1.getCustomerID(), customer1);
         customerRepository.put(customer2.getCustomerID(), customer2);
         customerRepository.put(customer3.getCustomerID(), customer3);
+    }
+
+    public void validateUsernameBelongsToCustomerID(String customerID, String username) {
+        Customer customer = customerRepository.get(customerID);
+        if (!customer.getEmailAddress().equals(username)) {
+            throw new UnauthorizedException();
+        }
     }
 }

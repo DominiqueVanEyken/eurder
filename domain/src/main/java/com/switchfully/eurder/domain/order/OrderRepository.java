@@ -2,6 +2,7 @@ package com.switchfully.eurder.domain.order;
 
 import com.switchfully.eurder.domain.customer.Customer;
 import com.switchfully.eurder.domain.customer.CustomerRepository;
+import com.switchfully.eurder.domain.exceptions.UnauthorizedException;
 import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.item.ItemRepository;
 import org.slf4j.Logger;
@@ -93,5 +94,27 @@ public class OrderRepository {
             }
         }
         return itemGroupShippings;
+    }
+
+    public void validateOrderIDBelongsToCustomer(String customerID, Order order, String username) {
+        if (!order.getCustomerID().equals(customerID)) {
+            throw new UnauthorizedException();
+        }
+        Customer customer = customerRepository.findCustomerByID(customerID);
+        if (!customer.getEmailAddress().equals(username)) {
+            throw new UnauthorizedException();
+        }
+    }
+
+    public Order reorderOrderByID(String customerID, String orderID, String username) {
+        Order orderToReoder = findOrderByID(orderID);
+        validateOrderIDBelongsToCustomer(customerID, orderToReoder, username);
+        List<ItemGroup> itemGroups = orderToReoder.getOrderList().stream()
+                .map(itemGroup -> new ItemGroup(itemGroup.getItemID(), itemGroup.getAmount()))
+                .toList();
+        Order order = new Order(customerID, itemGroups);
+        Order.calculateTotalPrice(order, itemRepository);
+        createOrder(order);
+        return order;
     }
 }

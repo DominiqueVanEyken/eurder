@@ -15,6 +15,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+import java.util.Base64;
 import java.util.Collection;
 
 @RestController
@@ -67,4 +69,11 @@ public class CustomerController {
         return orderService.orderItems(customerID, createOrderDTO);
     }
 
+    @PostMapping(value = "{customerID}/{orderID}/reorder", produces = MediaType.APPLICATION_JSON_VALUE)
+    public OrderDTO reOrderItemsByOrderID(@RequestHeader String authorization, @PathVariable String customerID, @PathVariable String orderID) {
+        securityService.validateAuthorization(authorization, Feature.ORDER_ITEMS);
+        log.debug("Requesting to reorder order with ID " + orderID);
+        String username = new String(Base64.getDecoder().decode(authorization.substring("Basic ".length()))).split(":")[0];
+        return orderService.getOrderByID(customerID, orderID, username);
+    }
 }
