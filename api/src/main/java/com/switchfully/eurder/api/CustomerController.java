@@ -15,7 +15,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.Base64;
 import java.util.Collection;
 
@@ -70,6 +69,7 @@ public class CustomerController {
     }
 
     @PostMapping(value = "{customerID}/{orderID}/reorder", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
     public OrderDTO reOrderItemsByOrderID(@RequestHeader String authorization, @PathVariable String customerID, @PathVariable String orderID) {
         securityService.validateAuthorization(authorization, Feature.ORDER_ITEMS);
         log.debug("Requesting to reorder order with ID " + orderID);

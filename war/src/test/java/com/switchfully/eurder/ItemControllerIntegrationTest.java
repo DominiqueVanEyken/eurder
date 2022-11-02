@@ -54,6 +54,9 @@ public class ItemControllerIntegrationTest {
 
         @Test
         void getAllItems_givenFilterForStockStatus() {
+            int stockCount = (int) itemRepository.getAllItemsFromRepository().stream()
+                    .filter(item -> item.getStockStatus().equals("LOW"))
+                    .count();
             ItemDTO[] result = RestAssured
                     .given()
                     .baseUri(BASE_URI)
@@ -69,7 +72,7 @@ public class ItemControllerIntegrationTest {
                     .as(ItemDTO[].class);
 
             assertThat(result).isNotNull();
-            assertThat(result.length).isEqualTo(2);
+            assertThat(result.length).isEqualTo(stockCount);
         }
     }
 

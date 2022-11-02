@@ -1,7 +1,9 @@
 package com.switchfully.eurder;
 
 import com.switchfully.eurder.domain.address.Address;
+import com.switchfully.eurder.domain.customer.Customer;
 import com.switchfully.eurder.domain.customer.CustomerRepository;
+import com.switchfully.eurder.domain.order.Order;
 import com.switchfully.eurder.domain.order.OrderRepository;
 import com.switchfully.eurder.service.customer.CustomerMapper;
 import com.switchfully.eurder.service.customer.dto.CreateCustomerDTO;
@@ -310,6 +312,77 @@ public class CustomerControllerIntegrationTest {
                     .headers("Authorization", "Basic " + base64)
                     .when()
                     .get("customers/invalidCustomerID/report")
+                    .then()
+                    .assertThat()
+                    .statusCode(HttpStatus.BAD_REQUEST.value());
+        }
+    }
+
+    @Nested
+    class reoderAnOrder {
+        @Autowired
+        private OrderRepository orderRepository;
+        @Test
+        void reOrderingAnOrder_givenValidData() {
+            Order order = orderRepository.getOrders().stream().toList().get(0);
+            Customer customer = customerRepository.findCustomerByID(order.getCustomerID());
+            String customerBase64 = Base64.getEncoder().encodeToString((customer.getEmailAddress() + ":password").getBytes());
+
+            OrderDTO result = RestAssured
+                    .given()
+                    .baseUri(BASE_URI)
+                    .port(port)
+                    .contentType(MediaType.APPLICATION_JSON_VALUE)
+                    .headers("Authorization", "Basic " + customerBase64)
+                    .when()
+                    .post("customers/" + order.getCustomerID() + "/"+ order.getOrderID() + "/reorder")
+                    .then()
+                    .assertThat()
+                    .statusCode(HttpStatus.CREATED.value())
+                    .extract()
+                    .as(OrderDTO.class);
+
+            assertThat(result).isNotNull();
+            assertThat(result.getOrderID()).isNotNull();
+            assertThat(result.getOrderDate()).isEqualTo(LocalDate.now());
+            assertThat(result.getCustomerID()).isEqualTo(customer.getCustomerID());
+            assertThat(result.getTotalPrice()).isNotNull();
+            assertThat(result.getOrderList().size()).isEqualTo(order.getOrderList().size());
+        }
+
+        @Test
+        void reOrderingAnOrder_givenInvalidCustomerData() {
+            Order order = orderRepository.getOrders().stream().toList().get(0);
+            Customer customer = customerRepository.findCustomerByID(order.getCustomerID());
+            String customerBase64 = Base64.getEncoder().encodeToString((customer.getEmailAddress() + ":password").getBytes());
+
+            RestAssured
+                    .given()
+                    .baseUri(BASE_URI)
+                    .port(port)
+                    .contentType(MediaType.APPLICATION_JSON_VALUE)
+                    .headers("Authorization", "Basic " + customerBase64)
+                    .when()
+                    .post("customers/invalidID/"+ order.getOrderID() + "/reorder")
+                    .then()
+                    .assertThat()
+                    .statusCode(HttpStatus.FORBIDDEN.value());
+        }
+
+        @Test
+        void reOrderingAnOrder_givenInvalidOrderID() {
+            Order order = orderRepository.getOrders().stream().toList().get(0);
+            Customer customer = customerRepository.findCustomerByID(order.getCustomerID());
+            String customerBase64 = Base64.getEncoder().encodeToString((customer.getEmailAddress() + ":password").getBytes());
+
+            RestAssured
+                    .given()
+                    .baseUri(BASE_URI)
+                    .port(port)
+                    .contentType(MediaType.APPLICATION_JSON_VALUE)
+                    .headers("Authorization", "Basic " + customerBase64)
+                    .when()
+                    .post("customers/" + order.getCustomerID() + "/invalidID/reorder")
                     .then()
                     .assertThat()
                     .statusCode(HttpStatus.BAD_REQUEST.value());

@@ -96,19 +96,22 @@ public class OrderRepository {
         return itemGroupShippings;
     }
 
-    public void validateOrderIDBelongsToCustomer(String customerID, Order order, String username) {
+    public boolean validateOrderIDBelongsToCustomer(String customerID, Order order, String username) {
         if (!order.getCustomerID().equals(customerID)) {
-            throw new UnauthorizedException();
+            return false;
         }
         Customer customer = customerRepository.findCustomerByID(customerID);
         if (!customer.getEmailAddress().equals(username)) {
-            throw new UnauthorizedException();
+            return false;
         }
+        return true;
     }
 
     public Order reorderOrderByID(String customerID, String orderID, String username) {
         Order orderToReoder = findOrderByID(orderID);
-        validateOrderIDBelongsToCustomer(customerID, orderToReoder, username);
+        if (!validateOrderIDBelongsToCustomer(customerID, orderToReoder, username)) {
+            throw new UnauthorizedException();
+        }
         List<ItemGroup> itemGroups = orderToReoder.getOrderList().stream()
                 .map(itemGroup -> new ItemGroup(itemGroup.getItemID(), itemGroup.getAmount()))
                 .toList();
