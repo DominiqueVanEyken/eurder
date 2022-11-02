@@ -83,11 +83,4 @@ public class CustomerRepository {
         customerRepository.put(customer2.getCustomerID(), customer2);
         customerRepository.put(customer3.getCustomerID(), customer3);
     }
-
-    public void validateUsernameBelongsToCustomerID(String customerID, String username) {
-        Customer customer = customerRepository.get(customerID);
-        if (!customer.getEmailAddress().equals(username)) {
-            throw new UnauthorizedException();
-        }
-    }
 }

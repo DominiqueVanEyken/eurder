@@ -35,8 +35,4 @@ public class CustomerService {
     public List<CustomerDTO> getAllCustomers() {
         return customerMapper.mapCustomerToDTO(customerRepository.getAllCustomers());
     }
-
-    public void validateUsernameBelongsToCustomerID(String customerID, String username) {
-        customerRepository.validateUsernameBelongsToCustomerID(customerID, username);
-    }
 }
