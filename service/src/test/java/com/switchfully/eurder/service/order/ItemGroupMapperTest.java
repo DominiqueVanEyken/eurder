@@ -4,11 +4,9 @@ package com.switchfully.eurder.service.order;
 import com.switchfully.eurder.domain.Price.Price;
 import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.order.ItemGroup;
-import com.switchfully.eurder.domain.order.ItemGroupShipping;
 import com.switchfully.eurder.service.order.dto.CreateItemGroupDTO;
 import com.switchfully.eurder.service.order.dto.ItemGroupDTO;
 import com.switchfully.eurder.service.report.dto.ItemGroupReportDTO;
-import com.switchfully.eurder.service.report.dto.ItemGroupShippingDTO;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -123,57 +121,5 @@ class ItemGroupMapperTest {
         assertThat(orderList.size()).isEqualTo(2);
     }
 
-    @Test
-    void mappingItemGroupToItemGroupReportDTO() {
-        ItemGroup itemGroup = new ItemGroup(itemID, amount);
-        itemGroup.setShippingDateAndPrice(item);
-        ItemGroupReportDTO reportDTO = itemGroupMapper.mapItemGroupToItemGroupReportDTO(itemGroup);
 
-        assertThat(reportDTO).isNotNull();
-        assertThat(reportDTO.getName()).isEqualTo(itemGroup.getItemName());
-        assertThat(reportDTO.getAmount()).isEqualTo(itemGroup.getAmount());
-        assertThat(reportDTO.getTotalPrice()).isEqualTo(itemGroup.getTotalPrice().toString());
-    }
-
-    @Test
-    void mappingItemGroupToItemGroupReportDTO_givenList() {
-        ItemGroup itemGroup1 = new ItemGroup(itemID, amount);
-        itemGroup1.setShippingDateAndPrice(item);
-        ItemGroup itemGroup2 = new ItemGroup(itemID, amount);
-        itemGroup2.setShippingDateAndPrice(item);
-        List<ItemGroupReportDTO> orderList = itemGroupMapper.mapItemGroupToItemGroupReportDTO(List.of(itemGroup1, itemGroup2));
-
-        assertThat(orderList).isNotNull();
-        assertThat(orderList.size()).isEqualTo(2);
-    }
-
-    @Test
-    void mapItemGroupToItemGroupShippingDTO() {
-        String address = "address";
-        ItemGroup itemGroup = new ItemGroup(itemID, amount);
-        itemGroup.setShippingDateAndPrice(item);
-        ItemGroupShipping itemGroupShipping = new ItemGroupShipping(address, itemGroup);
-
-        ItemGroupShippingDTO result = itemGroupMapper.mapItemGroupToItemGroupShippingDTO(itemGroupShipping);
-
-        assertThat(result.getItemID()).isEqualTo(itemGroupShipping.getItemID());
-        assertThat(result.getItemName()).isEqualTo(itemGroupShipping.getItemName());
-        assertThat(result.getAmount()).isEqualTo(itemGroupShipping.getAmount());
-        assertThat(result.getTotalPrice()).isEqualTo(itemGroupShipping.getTotalPrice());
-        assertThat(result.getPricePerUnit()).isEqualTo(itemGroupShipping.getPricePerUnit());
-        assertThat(result.getShippingAddress()).isEqualTo(itemGroupShipping.getShippingAddress());
-    }
-
-    @Test
-    void mapItemGroupToItemGroupShippingDTO_givenList() {
-        String address = "address";
-        ItemGroup itemGroup = new ItemGroup(itemID, amount);
-        itemGroup.setShippingDateAndPrice(item);
-        List<ItemGroupShipping> itemGroupShipping = List.of(new ItemGroupShipping(address, itemGroup), new ItemGroupShipping(address, itemGroup));
-
-        List<ItemGroupShippingDTO> result = itemGroupMapper.mapItemGroupToItemGroupShippingDTO(itemGroupShipping);
-
-        assertThat(result).isNotNull();
-        assertThat(result.size()).isEqualTo(itemGroupShipping.size());
-    }
 }

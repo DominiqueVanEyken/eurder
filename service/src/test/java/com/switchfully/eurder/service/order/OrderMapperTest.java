@@ -126,44 +126,4 @@ class OrderMapperTest {
         assertThat(orderDTO.getTotalPrice()).isEqualTo(totalPrice.toString());
     }
 
-    @Test
-    void mappingOrdersToOrderReportDTO() {
-        itemRepository.addItem(item);
-        Order order = new Order(customerID, List.of(new ItemGroup(item.getItemID(), amount)));
-        Order.calculateTotalPrice(order, itemRepository);
-        OrderReportDTO reportDTO = orderMapper.mapOrderToOrderReportDTO(order);
-
-        assertThat(reportDTO).isNotNull();
-        assertThat(reportDTO.getOrderID()).isEqualTo(order.getOrderID());
-        assertThat(reportDTO.getItemGroupReports()).isNotNull();
-        assertThat(reportDTO.getTotalOrderPrice()).isEqualTo(order.getTotalPrice().toString());
-    }
-
-    @Test
-    void mappingOrdersToReportDTO() {
-        itemRepository.addItem(item);
-        Order order1 = new Order(customerID, List.of(new ItemGroup(item.getItemID(), amount)));
-        Order.calculateTotalPrice(order1, itemRepository);
-
-        ReportDTO reportDTO = orderMapper.mapOrdersToReportDTO(List.of(order1, order1));
-
-        assertThat(reportDTO).isNotNull();
-        assertThat(reportDTO.getTotalPrice()).isEqualTo(new Price(order1.getTotalPrice().getPrice() * 2).toString());
-        assertThat(reportDTO.getOrderReports()).isNotNull();
-    }
-
-    @Test
-    void mapShippingReportToShippingReportDTO() {
-        String address = "address";
-        ItemGroup itemGroup = new ItemGroup(itemRepository.getAllItemsFromRepository().stream().toList().get(0).getItemID(), amount);
-        itemGroup.setShippingDateAndPrice(item);
-        List<ItemGroupShipping> itemGroupShipping = List.of(new ItemGroupShipping(address, itemGroup), new ItemGroupShipping(address, itemGroup));
-
-        ShippingReportDTO result = orderMapper.mapShippingReportToShippingReportDTO(itemGroupShipping);
-
-        assertThat(result).isNotNull();
-        assertThat(result.getShippingDate()).isEqualTo(LocalDate.now());
-        assertThat(result.getItemGroups().size()).isEqualTo(itemGroupShipping.size());
-    }
-
 }

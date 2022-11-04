@@ -2,7 +2,6 @@ package com.switchfully.eurder.api;
 
 import com.switchfully.eurder.domain.customer.Feature;
 import com.switchfully.eurder.service.customer.CustomerService;
-import com.switchfully.eurder.service.order.OrderService;
 import com.switchfully.eurder.service.report.ReportService;
 import com.switchfully.eurder.service.report.dto.ShippingReportDTO;
 import com.switchfully.eurder.service.report.dto.ReportDTO;
@@ -14,13 +13,13 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping
-public class reportController {
-    private final Logger log = LoggerFactory.getLogger(reportController.class);
+public class ReportController {
+    private final Logger log = LoggerFactory.getLogger(ReportController.class);
     private final SecurityService securityService;
     private final CustomerService customerService;
     private final ReportService reportService;
 
-    public reportController(SecurityService securityService, CustomerService customerService, ReportService reportService) {
+    public ReportController(SecurityService securityService, CustomerService customerService, ReportService reportService) {
         this.securityService = securityService;
         this.customerService = customerService;
         this.reportService = reportService;

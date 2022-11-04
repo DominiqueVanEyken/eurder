@@ -4,7 +4,6 @@ import com.switchfully.eurder.domain.Price.Price;
 import com.switchfully.eurder.domain.order.ItemGroupShipping;
 import com.switchfully.eurder.domain.order.Order;
 import com.switchfully.eurder.service.order.ItemGroupMapper;
-import com.switchfully.eurder.service.order.OrderMapper;
 import com.switchfully.eurder.service.report.dto.OrderReportDTO;
 import com.switchfully.eurder.service.report.dto.ReportDTO;
 import com.switchfully.eurder.service.report.dto.ShippingReportDTO;
