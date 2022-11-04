@@ -5,7 +5,6 @@ import com.switchfully.eurder.service.customer.CustomerService;
 import com.switchfully.eurder.service.order.OrderService;
 import com.switchfully.eurder.service.order.dto.CreateOrderDTO;
 import com.switchfully.eurder.service.order.dto.OrderDTO;
-import com.switchfully.eurder.service.order.dto.ShippingReportDTO;
 import com.switchfully.eurder.service.security.SecurityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,13 +44,5 @@ public class OrderController {
         log.debug("Requesting to reorder order with ID " + orderID);
         String username = new String(Base64.getDecoder().decode(authorization.substring("Basic ".length()))).split(":")[0];
         return orderService.getOrderByID(customerID, orderID, username);
-    }
-
-    //TODO: create new controller for reports and move getItemGroupsShippingToday to that controller
-    @GetMapping(value = "orders/shipping", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ShippingReportDTO getItemGroupsShippingToday(@RequestHeader String authorization) {
-        securityService.validateAuthorization(authorization, Feature.GET_SHIPPING_ORDER);
-        log.debug("Requesting shipping reports for today");
-        return orderService.getShippingReportForToday();
     }
 }

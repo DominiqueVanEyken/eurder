@@ -1,7 +1,7 @@
 package com.switchfully.eurder;
 
 import com.switchfully.eurder.domain.order.OrderRepository;
-import com.switchfully.eurder.service.order.dto.ShippingReportDTO;
+import com.switchfully.eurder.service.report.dto.ShippingReportDTO;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -5,9 +5,9 @@ import com.switchfully.eurder.domain.order.Order;
 import com.switchfully.eurder.domain.order.ItemGroupShipping;
 import com.switchfully.eurder.service.order.dto.CreateOrderDTO;
 import com.switchfully.eurder.service.order.dto.OrderDTO;
-import com.switchfully.eurder.service.order.dto.OrderReportDTO;
-import com.switchfully.eurder.service.order.dto.ShippingReportDTO;
-import com.switchfully.eurder.service.order.dto.report.ReportDTO;
+import com.switchfully.eurder.service.report.dto.OrderReportDTO;
+import com.switchfully.eurder.service.report.dto.ShippingReportDTO;
+import com.switchfully.eurder.service.report.dto.ReportDTO;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -33,30 +33,5 @@ public class OrderMapper {
 
     }
 
-    public OrderReportDTO mapOrderToOrderReportDTO(Order order) {
-        return new OrderReportDTO()
-                .setOrderID(order.getOrderID())
-                .setItemGroupReports(itemGroupMapper.mapItemGroupToItemGroupReportDTO(order.getOrderList()))
-                .setTotalOrderPrice(order.getTotalPrice().toString());
-    }
 
-
-
-    public ReportDTO mapOrdersToReportDTO(List<Order> orders) {
-        Price totalPrice = new Price(orders.stream()
-                .mapToDouble(order -> order.getTotalPrice().getPrice())
-                .sum());
-        return new ReportDTO()
-                .setOrderReports(orders.stream()
-                        .map(this::mapOrderToOrderReportDTO)
-                        .toList())
-                .setTotalPrice(totalPrice.toString());
-
-    }
-
-    public ShippingReportDTO mapShippingReportToShippingReportDTO(List<ItemGroupShipping> itemGroupShippings) {
-        return new ShippingReportDTO()
-                .setShippingDate(LocalDate.now())
-                .setItemGroups(itemGroupMapper.mapItemGroupToItemGroupShippingDTO(itemGroupShippings));
-    }
 }

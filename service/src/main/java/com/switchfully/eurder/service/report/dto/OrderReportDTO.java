@@ -1,6 +1,4 @@
-package com.switchfully.eurder.service.order.dto;
-
-import com.switchfully.eurder.service.order.dto.itemgroup.ItemGroupReportDTO;
+package com.switchfully.eurder.service.report.dto;
 
 import java.util.List;
 
