@@ -1,5 +1,7 @@
-package com.switchfully.eurder.domain.exceptions;
+package com.switchfully.eurder.api;
 
+import com.switchfully.eurder.domain.exceptions.UnauthorizedException;
+import com.switchfully.eurder.domain.exceptions.WrongPasswordException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
