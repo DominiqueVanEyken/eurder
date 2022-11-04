@@ -182,7 +182,7 @@ public class CustomerControllerIntegrationTest {
                     .contentType(MediaType.APPLICATION_JSON_VALUE)
                     .headers("Authorization", "Basic " + customerBase64)
                     .when()
-                    .post("customers/" + customerID + "/order")
+                    .post("customers/" + customerID + "/orders/order")
                     .then()
                     .assertThat()
                     .statusCode(HttpStatus.CREATED.value())
@@ -212,7 +212,7 @@ public class CustomerControllerIntegrationTest {
                     .contentType(MediaType.APPLICATION_JSON_VALUE)
                     .headers("Authorization", "Basic " + authorization)
                     .when()
-                    .post("customers/" + customerID + "/order")
+                    .post("customers/" + customerID + "/orders/order")
                     .then()
                     .assertThat()
                     .statusCode(HttpStatus.BAD_REQUEST.value());
@@ -233,7 +233,7 @@ public class CustomerControllerIntegrationTest {
                     .contentType(MediaType.APPLICATION_JSON_VALUE)
                     .headers("Authorization", "Basic " + authorization)
                     .when()
-                    .post("customers/" + customerID + "/order")
+                    .post("customers/" + customerID + "/orders/order")
                     .then()
                     .assertThat()
                     .statusCode(HttpStatus.BAD_REQUEST.value());
@@ -254,7 +254,7 @@ public class CustomerControllerIntegrationTest {
                     .contentType(MediaType.APPLICATION_JSON_VALUE)
                     .headers("Authorization", "Basic " + authorization)
                     .when()
-                    .post("customers/invalidCustomerID/order")
+                    .post("customers/invalidCustomerID/orders/order")
                     .then()
                     .assertThat()
                     .statusCode(HttpStatus.BAD_REQUEST.value());
@@ -335,7 +335,7 @@ public class CustomerControllerIntegrationTest {
                     .contentType(MediaType.APPLICATION_JSON_VALUE)
                     .headers("Authorization", "Basic " + customerBase64)
                     .when()
-                    .post("customers/" + order.getCustomerID() + "/"+ order.getOrderID() + "/reorder")
+                    .post("customers/" + order.getCustomerID() + "/orders/"+ order.getOrderID() + "/order")
                     .then()
                     .assertThat()
                     .statusCode(HttpStatus.CREATED.value())
@@ -363,7 +363,7 @@ public class CustomerControllerIntegrationTest {
                     .contentType(MediaType.APPLICATION_JSON_VALUE)
                     .headers("Authorization", "Basic " + customerBase64)
                     .when()
-                    .post("customers/invalidID/"+ order.getOrderID() + "/reorder")
+                    .post("customers/invalidID/orders/"+ order.getOrderID() + "/order")
                     .then()
                     .assertThat()
                     .statusCode(HttpStatus.FORBIDDEN.value());
@@ -382,7 +382,7 @@ public class CustomerControllerIntegrationTest {
                     .contentType(MediaType.APPLICATION_JSON_VALUE)
                     .headers("Authorization", "Basic " + customerBase64)
                     .when()
-                    .post("customers/" + order.getCustomerID() + "/invalidID/reorder")
+                    .post("customers/" + order.getCustomerID() + "/orders/invalidID/order")
                     .then()
                     .assertThat()
                     .statusCode(HttpStatus.BAD_REQUEST.value());

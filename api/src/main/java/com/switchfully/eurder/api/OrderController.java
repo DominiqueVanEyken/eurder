@@ -29,7 +29,7 @@ public class OrderController {
         this.securityService = securityService;
     }
 
-    @PostMapping(value = "customers/{customerID}/orders", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "customers/{customerID}/orders/order", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public OrderDTO orderItems(@RequestHeader String authorization, @PathVariable String customerID, @RequestBody CreateOrderDTO createOrderDTO) {
         securityService.validateAuthorization(authorization, Feature.ORDER_ITEMS);
@@ -47,7 +47,8 @@ public class OrderController {
         return orderService.getOrderByID(customerID, orderID, username);
     }
 
-    @GetMapping(value = "shipping", produces = MediaType.APPLICATION_JSON_VALUE)
+    //TODO: create new controller for reports and move getItemGroupsShippingToday to that controller
+    @GetMapping(value = "orders/shipping", produces = MediaType.APPLICATION_JSON_VALUE)
     public ShippingReportDTO getItemGroupsShippingToday(@RequestHeader String authorization) {
         securityService.validateAuthorization(authorization, Feature.GET_SHIPPING_ORDER);
         log.debug("Requesting shipping reports for today");

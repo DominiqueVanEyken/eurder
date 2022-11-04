@@ -45,6 +45,7 @@ public class CustomerController {
         return customerService.getCustomerByID(customerID);
     }
 
+    //TODO: create new controller for reports and move getReport to that controller
     @GetMapping(value = "{customerID}/report", produces = MediaType.APPLICATION_JSON_VALUE)
     public ReportDTO getReport(@RequestHeader String authorization, @PathVariable String customerID) {
         securityService.validateAuthorization(authorization, Feature.VIEW_REPORT);
