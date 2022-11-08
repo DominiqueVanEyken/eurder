@@ -44,10 +44,6 @@ public class CustomerRepository {
         return true;
     }
 
-    public int getAmountOfCustomersInRepository() {
-        return customerRepository.values().size();
-    }
-
     public Customer getCustomerByEmail(String emailAddress) {
         for (Customer customer : customerRepository.values()) {
             if (customer.getEmailAddress().equals(emailAddress)) {

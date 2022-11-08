@@ -33,9 +33,9 @@ class CustomerRepositoryTest {
 
     @Test
     void addCustomerToRepository() {
-        int before = customerRepository.getAmountOfCustomersInRepository();
+        int before = customerRepository.getAllCustomers().size();
         customerRepository.addCustomer(testCustomer);
-        int after = customerRepository.getAmountOfCustomersInRepository();
+        int after = customerRepository.getAllCustomers().size();
 
         assertThat(before).isLessThan(after);
     }
