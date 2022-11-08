@@ -1,7 +1,7 @@
 package com.switchfully.eurder.service.item;
 
-import com.switchfully.eurder.domain.item.ItemRepository;
 import com.switchfully.eurder.domain.item.Item;
+import com.switchfully.eurder.domain.item.ItemRepository;
 import com.switchfully.eurder.service.item.dto.CreateItemDTO;
 import com.switchfully.eurder.service.item.dto.ItemDTO;
 import com.switchfully.eurder.service.item.dto.UpdateItemDTO;
@@ -35,12 +35,16 @@ public class ItemService {
         return itemMapper.mapItemToDTO(itemRepository.getAllItemsByStockStatusFilter(stockStatus));
     }
 
-    public ItemDTO updateItemByID(String itemID, UpdateItemDTO updateItemDTO) {
+    public Item getItemByID(String itemID) {
         Optional<Item> optionalItem = itemRepository.getItemByID(itemID);
         if (optionalItem.isEmpty()) {
             throw new NoSuchElementException("Item with ID ".concat(itemID).concat(" does not exist"));
         }
-        Item itemToUpdate = optionalItem.get();
+        return optionalItem.get();
+    }
+
+    public ItemDTO updateItemByID(String itemID, UpdateItemDTO updateItemDTO) {
+        Item itemToUpdate = getItemByID(itemID);
         itemToUpdate.updateItem(updateItemDTO.getName(), updateItemDTO.getDescription(), updateItemDTO.getPrice(), updateItemDTO.getStockCount());
         return itemMapper.mapItemToDTO(itemToUpdate);
     }

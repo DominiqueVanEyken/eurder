@@ -23,8 +23,9 @@ public class Order {
         orderID = ORDER_ID_PREFIX + orderDate.getYear() + order_id_suffix++;
     }
     public static void calculateTotalPrice(Order order, ItemRepository itemRepository) {
+//TODO: itemRepository.getItemByID() -> different way to implement this via ItemService?
         order.getOrderList()
-                .forEach(itemGroup -> itemGroup.setShippingDateAndPrice(itemRepository.getItemByID(itemGroup.getItemID())));
+                .forEach(itemGroup -> itemGroup.setShippingDateAndPrice(itemRepository.getItemByID(itemGroup.getItemID()).get()));
         order.totalPrice = new Price(order.getOrderList().stream()
                 .mapToDouble(ItemGroup::getTotalPriceAsDouble)
                 .sum());

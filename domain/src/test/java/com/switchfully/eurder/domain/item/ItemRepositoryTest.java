@@ -4,11 +4,8 @@ import com.switchfully.eurder.domain.Price.Price;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collection;
-import java.util.List;
-import java.util.NoSuchElementException;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ItemRepositoryTest {
     private final ItemRepository itemRepository = new ItemRepository();
@@ -36,15 +33,8 @@ class ItemRepositoryTest {
                 .setStockCount(12)
                 .build();
         itemRepository.addItem(item);
-        Item result = itemRepository.getItemByID(item.getItemID());
+        Item result = itemRepository.getItemByID(item.getItemID()).get();
         assertThat(result).isEqualTo(item);
-    }
-
-    @Test
-    void gettingItemByID_givenInvalidID() {
-        assertThatThrownBy(() -> itemRepository.getItemByID("invalidID"))
-                .isInstanceOf(NoSuchElementException.class)
-                .hasMessageContaining("Item with ID invalidID does not exist");
     }
 
     @Test

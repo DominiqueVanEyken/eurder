@@ -51,10 +51,6 @@ public class ItemRepository {
     }
 
     public Optional<Item> getItemByID(String itemID) {
-//        if (!itemRepository.containsKey(itemID)) {
-//            throw new NoSuchElementException("Item with ID ".concat(itemID).concat(" does not exist"));
-//        }
-//        return itemRepository.get(itemID);
         return itemRepository.values().stream()
                 .filter(item -> item.getItemID().equals(itemID))
                 .findFirst();
