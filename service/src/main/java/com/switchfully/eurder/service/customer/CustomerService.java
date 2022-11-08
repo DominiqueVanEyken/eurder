@@ -21,6 +21,10 @@ public class CustomerService {
         this.customerMapper = new CustomerMapper();
     }
 
+    public List<CustomerDTO> getAllCustomers() {
+        return customerMapper.mapCustomerToDTO(customerRepository.getAllCustomers());
+    }
+    
     public CustomerDTO createNewCustomer(CreateCustomerDTO createCustomerDTO) {
         Customer customer = customerMapper.mapDTOtoCustomer(createCustomerDTO);
         if (isCustomerUnique(customer)) {
@@ -45,11 +49,7 @@ public class CustomerService {
         }
     }
 
-    public List<CustomerDTO> getAllCustomers() {
-        return customerMapper.mapCustomerToDTO(customerRepository.getAllCustomers());
-    }
-
-    public boolean isCustomerUnique(Customer customerToVerify) {
+    private boolean isCustomerUnique(Customer customerToVerify) {
         Collection<Customer> customers = customerRepository.getAllCustomers();
         for (Customer customer : customers) {
             if (customer.getEmailAddress().equals(customerToVerify.getEmailAddress())) {
