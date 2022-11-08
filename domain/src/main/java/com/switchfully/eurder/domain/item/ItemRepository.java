@@ -5,10 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 @Repository
 public class ItemRepository {
@@ -53,11 +50,14 @@ public class ItemRepository {
         log.info("Created " + item);
     }
 
-    public Item getItemByID(String itemID) {
-        if (!itemRepository.containsKey(itemID)) {
-            throw new NoSuchElementException("Item with ID ".concat(itemID).concat(" does not exist"));
-        }
-        return itemRepository.get(itemID);
+    public Optional<Item> getItemByID(String itemID) {
+//        if (!itemRepository.containsKey(itemID)) {
+//            throw new NoSuchElementException("Item with ID ".concat(itemID).concat(" does not exist"));
+//        }
+//        return itemRepository.get(itemID);
+        return itemRepository.values().stream()
+                .filter(item -> item.getItemID().equals(itemID))
+                .findFirst();
     }
 
     public void reduceStockForItemByAmount(String itemID, int amount) {

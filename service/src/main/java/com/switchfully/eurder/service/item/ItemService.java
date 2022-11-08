@@ -8,6 +8,8 @@ import com.switchfully.eurder.service.item.dto.UpdateItemDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class ItemService {
@@ -34,7 +36,11 @@ public class ItemService {
     }
 
     public ItemDTO updateItemByID(String itemID, UpdateItemDTO updateItemDTO) {
-        Item itemToUpdate = itemRepository.getItemByID(itemID);
+        Optional<Item> optionalItem = itemRepository.getItemByID(itemID);
+        if (optionalItem.isEmpty()) {
+            throw new NoSuchElementException("Item with ID ".concat(itemID).concat(" does not exist"));
+        }
+        Item itemToUpdate = optionalItem.get();
         itemToUpdate.updateItem(updateItemDTO.getName(), updateItemDTO.getDescription(), updateItemDTO.getPrice(), updateItemDTO.getStockCount());
         return itemMapper.mapItemToDTO(itemToUpdate);
     }
