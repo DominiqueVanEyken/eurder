@@ -35,11 +35,10 @@ public class CustomerRepository {
                 .findFirst();
     }
 
-    public Customer findCustomerByID(String customerID) {
-        if (customerRepository.containsKey(customerID)) {
-            return customerRepository.get(customerID);
-        }
-        throw new NoSuchElementException("Customer with ID " + customerID + " does not exist");
+    public Optional<Customer> findCustomerByID(String customerID) {
+        return customerRepository.values().stream()
+                .filter(customer -> customer.getCustomerID().equals(customerID))
+                .findFirst();
     }
 
     private void fillCustomerRepository() {

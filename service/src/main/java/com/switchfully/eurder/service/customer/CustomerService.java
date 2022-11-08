@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class CustomerService {
@@ -29,11 +31,18 @@ public class CustomerService {
     }
 
     public CustomerDTO getCustomerByID(String customerID) {
-        return customerMapper.mapCustomerToDTO(customerRepository.findCustomerByID(customerID));
+        Optional<Customer> customer = customerRepository.findCustomerByID(customerID);
+        if (customer.isPresent()) {
+            return customerMapper.mapCustomerToDTO(customer.get());
+        }
+        throw new NoSuchElementException("Customer with ID " + customerID + " does not exist");
     }
 
     public void validateIfCustomerIDExists(String customerID) {
-        customerRepository.findCustomerByID(customerID);
+        Optional<Customer> customer = customerRepository.findCustomerByID(customerID);
+        if (customer.isEmpty()) {
+            throw new NoSuchElementException("Customer with ID " + customerID + " does not exist");
+        }
     }
 
     public List<CustomerDTO> getAllCustomers() {

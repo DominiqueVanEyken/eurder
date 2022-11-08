@@ -85,11 +85,11 @@ public class OrderRepository {
         log.info("Generating shipping report");
         List<ItemGroupShipping> itemGroupShippings = new ArrayList<>();
         for (Order order : orderRepository.values()) {
-            Customer customer;
+            Optional<Customer> customer;
             for (ItemGroup itemGroup : order.getOrderList()) {
                 if (itemGroupShipsToday(itemGroup)) {
                     customer = customerRepository.findCustomerByID(order.getCustomerID());
-                    itemGroupShippings.add(new ItemGroupShipping(customer.getFullAddress(), itemGroup));
+                    itemGroupShippings.add(new ItemGroupShipping(customer.get().getFullAddress(), itemGroup));
                 }
             }
         }
@@ -100,8 +100,8 @@ public class OrderRepository {
         if (!order.getCustomerID().equals(customerID)) {
             return false;
         }
-        Customer customer = customerRepository.findCustomerByID(customerID);
-        if (!customer.getEmailAddress().equals(username)) {
+        Optional<Customer> customer = customerRepository.findCustomerByID(customerID);
+        if (!customer.get().getEmailAddress().equals(username)) {
             return false;
         }
         return true;

@@ -142,7 +142,7 @@ public class OrderControllerIntegrationTest {
         @Test
         void reOrderingAnOrder_givenValidData() {
             Order order = orderRepository.getOrders().stream().toList().get(0);
-            Customer customer = customerRepository.findCustomerByID(order.getCustomerID());
+            Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
             String customerBase64 = Base64.getEncoder().encodeToString((customer.getEmailAddress() + ":password").getBytes());
 
             OrderDTO result = RestAssured
@@ -170,7 +170,7 @@ public class OrderControllerIntegrationTest {
         @Test
         void reOrderingAnOrder_givenInvalidCustomerData() {
             Order order = orderRepository.getOrders().stream().toList().get(0);
-            Customer customer = customerRepository.findCustomerByID(order.getCustomerID());
+            Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
             String customerBase64 = Base64.getEncoder().encodeToString((customer.getEmailAddress() + ":password").getBytes());
 
             RestAssured
@@ -189,7 +189,7 @@ public class OrderControllerIntegrationTest {
         @Test
         void reOrderingAnOrder_givenInvalidOrderID() {
             Order order = orderRepository.getOrders().stream().toList().get(0);
-            Customer customer = customerRepository.findCustomerByID(order.getCustomerID());
+            Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
             String customerBase64 = Base64.getEncoder().encodeToString((customer.getEmailAddress() + ":password").getBytes());
 
             RestAssured

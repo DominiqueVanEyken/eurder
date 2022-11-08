@@ -89,7 +89,7 @@ class OrderRepositoryTest {
     @Test
     void validateOrderIDBelongsToCustomer_givenValidData() {
         orderRepository.createOrder(order);
-        Customer customer = customerRepository.findCustomerByID(order.getCustomerID());
+        Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
 
         boolean result = orderRepository.validateOrderIDBelongsToCustomer(customer.getCustomerID(), order, customer.getEmailAddress());
 
@@ -99,7 +99,7 @@ class OrderRepositoryTest {
     @Test
     void validateOrderIDBelongsToCustomer_givenInvalidCustomerID() {
         orderRepository.createOrder(order);
-        Customer customer = customerRepository.findCustomerByID(order.getCustomerID());
+        Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
 
         boolean result = orderRepository.validateOrderIDBelongsToCustomer("someID", order, customer.getEmailAddress());
 
@@ -109,7 +109,7 @@ class OrderRepositoryTest {
     @Test
     void validateOrderIDBelongsToCustomer_givenInvalidEmail() {
         orderRepository.createOrder(order);
-        Customer customer = customerRepository.findCustomerByID(order.getCustomerID());
+        Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
 
         boolean result = orderRepository.validateOrderIDBelongsToCustomer(customer.getCustomerID(), order, "invalid@email.be");
 
@@ -119,7 +119,7 @@ class OrderRepositoryTest {
     @Test
     void reorderOrderByID_givenValidData() {
         orderRepository.createOrder(order);
-        Customer customer = customerRepository.findCustomerByID(order.getCustomerID());
+        Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
 
         Order result = orderRepository.reorderOrderByID(customer.getCustomerID(), order.getOrderID(), customer.getEmailAddress());
 
@@ -132,7 +132,7 @@ class OrderRepositoryTest {
     @Test
     void reorderOrderByID_givenInvalidCostumerData() {
         orderRepository.createOrder(order);
-        Customer customer = customerRepository.findCustomerByID(order.getCustomerID());
+        Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
 
         assertThatThrownBy(() -> orderRepository.reorderOrderByID("invalidID", order.getOrderID(), "invalid@email.be"))
                 .isInstanceOf(UnauthorizedException.class)
@@ -142,7 +142,7 @@ class OrderRepositoryTest {
     @Test
     void reorderOrderByID_givenInvalidOrderID() {
         orderRepository.createOrder(order);
-        Customer customer = customerRepository.findCustomerByID(order.getCustomerID());
+        Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
 
         assertThatThrownBy(() -> orderRepository.reorderOrderByID(customer.getCustomerID(), "invalidOrderID", customer.getEmailAddress()))
                 .isInstanceOf(NoSuchElementException.class)

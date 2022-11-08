@@ -10,6 +10,8 @@ import com.switchfully.eurder.service.customer.dto.CreateCustomerDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.NoSuchElementException;
+
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CustomerServiceTest {
@@ -41,6 +43,14 @@ class CustomerServiceTest {
         assertThatThrownBy(() -> customerService.createNewCustomer(duplicate))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("Customer already exists");
+    }
+
+    @Test
+    void getCustomerByID_givenInvalidID() {
+        String invalidID = "invalidID";
+        assertThatThrownBy(() -> customerService.getCustomerByID(invalidID))
+                .isInstanceOf(NoSuchElementException.class)
+                .hasMessageContaining("Customer with ID " + invalidID + " does not exist");
     }
 
 }

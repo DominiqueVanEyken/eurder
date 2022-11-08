@@ -53,16 +53,10 @@ class CustomerRepositoryTest {
     @Test
     void getCustomerByID_givenValidID() {
         customerRepository.addCustomer(testCustomer);
-        Customer result = customerRepository.findCustomerByID(testCustomer.getCustomerID());
+        Optional<Customer> result = customerRepository.findCustomerByID(testCustomer.getCustomerID());
 
-        assertThat(result).isEqualTo(testCustomer);
+        assertThat(result.isPresent()).isTrue();
+        assertThat(result.get()).isEqualTo(testCustomer);
     }
 
-    @Test
-    void getCustomerByID_givenInvalidID() {
-        String invalidID = "invalidID";
-        assertThatThrownBy(() -> customerRepository.findCustomerByID(invalidID))
-                .isInstanceOf(NoSuchElementException.class)
-                .hasMessageContaining("Customer with ID " + invalidID + " does not exist");
-    }
 }
