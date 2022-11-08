@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Base64;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class SecurityService {
@@ -23,12 +24,15 @@ public class SecurityService {
 
     public void validateAuthorization(String authorization, Feature feature) {
         UsernamePassword usernamePassword = getUsernamePassword(authorization);
-        Customer user = customerRepository.getCustomerByEmail(usernamePassword.getUsername());
-        if (!user.doesPasswordMatch(usernamePassword.getPassword())) {
+        Optional<Customer> user = customerRepository.getCustomerByEmail(usernamePassword.getUsername());
+        if (user.isEmpty()) {
+            throw new NoSuchElementException("Wrong credentials");
+        }
+        if (!user.get().doesPasswordMatch(usernamePassword.getPassword())) {
             log.error("Password does not match for user " + usernamePassword.getUsername());
             throw new WrongPasswordException();
         }
-        if (!user.canHaveAccessTo(feature)) {
+        if (!user.get().canHaveAccessTo(feature)) {
             log.error("User " + usernamePassword.getUsername() + " does not have access to " + feature);
             throw new UnauthorizedException();
         }

@@ -6,6 +6,7 @@ import com.switchfully.eurder.service.customer.dto.CreateCustomerDTO;
 import com.switchfully.eurder.service.customer.dto.CustomerDTO;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -20,8 +21,11 @@ public class CustomerService {
 
     public CustomerDTO createNewCustomer(CreateCustomerDTO createCustomerDTO) {
         Customer customer = customerMapper.mapDTOtoCustomer(createCustomerDTO);
-        customerRepository.addCustomer(customer);
-        return customerMapper.mapCustomerToDTO(customer);
+        if (isCustomerUnique(customer)) {
+            customerRepository.addCustomer(customer);
+            return customerMapper.mapCustomerToDTO(customer);
+        }
+        throw new IllegalArgumentException("Customer already exists");
     }
 
     public CustomerDTO getCustomerByID(String customerID) {
@@ -34,5 +38,15 @@ public class CustomerService {
 
     public List<CustomerDTO> getAllCustomers() {
         return customerMapper.mapCustomerToDTO(customerRepository.getAllCustomers());
+    }
+
+    public boolean isCustomerUnique(Customer customerToVerify) {
+        Collection<Customer> customers = customerRepository.getAllCustomers();
+        for (Customer customer : customers) {
+            if (customer.getEmailAddress().equals(customerToVerify.getEmailAddress())) {
+                return false;
+            }
+        }
+        return true;
     }
 }

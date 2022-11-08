@@ -2,17 +2,13 @@ package com.switchfully.eurder.domain.customer;
 
 import com.switchfully.eurder.domain.address.Address;
 import com.switchfully.eurder.domain.address.AddressBuilder;
-import com.switchfully.eurder.domain.exceptions.UnauthorizedException;
 import com.switchfully.eurder.domain.phonenumber.CountryCode;
 import com.switchfully.eurder.domain.phonenumber.PhoneNumber;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 @Repository
 public class CustomerRepository {
@@ -29,28 +25,14 @@ public class CustomerRepository {
     }
 
     public void addCustomer(Customer customer) {
-        if (isCustomerUnique(customer)) {
-            customerRepository.put(customer.getCustomerID(), customer);
-            log.info("Created ".concat(customer.toString()));
-        }
+        customerRepository.put(customer.getCustomerID(), customer);
+        log.info("Created ".concat(customer.toString()));
     }
 
-    public boolean isCustomerUnique(Customer customerToVerify) {
-        for (Customer customer : customerRepository.values()) {
-            if (customer.getEmailAddress().equals(customerToVerify.getEmailAddress())) {
-                throw new IllegalArgumentException("Customer already exists");
-            }
-        }
-        return true;
-    }
-
-    public Customer getCustomerByEmail(String emailAddress) {
-        for (Customer customer : customerRepository.values()) {
-            if (customer.getEmailAddress().equals(emailAddress)) {
-                return customer;
-            }
-        }
-        throw new NoSuchElementException("Wrong credentials");
+    public Optional<Customer> getCustomerByEmail(String emailAddress) {
+        return customerRepository.values().stream()
+                .filter(customer -> customer.getEmailAddress().equals(emailAddress))
+                .findFirst();
     }
 
     public Customer findCustomerByID(String customerID) {

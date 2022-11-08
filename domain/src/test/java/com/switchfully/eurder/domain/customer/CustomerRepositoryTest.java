@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Collection;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -52,9 +53,10 @@ class CustomerRepositoryTest {
     @Test
     void getCustomerByEmail_givenValidEmailAddress() {
         customerRepository.addCustomer(testCustomer);
-        Customer result = customerRepository.getCustomerByEmail("user@test.be");
+        Optional<Customer> result = customerRepository.getCustomerByEmail("user@test.be");
 
-        assertThat(result).isEqualTo(testCustomer);
+        assertThat(result.isPresent()).isTrue();
+        assertThat(result.get()).isEqualTo(testCustomer);
     }
 
     @Test
