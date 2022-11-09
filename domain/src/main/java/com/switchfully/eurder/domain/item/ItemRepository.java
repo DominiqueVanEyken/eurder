@@ -56,6 +56,7 @@ public class ItemRepository {
                 .findFirst();
     }
 
+    //TODO: Possible to move to Item or ItemService?
     public void reduceStockForItemByAmount(String itemID, int amount) {
         itemRepository.get(itemID).reduceStockByAmount(amount);
     }

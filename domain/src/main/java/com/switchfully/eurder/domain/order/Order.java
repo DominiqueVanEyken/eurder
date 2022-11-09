@@ -22,6 +22,7 @@ public class Order {
         this.orderDate = LocalDate.now();
         orderID = ORDER_ID_PREFIX + orderDate.getYear() + order_id_suffix++;
     }
+
     public static void calculateTotalPrice(Order order, ItemRepository itemRepository) {
 //TODO: itemRepository.getItemByID() -> different way to implement this via ItemService?
         order.getOrderList()

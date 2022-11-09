@@ -64,6 +64,7 @@ public class OrderRepository {
         return orderRepository.get(orderID);
     }
 
+    // TODO: Move to OrderService or ItemService
     public void reduceStock(List<ItemGroup> itemGroupList) {
         itemGroupList.forEach(itemGroup -> itemRepository.reduceStockForItemByAmount(itemGroup.getItemID(), itemGroup.getAmount()));
         log.debug("Reducing stock");
@@ -75,6 +76,7 @@ public class OrderRepository {
                 .toList();
     }
 
+    //    TODO: Move to OrderService
     private boolean itemGroupShipsToday(ItemGroup itemGroup) {
         LocalDate shippingDate = itemGroup.getShippingDate();
         LocalDate today = LocalDate.now();
@@ -96,6 +98,7 @@ public class OrderRepository {
         return itemGroupShippings;
     }
 
+    //    TODO: Move to OrderService
     public boolean validateOrderIDBelongsToCustomer(String customerID, Order order, String username) {
         if (!order.getCustomerID().equals(customerID)) {
             return false;

@@ -34,7 +34,7 @@ public class OrderController {
         securityService.validateAuthorization(authorization, Feature.ORDER_ITEMS);
         customerService.validateIfCustomerIDExists(customerID);
         log.debug("Request for ordering items");
-        return orderService.orderItems(customerID, createOrderDTO);
+        return orderService.createOrder(customerID, createOrderDTO);
     }
 
     @PostMapping(value = "customers/{customerID}/orders/{orderID}/order", produces = MediaType.APPLICATION_JSON_VALUE)
