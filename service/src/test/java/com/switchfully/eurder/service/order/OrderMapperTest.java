@@ -104,7 +104,6 @@ class OrderMapperTest {
                 .toList();
 
         Order order = orderMapper.mapDTOToOrder(customerID, itemGroups);
-        Order.calculateTotalPrice(order, itemRepository);
 
         assertThat(order).isNotNull();
         assertThat(order.getOrderID()).isNotNull();
@@ -117,7 +116,6 @@ class OrderMapperTest {
     void mappingOrderToDTO() {
         itemRepository.addItem(item);
         Order order = new Order(customerID, List.of(new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice())));
-        Order.calculateTotalPrice(order, itemRepository);
 
         OrderDTO orderDTO = orderMapper.mapOrderToDTO(order);
 

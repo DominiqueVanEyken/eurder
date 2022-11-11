@@ -1,6 +1,5 @@
 package com.switchfully.eurder.service.order;
 
-import com.switchfully.eurder.domain.Price.Price;
 import com.switchfully.eurder.domain.customer.Customer;
 import com.switchfully.eurder.domain.customer.CustomerRepository;
 import com.switchfully.eurder.domain.exceptions.UnauthorizedException;
@@ -9,7 +8,6 @@ import com.switchfully.eurder.domain.item.ItemRepository;
 import com.switchfully.eurder.domain.order.ItemGroup;
 import com.switchfully.eurder.domain.order.Order;
 import com.switchfully.eurder.domain.order.OrderRepository;
-import com.switchfully.eurder.service.item.ItemMapper;
 import com.switchfully.eurder.service.order.dto.CreateItemGroupDTO;
 import com.switchfully.eurder.service.order.dto.CreateOrderDTO;
 import com.switchfully.eurder.service.order.dto.OrderDTO;
@@ -44,7 +42,7 @@ public class OrderService {
             itemGroups.add(itemGroupMapper.mapDTOToItemGroup(item, itemGroupDTO.getAmount()));
 
         }
-        Order order = orderMapper.mapDTOToOrder(createOrderDTO.getCustomerID(), itemGroups);
+        Order order = orderMapper.mapDTOToOrder(customerID, itemGroups);
 
         orderRepository.createOrder(order);
         Optional<Order> returningOrder = orderRepository.findOrderByID(order.getOrderID());
@@ -72,8 +70,6 @@ public class OrderService {
             itemGroupsToReorder.add(new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice()));
         }
         Order order = new Order(orderToReorder.getCustomerID(), itemGroupsToReorder);
-        // TODO: Move to Order?
-        Order.calculateTotalPrice(order, itemRepository);
         orderRepository.createOrder(order);
         return orderMapper.mapOrderToDTO(order);
     }

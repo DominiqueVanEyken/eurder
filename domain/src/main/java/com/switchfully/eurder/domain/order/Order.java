@@ -14,20 +14,16 @@ public class Order {
     private final String customerID;
     private final LocalDate orderDate;
     private final List<ItemGroup> orderList;
-    private Price totalPrice;
+    private final Price totalPrice;
 
     public Order(String customerID, List<ItemGroup> orderList) {
         this.customerID = customerID;
         this.orderList = orderList;
         this.orderDate = LocalDate.now();
-        orderID = ORDER_ID_PREFIX + orderDate.getYear() + order_id_suffix++;
-    }
-
-    public static void calculateTotalPrice(Order order, ItemRepository itemRepository) {
-//TODO: itemRepository.getItemByID() -> different way to implement this via ItemService?
-        order.totalPrice = new Price(order.getOrderList().stream()
+        totalPrice = new Price(orderList.stream()
                 .mapToDouble(ItemGroup::getTotalPriceAsDouble)
                 .sum());
+        orderID = ORDER_ID_PREFIX + orderDate.getYear() + order_id_suffix++;
     }
 
     public String getOrderID() {

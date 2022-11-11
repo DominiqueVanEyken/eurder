@@ -11,6 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Base64;
+
 @RestController
 @RequestMapping
 public class ReportController {
@@ -28,7 +30,8 @@ public class ReportController {
     @GetMapping(value = "customers/{customerID}/orders/report", produces = MediaType.APPLICATION_JSON_VALUE)
     public ReportDTO getReport(@RequestHeader String authorization, @PathVariable String customerID) {
         securityService.validateAuthorization(authorization, Feature.VIEW_REPORT);
-        customerService.validateIfCustomerIDBelongsToUsername(customerID);
+        String username = new String(Base64.getDecoder().decode(authorization.substring("Basic ".length()))).split(":")[0];
+        customerService.validateIfCustomerIDBelongsToUsername(customerID, username);
         log.debug("Requesting report for customer with ID " + customerID);
         return reportService.getReportForCustomer(customerID);
     }

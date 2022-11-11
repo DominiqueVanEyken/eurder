@@ -77,7 +77,6 @@ class ReportMapperTest {
     void mappingOrdersToOrderReportDTO() {
         itemRepository.addItem(item);
         Order order = new Order(customerID, List.of(new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice())));
-        Order.calculateTotalPrice(order, itemRepository);
         OrderReportDTO reportDTO = reportMapper.mapOrderToOrderReportDTO(order);
 
         assertThat(reportDTO).isNotNull();
@@ -90,7 +89,6 @@ class ReportMapperTest {
     void mappingOrdersToReportDTO() {
         itemRepository.addItem(item);
         Order order1 = new Order(customerID, List.of(new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice())));
-        Order.calculateTotalPrice(order1, itemRepository);
 
         ReportDTO reportDTO = reportMapper.mapOrdersToReportDTO(List.of(order1, order1));
 

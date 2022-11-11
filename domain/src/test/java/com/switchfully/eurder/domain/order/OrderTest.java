@@ -35,7 +35,6 @@ class OrderTest {
         @Test
         void creatingAnOrder() {
             Order order = new Order(customerID, orderList);
-            Order.calculateTotalPrice(order, itemRepository);
 
             assertThat(order).isNotNull();
             assertThat(order.getOrderID()).isNotNull();

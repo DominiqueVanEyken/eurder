@@ -3,7 +3,6 @@ package com.switchfully.eurder.service.order.dto;
 import java.util.List;
 
 public class CreateOrderDTO {
-     private String customerID;
      private List<CreateItemGroupDTO> orderList;
 
      public CreateOrderDTO setOrderList(List<CreateItemGroupDTO> orderList) {
@@ -15,7 +14,4 @@ public class CreateOrderDTO {
           return orderList;
      }
 
-     public String getCustomerID() {
-          return customerID;
-     }
 }

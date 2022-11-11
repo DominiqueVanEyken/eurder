@@ -32,11 +32,8 @@ public class OrderRepository {
         ItemGroup itemGroup2 = new ItemGroup(items.get(1).getItemID(), items.get(1).getName(), 2, items.get(1).getShippingDateForAmount(2), items.get(1).getPrice());
         ItemGroup itemGroup3 = new ItemGroup(items.get(2).getItemID(), items.get(2).getName(), 3, items.get(1).getShippingDateForAmount(3), items.get(2).getPrice());
         Order order1 = new Order("CID20221002", List.of(itemGroup1, itemGroup2, itemGroup3));
-//        Order.calculateTotalPrice(order1, itemRepository);
         Order order2 = new Order("CID20221003", List.of(itemGroup1, itemGroup2, itemGroup3));
-//        Order.calculateTotalPrice(order2, itemRepository);
         Order order3 = new Order("CID20221002", List.of(itemGroup1, itemGroup2, itemGroup3));
-//        Order.calculateTotalPrice(order3, itemRepository);
         orderRepository.put(order1.getOrderID(), order1);
         orderRepository.put(order2.getOrderID(), order2);
         orderRepository.put(order3.getOrderID(), order3);
@@ -47,7 +44,6 @@ public class OrderRepository {
     }
 
     public void createOrder(Order order) {
-        Order.calculateTotalPrice(order, itemRepository);
         reduceStock(order.getOrderList());
         orderRepository.put(order.getOrderID(), order);
         log.info("Created ".concat(order.toString()));
