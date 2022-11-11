@@ -39,8 +39,9 @@ public class OrderService {
         for (CreateItemGroupDTO itemGroupDTO : createOrderDTO.getOrderList()) {
             Item item = itemRepository.getItemByID(itemGroupDTO.getItemID())
                     .orElseThrow(() -> new NoSuchElementException("Item with ID " + itemGroupDTO.getItemID() + " could not be found"));
-            itemGroups.add(itemGroupMapper.mapDTOToItemGroup(item, itemGroupDTO.getAmount()));
-
+            int amount = itemGroupDTO.getAmount();
+            itemGroups.add(itemGroupMapper.mapDTOToItemGroup(item, amount));
+            item.reduceStockByAmount(amount);
         }
         Order order = orderMapper.mapDTOToOrder(customerID, itemGroups);
 
@@ -68,6 +69,7 @@ public class OrderService {
                     .orElseThrow(() -> new NoSuchElementException("Item with ID " + itemGroup.getItemID() + " could not be found"));
             int amount = itemGroup.getAmount();
             itemGroupsToReorder.add(new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice()));
+            item.reduceStockByAmount(amount);
         }
         Order order = new Order(orderToReorder.getCustomerID(), itemGroupsToReorder);
         orderRepository.createOrder(order);

@@ -44,19 +44,12 @@ public class OrderRepository {
     }
 
     public void createOrder(Order order) {
-        reduceStock(order.getOrderList());
         orderRepository.put(order.getOrderID(), order);
         log.info("Created ".concat(order.toString()));
     }
 
     public Optional<Order> findOrderByID(String orderID) {
         return Optional.ofNullable(orderRepository.get(orderID));
-    }
-
-    // TODO: Move to OrderService or ItemService
-    public void reduceStock(List<ItemGroup> itemGroupList) {
-        itemGroupList.forEach(itemGroup -> itemRepository.reduceStockForItemByAmount(itemGroup.getItemID(), itemGroup.getAmount()));
-        log.debug("Reducing stock");
     }
 
     public List<Order> getOrdersByCustomerID(String customerID) {
