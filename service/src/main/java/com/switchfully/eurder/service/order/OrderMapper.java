@@ -17,6 +17,7 @@ public class OrderMapper {
         return new Order(customerID, itemGroups);
     }
 
+    //TODO: move itemGroupMapper to OrderService for consistency?
     public OrderDTO mapOrderToDTO(Order order) {
         return new OrderDTO()
                 .setOrderID(order.getOrderID())
