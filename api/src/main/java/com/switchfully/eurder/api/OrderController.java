@@ -32,7 +32,8 @@ public class OrderController {
     @ResponseStatus(HttpStatus.CREATED)
     public OrderDTO orderItems(@RequestHeader String authorization, @PathVariable String customerID, @RequestBody CreateOrderDTO createOrderDTO) {
         securityService.validateAuthorization(authorization, Feature.ORDER_ITEMS);
-        customerService.validateIfCustomerIDExists(customerID);
+        String username = new String(Base64.getDecoder().decode(authorization.substring("Basic ".length()))).split(":")[0];
+        customerService.validateIfCustomerIDBelongsToUsername(customerID, username);
         log.debug("Request for ordering items");
         return orderService.createOrder(customerID, createOrderDTO);
     }

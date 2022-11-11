@@ -2,6 +2,7 @@ package com.switchfully.eurder.service.customer;
 
 import com.switchfully.eurder.domain.customer.Customer;
 import com.switchfully.eurder.domain.customer.CustomerRepository;
+import com.switchfully.eurder.domain.exceptions.UnauthorizedException;
 import com.switchfully.eurder.service.customer.dto.CreateCustomerDTO;
 import com.switchfully.eurder.service.customer.dto.CustomerDTO;
 import org.springframework.stereotype.Service;
@@ -42,10 +43,10 @@ public class CustomerService {
         throw new NoSuchElementException("Customer with ID " + customerID + " does not exist");
     }
 
-    public void validateIfCustomerIDExists(String customerID) {
-        Optional<Customer> customer = customerRepository.findCustomerByID(customerID);
-        if (customer.isEmpty()) {
-            throw new NoSuchElementException("Customer with ID " + customerID + " does not exist");
+    public void validateIfCustomerIDBelongsToUsername(String customerID, String userName) {
+        Customer customer = customerRepository.findCustomerByID(customerID).orElseThrow(() -> new NoSuchElementException("Customer with ID " + customerID + " does not exist"));
+        if (!customer.getEmailAddress().equals(userName)) {
+            throw new UnauthorizedException();
         }
     }
 

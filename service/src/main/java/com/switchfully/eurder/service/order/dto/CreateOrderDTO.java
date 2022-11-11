@@ -15,5 +15,7 @@ public class CreateOrderDTO {
           return orderList;
      }
 
-
+     public String getCustomerID() {
+          return customerID;
+     }
 }
