@@ -44,9 +44,8 @@ public class OrderService {
             itemGroups.add(itemGroupMapper.mapDTOToItemGroup(item, itemGroupDTO.getAmount()));
 
         }
-Order order = orderMapper.mapDTOToOrder(customerID, itemGroups);
+        Order order = orderMapper.mapDTOToOrder(customerID, itemGroups);
 
-//        Order order = orderMapper.mapDTOToOrder(customerID, createOrderDTO);
         orderRepository.createOrder(order);
         Optional<Order> returningOrder = orderRepository.findOrderByID(order.getOrderID());
         return orderMapper.mapOrderToDTO(returningOrder

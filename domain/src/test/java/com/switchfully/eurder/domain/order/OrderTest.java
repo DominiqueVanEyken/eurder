@@ -19,8 +19,8 @@ class OrderTest {
     private final String customerID = "CID20221005";
     private final LocalDate orderDate = LocalDate.now();
     private final List<ItemGroup> orderList = List.of(
-            new ItemGroup(item1.getItemID(), 3),
-            new ItemGroup(item2.getItemID(), 3)
+            new ItemGroup(item1.getItemID(), item1.getName(), 3, item1.getShippingDateForAmount(3),item1.getPrice()),
+            new ItemGroup(item2.getItemID(), item2.getName(), 3, item2.getShippingDateForAmount(3),item2.getPrice())
     );
 
     @BeforeEach

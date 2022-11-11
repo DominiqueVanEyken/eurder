@@ -4,15 +4,13 @@ import com.switchfully.eurder.domain.Price.Price;
 import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.item.ItemRepository;
 import com.switchfully.eurder.domain.order.ItemGroup;
-import com.switchfully.eurder.domain.order.ItemGroupShipping;
 import com.switchfully.eurder.domain.order.Order;
-import com.switchfully.eurder.service.order.dto.*;
 import com.switchfully.eurder.service.order.dto.CreateItemGroupDTO;
+import com.switchfully.eurder.service.order.dto.CreateOrderDTO;
 import com.switchfully.eurder.service.order.dto.ItemGroupDTO;
+import com.switchfully.eurder.service.order.dto.OrderDTO;
 import com.switchfully.eurder.service.report.dto.ItemGroupReportDTO;
-import com.switchfully.eurder.service.report.dto.ReportDTO;
 import com.switchfully.eurder.service.report.dto.OrderReportDTO;
-import com.switchfully.eurder.service.report.dto.ShippingReportDTO;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -41,6 +39,7 @@ class OrderMapperTest {
     );
     private final Price totalPrice = new Price(2.2);
     private final OrderMapper orderMapper = new OrderMapper();
+    private final ItemGroupMapper itemGroupMapper = new ItemGroupMapper();
     private final ItemRepository itemRepository = new ItemRepository();
 
     @Test
@@ -100,8 +99,11 @@ class OrderMapperTest {
         CreateOrderDTO createOrderDTO = new CreateOrderDTO()
                 .setOrderList(createItemGroupDTOS);
         itemRepository.addItem(item);
+        List<ItemGroup> itemGroups = createOrderDTO.getOrderList().stream()
+                .map(itemGroup -> itemGroupMapper.mapDTOToItemGroup(itemRepository.getItemByID(itemGroup.getItemID()).get(), itemGroup.getAmount()))
+                .toList();
 
-        Order order = orderMapper.mapDTOToOrder(customerID, createOrderDTO);
+        Order order = orderMapper.mapDTOToOrder(customerID, itemGroups);
         Order.calculateTotalPrice(order, itemRepository);
 
         assertThat(order).isNotNull();
@@ -114,7 +116,7 @@ class OrderMapperTest {
     @Test
     void mappingOrderToDTO() {
         itemRepository.addItem(item);
-        Order order = new Order(customerID, List.of(new ItemGroup(item.getItemID(), amount)));
+        Order order = new Order(customerID, List.of(new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice())));
         Order.calculateTotalPrice(order, itemRepository);
 
         OrderDTO orderDTO = orderMapper.mapOrderToDTO(order);

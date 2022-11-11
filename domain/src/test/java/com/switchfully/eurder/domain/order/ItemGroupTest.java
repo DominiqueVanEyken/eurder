@@ -22,8 +22,7 @@ class ItemGroupTest {
     class givenValidData {
         @Test
         void creatingAnItemGroup_itemsInStock() {
-            ItemGroup itemGroup = new ItemGroup(itemIDHighStock, amount);
-            itemGroup.setShippingDateAndPrice(itemHighStock);
+            ItemGroup itemGroup = new ItemGroup(itemIDHighStock, itemHighStock.getName(), amount, itemHighStock.getShippingDateForAmount(amount), itemHighStock.getPrice());
 
             assertThat(itemGroup).isNotNull();
             assertThat(itemGroup.getItemID()).isEqualTo(itemIDHighStock);
@@ -39,7 +38,7 @@ class ItemGroupTest {
         @Test
         void setShippingDateManually() {
             LocalDate date = LocalDate.of(2022, 11, 1);
-            ItemGroup itemGroup = new ItemGroup(itemIDHighStock, amount);
+            ItemGroup itemGroup = new ItemGroup(itemIDHighStock, itemHighStock.getName(), amount, itemHighStock.getShippingDateForAmount(amount), itemHighStock.getPrice());
             itemGroup.setShippingDate(date);
 
             assertThat(itemGroup.getShippingDate()).isEqualTo(date);
@@ -47,8 +46,7 @@ class ItemGroupTest {
 
         @Test
         void creatingAnItemGroup_itemsNotInStock() {
-            ItemGroup itemGroup = new ItemGroup(itemIDLowStock, amount);
-            itemGroup.setShippingDateAndPrice(itemLowStock);
+            ItemGroup itemGroup = new ItemGroup(itemIDLowStock, itemLowStock.getName(), amount, itemLowStock.getShippingDateForAmount(amount), itemLowStock.getPrice());
 
             assertThat(itemGroup).isNotNull();
             assertThat(itemGroup.getItemID()).isEqualTo(itemIDLowStock);
@@ -67,7 +65,7 @@ class ItemGroupTest {
         @Test
         void withIDIsNull() {
             String errorMessage = "The provided itemID is not valid";
-            assertThatThrownBy(() -> new ItemGroup(null, amount))
+            assertThatThrownBy(() -> new ItemGroup(null, itemHighStock.getName(), amount, itemHighStock.getShippingDateForAmount(amount), itemHighStock.getPrice()))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(errorMessage);
         }
@@ -75,7 +73,7 @@ class ItemGroupTest {
         @Test
         void withIDOfIncorrectFormat() {
             String errorMessage = "The provided itemID is not valid";
-            assertThatThrownBy(() -> new ItemGroup("invalidID", amount))
+            assertThatThrownBy(() -> new ItemGroup("invalidID",itemHighStock.getName(), amount, itemHighStock.getShippingDateForAmount(amount), itemHighStock.getPrice()))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(errorMessage);
         }
@@ -83,7 +81,7 @@ class ItemGroupTest {
         @Test
         void withAmountLessThanOne() {
             String errorMessage = "The minimum requirement to order is 1";
-            assertThatThrownBy(() -> new ItemGroup(itemIDLowStock, 0))
+            assertThatThrownBy(() -> new ItemGroup(itemIDLowStock,itemHighStock.getName(), 0, itemHighStock.getShippingDateForAmount(amount), itemHighStock.getPrice()))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(errorMessage);
         }

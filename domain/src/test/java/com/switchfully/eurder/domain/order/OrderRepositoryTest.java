@@ -11,7 +11,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class OrderRepositoryTest {
     private ItemRepository itemRepository;
@@ -31,8 +30,8 @@ class OrderRepositoryTest {
         itemRepository.addItem(item1);
         itemRepository.addItem(item2);
         orderList = List.of(
-                new ItemGroup(item1.getItemID(), 1),
-                new ItemGroup(item2.getItemID(), 2)
+                new ItemGroup(item1.getItemID(), item1.getName(), 1, item1.getShippingDateForAmount(1), item1.getPrice()),
+                new ItemGroup(item2.getItemID(), item2.getName(), 2, item2.getShippingDateForAmount(2), item2.getPrice())
         );
         customerID = customerRepository.getAllCustomers().stream().toList().get(0).getCustomerID();
         order = new Order(customerID, orderList);

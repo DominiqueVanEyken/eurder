@@ -14,7 +14,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class ReportMapperTest {
     private final ItemGroupMapper itemGroupMapper = new ItemGroupMapper();
@@ -27,8 +26,7 @@ class ReportMapperTest {
 
     @Test
     void mappingItemGroupToItemGroupReportDTO() {
-        ItemGroup itemGroup = new ItemGroup(itemID, amount);
-        itemGroup.setShippingDateAndPrice(item);
+        ItemGroup itemGroup = new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
         ItemGroupReportDTO reportDTO = itemGroupMapper.mapItemGroupToItemGroupReportDTO(itemGroup);
 
         assertThat(reportDTO).isNotNull();
@@ -39,10 +37,8 @@ class ReportMapperTest {
 
     @Test
     void mappingItemGroupToItemGroupReportDTO_givenList() {
-        ItemGroup itemGroup1 = new ItemGroup(itemID, amount);
-        itemGroup1.setShippingDateAndPrice(item);
-        ItemGroup itemGroup2 = new ItemGroup(itemID, amount);
-        itemGroup2.setShippingDateAndPrice(item);
+        ItemGroup itemGroup1 = new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
+        ItemGroup itemGroup2 = new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
         List<ItemGroupReportDTO> orderList = itemGroupMapper.mapItemGroupToItemGroupReportDTO(List.of(itemGroup1, itemGroup2));
 
         assertThat(orderList).isNotNull();
@@ -52,8 +48,7 @@ class ReportMapperTest {
     @Test
     void mapItemGroupToItemGroupShippingDTO() {
         String address = "address";
-        ItemGroup itemGroup = new ItemGroup(itemID, amount);
-        itemGroup.setShippingDateAndPrice(item);
+        ItemGroup itemGroup = new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
         ItemGroupShipping itemGroupShipping = new ItemGroupShipping(address, itemGroup);
 
         ItemGroupShippingDTO result = itemGroupMapper.mapItemGroupToItemGroupShippingDTO(itemGroupShipping);
@@ -69,8 +64,7 @@ class ReportMapperTest {
     @Test
     void mapItemGroupToItemGroupShippingDTO_givenList() {
         String address = "address";
-        ItemGroup itemGroup = new ItemGroup(itemID, amount);
-        itemGroup.setShippingDateAndPrice(item);
+        ItemGroup itemGroup = new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
         List<ItemGroupShipping> itemGroupShipping = List.of(new ItemGroupShipping(address, itemGroup), new ItemGroupShipping(address, itemGroup));
 
         List<ItemGroupShippingDTO> result = itemGroupMapper.mapItemGroupToItemGroupShippingDTO(itemGroupShipping);
@@ -82,7 +76,7 @@ class ReportMapperTest {
     @Test
     void mappingOrdersToOrderReportDTO() {
         itemRepository.addItem(item);
-        Order order = new Order(customerID, List.of(new ItemGroup(item.getItemID(), amount)));
+        Order order = new Order(customerID, List.of(new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice())));
         Order.calculateTotalPrice(order, itemRepository);
         OrderReportDTO reportDTO = reportMapper.mapOrderToOrderReportDTO(order);
 
@@ -95,7 +89,7 @@ class ReportMapperTest {
     @Test
     void mappingOrdersToReportDTO() {
         itemRepository.addItem(item);
-        Order order1 = new Order(customerID, List.of(new ItemGroup(item.getItemID(), amount)));
+        Order order1 = new Order(customerID, List.of(new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice())));
         Order.calculateTotalPrice(order1, itemRepository);
 
         ReportDTO reportDTO = reportMapper.mapOrdersToReportDTO(List.of(order1, order1));
@@ -108,8 +102,8 @@ class ReportMapperTest {
     @Test
     void mapShippingReportToShippingReportDTO() {
         String address = "address";
-        ItemGroup itemGroup = new ItemGroup(itemRepository.getAllItemsFromRepository().stream().toList().get(0).getItemID(), amount);
-        itemGroup.setShippingDateAndPrice(item);
+        Item testItem = itemRepository.getAllItemsFromRepository().stream().toList().get(0);
+        ItemGroup itemGroup = new ItemGroup(testItem.getItemID(), testItem.getName(), amount, testItem.getShippingDateForAmount(amount), testItem.getPrice());
         List<ItemGroupShipping> itemGroupShipping = List.of(new ItemGroupShipping(address, itemGroup), new ItemGroupShipping(address, itemGroup));
 
         ShippingReportDTO result = reportMapper.mapShippingReportToShippingReportDTO(itemGroupShipping);
