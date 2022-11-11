@@ -180,7 +180,7 @@ public class OrderControllerIntegrationTest {
                     .contentType(MediaType.APPLICATION_JSON_VALUE)
                     .headers("Authorization", "Basic " + customerBase64)
                     .when()
-                    .post("customers/invalidID/orders/" + order.getOrderID() + "/order")
+                    .post("customers/CID20221004/orders/" + order.getOrderID() + "/order")
                     .then()
                     .assertThat()
                     .statusCode(HttpStatus.FORBIDDEN.value());

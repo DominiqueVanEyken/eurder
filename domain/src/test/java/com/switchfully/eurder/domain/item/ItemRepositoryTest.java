@@ -48,7 +48,7 @@ class ItemRepositoryTest {
                 .build();
         int stockBefore = item.getStockCount();
         itemRepository.addItem(item);
-        itemRepository.reduceStockForItemByAmount(item.getItemID(), amountToReduce);
+        item.reduceStockByAmount(amountToReduce);
         assertThat(item.getStockCount() == stockBefore - amountToReduce).isTrue();
     }
 

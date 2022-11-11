@@ -56,11 +56,6 @@ public class ItemRepository {
                 .findFirst();
     }
 
-    //TODO: Possible to move to Item or ItemService?
-    public void reduceStockForItemByAmount(String itemID, int amount) {
-        itemRepository.get(itemID).reduceStockByAmount(amount);
-    }
-
     public Collection<Item> getAllItemsByStockStatusFilter(String stockStatus) {
         return itemRepository.values().stream()
                 .filter(item -> item.getStockStatus().equals(stockStatus.toUpperCase()))

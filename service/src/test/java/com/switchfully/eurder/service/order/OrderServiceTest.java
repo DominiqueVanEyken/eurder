@@ -89,7 +89,7 @@ class OrderServiceTest {
             orderRepository.createOrder(order);
             Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
 
-            OrderDTO result = orderService.reOrderByOrderID(customer.getCustomerID(), order.getOrderID(), customer.getEmailAddress());
+            OrderDTO result = orderService.reOrderByOrderID(customer.getCustomerID(), order.getOrderID());
 
             assertThat(result).isNotNull();
             assertThat(result.getOrderDate()).isEqualTo(LocalDate.now());
@@ -98,21 +98,11 @@ class OrderServiceTest {
         }
 
         @Test
-        void reorderOrderByID_givenInvalidCostumerData() {
-            orderRepository.createOrder(order);
-            Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
-
-            assertThatThrownBy(() -> orderService.reOrderByOrderID("invalidID", order.getOrderID(), "invalid@email.be"))
-                    .isInstanceOf(UnauthorizedException.class)
-                    .hasMessageContaining("User does not have authorized access");
-        }
-
-        @Test
         void reorderOrderByID_givenInvalidOrderID() {
             orderRepository.createOrder(order);
             Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
 
-            assertThatThrownBy(() -> orderService.reOrderByOrderID(customer.getCustomerID(), "invalidOrderID", customer.getEmailAddress()))
+            assertThatThrownBy(() -> orderService.reOrderByOrderID(customer.getCustomerID(), "invalidOrderID"))
                     .isInstanceOf(NoSuchElementException.class)
                     .hasMessageContaining("Order with ID invalidOrderID does not exist");
 

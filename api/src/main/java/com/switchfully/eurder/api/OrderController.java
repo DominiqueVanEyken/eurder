@@ -42,8 +42,9 @@ public class OrderController {
     @ResponseStatus(HttpStatus.CREATED)
     public OrderDTO reOrderItemsByOrderID(@RequestHeader String authorization, @PathVariable String customerID, @PathVariable String orderID) {
         securityService.validateAuthorization(authorization, Feature.ORDER_ITEMS);
-        log.debug("Requesting to reorder order with ID " + orderID);
         String username = new String(Base64.getDecoder().decode(authorization.substring("Basic ".length()))).split(":")[0];
-        return orderService.reOrderByOrderID(customerID, orderID, username);
+        customerService.validateIfCustomerIDBelongsToUsername(customerID, username);
+        log.debug("Requesting to reorder order with ID " + orderID);
+        return orderService.reOrderByOrderID(customerID, orderID);
     }
 }

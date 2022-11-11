@@ -10,7 +10,7 @@ import com.switchfully.eurder.service.report.dto.ItemGroupShippingDTO;
 import java.util.List;
 
 public class ItemGroupMapper {
-
+    //TODO: create itemGroupBuilder
     public ItemGroup mapDTOToItemGroup(Item item, int amount) {
         return new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
     }

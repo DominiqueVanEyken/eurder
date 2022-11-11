@@ -37,18 +37,13 @@ public class OrderService {
     public OrderDTO createOrder(String customerID, CreateOrderDTO createOrderDTO) {
         List<ItemGroup> itemGroups = new ArrayList<>();
         for (CreateItemGroupDTO itemGroupDTO : createOrderDTO.getOrderList()) {
-            Item item = itemRepository.getItemByID(itemGroupDTO.getItemID())
-                    .orElseThrow(() -> new NoSuchElementException("Item with ID " + itemGroupDTO.getItemID() + " could not be found"));
+            String itemID = itemGroupDTO.getItemID();
             int amount = itemGroupDTO.getAmount();
-            itemGroups.add(itemGroupMapper.mapDTOToItemGroup(item, amount));
-            item.reduceStockByAmount(amount);
+            mapItemToItemGroupAndReduceStock(itemGroups, itemID, amount);
         }
         Order order = orderMapper.mapDTOToOrder(customerID, itemGroups);
-
         orderRepository.createOrder(order);
-        Optional<Order> returningOrder = orderRepository.findOrderByID(order.getOrderID());
-        return orderMapper.mapOrderToDTO(returningOrder
-                .orElseThrow(() -> new NoSuchElementException("The created order with ID " + order.getCustomerID() + "could not be found")));
+        return orderMapper.mapOrderToDTO(order);
     }
 
     protected Order getOrderByOrderID(String orderID) {
@@ -57,21 +52,15 @@ public class OrderService {
                 .orElseThrow(() -> new NoSuchElementException("Order with ID " + orderID + " does not exist"));
     }
 
-    public OrderDTO reOrderByOrderID(String customerID, String orderID, String username) {
+    public OrderDTO reOrderByOrderID(String customerID, String orderID) {
         Order orderToReorder = getOrderByOrderID(orderID);
-        validateOrderIDBelongsToCustomer(customerID, orderToReorder, username);
-        //TODO: create mapping?
-        //TODO: create itemGroupBuilder
-
         List<ItemGroup> itemGroupsToReorder = new ArrayList<>();
         for (ItemGroup itemGroup : orderToReorder.getOrderList()) {
-            Item item = itemRepository.getItemByID(itemGroup.getItemID())
-                    .orElseThrow(() -> new NoSuchElementException("Item with ID " + itemGroup.getItemID() + " could not be found"));
+            String itemID = itemGroup.getItemID();
             int amount = itemGroup.getAmount();
-            itemGroupsToReorder.add(new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice()));
-            item.reduceStockByAmount(amount);
+            mapItemToItemGroupAndReduceStock(itemGroupsToReorder, itemID, amount);
         }
-        Order order = new Order(orderToReorder.getCustomerID(), itemGroupsToReorder);
+        Order order = orderMapper.mapDTOToOrder(customerID, itemGroupsToReorder);
         orderRepository.createOrder(order);
         return orderMapper.mapOrderToDTO(order);
     }
@@ -85,5 +74,12 @@ public class OrderService {
         if (!customer.get().getEmailAddress().equals(username)) {
             throw new UnauthorizedException();
         }
+    }
+
+    private void mapItemToItemGroupAndReduceStock(List<ItemGroup> itemGroups, String itemID, int amount) {
+        Item item = itemRepository.getItemByID(itemID)
+                .orElseThrow(() -> new NoSuchElementException("Item with ID " + itemID + " could not be found"));
+        itemGroups.add(itemGroupMapper.mapDTOToItemGroup(item, amount));
+        item.reduceStockByAmount(amount);
     }
 }
