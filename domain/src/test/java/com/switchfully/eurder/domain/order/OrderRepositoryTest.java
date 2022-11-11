@@ -53,17 +53,9 @@ class OrderRepositoryTest {
     @Test
     void gettingAnOrderByOrderID_givenValidOrderID() {
         orderRepository.createOrder(order);
-        Order result = orderRepository.findOrderByID(order.getOrderID());
+        Order result = orderRepository.findOrderByID(order.getOrderID()).get();
 
         assertThat(result).isEqualTo(order);
-    }
-
-    @Test
-    void gettingOrderByOrderID_givenInvalidOrderID() {
-        String orderID = "invalidID";
-        assertThatThrownBy(() -> orderRepository.findOrderByID(orderID))
-                .isInstanceOf(NoSuchElementException.class)
-                .hasMessageContaining("Order with ID " + orderID + " does not exist");
     }
 
     @Test

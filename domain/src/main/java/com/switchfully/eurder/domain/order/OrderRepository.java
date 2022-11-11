@@ -55,11 +55,8 @@ public class OrderRepository {
         log.info("Created ".concat(order.toString()));
     }
 
-    public Order findOrderByID(String orderID) {
-        if (!orderRepository.containsKey(orderID)) {
-            throw new NoSuchElementException("Order with ID " + orderID + " does not exist");
-        }
-        return orderRepository.get(orderID);
+    public Optional<Order> findOrderByID(String orderID) {
+        return Optional.ofNullable(orderRepository.get(orderID));
     }
 
     // TODO: Move to OrderService or ItemService
@@ -74,14 +71,14 @@ public class OrderRepository {
                 .toList();
     }
 
-    //    TODO: Move to OrderService
+    // TODO: Move to OrderService
     private boolean itemGroupShipsToday(ItemGroup itemGroup) {
         LocalDate shippingDate = itemGroup.getShippingDate();
         LocalDate today = LocalDate.now();
         return shippingDate.getYear() == today.getYear() && shippingDate.getMonth().equals(today.getMonth()) && shippingDate.getDayOfMonth() == today.getDayOfMonth();
     }
 
-    //    TODO: Move to OrderService
+    // TODO: Move to OrderService
     public List<ItemGroupShipping> getShippingReportPerItemGroup() {
         log.info("Generating shipping report");
         List<ItemGroupShipping> itemGroupShippings = new ArrayList<>();

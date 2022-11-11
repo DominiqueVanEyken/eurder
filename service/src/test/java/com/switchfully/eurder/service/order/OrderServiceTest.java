@@ -11,11 +11,13 @@ import com.switchfully.eurder.domain.order.Order;
 import com.switchfully.eurder.domain.order.OrderRepository;
 import com.switchfully.eurder.service.order.dto.OrderDTO;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -47,57 +49,74 @@ class OrderServiceTest {
         order = new Order(customerID, orderList);
     }
 
-    @Test
-    void validateOrderIDBelongsToCustomer_givenInvalidCustomerID() {
-        orderRepository.createOrder(order);
-        Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
+    @Nested
+    class ValidateCustomerIDBelongsToCustomer {
+        @Test
+        void validateOrderIDBelongsToCustomer_givenInvalidCustomerID() {
+            orderRepository.createOrder(order);
+            Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
 
-        assertThatThrownBy(() -> orderService.validateOrderIDBelongsToCustomer("someID", order, customer.getEmailAddress()))
-                .isInstanceOf(UnauthorizedException.class)
-                .hasMessageContaining("User does not have authorized access");
+            assertThatThrownBy(() -> orderService.validateOrderIDBelongsToCustomer("someID", order, customer.getEmailAddress()))
+                    .isInstanceOf(UnauthorizedException.class)
+                    .hasMessageContaining("User does not have authorized access");
+        }
+
+        @Test
+        void validateOrderIDBelongsToCustomer_givenInvalidEmail() {
+            orderRepository.createOrder(order);
+            Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
+
+            assertThatThrownBy(() -> orderService.validateOrderIDBelongsToCustomer(customer.getCustomerID(), order, "invalid@email.be"))
+                    .isInstanceOf(UnauthorizedException.class)
+                    .hasMessageContaining("User does not have authorized access");
+        }
     }
 
-    @Test
-    void validateOrderIDBelongsToCustomer_givenInvalidEmail() {
-        orderRepository.createOrder(order);
-        Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
-
-        assertThatThrownBy(() -> orderService.validateOrderIDBelongsToCustomer(customer.getCustomerID(), order, "invalid@email.be"))
-                .isInstanceOf(UnauthorizedException.class)
-                .hasMessageContaining("User does not have authorized access");
+    @Nested
+    class GettingOrderByOrderID {
+        @Test
+        void gettingOrderByOrderID_givenInvalidOrderID() {
+            String orderID = "invalidID";
+            assertThatThrownBy(() -> orderService.getOrderByOrderID(orderID))
+                    .isInstanceOf(NoSuchElementException.class)
+                    .hasMessageContaining("Order with ID " + orderID + " does not exist");
+        }
     }
 
-    @Test
-    void reorderOrderByID_givenValidData() {
-        orderRepository.createOrder(order);
-        Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
+    @Nested
+    class ReorderByOrderID {
+        @Test
+        void reorderOrderByID_givenValidData() {
+            orderRepository.createOrder(order);
+            Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
 
-        OrderDTO result = orderService.reOrderByOrderID(customer.getCustomerID(), order.getOrderID(), customer.getEmailAddress());
+            OrderDTO result = orderService.reOrderByOrderID(customer.getCustomerID(), order.getOrderID(), customer.getEmailAddress());
 
-        assertThat(result).isNotNull();
-        assertThat(result.getOrderDate()).isEqualTo(LocalDate.now());
-        assertThat(result.getCustomerID()).isEqualTo(customer.getCustomerID());
-        assertThat(result.getOrderList().size()).isEqualTo(order.getOrderList().size());
-    }
+            assertThat(result).isNotNull();
+            assertThat(result.getOrderDate()).isEqualTo(LocalDate.now());
+            assertThat(result.getCustomerID()).isEqualTo(customer.getCustomerID());
+            assertThat(result.getOrderList().size()).isEqualTo(order.getOrderList().size());
+        }
 
-    @Test
-    void reorderOrderByID_givenInvalidCostumerData() {
-        orderRepository.createOrder(order);
-        Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
+        @Test
+        void reorderOrderByID_givenInvalidCostumerData() {
+            orderRepository.createOrder(order);
+            Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
 
-        assertThatThrownBy(() -> orderService.reOrderByOrderID("invalidID", order.getOrderID(), "invalid@email.be"))
-                .isInstanceOf(UnauthorizedException.class)
-                .hasMessageContaining("User does not have authorized access");
-    }
+            assertThatThrownBy(() -> orderService.reOrderByOrderID("invalidID", order.getOrderID(), "invalid@email.be"))
+                    .isInstanceOf(UnauthorizedException.class)
+                    .hasMessageContaining("User does not have authorized access");
+        }
 
-    @Test
-    void reorderOrderByID_givenInvalidOrderID() {
-        orderRepository.createOrder(order);
-        Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
+        @Test
+        void reorderOrderByID_givenInvalidOrderID() {
+            orderRepository.createOrder(order);
+            Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
 
-        assertThatThrownBy(() -> orderService.reOrderByOrderID(customer.getCustomerID(), "invalidOrderID", customer.getEmailAddress()))
-                .isInstanceOf(NoSuchElementException.class)
-                .hasMessageContaining("Order with ID invalidOrderID does not exist");
+            assertThatThrownBy(() -> orderService.reOrderByOrderID(customer.getCustomerID(), "invalidOrderID", customer.getEmailAddress()))
+                    .isInstanceOf(NoSuchElementException.class)
+                    .hasMessageContaining("Order with ID invalidOrderID does not exist");
 
+        }
     }
 }

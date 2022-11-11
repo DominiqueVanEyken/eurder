@@ -19,8 +19,8 @@ import java.util.Optional;
 public class OrderService {
     private final OrderMapper orderMapper;
     private final OrderRepository orderRepository;
-    private CustomerRepository customerRepository;
-    private ItemRepository itemRepository;
+    private final CustomerRepository customerRepository;
+    private final ItemRepository itemRepository;
 
     public OrderService(OrderRepository orderRepository, CustomerRepository customerRepository, ItemRepository itemRepository) {
         this.orderRepository = orderRepository;
@@ -32,12 +32,19 @@ public class OrderService {
     public OrderDTO createOrder(String customerID, CreateOrderDTO createOrderDTO) {
         Order order = orderMapper.mapDTOToOrder(customerID, createOrderDTO);
         orderRepository.createOrder(order);
-        order = orderRepository.findOrderByID(order.getOrderID());
-        return orderMapper.mapOrderToDTO(order);
+        Optional<Order> returningOrder = orderRepository.findOrderByID(order.getOrderID());
+        return orderMapper.mapOrderToDTO(returningOrder
+                .orElseThrow(() -> new  NoSuchElementException("The created order with ID " + order.getCustomerID() + "could not be found")));
+    }
+
+    protected Order getOrderByOrderID(String orderID) {
+        Optional<Order> order = orderRepository.findOrderByID(orderID);
+        return order
+                .orElseThrow(() -> new NoSuchElementException("Order with ID " + orderID + " does not exist"));
     }
 
     public OrderDTO reOrderByOrderID(String customerID, String orderID, String username) {
-        Order orderToReorder = orderRepository.findOrderByID(orderID);
+        Order orderToReorder = getOrderByOrderID(orderID);
         validateOrderIDBelongsToCustomer(customerID, orderToReorder, username);
         List<ItemGroup> itemGroupsToReorder = orderToReorder.getOrderList().stream()
                 .map(itemGroup -> new ItemGroup(itemGroup.getItemID(), itemGroup.getAmount()))
