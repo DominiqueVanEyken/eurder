@@ -1,8 +1,8 @@
 package com.switchfully.eurder.service.order;
 
+import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.order.ItemGroup;
 import com.switchfully.eurder.domain.order.ItemGroupShipping;
-import com.switchfully.eurder.service.order.dto.CreateItemGroupDTO;
 import com.switchfully.eurder.service.order.dto.ItemGroupDTO;
 import com.switchfully.eurder.service.report.dto.ItemGroupReportDTO;
 import com.switchfully.eurder.service.report.dto.ItemGroupShippingDTO;
@@ -11,14 +11,8 @@ import java.util.List;
 
 public class ItemGroupMapper {
 
-    public List<ItemGroup> mapDTOToItemGroup(List<CreateItemGroupDTO> createItemGroupDTO) {
-        return createItemGroupDTO.stream()
-                .map(this::mapDTOToItemGroup)
-                .toList();
-    }
-
-    public ItemGroup mapDTOToItemGroup(CreateItemGroupDTO createItemGroupDTO) {
-        return new ItemGroup(createItemGroupDTO.getItemID(), createItemGroupDTO.getAmount());
+    public ItemGroup mapDTOToItemGroup(Item item, int amount) {
+        return new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
     }
 
     public ItemGroupDTO mapItemGroupToDTO(ItemGroup itemGroup) {

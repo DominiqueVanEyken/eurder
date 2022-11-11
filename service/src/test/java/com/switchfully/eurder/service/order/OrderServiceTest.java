@@ -17,7 +17,6 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -38,7 +37,7 @@ class OrderServiceTest {
         itemRepository = new ItemRepository();
         customerRepository = new CustomerRepository();
         orderRepository = new OrderRepository(itemRepository, customerRepository);
-        orderService = new OrderService(orderRepository, customerRepository, itemRepository);
+        orderService = new OrderService(itemMapper, orderRepository, customerRepository, itemRepository);
         itemRepository.addItem(item1);
         itemRepository.addItem(item2);
         orderList = List.of(

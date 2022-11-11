@@ -1,15 +1,10 @@
 package com.switchfully.eurder.service.order;
 
-import com.switchfully.eurder.domain.Price.Price;
+import com.switchfully.eurder.domain.order.ItemGroup;
 import com.switchfully.eurder.domain.order.Order;
-import com.switchfully.eurder.domain.order.ItemGroupShipping;
 import com.switchfully.eurder.service.order.dto.CreateOrderDTO;
 import com.switchfully.eurder.service.order.dto.OrderDTO;
-import com.switchfully.eurder.service.report.dto.OrderReportDTO;
-import com.switchfully.eurder.service.report.dto.ShippingReportDTO;
-import com.switchfully.eurder.service.report.dto.ReportDTO;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public class OrderMapper {
@@ -19,8 +14,8 @@ public class OrderMapper {
         this.itemGroupMapper = new ItemGroupMapper();
     }
 
-    public Order mapDTOToOrder(String customerID, CreateOrderDTO createOrderDTO) {
-        return new Order(customerID, itemGroupMapper.mapDTOToItemGroup(createOrderDTO.getOrderList()));
+    public Order mapDTOToOrder(String customerID, List<ItemGroup> itemGroups) {
+        return new Order(customerID, itemGroups);
     }
 
     public OrderDTO mapOrderToDTO(Order order) {
