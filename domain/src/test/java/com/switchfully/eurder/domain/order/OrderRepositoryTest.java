@@ -17,7 +17,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class OrderRepositoryTest {
-
     private ItemRepository itemRepository;
     private OrderRepository orderRepository;
     private CustomerRepository customerRepository;
@@ -86,67 +85,4 @@ class OrderRepositoryTest {
         assertThat(itemGroupShippings.size()).isEqualTo(1);
     }
 
-    @Test
-    void validateOrderIDBelongsToCustomer_givenValidData() {
-        orderRepository.createOrder(order);
-        Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
-
-        boolean result = orderRepository.validateOrderIDBelongsToCustomer(customer.getCustomerID(), order, customer.getEmailAddress());
-
-        assertThat(result).isTrue();
-    }
-
-    @Test
-    void validateOrderIDBelongsToCustomer_givenInvalidCustomerID() {
-        orderRepository.createOrder(order);
-        Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
-
-        boolean result = orderRepository.validateOrderIDBelongsToCustomer("someID", order, customer.getEmailAddress());
-
-        assertThat(result).isFalse();
-    }
-
-    @Test
-    void validateOrderIDBelongsToCustomer_givenInvalidEmail() {
-        orderRepository.createOrder(order);
-        Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
-
-        boolean result = orderRepository.validateOrderIDBelongsToCustomer(customer.getCustomerID(), order, "invalid@email.be");
-
-        assertThat(result).isFalse();
-    }
-
-    @Test
-    void reorderOrderByID_givenValidData() {
-        orderRepository.createOrder(order);
-        Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
-
-        Order result = orderRepository.reorderOrderByID(customer.getCustomerID(), order.getOrderID(), customer.getEmailAddress());
-
-        assertThat(result).isNotNull();
-        assertThat(result.getOrderDate()).isEqualTo(LocalDate.now());
-        assertThat(result.getCustomerID()).isEqualTo(customer.getCustomerID());
-        assertThat(result.getOrderList().size()).isEqualTo(order.getOrderList().size());
-    }
-
-    @Test
-    void reorderOrderByID_givenInvalidCostumerData() {
-        orderRepository.createOrder(order);
-        Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
-
-        assertThatThrownBy(() -> orderRepository.reorderOrderByID("invalidID", order.getOrderID(), "invalid@email.be"))
-                .isInstanceOf(UnauthorizedException.class)
-                .hasMessageContaining("User does not have authorized access");
-    }
-
-    @Test
-    void reorderOrderByID_givenInvalidOrderID() {
-        orderRepository.createOrder(order);
-        Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
-
-        assertThatThrownBy(() -> orderRepository.reorderOrderByID(customer.getCustomerID(), "invalidOrderID", customer.getEmailAddress()))
-                .isInstanceOf(NoSuchElementException.class)
-                .hasMessageContaining("Order with ID invalidOrderID does not exist");
-
-    }
 }

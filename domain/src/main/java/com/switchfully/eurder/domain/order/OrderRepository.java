@@ -2,7 +2,6 @@ package com.switchfully.eurder.domain.order;
 
 import com.switchfully.eurder.domain.customer.Customer;
 import com.switchfully.eurder.domain.customer.CustomerRepository;
-import com.switchfully.eurder.domain.exceptions.UnauthorizedException;
 import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.item.ItemRepository;
 import org.slf4j.Logger;
@@ -45,7 +44,6 @@ public class OrderRepository {
         orderRepository.put(order3.getOrderID(), order3);
     }
 
-
     public Collection<Order> getOrders() {
         return orderRepository.values();
     }
@@ -83,6 +81,7 @@ public class OrderRepository {
         return shippingDate.getYear() == today.getYear() && shippingDate.getMonth().equals(today.getMonth()) && shippingDate.getDayOfMonth() == today.getDayOfMonth();
     }
 
+    //    TODO: Move to OrderService
     public List<ItemGroupShipping> getShippingReportPerItemGroup() {
         log.info("Generating shipping report");
         List<ItemGroupShipping> itemGroupShippings = new ArrayList<>();
@@ -96,31 +95,5 @@ public class OrderRepository {
             }
         }
         return itemGroupShippings;
-    }
-
-    //    TODO: Move to OrderService
-    public boolean validateOrderIDBelongsToCustomer(String customerID, Order order, String username) {
-        if (!order.getCustomerID().equals(customerID)) {
-            return false;
-        }
-        Optional<Customer> customer = customerRepository.findCustomerByID(customerID);
-        if (!customer.get().getEmailAddress().equals(username)) {
-            return false;
-        }
-        return true;
-    }
-
-    public Order reorderOrderByID(String customerID, String orderID, String username) {
-        Order orderToReoder = findOrderByID(orderID);
-        if (!validateOrderIDBelongsToCustomer(customerID, orderToReoder, username)) {
-            throw new UnauthorizedException();
-        }
-        List<ItemGroup> itemGroups = orderToReoder.getOrderList().stream()
-                .map(itemGroup -> new ItemGroup(itemGroup.getItemID(), itemGroup.getAmount()))
-                .toList();
-        Order order = new Order(customerID, itemGroups);
-        Order.calculateTotalPrice(order, itemRepository);
-        createOrder(order);
-        return order;
     }
 }

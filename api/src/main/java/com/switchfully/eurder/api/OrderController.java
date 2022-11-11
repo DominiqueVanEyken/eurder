@@ -43,6 +43,6 @@ public class OrderController {
         securityService.validateAuthorization(authorization, Feature.ORDER_ITEMS);
         log.debug("Requesting to reorder order with ID " + orderID);
         String username = new String(Base64.getDecoder().decode(authorization.substring("Basic ".length()))).split(":")[0];
-        return orderService.getOrderByID(customerID, orderID, username);
+        return orderService.reOrderByOrderID(customerID, orderID, username);
     }
 }
