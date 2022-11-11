@@ -24,6 +24,6 @@ public class ReportService {
     }
 
     public ShippingReportDTO getShippingReportForToday() {
-        return reportMapper.mapShippingReportToShippingReportDTO(orderRepository.getShippingReportPerItemGroup());
+        return reportMapper.mapShippingReportToShippingReportDTO(orderRepository.getItemGroupsShippingToday());
     }
 }

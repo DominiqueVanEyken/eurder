@@ -1,6 +1,5 @@
 package com.switchfully.eurder.domain.order;
 
-import com.switchfully.eurder.domain.customer.Customer;
 import com.switchfully.eurder.domain.customer.CustomerRepository;
 import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.item.ItemRepository;
@@ -71,26 +70,26 @@ public class OrderRepository {
                 .toList();
     }
 
-    // TODO: Move to OrderService
-    private boolean itemGroupShipsToday(ItemGroup itemGroup) {
-        LocalDate shippingDate = itemGroup.getShippingDate();
-        LocalDate today = LocalDate.now();
-        return shippingDate.getYear() == today.getYear() && shippingDate.getMonth().equals(today.getMonth()) && shippingDate.getDayOfMonth() == today.getDayOfMonth();
-    }
-
-    // TODO: Move to OrderService
-    public List<ItemGroupShipping> getShippingReportPerItemGroup() {
+    public List<ItemGroupShipping> getItemGroupsShippingToday() {
         log.info("Generating shipping report");
         List<ItemGroupShipping> itemGroupShippings = new ArrayList<>();
         for (Order order : orderRepository.values()) {
-            Optional<Customer> customer;
             for (ItemGroup itemGroup : order.getOrderList()) {
-                if (itemGroupShipsToday(itemGroup)) {
-                    customer = customerRepository.findCustomerByID(order.getCustomerID());
-                    itemGroupShippings.add(new ItemGroupShipping(customer.get().getFullAddress(), itemGroup));
+                if (doesItemGroupShipsToday(itemGroup)) {
+                    customerRepository.findCustomerByID(order.getCustomerID())
+                            .ifPresent(customer -> itemGroupShippings.add(
+                                    new ItemGroupShipping(customer.getEmailAddress(), itemGroup)
+                                    )
+                            );
                 }
             }
         }
         return itemGroupShippings;
+    }
+
+    private boolean doesItemGroupShipsToday(ItemGroup itemGroup) {
+        LocalDate shippingDate = itemGroup.getShippingDate();
+        LocalDate today = LocalDate.now();
+        return shippingDate.getYear() == today.getYear() && shippingDate.getMonth().equals(today.getMonth()) && shippingDate.getDayOfMonth() == today.getDayOfMonth();
     }
 }

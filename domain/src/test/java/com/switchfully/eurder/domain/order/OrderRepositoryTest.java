@@ -1,9 +1,7 @@
 package com.switchfully.eurder.domain.order;
 
 import com.switchfully.eurder.domain.Price.Price;
-import com.switchfully.eurder.domain.customer.Customer;
 import com.switchfully.eurder.domain.customer.CustomerRepository;
-import com.switchfully.eurder.domain.exceptions.UnauthorizedException;
 import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.item.ItemRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,7 +9,6 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -71,7 +68,7 @@ class OrderRepositoryTest {
     void itemGroupShipsToday() {
         orderRepository.createOrder(order);
         order.getOrderList().get(0).setShippingDate(LocalDate.now());
-        List<ItemGroupShipping> itemGroupShippings = orderRepository.getShippingReportPerItemGroup();
+        List<ItemGroupShipping> itemGroupShippings = orderRepository.getItemGroupsShippingToday();
 
         assertThat(itemGroupShippings).isNotNull();
         assertThat(itemGroupShippings.size()).isEqualTo(1);
