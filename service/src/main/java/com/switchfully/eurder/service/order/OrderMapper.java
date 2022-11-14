@@ -12,7 +12,7 @@ public class OrderMapper {
     public Order mapDTOToOrder(String customerID, List<ItemGroup> itemGroups) {
         return new Order(customerID, itemGroups);
     }
-    
+
     public OrderDTO mapOrderToDTO(Order order, List<ItemGroupDTO> itemGroupDTOS) {
         return new OrderDTO()
                 .setOrderID(order.getOrderID())
@@ -20,7 +20,6 @@ public class OrderMapper {
                 .setOrderDate(order.getOrderDate())
                 .setOrderList(itemGroupDTOS)
                 .setTotalPrice(order.getTotalPrice().toString());
-
     }
 
 

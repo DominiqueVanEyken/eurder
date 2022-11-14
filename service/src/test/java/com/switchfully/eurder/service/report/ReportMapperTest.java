@@ -27,7 +27,7 @@ class ReportMapperTest {
     @Test
     void mappingItemGroupToItemGroupReportDTO() {
         ItemGroup itemGroup = new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
-        ItemGroupReportDTO reportDTO = itemGroupMapper.mapItemGroupToItemGroupReportDTO(itemGroup);
+        ItemGroupReportDTO reportDTO = reportMapper.mapItemGroupToItemGroupReportDTO(itemGroup);
 
         assertThat(reportDTO).isNotNull();
         assertThat(reportDTO.getName()).isEqualTo(itemGroup.getItemName());
@@ -39,7 +39,7 @@ class ReportMapperTest {
     void mappingItemGroupToItemGroupReportDTO_givenList() {
         ItemGroup itemGroup1 = new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
         ItemGroup itemGroup2 = new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
-        List<ItemGroupReportDTO> orderList = itemGroupMapper.mapItemGroupToItemGroupReportDTO(List.of(itemGroup1, itemGroup2));
+        List<ItemGroupReportDTO> orderList = reportMapper.mapItemGroupToItemGroupReportDTO(List.of(itemGroup1, itemGroup2));
 
         assertThat(orderList).isNotNull();
         assertThat(orderList.size()).isEqualTo(2);
