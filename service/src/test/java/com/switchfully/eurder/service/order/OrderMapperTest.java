@@ -117,7 +117,8 @@ class OrderMapperTest {
         itemRepository.addItem(item);
         Order order = new Order(customerID, List.of(new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice())));
 
-        OrderDTO orderDTO = orderMapper.mapOrderToDTO(order);
+        List<ItemGroupDTO> itemGroupDTOS = itemGroupMapper.mapItemGroupToDTO(order.getOrderList());
+        OrderDTO orderDTO = orderMapper.mapOrderToDTO(order, itemGroupDTOS);
 
         assertThat(orderDTO).isNotNull();
         assertThat(orderDTO.getOrderID()).isNotNull();

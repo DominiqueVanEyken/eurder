@@ -10,6 +10,7 @@ import com.switchfully.eurder.domain.order.Order;
 import com.switchfully.eurder.domain.order.OrderRepository;
 import com.switchfully.eurder.service.order.dto.CreateItemGroupDTO;
 import com.switchfully.eurder.service.order.dto.CreateOrderDTO;
+import com.switchfully.eurder.service.order.dto.ItemGroupDTO;
 import com.switchfully.eurder.service.order.dto.OrderDTO;
 import org.springframework.stereotype.Service;
 
@@ -43,7 +44,8 @@ public class OrderService {
         }
         Order order = orderMapper.mapDTOToOrder(customerID, itemGroups);
         orderRepository.createOrder(order);
-        return orderMapper.mapOrderToDTO(order);
+        List<ItemGroupDTO> itemGroupDTOS = itemGroupMapper.mapItemGroupToDTO(order.getOrderList());
+        return orderMapper.mapOrderToDTO(order, itemGroupDTOS);
     }
 
     protected Order getOrderByOrderID(String orderID) {
@@ -62,7 +64,8 @@ public class OrderService {
         }
         Order order = orderMapper.mapDTOToOrder(customerID, itemGroupsToReorder);
         orderRepository.createOrder(order);
-        return orderMapper.mapOrderToDTO(order);
+        List<ItemGroupDTO> itemGroupDTOS = itemGroupMapper.mapItemGroupToDTO(order.getOrderList());
+        return orderMapper.mapOrderToDTO(order, itemGroupDTOS);
     }
 
     public void validateOrderIDBelongsToCustomer(String customerID, Order order, String username) {

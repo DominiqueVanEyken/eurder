@@ -37,6 +37,7 @@ public class ItemGroupMapper {
                 .toList();
     }
 
+    //TODO: create and move to ReportMapper?
     public ItemGroupReportDTO mapItemGroupToItemGroupReportDTO(ItemGroup itemGroup) {
         return new ItemGroupReportDTO()
                 .setName(itemGroup.getItemName())
@@ -44,12 +45,13 @@ public class ItemGroupMapper {
                 .setTotalPrice(itemGroup.getTotalPrice().toString());
     }
 
+    //TODO: create and move to ReportMapper?
     public List<ItemGroupReportDTO> mapItemGroupToItemGroupReportDTO(List<ItemGroup> itemGroups) {
         return itemGroups.stream()
                 .map(this::mapItemGroupToItemGroupReportDTO)
                 .toList();
     }
-
+    //TODO: create and move toShippingMapper?
     public ItemGroupShippingDTO mapItemGroupToItemGroupShippingDTO(ItemGroupShipping itemGroupShipping) {
         return new ItemGroupShippingDTO()
                 .setItemID(itemGroupShipping.getItemID())
@@ -59,7 +61,7 @@ public class ItemGroupMapper {
                 .setTotalPrice(itemGroupShipping.getTotalPrice())
                 .setShippingAddress(itemGroupShipping.getShippingAddress());
     }
-
+    //TODO: create and move toShippingMapper?
     public List<ItemGroupShippingDTO> mapItemGroupToItemGroupShippingDTO(List<ItemGroupShipping> itemGroupShippings) {
         return itemGroupShippings.stream()
                 .map(this::mapItemGroupToItemGroupShippingDTO)
