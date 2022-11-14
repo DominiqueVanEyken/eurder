@@ -67,10 +67,10 @@ class OrderRepositoryTest {
     void itemGroupShipsToday() {
         orderRepository.createOrder(order);
         order.getOrderList().get(0).setShippingDate(LocalDate.now());
-        List<ItemGroupShipping> itemGroupShippings = orderRepository.getItemGroupsShippingToday();
+        List<ItemGroupShippingReport> itemGroupShippingReports = orderRepository.getItemGroupsShippingToday();
 
-        assertThat(itemGroupShippings).isNotNull();
-        assertThat(itemGroupShippings.size()).isEqualTo(1);
+        assertThat(itemGroupShippingReports).isNotNull();
+        assertThat(itemGroupShippingReports.size()).isEqualTo(1);
     }
 
 }

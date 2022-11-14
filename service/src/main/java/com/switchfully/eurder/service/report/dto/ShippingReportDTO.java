@@ -5,13 +5,13 @@ import java.util.List;
 
 public class ShippingReportDTO {
     private LocalDate shippingDate;
-    private List<ItemGroupShippingDTO> itemGroups;
+    private List<ItemGroupShippingReportDTO> itemGroups;
 
     public LocalDate getShippingDate() {
         return shippingDate;
     }
 
-    public List<ItemGroupShippingDTO> getItemGroups() {
+    public List<ItemGroupShippingReportDTO> getItemGroups() {
         return itemGroups;
     }
 
@@ -20,7 +20,7 @@ public class ShippingReportDTO {
         return this;
     }
 
-    public ShippingReportDTO setItemGroups(List<ItemGroupShippingDTO> itemGroups) {
+    public ShippingReportDTO setItemGroups(List<ItemGroupShippingReportDTO> itemGroups) {
         this.itemGroups = itemGroups;
         return this;
     }

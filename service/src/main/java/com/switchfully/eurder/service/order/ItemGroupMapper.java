@@ -3,10 +3,7 @@ package com.switchfully.eurder.service.order;
 import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.order.ItemGroup;
 import com.switchfully.eurder.domain.order.ItemGroupBuilder;
-import com.switchfully.eurder.domain.order.ItemGroupShipping;
 import com.switchfully.eurder.service.order.dto.ItemGroupDTO;
-import com.switchfully.eurder.service.report.dto.ItemGroupReportDTO;
-import com.switchfully.eurder.service.report.dto.ItemGroupShippingDTO;
 
 import java.util.List;
 
@@ -37,20 +34,4 @@ public class ItemGroupMapper {
                 .toList();
     }
 
-    //TODO: create and move toShippingMapper?
-    public ItemGroupShippingDTO mapItemGroupToItemGroupShippingDTO(ItemGroupShipping itemGroupShipping) {
-        return new ItemGroupShippingDTO()
-                .setItemID(itemGroupShipping.getItemID())
-                .setItemName(itemGroupShipping.getItemName())
-                .setAmount(itemGroupShipping.getAmount())
-                .setPricePerUnit(itemGroupShipping.getPricePerUnit())
-                .setTotalPrice(itemGroupShipping.getTotalPrice())
-                .setShippingAddress(itemGroupShipping.getShippingAddress());
-    }
-    //TODO: create and move toShippingMapper?
-    public List<ItemGroupShippingDTO> mapItemGroupToItemGroupShippingDTO(List<ItemGroupShipping> itemGroupShippings) {
-        return itemGroupShippings.stream()
-                .map(this::mapItemGroupToItemGroupShippingDTO)
-                .toList();
-    }
 }

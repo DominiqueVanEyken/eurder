@@ -2,13 +2,10 @@ package com.switchfully.eurder.service.report;
 
 import com.switchfully.eurder.domain.Price.Price;
 import com.switchfully.eurder.domain.order.ItemGroup;
-import com.switchfully.eurder.domain.order.ItemGroupShipping;
+import com.switchfully.eurder.domain.order.ItemGroupShippingReport;
 import com.switchfully.eurder.domain.order.Order;
 import com.switchfully.eurder.service.order.ItemGroupMapper;
-import com.switchfully.eurder.service.report.dto.ItemGroupReportDTO;
-import com.switchfully.eurder.service.report.dto.OrderReportDTO;
-import com.switchfully.eurder.service.report.dto.ReportDTO;
-import com.switchfully.eurder.service.report.dto.ShippingReportDTO;
+import com.switchfully.eurder.service.report.dto.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -51,9 +48,25 @@ public class ReportMapper {
                 .setTotalPrice(totalPrice.toString());
     }
 
-    public ShippingReportDTO mapShippingReportToShippingReportDTO(List<ItemGroupShipping> itemGroupShippings) {
+    public ShippingReportDTO mapShippingReportToShippingReportDTO(List<ItemGroupShippingReport> itemGroupShippingReports) {
         return new ShippingReportDTO()
                 .setShippingDate(LocalDate.now())
-                .setItemGroups(itemGroupMapper.mapItemGroupToItemGroupShippingDTO(itemGroupShippings));
+                .setItemGroups(mapItemGroupToItemGroupShippingReportDTO(itemGroupShippingReports));
+    }
+
+    public ItemGroupShippingReportDTO mapItemGroupToItemGroupShippingReportDTO(ItemGroupShippingReport itemGroupShippingReport) {
+        return new ItemGroupShippingReportDTO()
+                .setItemID(itemGroupShippingReport.getItemID())
+                .setItemName(itemGroupShippingReport.getItemName())
+                .setAmount(itemGroupShippingReport.getAmount())
+                .setPricePerUnit(itemGroupShippingReport.getPricePerUnit())
+                .setTotalPrice(itemGroupShippingReport.getTotalPrice())
+                .setShippingAddress(itemGroupShippingReport.getShippingAddress());
+    }
+
+    public List<ItemGroupShippingReportDTO> mapItemGroupToItemGroupShippingReportDTO(List<ItemGroupShippingReport> itemGroupShippingReports) {
+        return itemGroupShippingReports.stream()
+                .map(this::mapItemGroupToItemGroupShippingReportDTO)
+                .toList();
     }
 }

@@ -1,6 +1,6 @@
 package com.switchfully.eurder.service.report.dto;
 
-public class ItemGroupShippingDTO {
+public class ItemGroupShippingReportDTO {
     private String itemID;
     private String itemName;
     private int amount;
@@ -8,32 +8,32 @@ public class ItemGroupShippingDTO {
     private String totalPrice;
     private String shippingAddress;
 
-    public ItemGroupShippingDTO setItemID(String itemID) {
+    public ItemGroupShippingReportDTO setItemID(String itemID) {
         this.itemID = itemID;
         return this;
     }
 
-    public ItemGroupShippingDTO setItemName(String itemName) {
+    public ItemGroupShippingReportDTO setItemName(String itemName) {
         this.itemName = itemName;
         return this;
     }
 
-    public ItemGroupShippingDTO setAmount(int amount) {
+    public ItemGroupShippingReportDTO setAmount(int amount) {
         this.amount = amount;
         return this;
     }
 
-    public ItemGroupShippingDTO setPricePerUnit(String pricePerUnit) {
+    public ItemGroupShippingReportDTO setPricePerUnit(String pricePerUnit) {
         this.pricePerUnit = pricePerUnit;
         return this;
     }
 
-    public ItemGroupShippingDTO setTotalPrice(String totalPrice) {
+    public ItemGroupShippingReportDTO setTotalPrice(String totalPrice) {
         this.totalPrice = totalPrice;
         return this;
     }
 
-    public ItemGroupShippingDTO setShippingAddress(String shippingAddress) {
+    public ItemGroupShippingReportDTO setShippingAddress(String shippingAddress) {
         this.shippingAddress = shippingAddress;
         return this;
     }

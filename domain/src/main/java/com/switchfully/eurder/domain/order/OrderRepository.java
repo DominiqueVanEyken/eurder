@@ -58,21 +58,21 @@ public class OrderRepository {
                 .toList();
     }
 
-    public List<ItemGroupShipping> getItemGroupsShippingToday() {
+    public List<ItemGroupShippingReport> getItemGroupsShippingToday() {
         log.info("Generating shipping report");
-        List<ItemGroupShipping> itemGroupShippings = new ArrayList<>();
+        List<ItemGroupShippingReport> itemGroupShippingReports = new ArrayList<>();
         for (Order order : orderRepository.values()) {
             for (ItemGroup itemGroup : order.getOrderList()) {
                 if (doesItemGroupShipsToday(itemGroup)) {
                     customerRepository.findCustomerByID(order.getCustomerID())
-                            .ifPresent(customer -> itemGroupShippings.add(
-                                            new ItemGroupShipping(customer.getEmailAddress(), itemGroup)
+                            .ifPresent(customer -> itemGroupShippingReports.add(
+                                            new ItemGroupShippingReport(customer.getEmailAddress(), itemGroup)
                                     )
                             );
                 }
             }
         }
-        return itemGroupShippings;
+        return itemGroupShippingReports;
     }
 
     private boolean doesItemGroupShipsToday(ItemGroup itemGroup) {

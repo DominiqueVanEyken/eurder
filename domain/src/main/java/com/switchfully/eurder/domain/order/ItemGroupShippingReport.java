@@ -1,10 +1,10 @@
 package com.switchfully.eurder.domain.order;
 
-public class ItemGroupShipping {
+public class ItemGroupShippingReport {
     private final String shippingAddress;
     private final ItemGroup itemGroup;
 
-    public ItemGroupShipping(String shippingAddress, ItemGroup itemGroup) {
+    public ItemGroupShippingReport(String shippingAddress, ItemGroup itemGroup) {
         this.shippingAddress = shippingAddress;
         this.itemGroup = itemGroup;
     }
