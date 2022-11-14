@@ -4,18 +4,12 @@ import com.switchfully.eurder.domain.Price.Price;
 import com.switchfully.eurder.domain.order.ItemGroup;
 import com.switchfully.eurder.domain.order.ItemGroupShippingReport;
 import com.switchfully.eurder.domain.order.Order;
-import com.switchfully.eurder.service.order.ItemGroupMapper;
 import com.switchfully.eurder.service.report.dto.*;
 
 import java.time.LocalDate;
 import java.util.List;
 
 public class ReportMapper {
-    private final ItemGroupMapper itemGroupMapper;
-
-    public ReportMapper() {
-        this.itemGroupMapper = new ItemGroupMapper();
-    }
 
     public OrderReportDTO mapOrderToOrderReportDTO(Order order) {
         return new OrderReportDTO()
