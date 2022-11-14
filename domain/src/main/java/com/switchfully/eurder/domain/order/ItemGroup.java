@@ -1,8 +1,6 @@
 package com.switchfully.eurder.domain.order;
 
-import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.Price.Price;
-import net.bytebuddy.asm.Advice;
 
 import java.time.LocalDate;
 import java.util.regex.Pattern;

@@ -72,7 +72,7 @@ class ItemGroupMapperTest {
 
     @Test
     void mappingDTOToItemGroup() {
-        ItemGroup itemGroup = itemGroupMapper.mapDTOToItemGroup(item, amount);
+        ItemGroup itemGroup = itemGroupMapper.mapItemToItemGroup(item, amount);
         assertThat(itemGroup).isNotNull();
         assertThat(itemGroup.getItemID()).isEqualTo(itemID);
         assertThat(itemGroup.getAmount()).isEqualTo(amount);

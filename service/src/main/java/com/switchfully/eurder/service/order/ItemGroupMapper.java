@@ -2,6 +2,7 @@ package com.switchfully.eurder.service.order;
 
 import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.order.ItemGroup;
+import com.switchfully.eurder.domain.order.ItemGroupBuilder;
 import com.switchfully.eurder.domain.order.ItemGroupShipping;
 import com.switchfully.eurder.service.order.dto.ItemGroupDTO;
 import com.switchfully.eurder.service.report.dto.ItemGroupReportDTO;
@@ -10,9 +11,14 @@ import com.switchfully.eurder.service.report.dto.ItemGroupShippingDTO;
 import java.util.List;
 
 public class ItemGroupMapper {
-    //TODO: create itemGroupBuilder
-    public ItemGroup mapDTOToItemGroup(Item item, int amount) {
-        return new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
+    public ItemGroup mapItemToItemGroup(Item item, int amount) {
+        return new ItemGroupBuilder()
+                .setItemID(item.getItemID())
+                .setItemName(item.getName())
+                .setAmount(amount)
+                .setShippingDate(item.getShippingDateForAmount(amount))
+                .setPricePerUnit(item.getPrice())
+                .build();
     }
 
     public ItemGroupDTO mapItemGroupToDTO(ItemGroup itemGroup) {

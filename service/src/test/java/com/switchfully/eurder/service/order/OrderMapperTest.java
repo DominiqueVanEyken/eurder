@@ -100,7 +100,7 @@ class OrderMapperTest {
                 .setOrderList(createItemGroupDTOS);
         itemRepository.addItem(item);
         List<ItemGroup> itemGroups = createOrderDTO.getOrderList().stream()
-                .map(itemGroup -> itemGroupMapper.mapDTOToItemGroup(itemRepository.getItemByID(itemGroup.getItemID()).get(), itemGroup.getAmount()))
+                .map(itemGroup -> itemGroupMapper.mapItemToItemGroup(itemRepository.getItemByID(itemGroup.getItemID()).get(), itemGroup.getAmount()))
                 .toList();
 
         Order order = orderMapper.mapDTOToOrder(customerID, itemGroups);

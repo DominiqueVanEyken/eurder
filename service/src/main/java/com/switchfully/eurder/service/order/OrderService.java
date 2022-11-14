@@ -31,7 +31,7 @@ public class OrderService {
         this.customerRepository = customerRepository;
         this.itemRepository = itemRepository;
         orderMapper = new OrderMapper();
-        this.itemGroupMapper = new ItemGroupMapper();
+        itemGroupMapper = new ItemGroupMapper();
     }
 
     public OrderDTO createOrder(String customerID, CreateOrderDTO createOrderDTO) {
@@ -79,7 +79,7 @@ public class OrderService {
     private void mapItemToItemGroupAndReduceStock(List<ItemGroup> itemGroups, String itemID, int amount) {
         Item item = itemRepository.getItemByID(itemID)
                 .orElseThrow(() -> new NoSuchElementException("Item with ID " + itemID + " could not be found"));
-        itemGroups.add(itemGroupMapper.mapDTOToItemGroup(item, amount));
+        itemGroups.add(itemGroupMapper.mapItemToItemGroup(item, amount));
         item.reduceStockByAmount(amount);
     }
 }
