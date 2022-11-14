@@ -19,6 +19,33 @@ class ItemGroupTest {
     private final int amount = 10;
 
     @Nested
+    class ItemGroupBuilderTest {
+        @Test
+        void creatingAnItemGroup_usingItemGroupBuilder() {
+            String id = "IID20221006";
+            String name = "itemName";
+            int amount = 3;
+            LocalDate shippingDate = LocalDate.now();
+            Price pricePerUnit = new Price(30.5);
+
+            ItemGroup builder = new ItemGroupBuilder()
+                    .setItemID(id)
+                    .setItemName(name)
+                    .setAmount(amount)
+                    .setShippingDate(shippingDate)
+                    .setPricePerUnit(pricePerUnit)
+                    .build();
+
+            assertThat(builder.getItemID()).isEqualTo(id);
+            assertThat(builder.getItemName()).isEqualTo(name);
+            assertThat(builder.getAmount()).isEqualTo(amount);
+            assertThat(builder.getShippingDate()).isEqualTo(shippingDate);
+            assertThat(builder.getPricePerUnit()).isEqualTo(pricePerUnit.toString());
+            assertThat(builder.getTotalPrice()).isEqualTo(new Price(pricePerUnit.getPrice() * amount));
+        }
+    }
+
+    @Nested
     class givenValidData {
         @Test
         void creatingAnItemGroup_itemsInStock() {
