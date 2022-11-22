@@ -12,6 +12,7 @@ import com.switchfully.eurder.service.order.dto.OrderDTO;
 import com.switchfully.eurder.service.report.dto.ItemGroupReportDTO;
 import com.switchfully.eurder.service.report.dto.OrderReportDTO;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -40,7 +41,8 @@ class OrderMapperTest {
     private final Price totalPrice = new Price(2.2);
     private final OrderMapper orderMapper = new OrderMapper();
     private final ItemGroupMapper itemGroupMapper = new ItemGroupMapper();
-    private final ItemRepository itemRepository = new ItemRepository();
+    @Autowired
+    private ItemRepository itemRepository;
 
     @Test
     void creatingCreateOrderDTO() {
@@ -98,9 +100,9 @@ class OrderMapperTest {
     void mappingDTOToOrder() {
         CreateOrderDTO createOrderDTO = new CreateOrderDTO()
                 .setOrderList(createItemGroupDTOS);
-        itemRepository.addItem(item);
+        itemRepository.save(item);
         List<ItemGroup> itemGroups = createOrderDTO.getOrderList().stream()
-                .map(itemGroup -> itemGroupMapper.mapItemToItemGroup(itemRepository.getItemByID(itemGroup.getItemID()).get(), itemGroup.getAmount()))
+                .map(itemGroup -> itemGroupMapper.mapItemToItemGroup(itemRepository.findById(itemGroup.getItemID()).get(), itemGroup.getAmount()))
                 .toList();
 
         Order order = orderMapper.mapDTOToOrder(customerID, itemGroups);
@@ -114,7 +116,7 @@ class OrderMapperTest {
 
     @Test
     void mappingOrderToDTO() {
-        itemRepository.addItem(item);
+        itemRepository.save(item);
         Order order = new Order(customerID, List.of(new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice())));
 
         List<ItemGroupDTO> itemGroupDTOS = itemGroupMapper.mapItemGroupToDTO(order.getOrderList());

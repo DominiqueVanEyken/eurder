@@ -80,7 +80,7 @@ public class OrderService {
     }
 
     private void mapItemToItemGroupAndReduceStock(List<ItemGroup> itemGroups, String itemID, int amount) {
-        Item item = itemRepository.getItemByID(itemID)
+        Item item = itemRepository.findById(itemID)
                 .orElseThrow(() -> new NoSuchElementException("Item with ID " + itemID + " could not be found"));
         itemGroups.add(itemGroupMapper.mapItemToItemGroup(item, amount));
         item.reduceStockByAmount(amount);

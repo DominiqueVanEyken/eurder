@@ -9,6 +9,7 @@ import com.switchfully.eurder.domain.order.Order;
 import com.switchfully.eurder.service.order.ItemGroupMapper;
 import com.switchfully.eurder.service.report.dto.*;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -18,7 +19,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ReportMapperTest {
     private final ItemGroupMapper itemGroupMapper = new ItemGroupMapper();
     private final ReportMapper reportMapper = new ReportMapper();
-    private final ItemRepository itemRepository = new ItemRepository();
+    @Autowired
+    private ItemRepository itemRepository;
     private final String customerID = "CID20221001";
     private final Item item = new Item("name", null, new Price(1.1), 100);
     private final String itemID = item.getItemID();
@@ -75,7 +77,7 @@ class ReportMapperTest {
 
     @Test
     void mappingOrdersToOrderReportDTO() {
-        itemRepository.addItem(item);
+        itemRepository.save(item);
         Order order = new Order(customerID, List.of(new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice())));
         OrderReportDTO reportDTO = reportMapper.mapOrderToOrderReportDTO(order);
 
@@ -87,7 +89,7 @@ class ReportMapperTest {
 
     @Test
     void mappingOrdersToReportDTO() {
-        itemRepository.addItem(item);
+        itemRepository.save(item);
         Order order1 = new Order(customerID, List.of(new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice())));
 
         ReportDTO reportDTO = reportMapper.mapOrdersToReportDTO(List.of(order1, order1));
@@ -100,7 +102,7 @@ class ReportMapperTest {
     @Test
     void mapShippingReportToShippingReportDTO() {
         String address = "address";
-        Item testItem = itemRepository.getAllItemsFromRepository().stream().toList().get(0);
+        Item testItem = itemRepository.findAll().stream().toList().get(0);
         ItemGroup itemGroup = new ItemGroup(testItem.getItemID(), testItem.getName(), amount, testItem.getShippingDateForAmount(amount), testItem.getPrice());
         List<ItemGroupShippingReport> itemGroupShippingReport = List.of(new ItemGroupShippingReport(address, itemGroup), new ItemGroupShippingReport(address, itemGroup));
 

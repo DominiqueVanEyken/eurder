@@ -1,9 +1,15 @@
 package com.switchfully.eurder.domain.Price;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Transient;
 import java.util.Objects;
 
+@Embeddable
 public class Price {
+    @Column(name = "PRICE")
     private final double price;
+    @Transient
     private final CurrencyUnit currencyUnit;
 
     public Price(double price) {
@@ -11,13 +17,17 @@ public class Price {
         currencyUnit = CurrencyUnit.EUR;
     }
 
-    @Override
-    public String toString() {
-        return String.format("%.2f %s", price, currencyUnit);
+    public Price() {
+        this(0.0);
     }
 
     public double getPrice() {
         return price;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%.2f %s", price, currencyUnit);
     }
 
     @Override

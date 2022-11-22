@@ -6,6 +6,7 @@ import com.switchfully.eurder.domain.item.ItemRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class OrderTest {
+    @Autowired
     private ItemRepository itemRepository;
     private final Item item1 = new Item("name1", "description", new Price(1.1), 100);
     private final Item item2 = new Item("name2", "description", new Price(1.1), 100);
@@ -25,9 +27,8 @@ class OrderTest {
 
     @BeforeEach
     void createAndFillRepository() {
-        itemRepository = new ItemRepository();
-        itemRepository.addItem(item1);
-        itemRepository.addItem(item2);
+        itemRepository.save(item1);
+        itemRepository.save(item2);
     }
 
     @Nested

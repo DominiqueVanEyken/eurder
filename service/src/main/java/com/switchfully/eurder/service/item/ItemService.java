@@ -2,17 +2,23 @@ package com.switchfully.eurder.service.item;
 
 import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.item.ItemRepository;
+import com.switchfully.eurder.domain.item.StockStatus;
 import com.switchfully.eurder.service.item.dto.CreateItemDTO;
 import com.switchfully.eurder.service.item.dto.ItemDTO;
 import com.switchfully.eurder.service.item.dto.UpdateItemDTO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class ItemService {
+    private final Logger log = LoggerFactory.getLogger(ItemService.class);
     private final ItemRepository itemRepository;
     private final ItemMapper itemMapper;
 
@@ -23,20 +29,24 @@ public class ItemService {
 
     public ItemDTO addNewItemToStock(CreateItemDTO createItemDTO) {
         Item item = itemMapper.mapDTOToItem(createItemDTO);
-        itemRepository.addItem(item);
+        itemRepository.save(item);
+        log.info("Saving item with ID " + item.getItemID());
         return itemMapper.mapItemToDTO(item);
     }
 
     public List<ItemDTO> getAllItems() {
-        return itemMapper.mapItemToDTO(itemRepository.getAllItemsFromRepository());
+        log.debug("Getting all items");
+        return itemMapper.mapItemToDTO(itemRepository.findAll());
     }
 
-    public List<ItemDTO> getItemsOnStockStatusFiler(String stockStatus) {
-        return itemMapper.mapItemToDTO(itemRepository.getAllItemsByStockStatusFilter(stockStatus));
+    public List<ItemDTO> getItemsOnStockStatusFiler(String stockStatusValue) {
+        StockStatus stockStatus = StockStatus.findStockStatusByValue(stockStatusValue);
+        log.info("Getting all items with stock status " + stockStatus);
+        return itemMapper.mapItemToDTO(itemRepository.findItemByStockStatus(stockStatus));
     }
 
     public Item getItemByID(String itemID) {
-        Optional<Item> optionalItem = itemRepository.getItemByID(itemID);
+        Optional<Item> optionalItem = itemRepository.findById(itemID);
         if (optionalItem.isEmpty()) {
             throw new NoSuchElementException("Item with ID ".concat(itemID).concat(" does not exist"));
         }

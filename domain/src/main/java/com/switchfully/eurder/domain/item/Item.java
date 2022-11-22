@@ -2,16 +2,27 @@ package com.switchfully.eurder.domain.item;
 
 import com.switchfully.eurder.domain.Price.Price;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "ITEM")
 public class Item implements Comparable<Item> {
     public static final String ITEM_ID_PREFIX = "IID";
     private static int itemIDSuffix = 1001;
-    private final String itemID;
+    @Id
+    @Column(name = "ITEM_ID")
+    private String itemID;
+    @Column(name = "NAME")
     private String name;
+    @Column(name = "DESCRIPTION")
     private String description;
+    @Embedded
     private Price price;
+    @Column(name = "STOCK_COUNT")
     private int stockCount;
+    @Column(name = "STOCK_STATUS")
+    @Enumerated(value = EnumType.STRING)
     private StockStatus stockStatus;
 
     public Item(String name, String description, Price price, int stockCount) {
@@ -21,6 +32,9 @@ public class Item implements Comparable<Item> {
         this.price = validatePrice(price);
         this.stockCount = stockCount;
         setStockStatus();
+    }
+
+    public Item() {
     }
 
     public String validateName(String name) {

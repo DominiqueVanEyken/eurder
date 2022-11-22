@@ -12,7 +12,6 @@ import java.util.Base64;
 import java.util.NoSuchElementException;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
 class SecurityServiceTest {
     @Autowired
     private CustomerRepository customerRepository;

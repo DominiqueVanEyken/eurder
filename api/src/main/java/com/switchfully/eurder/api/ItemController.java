@@ -49,7 +49,7 @@ public class ItemController {
         return itemService.addNewItemToStock(createItemDTO);
     }
 
-    @PutMapping(value = "{itemID}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "{itemID}/update", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.ACCEPTED)
     public ItemDTO updateAnExistingItem(@RequestHeader String authorization,@PathVariable String itemID, @RequestBody UpdateItemDTO updateItemDTO) {
         securityService.validateAuthorization(authorization, Feature.UPDATE_ITEM);

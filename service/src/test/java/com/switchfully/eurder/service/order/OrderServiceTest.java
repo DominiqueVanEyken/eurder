@@ -24,6 +24,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class OrderServiceTest {
     private OrderService orderService;
+    @Autowired
     private ItemRepository itemRepository;
     private OrderRepository orderRepository;
     @Autowired
@@ -36,11 +37,10 @@ class OrderServiceTest {
 
     @BeforeEach
     void createAndFillRepository() {
-        itemRepository = new ItemRepository();
         orderRepository = new OrderRepository(itemRepository, customerRepository);
         orderService = new OrderService(orderRepository, customerRepository, itemRepository);
-        itemRepository.addItem(item1);
-        itemRepository.addItem(item2);
+        itemRepository.save(item1);
+        itemRepository.save(item2);
         orderList = List.of(
                 new ItemGroup(item1.getItemID(),item1.getName(), 1, item1.getShippingDateForAmount(1), item1.getPrice()),
                 new ItemGroup(item2.getItemID(),item2.getName(), 2, item2.getShippingDateForAmount(2), item2.getPrice())

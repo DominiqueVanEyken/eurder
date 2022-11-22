@@ -10,7 +10,7 @@ import java.util.Collection;
 import java.util.List;
 
 public class ItemMapper {
-    protected Item mapDTOToItem(CreateItemDTO createItemDTO) {
+    public Item mapDTOToItem(CreateItemDTO createItemDTO) {
         return new ItemBuilder()
                 .setName(createItemDTO.getName())
                 .setDescription(createItemDTO.getDescription())

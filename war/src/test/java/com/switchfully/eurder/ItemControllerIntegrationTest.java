@@ -1,36 +1,64 @@
 package com.switchfully.eurder;
 
 import com.switchfully.eurder.domain.Price.Price;
-import com.switchfully.eurder.domain.item.ItemRepository;
 import com.switchfully.eurder.domain.item.StockStatus;
+import com.switchfully.eurder.service.item.ItemMapper;
+import com.switchfully.eurder.service.item.ItemService;
 import com.switchfully.eurder.service.item.dto.CreateItemDTO;
 import com.switchfully.eurder.service.item.dto.ItemDTO;
 import com.switchfully.eurder.service.item.dto.UpdateItemDTO;
 import io.restassured.RestAssured;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.test.annotation.DirtiesContext;
 
 import java.util.Base64;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@AutoConfigureTestDatabase
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class ItemControllerIntegrationTest {
     @LocalServerPort
     private int port;
     private final static String BASE_URI = "http://localhost";
-        @Autowired
-        ItemRepository itemRepository;
 
-    private final String adminBase64 = Base64.getEncoder().encodeToString("admin@eurder.com:password".getBytes());
+    private final String adminBase64 = Base64.getEncoder().encodeToString("admin@eurder.com:admin@eurder".getBytes());
+
+    private final CreateItemDTO item1 = new CreateItemDTO()
+            .setName("name1")
+            .setDescription("description")
+            .setPrice(10.2)
+            .setStockCount(1);
+    private final CreateItemDTO item2 = new CreateItemDTO()
+            .setName("name2")
+            .setDescription("description")
+            .setPrice(5.5)
+            .setStockCount(5);
+    private final CreateItemDTO item3 = new CreateItemDTO()
+            .setName("name3")
+            .setDescription("description")
+            .setPrice(1.1)
+            .setStockCount(15);
+    @Autowired
+    private ItemService itemService;
 
     @Nested
     class getAllItems {
+        @BeforeEach
+        void fillDatabase() {
+            itemService.addNewItemToStock(item1);
+            itemService.addNewItemToStock(item2);
+            itemService.addNewItemToStock(item3);
+        }
 
         @Test
         void getAllItems_givenValidAuthorization() {
@@ -49,12 +77,12 @@ public class ItemControllerIntegrationTest {
                     .as(ItemDTO[].class);
 
             assertThat(result).isNotNull();
-            assertThat(result.length).isEqualTo(itemRepository.getAllItemsFromRepository().size());
+            assertThat(result.length).isEqualTo(itemService.getAllItems().size());
         }
 
         @Test
         void getAllItems_givenFilterForStockStatus() {
-            int stockCount = (int) itemRepository.getAllItemsFromRepository().stream()
+            int stockCount = (int) itemService.getAllItems().stream()
                     .filter(item -> item.getStockStatus().equals("LOW"))
                     .count();
             ItemDTO[] result = RestAssured
@@ -127,10 +155,20 @@ public class ItemControllerIntegrationTest {
 
     @Nested
     class updateItem {
+        private final ItemMapper itemMapper = new ItemMapper();
+        private ItemDTO itemDTO;
+        @BeforeEach
+        void fillDatabase() {
+            itemDTO = itemService.addNewItemToStock(item1);
+        }
         @Test
         void updateItem_givenValidData() {
-            String itemID = "IID20221001";
-            UpdateItemDTO updateItemDTO = new UpdateItemDTO().setName("update").setDescription("description").setPrice(1.1).setStockCount(3);
+            String itemID = itemDTO.getItemID();
+            UpdateItemDTO updateItemDTO = new UpdateItemDTO()
+                    .setName("update")
+                    .setDescription("description")
+                    .setPrice(1.1)
+                    .setStockCount(3);
 
             ItemDTO result = RestAssured
                     .given()
@@ -141,7 +179,7 @@ public class ItemControllerIntegrationTest {
                     .headers("Authorization", "Basic " + adminBase64)
                     .body(updateItemDTO)
                     .when()
-                    .put("items/"+itemID)
+                    .put("items/" + itemID + "/update")
                     .then()
                     .assertThat()
                     .statusCode(HttpStatus.ACCEPTED.value())
