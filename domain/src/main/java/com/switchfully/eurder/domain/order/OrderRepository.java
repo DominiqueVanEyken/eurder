@@ -1,29 +1,13 @@
 package com.switchfully.eurder.domain.order;
 
-import com.switchfully.eurder.domain.customer.CustomerRepository;
-import com.switchfully.eurder.domain.item.Item;
-import com.switchfully.eurder.domain.item.ItemRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
-import java.util.*;
+import java.util.List;
 
 @Repository
-public class OrderRepository {
-    private final Logger log = LoggerFactory.getLogger(OrderRepository.class);
-    private final Map<String, Order> orderRepository;
-    private final ItemRepository itemRepository;
-    private final CustomerRepository customerRepository;
-
-    public OrderRepository(ItemRepository itemRepository, CustomerRepository customerRepository) {
-        this.itemRepository = itemRepository;
-        this.customerRepository = customerRepository;
-        orderRepository = new HashMap<>();
-//        fillOrderRepository();
-    }
+public interface OrderRepository extends JpaRepository<Order, String> {
+List<Order> findOrdersByCustomerID(String customer);
 
 //    private void fillOrderRepository() {
 //        List<Item> items = itemRepository.findAll().stream()
@@ -40,45 +24,5 @@ public class OrderRepository {
 //        orderRepository.put(order3.getOrderID(), order3);
 //    }
 
-    public Collection<Order> getOrders() {
-        return orderRepository.values();
-    }
 
-    public void createOrder(Order order) {
-        orderRepository.put(order.getOrderID(), order);
-        log.info("Created ".concat(order.toString()));
-    }
-
-    public Optional<Order> findOrderByID(String orderID) {
-        return Optional.ofNullable(orderRepository.get(orderID));
-    }
-
-    public List<Order> getOrdersByCustomerID(String customerID) {
-        return orderRepository.values().stream()
-                .filter(order -> order.getCustomerID().equals(customerID))
-                .toList();
-    }
-
-    public List<ItemGroupShippingReport> getItemGroupsShippingToday() {
-        log.info("Generating shipping report");
-        List<ItemGroupShippingReport> itemGroupShippingReports = new ArrayList<>();
-        for (Order order : orderRepository.values()) {
-            for (ItemGroup itemGroup : order.getOrderList()) {
-                if (doesItemGroupShipsToday(itemGroup)) {
-                    customerRepository.findById(order.getCustomerID())
-                            .ifPresent(customer -> itemGroupShippingReports.add(
-                                            new ItemGroupShippingReport(customer.getEmailAddress(), itemGroup)
-                                    )
-                            );
-                }
-            }
-        }
-        return itemGroupShippingReports;
-    }
-
-    private boolean doesItemGroupShipsToday(ItemGroup itemGroup) {
-        LocalDate shippingDate = itemGroup.getShippingDate();
-        LocalDate today = LocalDate.now();
-        return shippingDate.getYear() == today.getYear() && shippingDate.getMonth().equals(today.getMonth()) && shippingDate.getDayOfMonth() == today.getDayOfMonth();
-    }
 }

@@ -43,13 +43,13 @@ public class OrderService {
             mapItemToItemGroupAndReduceStock(itemGroups, itemID, amount);
         }
         Order order = orderMapper.mapDTOToOrder(customerID, itemGroups);
-        orderRepository.createOrder(order);
+        orderRepository.save(order);
         List<ItemGroupDTO> itemGroupDTOS = itemGroupMapper.mapItemGroupToDTO(order.getOrderList());
         return orderMapper.mapOrderToDTO(order, itemGroupDTOS);
     }
 
     protected Order getOrderByOrderID(String orderID) {
-        Optional<Order> order = orderRepository.findOrderByID(orderID);
+        Optional<Order> order = orderRepository.findById(orderID);
         return order
                 .orElseThrow(() -> new NoSuchElementException("Order with ID " + orderID + " does not exist"));
     }
@@ -63,7 +63,7 @@ public class OrderService {
             mapItemToItemGroupAndReduceStock(itemGroupsToReorder, itemID, amount);
         }
         Order order = orderMapper.mapDTOToOrder(customerID, itemGroupsToReorder);
-        orderRepository.createOrder(order);
+        orderRepository.save(order);
         List<ItemGroupDTO> itemGroupDTOS = itemGroupMapper.mapItemGroupToDTO(order.getOrderList());
         return orderMapper.mapOrderToDTO(order, itemGroupDTOS);
     }
