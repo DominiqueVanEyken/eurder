@@ -1,19 +1,30 @@
 package com.switchfully.eurder.domain.phonenumber;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Transient;
 import java.util.Objects;
 import java.util.regex.Pattern;
-
+@Embeddable
 public class PhoneNumber {
-    private final CountryCode countryCode;
-    private final String localNumber;
+    @Transient
+    private CountryCode countryCode;
+    @Transient
+    private String localNumber;
+    @Column(name = "PHONE_NUMBER")
+    private String phoneNumber;
 
     public PhoneNumber(CountryCode countryCode, String localNumber) {
         this.countryCode = countryCode;
         this.localNumber = validateLocalNumber(localNumber);
+        phoneNumber = String.format("%s %s", countryCode, localNumber);
     }
 
     public PhoneNumber(String countryCode, String localNumber) {
         this(CountryCode.findCountryCode(countryCode), localNumber);
+    }
+
+    public PhoneNumber() {
     }
 
     public String validateLocalNumber(String localNumber) {
@@ -28,8 +39,8 @@ public class PhoneNumber {
         return String.format("%s %s %s %s", formatedLocalNumber.substring(0,3), formatedLocalNumber.substring(3,5), formatedLocalNumber.substring(5, 7), formatedLocalNumber.substring(7,9));
     }
 
-    public String getFullPhoneNumberAsString() {
-        return String.format("%s %s", countryCode, localNumber);
+    public String getFullPhoneNumber() {
+        return phoneNumber;
     }
 
     @Override

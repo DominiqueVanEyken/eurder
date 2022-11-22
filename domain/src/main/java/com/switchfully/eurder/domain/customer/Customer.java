@@ -3,20 +3,32 @@ package com.switchfully.eurder.domain.customer;
 import com.switchfully.eurder.domain.address.Address;
 import com.switchfully.eurder.domain.phonenumber.PhoneNumber;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.regex.Pattern;
-
+@Entity
+@Table(name = "CUSTOMER")
 public class Customer {
     private static final String CUSTOMER_ID_PREFIX = "CID";
     private static int customer_id_suffix = 1001;
-    private final String customerID;
-    private final String firstname;
-    private final String lastname;
-    private final String emailAddress;
-    private final Address address;
-    private final PhoneNumber phoneNumber;
-    private final String password;
-    private final Role role;
+    @Id
+    @Column(name = "CUSTOMER_ID")
+    private String customerID;
+    @Column(name = "FIRST_NAME")
+    private String firstname;
+    @Column(name = "LAST_NAME")
+    private String lastname;
+    @Column(name = "EMAIL")
+    private String emailAddress;
+    @Embedded
+    private Address address;
+    @Embedded
+    private PhoneNumber phoneNumber;
+    @Column(name = "PASSWORD")
+    private String password;
+    @Column(name = "ROLE")
+    @Enumerated(value = EnumType.STRING)
+    private Role role;
 
     public Customer(String firstname, String lastname, String emailAddress, Address address, PhoneNumber phoneNumber, String password, Role role) {
         customerID = CUSTOMER_ID_PREFIX + LocalDate.now().getYear() + customer_id_suffix++;
@@ -27,6 +39,9 @@ public class Customer {
         this.phoneNumber = phoneNumber;
         this.password = validatePassword(password);
         this.role = role;
+    }
+
+    public Customer() {
     }
 
     private String validateEmailAddress(String emailAddress) {
@@ -90,7 +105,7 @@ public class Customer {
         if (phoneNumber == null) {
             return "";
         }
-        return phoneNumber.getFullPhoneNumberAsString();
+        return phoneNumber.getFullPhoneNumber();
     }
 
     public Role getRole() {

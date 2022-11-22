@@ -27,6 +27,6 @@ public class AddressBuilder {
     }
 
     public Address build() {
-        return new Address(streetName, streetNumber, postalCode, cityName);
+        return new Address(streetName, streetNumber, new PostalCode(postalCode, cityName));
     }
 }

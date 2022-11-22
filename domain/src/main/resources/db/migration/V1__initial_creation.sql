@@ -1,8 +1,8 @@
 -- CREATE TABLE
-create table zipcode
+create table postal_code
 (
-    zipcode   varchar(4) primary key,
-    city_name varchar(32)
+    postal_code varchar(4) primary key,
+    city_name   varchar(32)
 );
 
 create table customer
@@ -13,7 +13,7 @@ create table customer
     email         varchar(64) not null,
     street_name   varchar(32) not null,
     street_number varchar(4)  not null,
-    zipcode       varchar(4) references zipcode,
+    postal_code       varchar(4) references postal_code,
     phone_number  varchar(16) not null,
     password      varchar(32) not null,
     role          varchar(32) not null
@@ -38,22 +38,23 @@ create table item
 
 create table itemGroup
 (
-    order_id varchar(16) references "order",
-    item_id varchar(16) references item,
-    item_name varchar(32) not null,
-    amount integer not null ,
-    shipping_date date not null ,
-    price_per_unit double precision not null ,
-    total_price double precision not null
+    order_id       varchar(16) references "order",
+    item_id        varchar(16) references item,
+    item_name      varchar(32)      not null,
+    amount         integer          not null,
+    shipping_date  date             not null,
+    price_per_unit double precision not null,
+    total_price    double precision not null
 );
 
 -- CREATE ZIPCODE
-insert into zipcode
+insert into postal_code
 values ('0000', 'capitalistic city');
 
-insert into zipcode
+insert into postal_code
 values ('1111', 'consumer valley');
 
 -- CREATE ADMIN USER
 insert into customer
-values ('CID20221000', null, 'admin', 'admin@eurder.com', 'some street', '1', '0000', '012 34 56 78', 'admin@eurder', 'ADMIN');
+values ('CID20221000', null, 'admin', 'admin@eurder.com', 'some street', '1', '0000', '012 34 56 78', 'admin@eurder',
+        'ADMIN');
