@@ -11,10 +11,10 @@ public class Address {
     private final String cityName;
 
     public Address(String streetName, String streetNumber, String postalCode, String cityName) {
-        this.streetName = streetName;
-        this.streetNumber = streetNumber;
+        this.streetName = validateStringValueForNotNullOrEmpty(streetName);
+        this.streetNumber = validateStringValueForNotNullOrEmpty(streetNumber);
         this.postalCode = validatePostalCode(postalCode);
-        this.cityName = validateCityName(cityName);
+        this.cityName = validateStringValueForNotNullOrEmpty(cityName);
     }
 
     public String validatePostalCode(String postalCode) {
@@ -25,11 +25,11 @@ public class Address {
         return postalCode;
     }
 
-    public String validateCityName(String cityName) {
-        if (cityName == null || cityName.trim().length() < 2) {
-            throw new IllegalArgumentException("The provided city is not valid");
+    public String validateStringValueForNotNullOrEmpty(String value) {
+        if (value == null || value.trim().length() < 2) {
+            throw new IllegalArgumentException("The provided city, street name or number is not valid");
         }
-        return cityName;
+        return value;
     }
 
     public String getFullAddressAsString() {
