@@ -17,7 +17,7 @@ public class PhoneNumber {
     public PhoneNumber(CountryCode countryCode, String localNumber) {
         this.countryCode = countryCode;
         this.localNumber = validateLocalNumber(localNumber);
-        phoneNumber = String.format("%s %s", countryCode, localNumber);
+        phoneNumber = String.format("%s %s", this.countryCode, this.localNumber);
     }
 
     public PhoneNumber(String countryCode, String localNumber) {
@@ -39,7 +39,7 @@ public class PhoneNumber {
         return String.format("%s %s %s %s", formatedLocalNumber.substring(0,3), formatedLocalNumber.substring(3,5), formatedLocalNumber.substring(5, 7), formatedLocalNumber.substring(7,9));
     }
 
-    public String getFullPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 

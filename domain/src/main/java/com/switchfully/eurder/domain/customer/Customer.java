@@ -105,7 +105,7 @@ public class Customer {
         if (phoneNumber == null) {
             return "";
         }
-        return phoneNumber.getFullPhoneNumber();
+        return phoneNumber.getPhoneNumber();
     }
 
     public Role getRole() {

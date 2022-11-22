@@ -16,31 +16,31 @@ class PhoneNumberTest {
         @Test
         void withNineCipherLocalNumber() {
             PhoneNumber phoneNumber = new PhoneNumber(CountryCode.BEL, "123456789");
-            assertThat(phoneNumber.getFullPhoneNumber()).isEqualTo("+32 123 45 67 89");
+            assertThat(phoneNumber.getPhoneNumber()).isEqualTo("+32 123 45 67 89");
         }
 
         @Test
         void withEightCipherLocalNumber() {
             PhoneNumber phoneNumber = new PhoneNumber(CountryCode.BEL, "12345678");
-            assertThat(phoneNumber.getFullPhoneNumber()).isEqualTo("+32 12 34 56 78");
+            assertThat(phoneNumber.getPhoneNumber()).isEqualTo("+32 12 34 56 78");
         }
 
         @Test
         void withLocalNumberWithLeadingTrailingAndSeparatingSpaces() {
             PhoneNumber phoneNumber = new PhoneNumber(CountryCode.BEL, "123456789");
-            assertThat(phoneNumber.getFullPhoneNumber()).isEqualTo("+32 123 45 67 89");
+            assertThat(phoneNumber.getPhoneNumber()).isEqualTo("+32 123 45 67 89");
         }
 
         @Test
         void withLocalNumberWithLeadingZero() {
             PhoneNumber phoneNumber = new PhoneNumber("+32", "0123456789");
-            assertThat(phoneNumber.getFullPhoneNumber()).isEqualTo("+32 123 45 67 89");
+            assertThat(phoneNumber.getPhoneNumber()).isEqualTo("+32 123 45 67 89");
         }
 
         @Test
         void withCountryCodeAsString() {
             PhoneNumber phoneNumber = new PhoneNumber("+32", "123456789");
-            assertThat(phoneNumber.getFullPhoneNumber()).isEqualTo("+32 123 45 67 89");
+            assertThat(phoneNumber.getPhoneNumber()).isEqualTo("+32 123 45 67 89");
         }
 
         @Test
