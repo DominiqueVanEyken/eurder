@@ -64,7 +64,7 @@ public class OrderRepository {
         for (Order order : orderRepository.values()) {
             for (ItemGroup itemGroup : order.getOrderList()) {
                 if (doesItemGroupShipsToday(itemGroup)) {
-                    customerRepository.findCustomerByID(order.getCustomerID())
+                    customerRepository.findById(order.getCustomerID())
                             .ifPresent(customer -> itemGroupShippingReports.add(
                                             new ItemGroupShippingReport(customer.getEmailAddress(), itemGroup)
                                     )

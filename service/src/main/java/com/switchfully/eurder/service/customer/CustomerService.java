@@ -23,20 +23,20 @@ public class CustomerService {
     }
 
     public List<CustomerDTO> getAllCustomers() {
-        return customerMapper.mapCustomerToDTO(customerRepository.getAllCustomers());
+        return customerMapper.mapCustomerToDTO(customerRepository.findAll());
     }
     
     public CustomerDTO createNewCustomer(CreateCustomerDTO createCustomerDTO) {
         Customer customer = customerMapper.mapDTOtoCustomer(createCustomerDTO);
         if (isCustomerUnique(customer)) {
-            customerRepository.addCustomer(customer);
+            customerRepository.save(customer);
             return customerMapper.mapCustomerToDTO(customer);
         }
         throw new IllegalArgumentException("Customer already exists");
     }
 
     public CustomerDTO getCustomerByID(String customerID) {
-        Optional<Customer> customer = customerRepository.findCustomerByID(customerID);
+        Optional<Customer> customer = customerRepository.findById(customerID);
         if (customer.isPresent()) {
             return customerMapper.mapCustomerToDTO(customer.get());
         }
@@ -44,14 +44,14 @@ public class CustomerService {
     }
 
     public void validateIfCustomerIDBelongsToUsername(String customerID, String userName) {
-        Customer customer = customerRepository.findCustomerByID(customerID).orElseThrow(() -> new NoSuchElementException("Customer with ID " + customerID + " does not exist"));
+        Customer customer = customerRepository.findById(customerID).orElseThrow(() -> new NoSuchElementException("Customer with ID " + customerID + " does not exist"));
         if (!customer.getEmailAddress().equals(userName)) {
             throw new UnauthorizedException();
         }
     }
 
     private boolean isCustomerUnique(Customer customerToVerify) {
-        Collection<Customer> customers = customerRepository.getAllCustomers();
+        Collection<Customer> customers = customerRepository.findAll();
         for (Customer customer : customers) {
             if (customer.getEmailAddress().equals(customerToVerify.getEmailAddress())) {
                 return false;

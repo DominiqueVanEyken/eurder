@@ -72,7 +72,7 @@ public class OrderService {
         if (!order.getCustomerID().equals(customerID)) {
             throw new UnauthorizedException();
         }
-        Optional<Customer> customer = customerRepository.findCustomerByID(customerID);
+        Optional<Customer> customer = customerRepository.findById(customerID);
         customer.orElseThrow(() -> new NoSuchElementException("Customer could not be found"));
         if (!customer.get().getEmailAddress().equals(username)) {
             throw new UnauthorizedException();

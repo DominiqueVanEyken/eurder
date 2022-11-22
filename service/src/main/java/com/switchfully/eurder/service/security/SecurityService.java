@@ -24,7 +24,7 @@ public class SecurityService {
 
     public void validateAuthorization(String authorization, Feature feature) {
         UsernamePassword usernamePassword = getUsernamePassword(authorization);
-        Optional<Customer> user = customerRepository.getCustomerByEmail(usernamePassword.getUsername());
+        Optional<Customer> user = customerRepository.findByEmailAddress(usernamePassword.getUsername());
         if (user.isEmpty()) {
             throw new NoSuchElementException("Wrong credentials");
         }
