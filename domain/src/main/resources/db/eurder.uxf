@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.0.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>730</x>
+      <y>160</y>
+      <w>190</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Order
+--
+order_id: varchar [PK]
+customer_id: varchar [FK]
+order_date: date
+total_price: double precision</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1030</x>
+      <y>140</y>
+      <w>210</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>ItemGroup
+--
+order_id: varchar [PK][FK]
+item_id: varchar [PK][FK]
+item_name: varchar
+amount: integer
+shipping_date: date
+price_per_unit: double precision
+total_price: double precision</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1060</x>
+      <y>360</y>
+      <w>150</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>Item
+--
+item_id: varchar [PK]
+name: varchar
+description: varchar
+price: double precision
+stock_count: integer</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>450</x>
+      <y>120</y>
+      <w>170</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>Customer
+--
+customer_id: varchar [PK]
+first_name: varchar
+last_name:varchar
+email: varchar
+street_name: varchar
+street_number: varchar
+zipcode: varchar [FK]
+phone_number: varchar
+password: varchar
+role: varchar</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>470</x>
+      <y>390</y>
+      <w>140</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Zipcode
+--
+zipcode: varchar [PK]
+city_name: varchar</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>610</x>
+      <y>200</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=0..*</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>530</x>
+      <y>300</y>
+      <w>50</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..*
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>910</x>
+      <y>200</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1..*</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1120</x>
+      <y>270</y>
+      <w>40</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+</diagram>
