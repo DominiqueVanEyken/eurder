@@ -1,6 +1,7 @@
 package com.switchfully.eurder.service.customer;
 
 import com.switchfully.eurder.domain.address.Address;
+import com.switchfully.eurder.domain.address.PostalCode;
 import com.switchfully.eurder.domain.customer.Customer;
 import com.switchfully.eurder.domain.customer.Role;
 import com.switchfully.eurder.domain.phonenumber.PhoneNumber;
@@ -23,9 +24,10 @@ class CustomerMapperTest {
     private final String email = "user@test.be";
     private final String streetName = "streetName";
     private final String streetNumber = "1";
-    private final String postalCode = "1111";
+    private final String zipcode = "1111";
     private final String city = "city";
-    private final Address address = new Address(streetName, streetNumber, postalCode, city);
+    private final PostalCode postalCode = new PostalCode(zipcode, city);
+    private final Address address = new Address(streetName, streetNumber, postalCode);
     private final String countryCode = "+32";
     private final String localNumber = "12 34 56 78";
     private final PhoneNumber phoneNumber = new PhoneNumber(countryCode, localNumber);
@@ -39,7 +41,7 @@ class CustomerMapperTest {
                 .setEmailAddress(email)
                 .setStreetName(streetName)
                 .setStreetNumber(streetNumber)
-                .setPostalCode(postalCode)
+                .setPostalCode(zipcode)
                 .setCityName(city)
                 .setCountryCode(countryCode)
                 .setLocalNumber(localNumber)
@@ -50,7 +52,7 @@ class CustomerMapperTest {
         assertThat(createCustomerDTO.getEmailAddress()).isEqualTo(email);
         assertThat(createCustomerDTO.getStreetName()).isEqualTo(streetName);
         assertThat(createCustomerDTO.getStreetNumber()).isEqualTo(streetNumber);
-        assertThat(createCustomerDTO.getPostalCode()).isEqualTo(postalCode);
+        assertThat(createCustomerDTO.getPostalCode()).isEqualTo(zipcode);
         assertThat(createCustomerDTO.getCityName()).isEqualTo(city);
         assertThat(createCustomerDTO.getLocalNumber()).isEqualTo(localNumber);
         assertThat(createCustomerDTO.getPassword()).isEqualTo(password);
@@ -105,7 +107,7 @@ class CustomerMapperTest {
                 .setEmailAddress(email)
                 .setStreetName(streetName)
                 .setStreetNumber(streetNumber)
-                .setPostalCode(postalCode)
+                .setPostalCode(zipcode)
                 .setCityName(city)
                 .setCountryCode(countryCode)
                 .setLocalNumber(localNumber)

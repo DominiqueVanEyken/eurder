@@ -23,7 +23,7 @@ public class Address {
     }
 
     public String validateStringValueForNotNullOrEmpty(String value) {
-        if (value == null || value.trim().length() < 2) {
+        if (value == null || value.trim().length() < 1) {
             throw new IllegalArgumentException("The provided street name or number is not valid");
         }
         return value;

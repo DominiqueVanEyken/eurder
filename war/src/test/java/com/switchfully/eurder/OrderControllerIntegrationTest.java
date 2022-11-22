@@ -1,21 +1,29 @@
 package com.switchfully.eurder;
 
+import com.switchfully.eurder.domain.address.Address;
+import com.switchfully.eurder.domain.address.PostalCode;
 import com.switchfully.eurder.domain.customer.Customer;
 import com.switchfully.eurder.domain.customer.CustomerRepository;
+import com.switchfully.eurder.domain.customer.Role;
 import com.switchfully.eurder.domain.order.Order;
 import com.switchfully.eurder.domain.order.OrderRepository;
 
+import com.switchfully.eurder.domain.phonenumber.CountryCode;
+import com.switchfully.eurder.domain.phonenumber.PhoneNumber;
 import com.switchfully.eurder.service.order.dto.CreateItemGroupDTO;
 import com.switchfully.eurder.service.order.dto.CreateOrderDTO;
 import com.switchfully.eurder.service.order.dto.OrderDTO;
 import io.restassured.RestAssured;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.test.annotation.DirtiesContext;
 
 import java.time.LocalDate;
 import java.util.Base64;
@@ -24,6 +32,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+//@AutoConfigureTestDatabase
 public class OrderControllerIntegrationTest {
     public static final String BASE_URI = "http://localhost";
     @LocalServerPort
@@ -32,17 +41,26 @@ public class OrderControllerIntegrationTest {
     OrderRepository orderRepository;
     @Autowired
     CustomerRepository customerRepository;
+    private final Customer testCustomer = new Customer("firstname", "lastname", "user@test.be", new Address("street", "1", new PostalCode("1111", "consumer valley")), new PhoneNumber(CountryCode.BEL, "123 45 67 89"), "password", Role.CUSTOMER);
     private final String itemID = "IID20221001";
-    private final String customerID = "CID20221002";
+    private final String customerID = testCustomer.getCustomerID();
     private final List<CreateItemGroupDTO> createItemGroupDTOS = List.of(new CreateItemGroupDTO()
             .setItemID(itemID)
             .setAmount(2));
+
+    @BeforeEach
+    void setup() {
+//        Customer customer1 = new Customer("firstname1", "lastname1", "user1@test.be", new Address("street", "1", new PostalCode("1111", "city1")), new PhoneNumber(CountryCode.BEL, "123 45 67 89"), "password", Role.CUSTOMER);
+//        Customer customer2 = new Customer("firstname2", "lastname2", "user2@test.be", new Address("street", "1", new PostalCode("1111", "city2")), new PhoneNumber(CountryCode.BEL, "123 45 67 89"), "password", Role.CUSTOMER);
+//        Customer customer3 = new Customer("firstname3", "lastname3", "user3@test.be", new Address("street", "1", new PostalCode("1111", "city3")), new PhoneNumber(CountryCode.BEL, "123 45 67 89"), "password", Role.CUSTOMER);
+        customerRepository.save(testCustomer);
+    }
 
     @Nested
     class orderItems {
         @Test
         void orderItems_givenValidDataAndAuthorization() {
-            String customerBase64 = Base64.getEncoder().encodeToString("user1@test.be:password".getBytes());
+            String customerBase64 = Base64.getEncoder().encodeToString("user@test.be:password".getBytes());
             CreateOrderDTO createOrderDTO = new CreateOrderDTO()
                     .setOrderList(createItemGroupDTOS);
 
@@ -95,7 +113,7 @@ public class OrderControllerIntegrationTest {
         void orderItems_givenInvalidPassword() {
             CreateOrderDTO createOrderDTO = new CreateOrderDTO()
                     .setOrderList(createItemGroupDTOS);
-            String authorization = Base64.getEncoder().encodeToString("user1@test.be:invalid".getBytes());
+            String authorization = Base64.getEncoder().encodeToString("user@test.be:invalid".getBytes());
 
             RestAssured
                     .given()
@@ -142,7 +160,7 @@ public class OrderControllerIntegrationTest {
         @Test
         void reOrderingAnOrder_givenValidData() {
             Order order = orderRepository.getOrders().stream().toList().get(0);
-            Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
+            Customer customer = customerRepository.findById(order.getCustomerID()).get();
             String customerBase64 = Base64.getEncoder().encodeToString((customer.getEmailAddress() + ":password").getBytes());
 
             OrderDTO result = RestAssured
@@ -170,7 +188,7 @@ public class OrderControllerIntegrationTest {
         @Test
         void reOrderingAnOrder_givenInvalidCustomerData() {
             Order order = orderRepository.getOrders().stream().toList().get(0);
-            Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
+            Customer customer = customerRepository.findById(order.getCustomerID()).get();
             String customerBase64 = Base64.getEncoder().encodeToString((customer.getEmailAddress() + ":password").getBytes());
 
             RestAssured
@@ -189,7 +207,7 @@ public class OrderControllerIntegrationTest {
         @Test
         void reOrderingAnOrder_givenInvalidOrderID() {
             Order order = orderRepository.getOrders().stream().toList().get(0);
-            Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
+            Customer customer = customerRepository.findById(order.getCustomerID()).get();
             String customerBase64 = Base64.getEncoder().encodeToString((customer.getEmailAddress() + ":password").getBytes());
 
             RestAssured

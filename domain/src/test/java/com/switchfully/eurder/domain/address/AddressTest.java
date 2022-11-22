@@ -1,7 +1,5 @@
 package com.switchfully.eurder.domain.address;
 
-import com.switchfully.eurder.domain.address.Address;
-import com.switchfully.eurder.domain.address.AddressBuilder;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -14,34 +12,35 @@ class AddressTest {
     class givenValidData {
         private final String streetName = "streetname";
         private final String streetNumber = "1";
-        private final String postalCode = "3020";
+        private final String zipcode = "3020";
         private final String city = "City";
+        private final PostalCode postalCode = new PostalCode(zipcode, city);
 
         @Test
         void creatingAddress() {
 
-            Address address = new Address(streetName, streetNumber, postalCode, city);
+            Address address = new Address(streetName, streetNumber, postalCode);
 
             assertThat(address).isNotNull();
-            assertThat(address).isEqualTo(new Address(streetName, streetNumber, postalCode, city));
-            assertThat(address.getFullAddressAsString()).isEqualTo(String.format("%s %s, %s %s", streetName, streetNumber, postalCode, city));
-            assertThat(address.hashCode()).isEqualTo(new Address(streetName, streetNumber, postalCode, city).hashCode());
+            assertThat(address).isEqualTo(new Address(streetName, streetNumber, postalCode));
+            assertThat(address.getFullAddressAsString()).isEqualTo(String.format("%s %s, %s %s", streetName, streetNumber, postalCode));
+            assertThat(address.hashCode()).isEqualTo(new Address(streetName, streetNumber, postalCode).hashCode());
         }
 
         @Test
         void creatingAddressWithBuilderPattern() {
-            Address testAddress = new Address(streetName, streetNumber, postalCode, city);
+            Address testAddress = new Address(streetName, streetNumber, postalCode);
 
             Address addressBuilder = new AddressBuilder()
                     .setStreetName(streetName)
                     .setStreetNumber(streetNumber)
-                    .setPostalCode(postalCode)
+                    .setPostalCode(zipcode)
                     .setCityName(city)
                     .build();
 
             assertThat(addressBuilder).isNotNull();
             assertThat(addressBuilder).isEqualTo(testAddress);
-            assertThat(addressBuilder.getFullAddressAsString()).isEqualTo(String.format("%s %s, %s %s", streetName, streetNumber, postalCode, city));
+            assertThat(addressBuilder.getFullAddressAsString()).isEqualTo(String.format("%s %s, %s %s", streetName, streetNumber, zipcode, city));
             assertThat(addressBuilder.hashCode()).isEqualTo(testAddress.hashCode());
         }
     }
@@ -52,13 +51,13 @@ class AddressTest {
         void postalCodeIsTooShortLongOrContainsLetters() {
             String errorMessage = "The provided postal code is not valid";
 
-            assertThatThrownBy(() -> new Address(null, null, "123", "city"))
+            assertThatThrownBy(() -> new Address(null, null, new PostalCode("123", "city")))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(errorMessage);
-            assertThatThrownBy(() -> new Address(null, null, "12345", "city"))
+            assertThatThrownBy(() -> new Address(null, null, new PostalCode("12345", "city")))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(errorMessage);
-            assertThatThrownBy(() -> new Address(null, null, "abcd", "city"))
+            assertThatThrownBy(() -> new Address(null, null, new PostalCode("abcd", "city")))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(errorMessage);
         }
@@ -67,10 +66,10 @@ class AddressTest {
         void cityIsNullOrLessThanTwoCharacters() {
             String errorMessage = "The provided city is not valid";
 
-            assertThatThrownBy(() -> new Address(null, null, "1234", null))
+            assertThatThrownBy(() -> new Address(null, null, new PostalCode("1234", null)))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(errorMessage);
-            assertThatThrownBy(() -> new Address(null, null, "1234", "c"))
+            assertThatThrownBy(() -> new Address(null, null, new PostalCode("1234", "c")))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(errorMessage);
         }
@@ -79,7 +78,7 @@ class AddressTest {
         void cityContainsOnlySpaces() {
             String errorMessage = "The provided city is not valid";
 
-            assertThatThrownBy(() -> new Address(null, null, "1234", "   "))
+            assertThatThrownBy(() -> new Address(null, null, new PostalCode("1234", "   ")))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(errorMessage);
         }

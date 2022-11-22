@@ -6,6 +6,7 @@ import com.switchfully.eurder.domain.customer.Role;
 import com.switchfully.eurder.service.customer.CustomerService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Base64;
 import java.util.NoSuchElementException;
@@ -13,12 +14,12 @@ import java.util.NoSuchElementException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class SecurityServiceTest {
+    @Autowired
     private CustomerRepository customerRepository;
     private SecurityService securityService;
 
     @BeforeEach
     void createAndFillCustomerRepository() {
-        customerRepository = new CustomerRepository();
         securityService = new SecurityService(customerRepository);
     }
 

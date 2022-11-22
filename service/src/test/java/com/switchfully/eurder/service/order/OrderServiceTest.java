@@ -13,6 +13,7 @@ import com.switchfully.eurder.service.order.dto.OrderDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -25,6 +26,7 @@ class OrderServiceTest {
     private OrderService orderService;
     private ItemRepository itemRepository;
     private OrderRepository orderRepository;
+    @Autowired
     private CustomerRepository customerRepository;
     private final Item item1 = new Item("name1", "description", new Price(1.1), 100);
     private final Item item2 = new Item("name2", "description", new Price(2.2), 200);
@@ -35,7 +37,6 @@ class OrderServiceTest {
     @BeforeEach
     void createAndFillRepository() {
         itemRepository = new ItemRepository();
-        customerRepository = new CustomerRepository();
         orderRepository = new OrderRepository(itemRepository, customerRepository);
         orderService = new OrderService(orderRepository, customerRepository, itemRepository);
         itemRepository.addItem(item1);
@@ -44,7 +45,7 @@ class OrderServiceTest {
                 new ItemGroup(item1.getItemID(),item1.getName(), 1, item1.getShippingDateForAmount(1), item1.getPrice()),
                 new ItemGroup(item2.getItemID(),item2.getName(), 2, item2.getShippingDateForAmount(2), item2.getPrice())
         );
-        customerID = customerRepository.getAllCustomers().stream().toList().get(0).getCustomerID();
+        customerID = customerRepository.findAll().stream().toList().get(0).getCustomerID();
         order = new Order(customerID, orderList);
     }
 
@@ -53,7 +54,7 @@ class OrderServiceTest {
         @Test
         void validateOrderIDBelongsToCustomer_givenInvalidCustomerID() {
             orderRepository.createOrder(order);
-            Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
+            Customer customer = customerRepository.findById(order.getCustomerID()).get();
 
             assertThatThrownBy(() -> orderService.validateOrderIDBelongsToCustomer("someID", order, customer.getEmailAddress()))
                     .isInstanceOf(UnauthorizedException.class)
@@ -63,7 +64,7 @@ class OrderServiceTest {
         @Test
         void validateOrderIDBelongsToCustomer_givenInvalidEmail() {
             orderRepository.createOrder(order);
-            Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
+            Customer customer = customerRepository.findById(order.getCustomerID()).get();
 
             assertThatThrownBy(() -> orderService.validateOrderIDBelongsToCustomer(customer.getCustomerID(), order, "invalid@email.be"))
                     .isInstanceOf(UnauthorizedException.class)
@@ -87,7 +88,7 @@ class OrderServiceTest {
         @Test
         void reorderOrderByID_givenValidData() {
             orderRepository.createOrder(order);
-            Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
+            Customer customer = customerRepository.findById(order.getCustomerID()).get();
 
             OrderDTO result = orderService.reOrderByOrderID(customer.getCustomerID(), order.getOrderID());
 
@@ -100,7 +101,7 @@ class OrderServiceTest {
         @Test
         void reorderOrderByID_givenInvalidOrderID() {
             orderRepository.createOrder(order);
-            Customer customer = customerRepository.findCustomerByID(order.getCustomerID()).get();
+            Customer customer = customerRepository.findById(order.getCustomerID()).get();
 
             assertThatThrownBy(() -> orderService.reOrderByOrderID(customer.getCustomerID(), "invalidOrderID"))
                     .isInstanceOf(NoSuchElementException.class)

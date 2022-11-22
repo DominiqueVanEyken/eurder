@@ -6,6 +6,7 @@ import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.item.ItemRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -15,6 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class OrderRepositoryTest {
     private ItemRepository itemRepository;
     private OrderRepository orderRepository;
+    @Autowired
     private CustomerRepository customerRepository;
     private final Item item1 = new Item("name1", "description", new Price(1.1), 100);
     private final Item item2 = new Item("name2", "description", new Price(2.2), 200);
@@ -25,7 +27,6 @@ class OrderRepositoryTest {
     @BeforeEach
     void createAndFillRepository() {
         itemRepository = new ItemRepository();
-        customerRepository = new CustomerRepository();
         orderRepository = new OrderRepository(itemRepository, customerRepository);
         itemRepository.addItem(item1);
         itemRepository.addItem(item2);
@@ -33,7 +34,7 @@ class OrderRepositoryTest {
                 new ItemGroup(item1.getItemID(), item1.getName(), 1, item1.getShippingDateForAmount(1), item1.getPrice()),
                 new ItemGroup(item2.getItemID(), item2.getName(), 2, item2.getShippingDateForAmount(2), item2.getPrice())
         );
-        customerID = customerRepository.getAllCustomers().stream().toList().get(0).getCustomerID();
+        customerID = customerRepository.findAll().stream().toList().get(0).getCustomerID();
         order = new Order(customerID, orderList);
     }
 

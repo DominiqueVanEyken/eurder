@@ -1,54 +1,65 @@
 package com.switchfully.eurder;
 
 import com.switchfully.eurder.domain.address.Address;
+import com.switchfully.eurder.domain.address.PostalCode;
 import com.switchfully.eurder.domain.customer.Customer;
 import com.switchfully.eurder.domain.customer.CustomerRepository;
-import com.switchfully.eurder.domain.order.Order;
-import com.switchfully.eurder.domain.order.OrderRepository;
+import com.switchfully.eurder.domain.phonenumber.CountryCode;
 import com.switchfully.eurder.service.customer.CustomerMapper;
+import com.switchfully.eurder.service.customer.CustomerService;
 import com.switchfully.eurder.service.customer.dto.CreateCustomerDTO;
 import com.switchfully.eurder.service.customer.dto.CustomerDTO;
-import com.switchfully.eurder.service.order.OrderMapper;
-import com.switchfully.eurder.service.order.dto.CreateItemGroupDTO;
-import com.switchfully.eurder.service.order.dto.CreateOrderDTO;
-import com.switchfully.eurder.service.order.dto.OrderDTO;
-import com.switchfully.eurder.service.report.dto.ReportDTO;
 import io.restassured.RestAssured;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.test.annotation.DirtiesContext;
 
-import java.time.LocalDate;
 import java.util.Base64;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@AutoConfigureTestDatabase
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class CustomerControllerIntegrationTest {
-
+    private final static String BASE_URI = "http://localhost";
     @LocalServerPort
     private int port;
     @Autowired
     CustomerRepository customerRepository;
-    private final CustomerMapper customerMapper = new CustomerMapper();
-    private final static String BASE_URI = "http://localhost";
-    private final String itemID = "IID20221001";
-    private final String customerID = "CID20221002";
+    @Autowired
+    CustomerService customerService;
 
-    private final List<CreateItemGroupDTO> createItemGroupDTOS = List.of(new CreateItemGroupDTO()
-            .setItemID(itemID)
-            .setAmount(2));
+    private final CreateCustomerDTO createCustomer = new CreateCustomerDTO()
+            .setFirstname("createCustomer")
+            .setLastname("dto")
+            .setEmailAddress("user@test.be")
+            .setStreetName("Street")
+            .setStreetNumber("1")
+            .setPostalCode("1111")
+            .setCityName("city")
+            .setCountryCode(CountryCode.BEL.toString())
+            .setLocalNumber("123 45 67 89")
+            .setPassword("password");
+    private CustomerDTO customerDTO;
+
+    @BeforeEach
+    void setup() {
+        customerDTO = customerService.createNewCustomer(createCustomer);
+    }
 
     @Nested
     class gettingAllCustomers {
         @Test
         void gettingAllCustomers_givenValidAdmin() {
-            String base64 = Base64.getEncoder().encodeToString("admin@eurder.com:password".getBytes());
+            String base64 = Base64.getEncoder().encodeToString("admin@eurder.com:admin@eurder".getBytes());
             CustomerDTO[] result = RestAssured
                     .given()
                     .baseUri(BASE_URI)
@@ -68,7 +79,7 @@ public class CustomerControllerIntegrationTest {
 
         @Test
         void gettingAllCustomers_givenNotAuthorized() {
-            String base64 = Base64.getEncoder().encodeToString("user1@test.be:password".getBytes());
+            String base64 = Base64.getEncoder().encodeToString("user@test.be:password".getBytes());
             RestAssured
                     .given()
                     .baseUri(BASE_URI)
@@ -84,10 +95,11 @@ public class CustomerControllerIntegrationTest {
 
     @Nested
     class gettingCustomerByID {
+        private final CustomerMapper customerMapper = new CustomerMapper();
+
         @Test
         void gettingCustomerByID_givenValidData() {
-            String base64 = Base64.getEncoder().encodeToString("admin@eurder.com:password".getBytes());
-            CustomerDTO expected = customerMapper.mapCustomerToDTO(customerRepository.getAllCustomers().stream().toList().get(0));
+            String base64 = Base64.getEncoder().encodeToString("admin@eurder.com:admin@eurder".getBytes());
             CustomerDTO result = RestAssured
                     .given()
                     .baseUri(BASE_URI)
@@ -95,7 +107,7 @@ public class CustomerControllerIntegrationTest {
                     .accept(MediaType.APPLICATION_JSON_VALUE)
                     .headers("Authorization", "Basic " + base64)
                     .when()
-                    .get("customers/" + customerID)
+                    .get("customers/" + customerDTO.getCustomerID())
                     .then()
                     .assertThat()
                     .statusCode(HttpStatus.OK.value())
@@ -103,19 +115,22 @@ public class CustomerControllerIntegrationTest {
                     .as(CustomerDTO.class);
 
             assertThat(result).isNotNull();
-            assertThat(result.getCustomerID()).isEqualTo(expected.getCustomerID());
+            assertThat(result.getCustomerID()).isNotNull();
+            assertThat(result.getFirstname()).isEqualTo(customerDTO.getFirstname());
+            assertThat(result.getLastname()).isEqualTo(customerDTO.getLastname());
+            assertThat(result.getEmailAddress()).isEqualTo(customerDTO.getEmailAddress());
         }
 
         @Test
         void gettingCustomerByID_givenNotAuthorized() {
-            String base64 = Base64.getEncoder().encodeToString("user1@test.be:password".getBytes());
+            String base64 = Base64.getEncoder().encodeToString("user@test.be:password".getBytes());
             RestAssured
                     .given()
                     .baseUri(BASE_URI)
                     .port(port)
                     .headers("Authorization", "Basic " + base64)
                     .when()
-                    .get("customers/" + customerID)
+                    .get("customers/CID20221001")
                     .then()
                     .assertThat()
                     .statusCode(HttpStatus.FORBIDDEN.value());
@@ -129,7 +144,7 @@ public class CustomerControllerIntegrationTest {
             CreateCustomerDTO createCustomerDTO = new CreateCustomerDTO()
                     .setFirstname("firstname")
                     .setLastname("lastname")
-                    .setEmailAddress("user@test.be")
+                    .setEmailAddress("createUser@test.be")
                     .setStreetName("streetname")
                     .setStreetNumber("1")
                     .setPostalCode("1111")
@@ -138,7 +153,7 @@ public class CustomerControllerIntegrationTest {
                     .setLocalNumber("12 34 56 78")
                     .setPassword("password");
 
-            Address address = new Address("streetname", "1", "1111", "city");
+            Address address = new Address("streetname", "1", new PostalCode("1111", "city"));
 
             CustomerDTO result = RestAssured
                     .given()
