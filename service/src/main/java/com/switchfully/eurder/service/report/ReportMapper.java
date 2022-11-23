@@ -1,8 +1,8 @@
 package com.switchfully.eurder.service.report;
 
 import com.switchfully.eurder.domain.Price.Price;
-import com.switchfully.eurder.domain.order.ItemGroup;
-import com.switchfully.eurder.domain.order.ItemGroupShippingReport;
+import com.switchfully.eurder.domain.itemgroup.ItemGroup;
+import com.switchfully.eurder.domain.itemgroup.ItemGroupShippingReport;
 import com.switchfully.eurder.domain.order.Order;
 import com.switchfully.eurder.service.report.dto.*;
 
@@ -14,7 +14,7 @@ public class ReportMapper {
     public OrderReportDTO mapOrderToOrderReportDTO(Order order) {
         return new OrderReportDTO()
                 .setOrderID(order.getOrderID())
-                .setItemGroupReports(mapItemGroupToItemGroupReportDTO(order.getOrderList()))
+//                .setItemGroupReports(mapItemGroupToItemGroupReportDTO(order.getOrderList()))
                 .setTotalOrderPrice(order.getTotalPrice().toString());
     }
 

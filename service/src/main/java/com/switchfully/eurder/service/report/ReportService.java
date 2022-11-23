@@ -1,8 +1,8 @@
 package com.switchfully.eurder.service.report;
 
 import com.switchfully.eurder.domain.customer.CustomerRepository;
-import com.switchfully.eurder.domain.order.ItemGroup;
-import com.switchfully.eurder.domain.order.ItemGroupShippingReport;
+import com.switchfully.eurder.domain.itemgroup.ItemGroup;
+import com.switchfully.eurder.domain.itemgroup.ItemGroupShippingReport;
 import com.switchfully.eurder.domain.order.Order;
 import com.switchfully.eurder.domain.order.OrderRepository;
 import com.switchfully.eurder.service.report.dto.ReportDTO;
@@ -34,15 +34,15 @@ public class ReportService {
         List<Order> orders = orderRepository.findAll();
         List<ItemGroupShippingReport> itemGroupShippingReports = new ArrayList<>();
         for (Order order : orders) {
-            for (ItemGroup itemGroup : order.getOrderList()) {
-                if (doesItemGroupShipsToday(itemGroup)) {
-                    customerRepository.findById(order.getCustomerID())
-                            .ifPresent(customer -> itemGroupShippingReports.add(
-                                            new ItemGroupShippingReport(customer.getEmailAddress(), itemGroup)
-                                    )
-                            );
-                }
-            }
+//            for (ItemGroup itemGroup : order.getOrderList()) {
+//                if (doesItemGroupShipsToday(itemGroup)) {
+//                    customerRepository.findById(order.getCustomerID())
+//                            .ifPresent(customer -> itemGroupShippingReports.add(
+//                                            new ItemGroupShippingReport(customer.getEmailAddress(), itemGroup)
+//                                    )
+//                            );
+//                }
+//            }
         }
         return reportMapper.mapShippingReportToShippingReportDTO(itemGroupShippingReports);
     }

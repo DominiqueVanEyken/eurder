@@ -6,7 +6,7 @@ import com.switchfully.eurder.domain.customer.CustomerRepository;
 import com.switchfully.eurder.domain.exceptions.UnauthorizedException;
 import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.item.ItemRepository;
-import com.switchfully.eurder.domain.order.ItemGroup;
+import com.switchfully.eurder.domain.itemgroup.ItemGroup;
 import com.switchfully.eurder.domain.order.Order;
 import com.switchfully.eurder.domain.order.OrderRepository;
 import com.switchfully.eurder.service.order.dto.OrderDTO;
@@ -38,7 +38,7 @@ class OrderServiceTest {
     @BeforeEach
     void createAndFillRepository() {
         orderRepository = new OrderRepository(itemRepository, customerRepository);
-        orderService = new OrderService(orderRepository, customerRepository, itemRepository);
+        orderService = new OrderService(orderRepository, customerRepository, itemRepository, itemGroupRepository);
         itemRepository.save(item1);
         itemRepository.save(item2);
         orderList = List.of(

@@ -36,7 +36,7 @@ create table item
     stock_count integer          not null
 );
 
-create table itemGroup
+create table item_group
 (
     order_id       varchar(16) references "order",
     item_id        varchar(16) references item,
@@ -44,7 +44,8 @@ create table itemGroup
     amount         integer          not null,
     shipping_date  date             not null,
     price_per_unit double precision not null,
-    total_price    double precision not null
+    total_price    double precision not null,
+    primary key (order_id, item_id)
 );
 
 -- CREATE ZIPCODE

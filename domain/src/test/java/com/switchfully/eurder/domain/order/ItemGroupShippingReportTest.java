@@ -4,6 +4,8 @@ import com.switchfully.eurder.domain.address.Address;
 import com.switchfully.eurder.domain.address.PostalCode;
 import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.item.ItemRepository;
+import com.switchfully.eurder.domain.itemgroup.ItemGroup;
+import com.switchfully.eurder.domain.itemgroup.ItemGroupShippingReport;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

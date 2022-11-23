@@ -1,16 +1,18 @@
 package com.switchfully.eurder.service.order;
 
 import com.switchfully.eurder.domain.item.Item;
-import com.switchfully.eurder.domain.order.ItemGroup;
-import com.switchfully.eurder.domain.order.ItemGroupBuilder;
+import com.switchfully.eurder.domain.itemgroup.ItemGroup;
+import com.switchfully.eurder.domain.itemgroup.ItemGroupBuilder;
+import com.switchfully.eurder.domain.order.Order;
 import com.switchfully.eurder.service.order.dto.ItemGroupDTO;
 
 import java.util.List;
 
 public class ItemGroupMapper {
-    public ItemGroup mapItemToItemGroup(Item item, int amount) {
+    public ItemGroup mapItemToItemGroup(Order order, Item item, int amount) {
         return new ItemGroupBuilder()
-                .setItemID(item.getItemID())
+                .setOrder(order)
+                .setItem(item)
                 .setItemName(item.getName())
                 .setAmount(amount)
                 .setShippingDate(item.getShippingDateForAmount(amount))

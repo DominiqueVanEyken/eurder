@@ -8,9 +8,9 @@ import java.util.Objects;
 @Embeddable
 public class Price {
     @Column(name = "PRICE")
-    private final double price;
-    @Transient
-    private final CurrencyUnit currencyUnit;
+    private double price;
+    @Transient()
+    private CurrencyUnit currencyUnit;
 
     public Price(double price) {
         this.price = price;
@@ -18,7 +18,6 @@ public class Price {
     }
 
     public Price() {
-        this(0.0);
     }
 
     public double getPrice() {

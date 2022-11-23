@@ -1,4 +1,4 @@
-package com.switchfully.eurder.domain.order;
+package com.switchfully.eurder.domain.itemgroup;
 
 public class ItemGroupShippingReport {
     private final String shippingAddress;

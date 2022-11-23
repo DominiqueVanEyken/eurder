@@ -3,7 +3,7 @@ package com.switchfully.eurder.service.order;
 
 import com.switchfully.eurder.domain.Price.Price;
 import com.switchfully.eurder.domain.item.Item;
-import com.switchfully.eurder.domain.order.ItemGroup;
+import com.switchfully.eurder.domain.itemgroup.ItemGroup;
 import com.switchfully.eurder.service.order.dto.CreateItemGroupDTO;
 import com.switchfully.eurder.service.order.dto.ItemGroupDTO;
 import com.switchfully.eurder.service.report.dto.ItemGroupReportDTO;

@@ -2,6 +2,8 @@ package com.switchfully.eurder.domain.order;
 
 import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.Price.Price;
+import com.switchfully.eurder.domain.itemgroup.ItemGroup;
+import com.switchfully.eurder.domain.itemgroup.ItemGroupBuilder;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -29,7 +31,7 @@ class ItemGroupTest {
             Price pricePerUnit = new Price(30.5);
 
             ItemGroup builder = new ItemGroupBuilder()
-                    .setItemID(id)
+                    .setItem(id)
                     .setItemName(name)
                     .setAmount(amount)
                     .setShippingDate(shippingDate)

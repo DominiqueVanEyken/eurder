@@ -5,7 +5,8 @@ import com.switchfully.eurder.domain.customer.CustomerRepository;
 import com.switchfully.eurder.domain.exceptions.UnauthorizedException;
 import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.item.ItemRepository;
-import com.switchfully.eurder.domain.order.ItemGroup;
+import com.switchfully.eurder.domain.itemgroup.ItemGroup;
+import com.switchfully.eurder.domain.itemgroup.ItemGroupRepository;
 import com.switchfully.eurder.domain.order.Order;
 import com.switchfully.eurder.domain.order.OrderRepository;
 import com.switchfully.eurder.service.order.dto.CreateItemGroupDTO;
@@ -14,38 +15,43 @@ import com.switchfully.eurder.service.order.dto.ItemGroupDTO;
 import com.switchfully.eurder.service.order.dto.OrderDTO;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class OrderService {
     private final OrderMapper orderMapper;
     private final ItemGroupMapper itemGroupMapper;
     private final OrderRepository orderRepository;
     private final CustomerRepository customerRepository;
     private final ItemRepository itemRepository;
+    private final ItemGroupRepository itemGroupRepository;
 
-    public OrderService(OrderRepository orderRepository, CustomerRepository customerRepository, ItemRepository itemRepository) {
+    public OrderService(OrderRepository orderRepository, CustomerRepository customerRepository, ItemRepository itemRepository, ItemGroupRepository itemGroupRepository) {
         this.orderRepository = orderRepository;
         this.customerRepository = customerRepository;
         this.itemRepository = itemRepository;
+        this.itemGroupRepository = itemGroupRepository;
         orderMapper = new OrderMapper();
         itemGroupMapper = new ItemGroupMapper();
     }
 
     public OrderDTO createOrder(String customerID, CreateOrderDTO createOrderDTO) {
         List<ItemGroup> itemGroups = new ArrayList<>();
+        Order order = new Order(customerID);
         for (CreateItemGroupDTO itemGroupDTO : createOrderDTO.getOrderList()) {
             String itemID = itemGroupDTO.getItemID();
             int amount = itemGroupDTO.getAmount();
-            mapItemToItemGroupAndReduceStock(itemGroups, itemID, amount);
+            mapItemToItemGroupAndReduceStock(order, itemGroups, itemID, amount);
         }
-        Order order = orderMapper.mapDTOToOrder(customerID, itemGroups);
+        order.updatePrice(itemGroups);
+        List<ItemGroupDTO> orderList = itemGroupMapper.mapItemGroupToDTO(itemGroupRepository.findByOrder(order));
         orderRepository.save(order);
-        List<ItemGroupDTO> itemGroupDTOS = itemGroupMapper.mapItemGroupToDTO(order.getOrderList());
-        return orderMapper.mapOrderToDTO(order, itemGroupDTOS);
+        return orderMapper.mapOrderToDTO(order, orderList);
     }
 
     protected Order getOrderByOrderID(String orderID) {
@@ -56,14 +62,15 @@ public class OrderService {
 
     public OrderDTO reOrderByOrderID(String customerID, String orderID) {
         Order orderToReorder = getOrderByOrderID(orderID);
+        Order order = new Order(customerID);
         List<ItemGroup> itemGroupsToReorder = new ArrayList<>();
-        for (ItemGroup itemGroup : orderToReorder.getOrderList()) {
-            String itemID = itemGroup.getItemID();
-            int amount = itemGroup.getAmount();
-            mapItemToItemGroupAndReduceStock(itemGroupsToReorder, itemID, amount);
-        }
-        Order order = orderMapper.mapDTOToOrder(customerID, itemGroupsToReorder);
+//        for (ItemGroup itemGroup : orderToReorder.getOrderList()) {
+//            String itemID = itemGroup.getItemID();
+//            int amount = itemGroup.getAmount();
+//            mapItemToItemGroupAndReduceStock(order, itemGroupsToReorder, itemID, amount);
+//        }
         orderRepository.save(order);
+//        Order order = orderMapper.mapDTOToOrder(customerID, itemGroupsToReorder);
         List<ItemGroupDTO> itemGroupDTOS = itemGroupMapper.mapItemGroupToDTO(order.getOrderList());
         return orderMapper.mapOrderToDTO(order, itemGroupDTOS);
     }
@@ -79,10 +86,12 @@ public class OrderService {
         }
     }
 
-    private void mapItemToItemGroupAndReduceStock(List<ItemGroup> itemGroups, String itemID, int amount) {
+    private void mapItemToItemGroupAndReduceStock(Order order, List<ItemGroup> itemGroups, String itemID, int amount) {
         Item item = itemRepository.findById(itemID)
                 .orElseThrow(() -> new NoSuchElementException("Item with ID " + itemID + " could not be found"));
-        itemGroups.add(itemGroupMapper.mapItemToItemGroup(item, amount));
+        ItemGroup itemGroup = itemGroupMapper.mapItemToItemGroup(order, item, amount);
+        itemGroupRepository.save(itemGroup);
+        itemGroups.add(itemGroup);
         item.reduceStockByAmount(amount);
     }
 }

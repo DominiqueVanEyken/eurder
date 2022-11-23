@@ -1,18 +1,26 @@
-package com.switchfully.eurder.domain.order;
+package com.switchfully.eurder.domain.itemgroup;
 
 import com.switchfully.eurder.domain.Price.Price;
+import com.switchfully.eurder.domain.item.Item;
+import com.switchfully.eurder.domain.order.Order;
 
 import java.time.LocalDate;
 
 public class ItemGroupBuilder {
-    private String itemID;
+    private Order order;
+    private Item item;
     private String itemName;
     private int amount;
     private LocalDate shippingDate;
     private Price pricePerUnit;
 
-    public ItemGroupBuilder setItemID(String itemID) {
-        this.itemID = itemID;
+    public ItemGroupBuilder setOrder(Order order) {
+        this.order = order;
+        return this;
+    }
+
+    public ItemGroupBuilder setItem(Item item) {
+        this.item = item;
         return this;
     }
 
@@ -37,6 +45,6 @@ public class ItemGroupBuilder {
     }
 
     public ItemGroup build() {
-        return new ItemGroup(itemID, itemName, amount, shippingDate, pricePerUnit);
+        return new ItemGroup(order, item, itemName, amount, shippingDate, pricePerUnit);
     }
 }
