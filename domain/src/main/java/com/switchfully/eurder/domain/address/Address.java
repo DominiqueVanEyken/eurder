@@ -29,9 +29,6 @@ public class Address {
         return value;
     }
 
-    public String getFullAddressAsString() {
-        return String.format("%s %s, %s", streetName, streetNumber, postalCode.toString());
-    }
 
     public String getStreetName() {
         return streetName;
@@ -43,6 +40,10 @@ public class Address {
 
     public PostalCode getPostalCode() {
         return postalCode;
+    }
+    @Override
+    public String toString() {
+        return String.format("%s %s, %s", streetName, streetNumber, postalCode.toString());
     }
 
     @Override

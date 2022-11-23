@@ -98,7 +98,7 @@ public class Customer {
         if (address == null) {
             return "";
         }
-        return address.getFullAddressAsString();
+        return address.toString();
     }
 
     public Address getAddress() {

@@ -2,7 +2,6 @@ package com.switchfully.eurder;
 
 import com.switchfully.eurder.domain.address.Address;
 import com.switchfully.eurder.domain.address.PostalCode;
-import com.switchfully.eurder.domain.customer.Customer;
 import com.switchfully.eurder.domain.customer.CustomerRepository;
 import com.switchfully.eurder.domain.phonenumber.CountryCode;
 import com.switchfully.eurder.service.customer.CustomerMapper;
@@ -175,7 +174,7 @@ public class CustomerControllerIntegrationTest {
             assertThat(result.getFirstname()).isEqualTo(createCustomerDTO.getFirstname());
             assertThat(result.getLastname()).isEqualTo(createCustomerDTO.getLastname());
             assertThat(result.getEmailAddress()).isEqualTo(createCustomerDTO.getEmailAddress());
-            assertThat(result.getAddress()).isEqualTo(address.getFullAddressAsString());
+            assertThat(result.getAddress()).isEqualTo(address.toString());
             assertThat(result.getPhoneNumber()).isEqualTo("+32 12 34 56 78");
         }
     }

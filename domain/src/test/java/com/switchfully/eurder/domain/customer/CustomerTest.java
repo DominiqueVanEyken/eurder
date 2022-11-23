@@ -33,7 +33,7 @@ class CustomerTest {
             assertThat(customer.getFirstname()).isEqualTo(firstname);
             assertThat(customer.getLastname()).isEqualTo(lastname);
             assertThat(customer.getEmailAddress()).isEqualTo(emailAddress);
-            assertThat(customer.getFullAddress()).isEqualTo(address.getFullAddressAsString());
+            assertThat(customer.getFullAddress()).isEqualTo(address.toString());
             assertThat(customer.getPhoneNumber()).isEqualTo(phoneNumber.getPhoneNumber());
             assertThat(customer.doesPasswordMatch(password)).isTrue();
             assertThat(customer.getRole()).isEqualTo(role);

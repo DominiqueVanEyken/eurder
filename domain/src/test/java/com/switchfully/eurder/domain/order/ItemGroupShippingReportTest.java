@@ -20,7 +20,7 @@ class ItemGroupShippingReportTest {
         Item item = itemRepository.findAll().stream().toList().get(0);
         Address address = new Address("streetName", "1", new PostalCode("1111", "city"));
         ItemGroup itemGroup = new ItemGroup(item.getItemID(), item.getName(), 2, item.getShippingDateForAmount(2), item.getPrice());
-        ItemGroupShippingReport itemGroupShippingReport = new ItemGroupShippingReport(address.getFullAddressAsString(), itemGroup);
+        ItemGroupShippingReport itemGroupShippingReport = new ItemGroupShippingReport(address.toString(), itemGroup);
 
         assertThat(itemGroupShippingReport).isNotNull();
         assertThat(itemGroupShippingReport.getItemID()).isEqualTo(itemGroup.getItemID());
@@ -28,7 +28,7 @@ class ItemGroupShippingReportTest {
         assertThat(itemGroupShippingReport.getAmount()).isEqualTo(itemGroup.getAmount());
         assertThat(itemGroupShippingReport.getPricePerUnit()).isEqualTo(itemGroup.getPricePerUnit());
         assertThat(itemGroupShippingReport.getTotalPrice()).isEqualTo(itemGroup.getTotalPrice().toString());
-        assertThat(itemGroupShippingReport.getShippingAddress()).isEqualTo(address.getFullAddressAsString());
+        assertThat(itemGroupShippingReport.getShippingAddress()).isEqualTo(address.toString());
     }
 
 }

@@ -23,7 +23,7 @@ class AddressTest {
 
             assertThat(address).isNotNull();
             assertThat(address).isEqualTo(new Address(streetName, streetNumber, postalCode));
-            assertThat(address.getFullAddressAsString()).isEqualTo(String.format("%s %s, %s", streetName, streetNumber, postalCode));
+            assertThat(address.toString()).isEqualTo(String.format("%s %s, %s", streetName, streetNumber, postalCode));
             assertThat(address.hashCode()).isEqualTo(new Address(streetName, streetNumber, postalCode).hashCode());
         }
 
@@ -39,7 +39,7 @@ class AddressTest {
                     .build();
 
             assertThat(addressBuilder).isNotNull();
-            assertThat(addressBuilder.getFullAddressAsString()).isEqualTo(String.format("%s %s, %s %s", streetName, streetNumber, zipcode, city));
+            assertThat(addressBuilder.toString()).isEqualTo(String.format("%s %s, %s %s", streetName, streetNumber, zipcode, city));
         }
     }
 
