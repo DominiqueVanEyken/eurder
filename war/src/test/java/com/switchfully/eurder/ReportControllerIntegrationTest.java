@@ -58,7 +58,7 @@ public class ReportControllerIntegrationTest {
     private final Customer customer = new CustomerBuilder()
             .setFirstname("firstname")
             .setLastname("lastname")
-            .setEmailAddress("user@email.com")
+            .setEmailAddress("user@test.com")
             .setAddress(new Address("streetName", "1", new PostalCode("1111", "consumer valley")))
             .setPhoneNumber(new PhoneNumber(CountryCode.BEL, "012 34 56 78"))
             .setPassword("password")
@@ -68,7 +68,6 @@ public class ReportControllerIntegrationTest {
     private final Item item2 = new Item("name2", "description", new Price(2.0), 5);
     private final Order order = new Order(customer.getCustomerID());
     private final ItemGroup itemGroup1 = new ItemGroup(order, item1, item1.getName(), 1, item1.getShippingDateForAmount(1), item1.getPrice());
-    private final ItemGroup itemGroup2 = new ItemGroup(order, item2, item2.getName(), 2, item2.getShippingDateForAmount(2), item2.getPrice());
 
     @Nested
     class gettingShippingToday {
@@ -79,8 +78,7 @@ public class ReportControllerIntegrationTest {
             itemRepository.save(item2);
             customerRepository.save(customer);
             itemGroupRepository.save(itemGroup1);
-            itemGroupRepository.save(itemGroup2);
-            order.updatePrice(List.of(itemGroup1, itemGroup2));
+            order.updatePrice(List.of(itemGroup1));
             orderRepository.save(order);
 
             ShippingReportDTO result = RestAssured
@@ -105,7 +103,7 @@ public class ReportControllerIntegrationTest {
         @Test
         void getShippingReportForToday_givenInvalidUsername() {
             customerRepository.save(customer);
-            String unauthorizedUserBase64 = Base64.getEncoder().encodeToString("user@email.com:password".getBytes());
+            String unauthorizedUserBase64 = Base64.getEncoder().encodeToString("user@test.com:password".getBytes());
             RestAssured
                     .given()
                     .baseUri(BASE_URI)
@@ -128,14 +126,10 @@ public class ReportControllerIntegrationTest {
             itemRepository.save(item2);
             customerRepository.save(customer);
             itemGroupRepository.save(itemGroup1);
-            itemGroupRepository.save(itemGroup2);
-            order.updatePrice(List.of(itemGroup1, itemGroup2));
+            order.updatePrice(List.of(itemGroup1));
             orderRepository.save(order);
-            String base64 = Base64.getEncoder().encodeToString("user@test.be:password".getBytes());
-            ItemGroup itemGroup1 = itemGroupRepository.findAll().get(0);
-            ItemGroup itemGroup2 = itemGroupRepository.findAll().get(1);
-            Order order = orderRepository.findAll().get(0);
-            List<ItemGroupReportDTO> itemGroupReportDTO = reportMapper.mapItemGroupToItemGroupReportDTO(List.of(itemGroup1, itemGroup2));
+            String base64 = Base64.getEncoder().encodeToString("user@test.com:password".getBytes());
+            List<ItemGroupReportDTO> itemGroupReportDTO = reportMapper.mapItemGroupToItemGroupReportDTO(List.of(itemGroup1));
             ReportDTO expected = new ReportDTO()
                     .setOrderReports(List.of(reportMapper.mapOrderToOrderReportDTO(order, itemGroupReportDTO)))
                     .setTotalPrice(order.getTotalPrice().toString());
