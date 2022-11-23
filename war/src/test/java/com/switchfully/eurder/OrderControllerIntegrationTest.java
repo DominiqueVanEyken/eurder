@@ -53,6 +53,20 @@ public class OrderControllerIntegrationTest {
 //        Customer customer1 = new Customer("firstname1", "lastname1", "user1@test.be", new Address("street", "1", new PostalCode("1111", "city1")), new PhoneNumber(CountryCode.BEL, "123 45 67 89"), "password", Role.CUSTOMER);
 //        Customer customer2 = new Customer("firstname2", "lastname2", "user2@test.be", new Address("street", "1", new PostalCode("1111", "city2")), new PhoneNumber(CountryCode.BEL, "123 45 67 89"), "password", Role.CUSTOMER);
 //        Customer customer3 = new Customer("firstname3", "lastname3", "user3@test.be", new Address("street", "1", new PostalCode("1111", "city3")), new PhoneNumber(CountryCode.BEL, "123 45 67 89"), "password", Role.CUSTOMER);
+        //    private void fillOrderRepository() {
+//        List<Item> items = itemRepository.findAll().stream()
+//                .limit(3)
+//                .toList();
+//        ItemGroup itemGroup1 = new ItemGroup(items.get(0).getItemID(), items.get(0).getName(), 1, items.get(0).getShippingDateForAmount(1), items.get(0).getPrice());
+//        ItemGroup itemGroup2 = new ItemGroup(items.get(1).getItemID(), items.get(1).getName(), 2, items.get(1).getShippingDateForAmount(2), items.get(1).getPrice());
+//        ItemGroup itemGroup3 = new ItemGroup(items.get(2).getItemID(), items.get(2).getName(), 3, items.get(1).getShippingDateForAmount(3), items.get(2).getPrice());
+//        Order order1 = new Order("CID20221001", List.of(itemGroup1, itemGroup2, itemGroup3));
+//        Order order2 = new Order("CID20221003", List.of(itemGroup1, itemGroup2, itemGroup3));
+//        Order order3 = new Order("CID20221002", List.of(itemGroup1, itemGroup2, itemGroup3));
+//        orderRepository.put(order1.getOrderID(), order1);
+//        orderRepository.put(order2.getOrderID(), order2);
+//        orderRepository.put(order3.getOrderID(), order3);
+//    }
         customerRepository.save(testCustomer);
     }
 

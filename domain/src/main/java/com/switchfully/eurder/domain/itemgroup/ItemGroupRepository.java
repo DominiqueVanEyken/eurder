@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface ItemGroupRepository extends JpaRepository<ItemGroup, Integer> {
-
     List<ItemGroup> findByOrder(Order order);
+
     List<ItemGroup> findAllByShippingDateEquals(LocalDate shippingDate);
 }

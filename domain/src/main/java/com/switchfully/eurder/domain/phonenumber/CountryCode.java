@@ -5,7 +5,6 @@ import java.util.NoSuchElementException;
 public enum CountryCode {
     BEL("+32"),
     NED("+31");
-
     private final String countryCode;
 
     CountryCode(String countryCode) {

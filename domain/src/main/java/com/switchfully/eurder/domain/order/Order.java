@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
+
 @Entity
 @Table(name = "\"ORDER\"")
 public class Order {
@@ -19,10 +20,6 @@ public class Order {
     private String customerID;
     @Column(name = "ORDER_DATE")
     private LocalDate orderDate;
-//    @OneToMany
-//    @Column(name = "ITEM_GROUP_ID")
-//    @Transient
-//    private List<ItemGroup> orderList;
     @Embedded
     @AttributeOverride(name = "price", column = @Column(name = "TOTAL_PRICE"))
     private Price totalPrice;
@@ -49,11 +46,7 @@ public class Order {
         return orderDate;
     }
 
-//    public List<ItemGroup> getOrderList() {
-//        return orderList;
-//    }
     public void updatePrice(List<ItemGroup> itemGroups) {
-//        this.orderList = itemGroups;
         totalPrice = new Price(itemGroups.stream()
                 .mapToDouble(ItemGroup::getTotalPriceAsDouble)
                 .sum());

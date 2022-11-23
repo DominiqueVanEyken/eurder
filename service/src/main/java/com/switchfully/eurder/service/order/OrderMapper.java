@@ -1,6 +1,5 @@
 package com.switchfully.eurder.service.order;
 
-import com.switchfully.eurder.domain.itemgroup.ItemGroup;
 import com.switchfully.eurder.domain.order.Order;
 import com.switchfully.eurder.service.order.dto.ItemGroupDTO;
 import com.switchfully.eurder.service.order.dto.OrderDTO;
@@ -11,7 +10,6 @@ public class OrderMapper {
 
     public Order mapDTOToOrder(String customerID) {
         return new Order(customerID);
-//        return new Order(customerID, itemGroups);
     }
 
     public OrderDTO mapOrderToDTO(Order order, List<ItemGroupDTO> itemGroupDTOS) {
@@ -22,6 +20,4 @@ public class OrderMapper {
                 .setOrderList(itemGroupDTOS)
                 .setTotalPrice(order.getTotalPrice().toString());
     }
-
-
 }

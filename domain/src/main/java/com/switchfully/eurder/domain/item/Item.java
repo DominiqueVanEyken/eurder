@@ -78,6 +78,13 @@ public class Item implements Comparable<Item> {
         setStockStatus();
     }
 
+    public LocalDate getShippingDateForAmount(int amount) {
+        if (isItemInStock(amount)) {
+            return LocalDate.now().plusDays(1);
+        }
+        return LocalDate.now().plusWeeks(1);
+    }
+
     public String getItemID() {
         return itemID;
     }
@@ -114,12 +121,5 @@ public class Item implements Comparable<Item> {
     @Override
     public int compareTo(Item other) {
         return stockCount - other.getStockCount();
-    }
-
-    public LocalDate getShippingDateForAmount(int amount) {
-        if (isItemInStock(amount)) {
-            return LocalDate.now().plusDays(1);
-        }
-        return LocalDate.now().plusWeeks(1);
     }
 }

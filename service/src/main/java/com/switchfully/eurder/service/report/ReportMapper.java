@@ -2,7 +2,6 @@ package com.switchfully.eurder.service.report;
 
 import com.switchfully.eurder.domain.address.Address;
 import com.switchfully.eurder.domain.itemgroup.ItemGroup;
-import com.switchfully.eurder.domain.itemgroup.ItemGroupShippingReport;
 import com.switchfully.eurder.domain.order.Order;
 import com.switchfully.eurder.service.report.dto.ItemGroupReportDTO;
 import com.switchfully.eurder.service.report.dto.ItemGroupShippingReportDTO;
@@ -49,10 +48,4 @@ public class ReportMapper {
                 .setTotalPrice(itemGroup.getTotalPrice().toString())
                 .setShippingAddress(shippingAddress);
     }
-
-//    public List<ItemGroupShippingReportDTO> mapItemGroupToItemGroupShippingReportDTO(List<ItemGroupShippingReport> itemGroupShippingReports) {
-//        return itemGroupShippingReports.stream()
-//                .map(this::mapItemGroupToItemGroupShippingReportDTO)
-//                .toList();
-//    }
 }

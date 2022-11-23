@@ -20,7 +20,7 @@ public class ReportService {
     private final OrderRepository orderRepository;
     private final ReportMapper reportMapper;
     private final CustomerRepository customerRepository;
-    private ItemGroupRepository itemGroupRepository;
+    private final ItemGroupRepository itemGroupRepository;
 
     public ReportService(OrderRepository orderRepository, CustomerRepository customerRepository, ItemGroupRepository itemGroupRepository) {
         this.orderRepository = orderRepository;
