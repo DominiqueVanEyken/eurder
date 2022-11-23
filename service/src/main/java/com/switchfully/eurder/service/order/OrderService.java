@@ -49,9 +49,9 @@ public class OrderService {
             mapItemToItemGroupAndReduceStock(order, itemGroups, itemID, amount);
         }
         order.updatePrice(itemGroups);
-        List<ItemGroupDTO> orderList = itemGroupMapper.mapItemGroupToDTO(itemGroupRepository.findByOrder(order));
+        List<ItemGroupDTO> itemGroupDTOS = itemGroupMapper.mapItemGroupToDTO(itemGroupRepository.findByOrder(order));
         orderRepository.save(order);
-        return orderMapper.mapOrderToDTO(order, orderList);
+        return orderMapper.mapOrderToDTO(order, itemGroupDTOS);
     }
 
     protected Order getOrderByOrderID(String orderID) {
@@ -62,16 +62,17 @@ public class OrderService {
 
     public OrderDTO reOrderByOrderID(String customerID, String orderID) {
         Order orderToReorder = getOrderByOrderID(orderID);
+        List<ItemGroup> itemGroupsOldOrder = itemGroupRepository.findByOrder(orderToReorder);
         Order order = new Order(customerID);
         List<ItemGroup> itemGroupsToReorder = new ArrayList<>();
-//        for (ItemGroup itemGroup : orderToReorder.getOrderList()) {
-//            String itemID = itemGroup.getItemID();
-//            int amount = itemGroup.getAmount();
-//            mapItemToItemGroupAndReduceStock(order, itemGroupsToReorder, itemID, amount);
-//        }
+        for (ItemGroup itemGroup : itemGroupsOldOrder) {
+            String itemID = itemGroup.getItemID();
+            int amount = itemGroup.getAmount();
+            mapItemToItemGroupAndReduceStock(order, itemGroupsToReorder, itemID, amount);
+        }
+        order.updatePrice(itemGroupsToReorder);
+        List<ItemGroupDTO> itemGroupDTOS = itemGroupMapper.mapItemGroupToDTO(itemGroupRepository.findByOrder(order));
         orderRepository.save(order);
-//        Order order = orderMapper.mapDTOToOrder(customerID, itemGroupsToReorder);
-        List<ItemGroupDTO> itemGroupDTOS = itemGroupMapper.mapItemGroupToDTO(order.getOrderList());
         return orderMapper.mapOrderToDTO(order, itemGroupDTOS);
     }
 

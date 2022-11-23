@@ -19,21 +19,17 @@ public class Order {
     private String customerID;
     @Column(name = "ORDER_DATE")
     private LocalDate orderDate;
-    @OneToMany
-    @Column(name = "ITEM_GROUP_ID")
-    @Transient
-    private List<ItemGroup> orderList;
+//    @OneToMany
+//    @Column(name = "ITEM_GROUP_ID")
+//    @Transient
+//    private List<ItemGroup> orderList;
     @Embedded
     @AttributeOverride(name = "price", column = @Column(name = "TOTAL_PRICE"))
     private Price totalPrice;
 
     public Order(String customerID) {
         this.customerID = customerID;
-//        this.orderList = orderList;
         this.orderDate = LocalDate.now();
-//        totalPrice = new Price(orderList.stream()
-//                .mapToDouble(ItemGroup::getTotalPriceAsDouble)
-//                .sum());
         totalPrice = new Price(0.0);
         orderID = ORDER_ID_PREFIX + orderDate.getYear() + order_id_suffix++;
     }
@@ -53,12 +49,12 @@ public class Order {
         return orderDate;
     }
 
-    public List<ItemGroup> getOrderList() {
-        return orderList;
-    }
+//    public List<ItemGroup> getOrderList() {
+//        return orderList;
+//    }
     public void updatePrice(List<ItemGroup> itemGroups) {
-        this.orderList = itemGroups;
-        totalPrice = new Price(orderList.stream()
+//        this.orderList = itemGroups;
+        totalPrice = new Price(itemGroups.stream()
                 .mapToDouble(ItemGroup::getTotalPriceAsDouble)
                 .sum());
     }
