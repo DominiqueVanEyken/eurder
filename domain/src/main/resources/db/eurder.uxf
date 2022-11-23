@@ -33,7 +33,7 @@ fontsize=10
       <w>220</w>
       <h>80</h>
     </coordinates>
-    <panel_attributes>Order
+    <panel_attributes>ORDER
 --
 order_id: varchar(16)[PK]
 customer_id: varchar(16) [FK]
@@ -49,10 +49,11 @@ total_price: double precision [NN]</panel_attributes>
       <w>240</w>
       <h>110</h>
     </coordinates>
-    <panel_attributes>ItemGroup
+    <panel_attributes>ITEM_GROUP
 --
-order_id: varchar(16) [PK][FK]
-item_id: varchar(16) [PK][FK]
+item_group_id: integer [PK]
+order_id: varchar(16) [FK]
+item_id: varchar(16) [FK]
 item_name: varchar(32) [NN]
 amount: integer [NN]
 shipping_date: date [NN]
@@ -68,7 +69,7 @@ total_price: double precision [NN]</panel_attributes>
       <w>180</w>
       <h>100</h>
     </coordinates>
-    <panel_attributes>Item
+    <panel_attributes>ITEM
 --
 item_id: varchar(16) [PK]
 name: varchar(32) [NN]
@@ -86,7 +87,7 @@ stock_status: varchar(16) [NN]</panel_attributes>
       <w>220</w>
       <h>150</h>
     </coordinates>
-    <panel_attributes>Customer
+    <panel_attributes>CUSTOMER
 --
 customer_id: varchar (16)([PK]
 first_name: varchar(32)
@@ -108,9 +109,9 @@ role: varchar(32) [NN]</panel_attributes>
       <w>190</w>
       <h>50</h>
     </coordinates>
-    <panel_attributes>Zipcode
+    <panel_attributes>POSTAL_CODE
 --
-zipcode: varchar (4)[PK]
+postal_code: varchar (4)[PK]
 city_name: varchar(32)  [NN]</panel_attributes>
     <additional_attributes/>
   </element>
