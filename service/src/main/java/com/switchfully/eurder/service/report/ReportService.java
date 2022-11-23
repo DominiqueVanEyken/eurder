@@ -1,21 +1,19 @@
 package com.switchfully.eurder.service.report;
 
 import com.switchfully.eurder.domain.Price.Price;
+import com.switchfully.eurder.domain.customer.Customer;
 import com.switchfully.eurder.domain.customer.CustomerRepository;
 import com.switchfully.eurder.domain.itemgroup.ItemGroup;
 import com.switchfully.eurder.domain.itemgroup.ItemGroupRepository;
-import com.switchfully.eurder.domain.itemgroup.ItemGroupShippingReport;
 import com.switchfully.eurder.domain.order.Order;
 import com.switchfully.eurder.domain.order.OrderRepository;
-import com.switchfully.eurder.service.report.dto.ItemGroupReportDTO;
-import com.switchfully.eurder.service.report.dto.OrderReportDTO;
-import com.switchfully.eurder.service.report.dto.ReportDTO;
-import com.switchfully.eurder.service.report.dto.ShippingReportDTO;
+import com.switchfully.eurder.service.report.dto.*;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class ReportService {
@@ -46,25 +44,12 @@ public class ReportService {
     }
 
     public ShippingReportDTO getShippingReportForToday() {
-        List<Order> orders = orderRepository.findAll();
-        List<ItemGroupShippingReport> itemGroupShippingReports = new ArrayList<>();
-        for (Order order : orders) {
-//            for (ItemGroup itemGroup : order.getOrderList()) {
-//                if (doesItemGroupShipsToday(itemGroup)) {
-//                    customerRepository.findById(order.getCustomerID())
-//                            .ifPresent(customer -> itemGroupShippingReports.add(
-//                                            new ItemGroupShippingReport(customer.getEmailAddress(), itemGroup)
-//                                    )
-//                            );
-//                }
-//            }
+        List<ItemGroup> itemGroups = itemGroupRepository.findAllByShippingDateEquals(LocalDate.now());
+        List<ItemGroupShippingReportDTO> itemGroupShippingReportDTOS = new ArrayList<>();
+        for (ItemGroup itemGroup : itemGroups) {
+            Customer customer = customerRepository.findById(itemGroup.getOrder().getCustomerID()).orElseThrow(() -> new NoSuchElementException("Customer not found"));
+            itemGroupShippingReportDTOS.add(reportMapper.mapItemGroupToItemGroupShippingReportDTO(customer.getAddress(), itemGroup));
         }
-        return reportMapper.mapShippingReportToShippingReportDTO(itemGroupShippingReports);
-    }
-
-    private boolean doesItemGroupShipsToday(ItemGroup itemGroup) {
-        LocalDate shippingDate = itemGroup.getShippingDate();
-        LocalDate today = LocalDate.now();
-        return shippingDate.getYear() == today.getYear() && shippingDate.getMonth().equals(today.getMonth()) && shippingDate.getDayOfMonth() == today.getDayOfMonth();
+        return reportMapper.mapShippingReportToShippingReportDTO(itemGroupShippingReportDTOS);
     }
 }

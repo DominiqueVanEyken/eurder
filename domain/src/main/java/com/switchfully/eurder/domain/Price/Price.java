@@ -10,7 +10,7 @@ public class Price {
     @Column(name = "PRICE")
     private double price;
     @Transient()
-    private CurrencyUnit currencyUnit;
+    private final CurrencyUnit currencyUnit;
 
     public Price(double price) {
         this.price = price;
@@ -18,6 +18,7 @@ public class Price {
     }
 
     public Price() {
+        currencyUnit = CurrencyUnit.EUR;
     }
 
     public double getPrice() {

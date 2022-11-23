@@ -1,11 +1,13 @@
 package com.switchfully.eurder.service.report;
 
-import com.switchfully.eurder.domain.Price.Price;
+import com.switchfully.eurder.domain.address.Address;
 import com.switchfully.eurder.domain.itemgroup.ItemGroup;
 import com.switchfully.eurder.domain.itemgroup.ItemGroupShippingReport;
 import com.switchfully.eurder.domain.order.Order;
-import com.switchfully.eurder.service.order.dto.ItemGroupDTO;
-import com.switchfully.eurder.service.report.dto.*;
+import com.switchfully.eurder.service.report.dto.ItemGroupReportDTO;
+import com.switchfully.eurder.service.report.dto.ItemGroupShippingReportDTO;
+import com.switchfully.eurder.service.report.dto.OrderReportDTO;
+import com.switchfully.eurder.service.report.dto.ShippingReportDTO;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -32,34 +34,25 @@ public class ReportMapper {
                 .toList();
     }
 
-//    public ReportDTO mapOrdersToReportDTO(List<OrderReportDTO> orders) {
-//        Price totalPrice = new Price(orders.stream()
-//                .mapToDouble(order -> order.getTotalPrice().getPrice())
-//                .sum());
-//        return new ReportDTO()
-//                .setOrderReports()
-//                .setTotalPrice(totalPrice.toString());
-//    }
-
-    public ShippingReportDTO mapShippingReportToShippingReportDTO(List<ItemGroupShippingReport> itemGroupShippingReports) {
+    public ShippingReportDTO mapShippingReportToShippingReportDTO(List<ItemGroupShippingReportDTO> itemGroupShippingReportDTOS) {
         return new ShippingReportDTO()
                 .setShippingDate(LocalDate.now())
-                .setItemGroups(mapItemGroupToItemGroupShippingReportDTO(itemGroupShippingReports));
+                .setItemGroups(itemGroupShippingReportDTOS);
     }
 
-    public ItemGroupShippingReportDTO mapItemGroupToItemGroupShippingReportDTO(ItemGroupShippingReport itemGroupShippingReport) {
+    public ItemGroupShippingReportDTO mapItemGroupToItemGroupShippingReportDTO(Address shippingAddress, ItemGroup itemGroup) {
         return new ItemGroupShippingReportDTO()
-                .setItemID(itemGroupShippingReport.getItemID())
-                .setItemName(itemGroupShippingReport.getItemName())
-                .setAmount(itemGroupShippingReport.getAmount())
-                .setPricePerUnit(itemGroupShippingReport.getPricePerUnit())
-                .setTotalPrice(itemGroupShippingReport.getTotalPrice())
-                .setShippingAddress(itemGroupShippingReport.getShippingAddress());
+                .setItemID(itemGroup.getItemID())
+                .setItemName(itemGroup.getItemName())
+                .setAmount(itemGroup.getAmount())
+                .setPricePerUnit(itemGroup.getPricePerUnit())
+                .setTotalPrice(itemGroup.getTotalPrice().toString())
+                .setShippingAddress(shippingAddress);
     }
 
-    public List<ItemGroupShippingReportDTO> mapItemGroupToItemGroupShippingReportDTO(List<ItemGroupShippingReport> itemGroupShippingReports) {
-        return itemGroupShippingReports.stream()
-                .map(this::mapItemGroupToItemGroupShippingReportDTO)
-                .toList();
-    }
+//    public List<ItemGroupShippingReportDTO> mapItemGroupToItemGroupShippingReportDTO(List<ItemGroupShippingReport> itemGroupShippingReports) {
+//        return itemGroupShippingReports.stream()
+//                .map(this::mapItemGroupToItemGroupShippingReportDTO)
+//                .toList();
+//    }
 }

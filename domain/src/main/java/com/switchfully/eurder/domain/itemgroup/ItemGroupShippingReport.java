@@ -1,15 +1,17 @@
 package com.switchfully.eurder.domain.itemgroup;
 
+import com.switchfully.eurder.domain.address.Address;
+
 public class ItemGroupShippingReport {
-    private final String shippingAddress;
+    private final Address shippingAddress;
     private final ItemGroup itemGroup;
 
-    public ItemGroupShippingReport(String shippingAddress, ItemGroup itemGroup) {
+    public ItemGroupShippingReport(Address shippingAddress, ItemGroup itemGroup) {
         this.shippingAddress = shippingAddress;
         this.itemGroup = itemGroup;
     }
 
-    public String getShippingAddress() {
+    public Address getShippingAddress() {
         return shippingAddress;
     }
 

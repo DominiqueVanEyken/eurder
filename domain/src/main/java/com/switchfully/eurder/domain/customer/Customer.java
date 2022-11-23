@@ -101,6 +101,10 @@ public class Customer {
         return address.getFullAddressAsString();
     }
 
+    public Address getAddress() {
+        return address;
+    }
+
     public String getPhoneNumber() {
         if (phoneNumber == null) {
             return "";
