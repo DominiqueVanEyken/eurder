@@ -1,10 +1,14 @@
 package com.switchfully.eurder.service.report;
 
+import com.switchfully.eurder.domain.Price.Price;
 import com.switchfully.eurder.domain.customer.CustomerRepository;
 import com.switchfully.eurder.domain.itemgroup.ItemGroup;
+import com.switchfully.eurder.domain.itemgroup.ItemGroupRepository;
 import com.switchfully.eurder.domain.itemgroup.ItemGroupShippingReport;
 import com.switchfully.eurder.domain.order.Order;
 import com.switchfully.eurder.domain.order.OrderRepository;
+import com.switchfully.eurder.service.report.dto.ItemGroupReportDTO;
+import com.switchfully.eurder.service.report.dto.OrderReportDTO;
 import com.switchfully.eurder.service.report.dto.ReportDTO;
 import com.switchfully.eurder.service.report.dto.ShippingReportDTO;
 import org.springframework.stereotype.Service;
@@ -18,16 +22,27 @@ public class ReportService {
     private final OrderRepository orderRepository;
     private final ReportMapper reportMapper;
     private final CustomerRepository customerRepository;
+    private ItemGroupRepository itemGroupRepository;
 
-    public ReportService(OrderRepository orderRepository, CustomerRepository customerRepository) {
+    public ReportService(OrderRepository orderRepository, CustomerRepository customerRepository, ItemGroupRepository itemGroupRepository) {
         this.orderRepository = orderRepository;
         this.customerRepository = customerRepository;
+        this.itemGroupRepository = itemGroupRepository;
         this.reportMapper = new ReportMapper();
     }
 
     public ReportDTO getReportForCustomer(String customerID) {
         List<Order> orders = orderRepository.findOrdersByCustomerID(customerID);
-        return reportMapper.mapOrdersToReportDTO(orders);
+        List<OrderReportDTO> orderReportDTOS = new ArrayList<>();
+        double totalPrice = 0;
+        for (Order order : orders) {
+            List<ItemGroupReportDTO> itemGroupReportDTOS = reportMapper.mapItemGroupToItemGroupReportDTO(itemGroupRepository.findByOrder(order));
+            orderReportDTOS.add(reportMapper.mapOrderToOrderReportDTO(order, itemGroupReportDTOS));
+            totalPrice += order.getTotalPrice().getPrice();
+        }
+        return new ReportDTO()
+                .setOrderReports(orderReportDTOS)
+                .setTotalPrice(new Price(totalPrice).toString());
     }
 
     public ShippingReportDTO getShippingReportForToday() {
