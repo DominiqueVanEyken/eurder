@@ -1,16 +1,19 @@
 package com.switchfully.eurder.service.report;
 
 import com.switchfully.eurder.domain.Price.Price;
+import com.switchfully.eurder.domain.address.Address;
+import com.switchfully.eurder.domain.address.PostalCode;
 import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.item.ItemRepository;
 import com.switchfully.eurder.domain.itemgroup.ItemGroup;
 import com.switchfully.eurder.domain.order.Order;
 import com.switchfully.eurder.service.order.ItemGroupMapper;
-import com.switchfully.eurder.service.report.dto.*;
+import com.switchfully.eurder.service.report.dto.ItemGroupReportDTO;
+import com.switchfully.eurder.service.report.dto.ItemGroupShippingReportDTO;
+import com.switchfully.eurder.service.report.dto.OrderReportDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -24,10 +27,13 @@ class ReportMapperTest {
     private final Item item = new Item("name", null, new Price(1.1), 100);
     private final String itemID = item.getItemID();
     private final int amount = 1;
+    private final Order order = new Order(customerID);
+    private final Address address = new Address("street", "1", new PostalCode("1111", "city"));
+    private final ItemGroup itemGroup = new ItemGroup(order, item, item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
 
     @Test
     void mappingItemGroupToItemGroupReportDTO() {
-        ItemGroup itemGroup = new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
+        ItemGroup itemGroup = new ItemGroup(order, item, item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
         ItemGroupReportDTO reportDTO = reportMapper.mapItemGroupToItemGroupReportDTO(itemGroup);
 
         assertThat(reportDTO).isNotNull();
@@ -38,8 +44,8 @@ class ReportMapperTest {
 
     @Test
     void mappingItemGroupToItemGroupReportDTO_givenList() {
-        ItemGroup itemGroup1 = new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
-        ItemGroup itemGroup2 = new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
+        ItemGroup itemGroup1 = new ItemGroup(order, item, item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
+        ItemGroup itemGroup2 = new ItemGroup(order, item, item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
         List<ItemGroupReportDTO> orderList = reportMapper.mapItemGroupToItemGroupReportDTO(List.of(itemGroup1, itemGroup2));
 
         assertThat(orderList).isNotNull();
@@ -48,67 +54,23 @@ class ReportMapperTest {
 
     @Test
     void mapItemGroupToItemGroupShippingDTO() {
-        String address = "address";
-        ItemGroup itemGroup = new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
-        ItemGroupShippingReport itemGroupShippingReport = new ItemGroupShippingReport(address, itemGroup);
+        ItemGroupShippingReportDTO result = reportMapper.mapItemGroupToItemGroupShippingReportDTO(address, itemGroup);
 
-        ItemGroupShippingReportDTO result = reportMapper.mapItemGroupToItemGroupShippingReportDTO(itemGroupShippingReport);
-
-        assertThat(result.getItemID()).isEqualTo(itemGroupShippingReport.getItemID());
-        assertThat(result.getItemName()).isEqualTo(itemGroupShippingReport.getItemName());
-        assertThat(result.getAmount()).isEqualTo(itemGroupShippingReport.getAmount());
-        assertThat(result.getTotalPrice()).isEqualTo(itemGroupShippingReport.getTotalPrice());
-        assertThat(result.getPricePerUnit()).isEqualTo(itemGroupShippingReport.getPricePerUnit());
-        assertThat(result.getShippingAddress()).isEqualTo(itemGroupShippingReport.getShippingAddress());
-    }
-
-    @Test
-    void mapItemGroupToItemGroupShippingDTO_givenList() {
-        String address = "address";
-        ItemGroup itemGroup = new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
-        List<ItemGroupShippingReport> itemGroupShippingReport = List.of(new ItemGroupShippingReport(address, itemGroup), new ItemGroupShippingReport(address, itemGroup));
-
-        List<ItemGroupShippingReportDTO> result = reportMapper.mapItemGroupToItemGroupShippingReportDTO(itemGroupShippingReport);
-
-        assertThat(result).isNotNull();
-        assertThat(result.size()).isEqualTo(itemGroupShippingReport.size());
+        assertThat(result.getItemID()).isEqualTo(itemGroup.getItemID());
+        assertThat(result.getItemName()).isEqualTo(itemGroup.getItemName());
+        assertThat(result.getAmount()).isEqualTo(itemGroup.getAmount());
+        assertThat(result.getTotalPrice()).isEqualTo(itemGroup.getTotalPrice().toString());
+        assertThat(result.getPricePerUnit()).isEqualTo(itemGroup.getPricePerUnit());
+        assertThat(result.getShippingAddress()).isEqualTo(address);
     }
 
     @Test
     void mappingOrdersToOrderReportDTO() {
-        itemRepository.save(item);
-        Order order = new Order(customerID, List.of(new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice())));
-        OrderReportDTO reportDTO = reportMapper.mapOrderToOrderReportDTO(order);
+        OrderReportDTO reportDTO = reportMapper.mapOrderToOrderReportDTO(order, reportMapper.mapItemGroupToItemGroupReportDTO(List.of(itemGroup)));
 
         assertThat(reportDTO).isNotNull();
         assertThat(reportDTO.getOrderID()).isEqualTo(order.getOrderID());
         assertThat(reportDTO.getItemGroupReports()).isNotNull();
         assertThat(reportDTO.getTotalOrderPrice()).isEqualTo(order.getTotalPrice().toString());
-    }
-
-    @Test
-    void mappingOrdersToReportDTO() {
-        itemRepository.save(item);
-        Order order1 = new Order(customerID, List.of(new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice())));
-
-        ReportDTO reportDTO = reportMapper.mapOrdersToReportDTO(List.of(order1, order1));
-
-        assertThat(reportDTO).isNotNull();
-        assertThat(reportDTO.getTotalPrice()).isEqualTo(new Price(order1.getTotalPrice().getPrice() * 2).toString());
-        assertThat(reportDTO.getOrderReports()).isNotNull();
-    }
-
-    @Test
-    void mapShippingReportToShippingReportDTO() {
-        String address = "address";
-        Item testItem = itemRepository.findAll().stream().toList().get(0);
-        ItemGroup itemGroup = new ItemGroup(testItem.getItemID(), testItem.getName(), amount, testItem.getShippingDateForAmount(amount), testItem.getPrice());
-        List<ItemGroupShippingReport> itemGroupShippingReport = List.of(new ItemGroupShippingReport(address, itemGroup), new ItemGroupShippingReport(address, itemGroup));
-
-        ShippingReportDTO result = reportMapper.mapShippingReportToShippingReportDTO(itemGroupShippingReport);
-
-        assertThat(result).isNotNull();
-        assertThat(result.getShippingDate()).isEqualTo(LocalDate.now());
-        assertThat(result.getItemGroups().size()).isEqualTo(itemGroupShippingReport.size());
     }
 }

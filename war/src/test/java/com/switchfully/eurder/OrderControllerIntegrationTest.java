@@ -1,10 +1,15 @@
 package com.switchfully.eurder;
 
+import com.switchfully.eurder.domain.Price.Price;
 import com.switchfully.eurder.domain.address.Address;
 import com.switchfully.eurder.domain.address.PostalCode;
 import com.switchfully.eurder.domain.customer.Customer;
 import com.switchfully.eurder.domain.customer.CustomerRepository;
 import com.switchfully.eurder.domain.customer.Role;
+import com.switchfully.eurder.domain.item.Item;
+import com.switchfully.eurder.domain.item.ItemRepository;
+import com.switchfully.eurder.domain.itemgroup.ItemGroup;
+import com.switchfully.eurder.domain.itemgroup.ItemGroupRepository;
 import com.switchfully.eurder.domain.order.Order;
 import com.switchfully.eurder.domain.order.OrderRepository;
 
@@ -14,7 +19,6 @@ import com.switchfully.eurder.service.order.dto.CreateItemGroupDTO;
 import com.switchfully.eurder.service.order.dto.CreateOrderDTO;
 import com.switchfully.eurder.service.order.dto.OrderDTO;
 import io.restassured.RestAssured;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,48 +36,41 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-//@AutoConfigureTestDatabase
+@AutoConfigureTestDatabase
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class OrderControllerIntegrationTest {
-    public static final String BASE_URI = "http://localhost";
+    private static final String BASE_URI = "http://localhost";
     @LocalServerPort
     private int port;
     @Autowired
-    OrderRepository orderRepository;
+    private ItemRepository itemRepository;
     @Autowired
-    CustomerRepository customerRepository;
-    private final Customer testCustomer = new Customer("firstname", "lastname", "user@test.be", new Address("street", "1", new PostalCode("1111", "consumer valley")), new PhoneNumber(CountryCode.BEL, "123 45 67 89"), "password", Role.CUSTOMER);
-    private final String itemID = "IID20221001";
-    private final String customerID = testCustomer.getCustomerID();
-    private final List<CreateItemGroupDTO> createItemGroupDTOS = List.of(new CreateItemGroupDTO()
-            .setItemID(itemID)
-            .setAmount(2));
-
-    @BeforeEach
-    void setup() {
-//        Customer customer1 = new Customer("firstname1", "lastname1", "user1@test.be", new Address("street", "1", new PostalCode("1111", "city1")), new PhoneNumber(CountryCode.BEL, "123 45 67 89"), "password", Role.CUSTOMER);
-//        Customer customer2 = new Customer("firstname2", "lastname2", "user2@test.be", new Address("street", "1", new PostalCode("1111", "city2")), new PhoneNumber(CountryCode.BEL, "123 45 67 89"), "password", Role.CUSTOMER);
-//        Customer customer3 = new Customer("firstname3", "lastname3", "user3@test.be", new Address("street", "1", new PostalCode("1111", "city3")), new PhoneNumber(CountryCode.BEL, "123 45 67 89"), "password", Role.CUSTOMER);
-        //    private void fillOrderRepository() {
-//        List<Item> items = itemRepository.findAll().stream()
-//                .limit(3)
-//                .toList();
-//        ItemGroup itemGroup1 = new ItemGroup(items.get(0).getItemID(), items.get(0).getName(), 1, items.get(0).getShippingDateForAmount(1), items.get(0).getPrice());
-//        ItemGroup itemGroup2 = new ItemGroup(items.get(1).getItemID(), items.get(1).getName(), 2, items.get(1).getShippingDateForAmount(2), items.get(1).getPrice());
-//        ItemGroup itemGroup3 = new ItemGroup(items.get(2).getItemID(), items.get(2).getName(), 3, items.get(1).getShippingDateForAmount(3), items.get(2).getPrice());
-//        Order order1 = new Order("CID20221001", List.of(itemGroup1, itemGroup2, itemGroup3));
-//        Order order2 = new Order("CID20221003", List.of(itemGroup1, itemGroup2, itemGroup3));
-//        Order order3 = new Order("CID20221002", List.of(itemGroup1, itemGroup2, itemGroup3));
-//        orderRepository.put(order1.getOrderID(), order1);
-//        orderRepository.put(order2.getOrderID(), order2);
-//        orderRepository.put(order3.getOrderID(), order3);
-//    }
-        customerRepository.save(testCustomer);
-    }
+    private OrderRepository orderRepository;
+    @Autowired
+    private CustomerRepository customerRepository;
+    @Autowired
+    private ItemGroupRepository itemGroupRepository;
+    private final Customer customer = new Customer("firstname", "lastname", "user@test.be", new Address("street", "1", new PostalCode("1111", "consumer valley")), new PhoneNumber(CountryCode.BEL, "123 45 67 89"), "password", Role.CUSTOMER);
+    private final Item item1 = new Item("name1", "description", new Price(1.0), 10);
+    private final Item item2 = new Item("name2", "description", new Price(2.0), 5);
+    private final Order order = new Order(customer.getCustomerID());
+    private final ItemGroup itemGroup1 = new ItemGroup(order, item1, item1.getName(), 1, item1.getShippingDateForAmount(1), item1.getPrice());
 
     @Nested
     class orderItems {
+        CreateItemGroupDTO createItemGroupDTO1 = new CreateItemGroupDTO()
+                .setItemID(item1.getItemID())
+                .setAmount(2);
+        CreateItemGroupDTO createItemGroupDTO2 = new CreateItemGroupDTO()
+                .setItemID(item2.getItemID())
+                .setAmount(2);
+        List<CreateItemGroupDTO> createItemGroupDTOS = List.of(createItemGroupDTO1, createItemGroupDTO2);
+
         @Test
         void orderItems_givenValidDataAndAuthorization() {
+            customerRepository.save(customer);
+            itemRepository.save(item1);
+            itemRepository.save(item2);
             String customerBase64 = Base64.getEncoder().encodeToString("user@test.be:password".getBytes());
             CreateOrderDTO createOrderDTO = new CreateOrderDTO()
                     .setOrderList(createItemGroupDTOS);
@@ -87,7 +84,7 @@ public class OrderControllerIntegrationTest {
                     .contentType(MediaType.APPLICATION_JSON_VALUE)
                     .headers("Authorization", "Basic " + customerBase64)
                     .when()
-                    .post("customers/" + customerID + "/orders/order")
+                    .post("customers/" + customer.getCustomerID() + "/orders/order")
                     .then()
                     .assertThat()
                     .statusCode(HttpStatus.CREATED.value())
@@ -97,7 +94,7 @@ public class OrderControllerIntegrationTest {
             assertThat(result).isNotNull();
             assertThat(result.getOrderID()).isNotNull();
             assertThat(result.getOrderDate()).isEqualTo(LocalDate.now());
-            assertThat(result.getCustomerID()).isEqualTo(customerID);
+            assertThat(result.getCustomerID()).isEqualTo(customer.getCustomerID());
             assertThat(result.getTotalPrice()).isNotNull();
             assertThat(result.getOrderList()).isNotNull();
         }
@@ -117,7 +114,7 @@ public class OrderControllerIntegrationTest {
                     .contentType(MediaType.APPLICATION_JSON_VALUE)
                     .headers("Authorization", "Basic " + authorization)
                     .when()
-                    .post("customers/" + customerID + "/orders/order")
+                    .post("customers/" + customer.getCustomerID() + "/orders/order")
                     .then()
                     .assertThat()
                     .statusCode(HttpStatus.BAD_REQUEST.value());
@@ -138,7 +135,7 @@ public class OrderControllerIntegrationTest {
                     .contentType(MediaType.APPLICATION_JSON_VALUE)
                     .headers("Authorization", "Basic " + authorization)
                     .when()
-                    .post("customers/" + customerID + "/orders/order")
+                    .post("customers/" + customer.getCustomerID() + "/orders/order")
                     .then()
                     .assertThat()
                     .statusCode(HttpStatus.BAD_REQUEST.value());
@@ -168,13 +165,17 @@ public class OrderControllerIntegrationTest {
 
     @Nested
     class reoderAnOrder {
-        @Autowired
-        private OrderRepository orderRepository;
 
         @Test
         void reOrderingAnOrder_givenValidData() {
-            Order order = orderRepository.getOrders().stream().toList().get(0);
-            Customer customer = customerRepository.findById(order.getCustomerID()).get();
+            customerRepository.save(customer);
+            itemRepository.save(item1);
+            itemRepository.save(item2);
+            itemGroupRepository.save(itemGroup1);
+            order.updatePrice(List.of(itemGroup1));
+            orderRepository.save(order);
+            Order reorder = orderRepository.findById(order.getOrderID()).get();
+            Customer customer = customerRepository.findById(OrderControllerIntegrationTest.this.customer.getCustomerID()).get();
             String customerBase64 = Base64.getEncoder().encodeToString((customer.getEmailAddress() + ":password").getBytes());
 
             OrderDTO result = RestAssured
@@ -184,7 +185,7 @@ public class OrderControllerIntegrationTest {
                     .contentType(MediaType.APPLICATION_JSON_VALUE)
                     .headers("Authorization", "Basic " + customerBase64)
                     .when()
-                    .post("customers/" + order.getCustomerID() + "/orders/" + order.getOrderID() + "/order")
+                    .post("customers/" + reorder.getCustomerID() + "/orders/" + reorder.getOrderID() + "/order")
                     .then()
                     .assertThat()
                     .statusCode(HttpStatus.CREATED.value())
@@ -196,14 +197,16 @@ public class OrderControllerIntegrationTest {
             assertThat(result.getOrderDate()).isEqualTo(LocalDate.now());
             assertThat(result.getCustomerID()).isEqualTo(customer.getCustomerID());
             assertThat(result.getTotalPrice()).isNotNull();
-            assertThat(result.getOrderList().size()).isEqualTo(order.getOrderList().size());
+            assertThat(result.getOrderList().size()).isNotNull();
         }
 
         @Test
         void reOrderingAnOrder_givenInvalidCustomerData() {
-            Order order = orderRepository.getOrders().stream().toList().get(0);
-            Customer customer = customerRepository.findById(order.getCustomerID()).get();
-            String customerBase64 = Base64.getEncoder().encodeToString((customer.getEmailAddress() + ":password").getBytes());
+            Customer invalid = new Customer("firstname", "lastname", "invalid@test.be", new Address("street", "1", new PostalCode("1111", "consumer valley")), new PhoneNumber(CountryCode.BEL, "123 45 67 89"), "password", Role.CUSTOMER);
+            customerRepository.save(customer);
+            customerRepository.save(invalid);
+
+            String customerBase64 = Base64.getEncoder().encodeToString((invalid.getEmailAddress() + ":password").getBytes());
 
             RestAssured
                     .given()
@@ -212,7 +215,7 @@ public class OrderControllerIntegrationTest {
                     .contentType(MediaType.APPLICATION_JSON_VALUE)
                     .headers("Authorization", "Basic " + customerBase64)
                     .when()
-                    .post("customers/CID20221004/orders/" + order.getOrderID() + "/order")
+                    .post("customers/" + order.getCustomerID() + "/orders/" + order.getOrderID() + "/order")
                     .then()
                     .assertThat()
                     .statusCode(HttpStatus.FORBIDDEN.value());
@@ -220,8 +223,8 @@ public class OrderControllerIntegrationTest {
 
         @Test
         void reOrderingAnOrder_givenInvalidOrderID() {
-            Order order = orderRepository.getOrders().stream().toList().get(0);
-            Customer customer = customerRepository.findById(order.getCustomerID()).get();
+            customerRepository.save(customer);
+
             String customerBase64 = Base64.getEncoder().encodeToString((customer.getEmailAddress() + ":password").getBytes());
 
             RestAssured
@@ -231,7 +234,7 @@ public class OrderControllerIntegrationTest {
                     .contentType(MediaType.APPLICATION_JSON_VALUE)
                     .headers("Authorization", "Basic " + customerBase64)
                     .when()
-                    .post("customers/" + order.getCustomerID() + "/orders/invalidID/order")
+                    .post("customers/" + customer.getCustomerID() + "/orders/invalidID/order")
                     .then()
                     .assertThat()
                     .statusCode(HttpStatus.BAD_REQUEST.value());

@@ -37,6 +37,7 @@ public class ItemGroup implements Serializable {
     @AttributeOverride(name = "price", column = @Column(name = "TOTAL_PRICE"))
     private Price totalPrice;
 
+    //TODO: take out itemName, shippingDate and Price -> already defined in Item so to be called upon in constructor
     public ItemGroup(Order order, Item item, String itemName, int amount, LocalDate shippingDate, Price pricePerUnit) {
         this.order = order;
         this.item = item;

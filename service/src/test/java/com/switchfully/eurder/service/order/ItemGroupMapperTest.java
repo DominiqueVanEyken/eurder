@@ -4,6 +4,7 @@ package com.switchfully.eurder.service.order;
 import com.switchfully.eurder.domain.Price.Price;
 import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.itemgroup.ItemGroup;
+import com.switchfully.eurder.domain.order.Order;
 import com.switchfully.eurder.service.order.dto.CreateItemGroupDTO;
 import com.switchfully.eurder.service.order.dto.ItemGroupDTO;
 import com.switchfully.eurder.service.report.dto.ItemGroupReportDTO;
@@ -23,6 +24,7 @@ class ItemGroupMapperTest {
     private final LocalDate shippingDate = LocalDate.now().plusDays(1);
     private final Price pricePerUnit = new Price(1.1);
     private final Price totalPrice = new Price(pricePerUnit.getPrice() * amount);
+    private final Order order = new Order("CID20221001");
 
 
     @Test
@@ -72,7 +74,7 @@ class ItemGroupMapperTest {
 
     @Test
     void mappingDTOToItemGroup() {
-        ItemGroup itemGroup = itemGroupMapper.mapItemToItemGroup(item, amount);
+        ItemGroup itemGroup = itemGroupMapper.mapItemToItemGroup(order, item, amount);
         assertThat(itemGroup).isNotNull();
         assertThat(itemGroup.getItemID()).isEqualTo(itemID);
         assertThat(itemGroup.getAmount()).isEqualTo(amount);
@@ -80,7 +82,7 @@ class ItemGroupMapperTest {
 
     @Test
     void mappingItemGroupToDTO() {
-        ItemGroup itemGroup = new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
+        ItemGroup itemGroup = new ItemGroup(order, item, item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
         ItemGroupDTO itemGroupDTO = itemGroupMapper.mapItemGroupToDTO(itemGroup);
 
         assertThat(itemGroupDTO).isNotNull();
@@ -93,8 +95,8 @@ class ItemGroupMapperTest {
 
     @Test
     void mappingItemGroupToDTO_givenAList() {
-        ItemGroup itemGroup1 = new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
-        ItemGroup itemGroup2 = new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
+        ItemGroup itemGroup1 = new ItemGroup(order, item, item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
+        ItemGroup itemGroup2 = new ItemGroup(order, item, item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
         List<ItemGroupDTO> orderList = itemGroupMapper.mapItemGroupToDTO(List.of(itemGroup1, itemGroup2));
 
         assertThat(orderList).isNotNull();

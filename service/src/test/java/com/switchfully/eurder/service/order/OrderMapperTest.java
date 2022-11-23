@@ -38,6 +38,7 @@ class OrderMapperTest {
                     .setPricePerUnit(item.getPriceWithUnit())
                     .setTotalPrice(new Price(item.getPrice().getPrice() * amount).toString())
     );
+    private final Order order = new Order(customerID);
     private final Price totalPrice = new Price(2.2);
     private final OrderMapper orderMapper = new OrderMapper();
     private final ItemGroupMapper itemGroupMapper = new ItemGroupMapper();
@@ -100,26 +101,25 @@ class OrderMapperTest {
     void mappingDTOToOrder() {
         CreateOrderDTO createOrderDTO = new CreateOrderDTO()
                 .setOrderList(createItemGroupDTOS);
-        itemRepository.save(item);
         List<ItemGroup> itemGroups = createOrderDTO.getOrderList().stream()
-                .map(itemGroup -> itemGroupMapper.mapItemToItemGroup(itemRepository.findById(itemGroup.getItemID()).get(), itemGroup.getAmount()))
+                .map(itemGroup -> itemGroupMapper.mapItemToItemGroup(order, item, itemGroup.getAmount()))
                 .toList();
 
-        Order order = orderMapper.mapDTOToOrder(customerID, itemGroups);
+        Order order = orderMapper.mapDTOToOrder(customerID);
+        order.updatePrice(itemGroups);
 
         assertThat(order).isNotNull();
         assertThat(order.getOrderID()).isNotNull();
         assertThat(order.getOrderDate()).isEqualTo(orderDate);
         assertThat(order.getTotalPrice()).isEqualTo(totalPrice);
-        assertThat(order.getOrderList()).isNotNull();
     }
 
     @Test
     void mappingOrderToDTO() {
-        itemRepository.save(item);
-        Order order = new Order(customerID, List.of(new ItemGroup(item.getItemID(), item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice())));
+        List<ItemGroup> itemGroups = List.of(new ItemGroup(order, item, item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice()));
+        order.updatePrice(itemGroups);
 
-        List<ItemGroupDTO> itemGroupDTOS = itemGroupMapper.mapItemGroupToDTO(order.getOrderList());
+        List<ItemGroupDTO> itemGroupDTOS = itemGroupMapper.mapItemGroupToDTO(itemGroups);
         OrderDTO orderDTO = orderMapper.mapOrderToDTO(order, itemGroupDTOS);
 
         assertThat(orderDTO).isNotNull();

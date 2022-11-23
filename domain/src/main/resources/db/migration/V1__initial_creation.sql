@@ -13,7 +13,7 @@ create table customer
     email         varchar(64) not null,
     street_name   varchar(32) not null,
     street_number varchar(4)  not null,
-    postal_code       varchar(4) references postal_code,
+    postal_code   varchar(4) references postal_code,
     phone_number  varchar(16) not null,
     password      varchar(32) not null,
     role          varchar(32) not null
@@ -36,16 +36,18 @@ create table item
     stock_count integer          not null
 );
 
+create sequence item_group_seq start with 1 increment by 1;
+
 create table item_group
 (
+    item_group_id  integer primary key,
     order_id       varchar(16) references "order",
     item_id        varchar(16) references item,
     item_name      varchar(32)      not null,
     amount         integer          not null,
     shipping_date  date             not null,
     price_per_unit double precision not null,
-    total_price    double precision not null,
-    primary key (order_id, item_id)
+    total_price    double precision not null
 );
 
 -- CREATE ZIPCODE

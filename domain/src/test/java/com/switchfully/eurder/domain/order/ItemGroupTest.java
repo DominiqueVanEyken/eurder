@@ -13,32 +13,31 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ItemGroupTest {
-
     private final Item itemHighStock = new Item("name", null, new Price(1.2), 100);
     private final Item itemLowStock = new Item("name", null, new Price(1.2), 1);
     private final String itemIDHighStock = itemHighStock.getItemID();
     private final String itemIDLowStock = itemLowStock.getItemID();
+    private final Order order = new Order("CID20221001");
     private final int amount = 10;
 
     @Nested
     class ItemGroupBuilderTest {
         @Test
         void creatingAnItemGroup_usingItemGroupBuilder() {
-            String id = "IID20221006";
             String name = "itemName";
             int amount = 3;
             LocalDate shippingDate = LocalDate.now();
             Price pricePerUnit = new Price(30.5);
 
             ItemGroup builder = new ItemGroupBuilder()
-                    .setItem(id)
+                    .setItem(itemHighStock)
                     .setItemName(name)
                     .setAmount(amount)
                     .setShippingDate(shippingDate)
                     .setPricePerUnit(pricePerUnit)
                     .build();
 
-            assertThat(builder.getItemID()).isEqualTo(id);
+            assertThat(builder.getItemID()).isEqualTo(itemHighStock.getItemID());
             assertThat(builder.getItemName()).isEqualTo(name);
             assertThat(builder.getAmount()).isEqualTo(amount);
             assertThat(builder.getShippingDate()).isEqualTo(shippingDate);
@@ -51,7 +50,7 @@ class ItemGroupTest {
     class givenValidData {
         @Test
         void creatingAnItemGroup_itemsInStock() {
-            ItemGroup itemGroup = new ItemGroup(itemIDHighStock, itemHighStock.getName(), amount, itemHighStock.getShippingDateForAmount(amount), itemHighStock.getPrice());
+            ItemGroup itemGroup = new ItemGroup(order, itemHighStock, itemHighStock.getName(), amount, itemHighStock.getShippingDateForAmount(amount), itemHighStock.getPrice());
 
             assertThat(itemGroup).isNotNull();
             assertThat(itemGroup.getItemID()).isEqualTo(itemIDHighStock);
@@ -61,13 +60,13 @@ class ItemGroupTest {
             assertThat(itemGroup.getShippingDate()).isEqualTo(LocalDate.now().plusDays(1));
             assertThat(itemGroup.getTotalPrice()).isEqualTo(new Price(itemHighStock.getPrice().getPrice() * amount));
             assertThat(itemGroup.getTotalPriceAsDouble()).isEqualTo(itemHighStock.getPrice().getPrice() * amount);
-            assertThat(itemGroup.toString()).isEqualTo(String.format("ItemGroup{itemID=%s, amount=%d", itemIDHighStock, amount));
+            assertThat(itemGroup.toString()).isEqualTo(String.format("ItemGroup{itemID=%s, amount=%d}", itemIDHighStock, amount));
         }
 
         @Test
         void setShippingDateManually() {
             LocalDate date = LocalDate.of(2022, 11, 1);
-            ItemGroup itemGroup = new ItemGroup(itemIDHighStock, itemHighStock.getName(), amount, itemHighStock.getShippingDateForAmount(amount), itemHighStock.getPrice());
+            ItemGroup itemGroup = new ItemGroup(order, itemHighStock, itemHighStock.getName(), amount, itemHighStock.getShippingDateForAmount(amount), itemHighStock.getPrice());
             itemGroup.setShippingDate(date);
 
             assertThat(itemGroup.getShippingDate()).isEqualTo(date);
@@ -75,7 +74,7 @@ class ItemGroupTest {
 
         @Test
         void creatingAnItemGroup_itemsNotInStock() {
-            ItemGroup itemGroup = new ItemGroup(itemIDLowStock, itemLowStock.getName(), amount, itemLowStock.getShippingDateForAmount(amount), itemLowStock.getPrice());
+            ItemGroup itemGroup = new ItemGroup(order, itemLowStock, itemLowStock.getName(), amount, itemLowStock.getShippingDateForAmount(amount), itemLowStock.getPrice());
 
             assertThat(itemGroup).isNotNull();
             assertThat(itemGroup.getItemID()).isEqualTo(itemIDLowStock);
@@ -85,32 +84,17 @@ class ItemGroupTest {
             assertThat(itemGroup.getShippingDate()).isEqualTo(LocalDate.now().plusDays(7));
             assertThat(itemGroup.getTotalPrice()).isEqualTo(new Price(itemHighStock.getPrice().getPrice() * amount));
             assertThat(itemGroup.getTotalPriceAsDouble()).isEqualTo(itemHighStock.getPrice().getPrice() * amount);
-            assertThat(itemGroup.toString()).isEqualTo(String.format("ItemGroup{itemID=%s, amount=%d", itemIDLowStock, amount));
+            assertThat(itemGroup.toString()).isEqualTo(String.format("ItemGroup{itemID=%s, amount=%d}", itemIDLowStock, amount));
         }
     }
 
     @Nested
     class givenInvalidData {
-        @Test
-        void withIDIsNull() {
-            String errorMessage = "The provided itemID is not valid";
-            assertThatThrownBy(() -> new ItemGroup(null, itemHighStock.getName(), amount, itemHighStock.getShippingDateForAmount(amount), itemHighStock.getPrice()))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(errorMessage);
-        }
-
-        @Test
-        void withIDOfIncorrectFormat() {
-            String errorMessage = "The provided itemID is not valid";
-            assertThatThrownBy(() -> new ItemGroup("invalidID",itemHighStock.getName(), amount, itemHighStock.getShippingDateForAmount(amount), itemHighStock.getPrice()))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(errorMessage);
-        }
 
         @Test
         void withAmountLessThanOne() {
             String errorMessage = "The minimum requirement to order is 1";
-            assertThatThrownBy(() -> new ItemGroup(itemIDLowStock,itemHighStock.getName(), 0, itemHighStock.getShippingDateForAmount(amount), itemHighStock.getPrice()))
+            assertThatThrownBy(() -> new ItemGroup(order, itemLowStock,itemHighStock.getName(), 0, itemHighStock.getShippingDateForAmount(amount), itemHighStock.getPrice()))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(errorMessage);
         }
