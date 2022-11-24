@@ -37,7 +37,7 @@ public class CustomerMapper {
                 .setFirstname(customer.getFirstname())
                 .setLastname(customer.getLastname())
                 .setEmailAddress(customer.getEmailAddress())
-                .setAddress(customer.getFullAddress())
+                .setAddress(customer.getAddress())
                 .setPhoneNumber(customer.getPhoneNumber());
     }
 

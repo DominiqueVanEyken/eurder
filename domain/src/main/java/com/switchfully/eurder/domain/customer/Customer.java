@@ -94,13 +94,6 @@ public class Customer {
         return emailAddress;
     }
 
-    public String getFullAddress() {
-        if (address == null) {
-            return "";
-        }
-        return address.toString();
-    }
-
     public Address getAddress() {
         return address;
     }

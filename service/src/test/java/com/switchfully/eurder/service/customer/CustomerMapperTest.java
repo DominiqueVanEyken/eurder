@@ -65,7 +65,7 @@ class CustomerMapperTest {
                 .setFirstname(firstname)
                 .setLastname(lastname)
                 .setEmailAddress(email)
-                .setAddress(address.toString())
+                .setAddress(address)
                 .setPhoneNumber(phoneNumber.getPhoneNumber());
 
         assertThat(customerDTO).isNotNull();
@@ -73,7 +73,7 @@ class CustomerMapperTest {
         assertThat(customerDTO.getFirstname()).isEqualTo(firstname);
         assertThat(customerDTO.getLastname()).isEqualTo(lastname);
         assertThat(customerDTO.getEmailAddress()).isEqualTo(email);
-        assertThat(customerDTO.getAddress()).isEqualTo(address.toString());
+        assertThat(customerDTO.getAddress()).isEqualTo(address);
         assertThat(customerDTO.getPhoneNumber()).isEqualTo(phoneNumber.getPhoneNumber());
     }
 
@@ -86,7 +86,7 @@ class CustomerMapperTest {
         assertThat(customerDTO.getFirstname()).isEqualTo(firstname);
         assertThat(customerDTO.getLastname()).isEqualTo(lastname);
         assertThat(customerDTO.getEmailAddress()).isEqualTo(email);
-        assertThat(customerDTO.getAddress()).isEqualTo(address.toString());
+        assertThat(customerDTO.getAddress()).isEqualTo(address);
         assertThat(customerDTO.getPhoneNumber()).isEqualTo(phoneNumber.getPhoneNumber());
     }
 
@@ -118,7 +118,7 @@ class CustomerMapperTest {
         assertThat(customer.getFirstname()).isEqualTo(firstname);
         assertThat(customer.getLastname()).isEqualTo(lastname);
         assertThat(customer.getEmailAddress()).isEqualTo(email);
-        assertThat(customer.getFullAddress()).isEqualTo(address.toString());
+        assertThat(customer.getAddress().toString()).isEqualTo(address.toString());
         assertThat(customer.getPhoneNumber()).isEqualTo(phoneNumber.getPhoneNumber());
         assertThat(customer.doesPasswordMatch(password)).isTrue();
         assertThat(customer.getRole()).isEqualTo(Role.CUSTOMER);

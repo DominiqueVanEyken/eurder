@@ -33,7 +33,7 @@ class CustomerTest {
             assertThat(customer.getFirstname()).isEqualTo(firstname);
             assertThat(customer.getLastname()).isEqualTo(lastname);
             assertThat(customer.getEmailAddress()).isEqualTo(emailAddress);
-            assertThat(customer.getFullAddress()).isEqualTo(address.toString());
+            assertThat(customer.getAddress()).isEqualTo(address);
             assertThat(customer.getPhoneNumber()).isEqualTo(phoneNumber.getPhoneNumber());
             assertThat(customer.doesPasswordMatch(password)).isTrue();
             assertThat(customer.getRole()).isEqualTo(role);
@@ -49,7 +49,7 @@ class CustomerTest {
         @Test
         void returningPhoneNumber_givenAddressIsNull() {
             Customer customer = new Customer(firstname, lastname, emailAddress, null, phoneNumber, password, role);
-            assertThat(customer.getFullAddress()).isEqualTo("");
+            assertThat(customer.getAddress()).isNull();
         }
 
         @Test
@@ -71,7 +71,7 @@ class CustomerTest {
             assertThat(customerBuilder.getFirstname()).isEqualTo(testCustomer.getFirstname());
             assertThat(customerBuilder.getLastname()).isEqualTo(testCustomer.getLastname());
             assertThat(customerBuilder.getEmailAddress()).isEqualTo(testCustomer.getEmailAddress());
-            assertThat(customerBuilder.getFullAddress()).isEqualTo(testCustomer.getFullAddress());
+            assertThat(customerBuilder.getAddress()).isEqualTo(testCustomer.getAddress());
             assertThat(customerBuilder.getPhoneNumber()).isEqualTo(testCustomer.getPhoneNumber());
             assertThat(customerBuilder.doesPasswordMatch(password)).isTrue();
             assertThat(customerBuilder.getRole()).isEqualTo(role);
