@@ -1,7 +1,5 @@
 package com.switchfully.eurder.service.order;
 
-import com.switchfully.eurder.domain.customer.Customer;
-import com.switchfully.eurder.domain.customer.CustomerRepository;
 import com.switchfully.eurder.domain.exceptions.UnauthorizedException;
 import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.item.ItemRepository;
@@ -9,6 +7,7 @@ import com.switchfully.eurder.domain.itemgroup.ItemGroup;
 import com.switchfully.eurder.domain.itemgroup.ItemGroupRepository;
 import com.switchfully.eurder.domain.order.Order;
 import com.switchfully.eurder.domain.order.OrderRepository;
+import com.switchfully.eurder.service.item.ItemService;
 import com.switchfully.eurder.service.itemgroup.ItemGroupMapper;
 import com.switchfully.eurder.service.itemgroup.dto.CreateItemGroupDTO;
 import com.switchfully.eurder.service.order.dto.CreateOrderDTO;
@@ -25,17 +24,15 @@ import java.util.Optional;
 @Service
 @Transactional
 public class OrderService {
+    private final OrderRepository orderRepository;
     private final OrderMapper orderMapper;
     private final ItemGroupMapper itemGroupMapper;
-    private final OrderRepository orderRepository;
-    private final CustomerRepository customerRepository;
-    private final ItemRepository itemRepository;
     private final ItemGroupRepository itemGroupRepository;
+    private final ItemService itemService;
 
-    public OrderService(OrderRepository orderRepository, CustomerRepository customerRepository, ItemRepository itemRepository, ItemGroupRepository itemGroupRepository) {
+    public OrderService(OrderRepository orderRepository, ItemGroupRepository itemGroupRepository, ItemService itemService) {
         this.orderRepository = orderRepository;
-        this.customerRepository = customerRepository;
-        this.itemRepository = itemRepository;
+        this.itemService = itemService;
         this.itemGroupRepository = itemGroupRepository;
         orderMapper = new OrderMapper();
         itemGroupMapper = new ItemGroupMapper();
@@ -85,8 +82,7 @@ public class OrderService {
     }
 
     private void mapItemToItemGroupAndReduceStock(Order order, List<ItemGroup> itemGroups, long itemID, int amount) {
-        Item item = itemRepository.findById(itemID)
-                .orElseThrow(() -> new NoSuchElementException("Item with ID " + itemID + " could not be found"));
+        Item item = itemService.getItemByID(itemID);
         ItemGroup itemGroup = itemGroupMapper.mapItemToItemGroup(order, item, amount);
         itemGroupRepository.save(itemGroup);
         itemGroups.add(itemGroup);

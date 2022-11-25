@@ -55,9 +55,9 @@ public class ItemControllerIntegrationTest {
     class getAllItems {
         @BeforeEach
         void fillDatabase() {
-            itemService.addNewItemToStock(item1);
-            itemService.addNewItemToStock(item2);
-            itemService.addNewItemToStock(item3);
+            itemService.saveItem(item1);
+            itemService.saveItem(item2);
+            itemService.saveItem(item3);
         }
 
         @Test
@@ -77,12 +77,12 @@ public class ItemControllerIntegrationTest {
                     .as(ItemDTO[].class);
 
             assertThat(result).isNotNull();
-            assertThat(result.length).isEqualTo(itemService.getAllItems().size());
+            assertThat(result.length).isEqualTo(itemService.requestAllItems().size());
         }
 
         @Test
         void getAllItems_givenFilterForStockStatus() {
-            int stockCount = (int) itemService.getAllItems().stream()
+            int stockCount = (int) itemService.requestAllItems().stream()
                     .filter(item -> item.getStockStatus().equals("LOW"))
                     .count();
             ItemDTO[] result = RestAssured
@@ -159,7 +159,7 @@ public class ItemControllerIntegrationTest {
         private ItemDTO itemDTO;
         @BeforeEach
         void fillDatabase() {
-            itemDTO = itemService.addNewItemToStock(item1);
+            itemDTO = itemService.saveItem(item1);
         }
         @Test
         void updateItem_givenValidData() {

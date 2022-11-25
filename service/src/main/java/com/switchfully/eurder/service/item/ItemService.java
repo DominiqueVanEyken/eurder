@@ -27,19 +27,19 @@ public class ItemService {
         itemMapper = new ItemMapper();
     }
 
-    public ItemDTO addNewItemToStock(CreateItemDTO createItemDTO) {
+    public ItemDTO saveItem(CreateItemDTO createItemDTO) {
         Item item = itemMapper.mapDTOToItem(createItemDTO);
         itemRepository.save(item);
         log.info("Saving item with ID " + item.getItemID());
         return itemMapper.mapItemToDTO(item);
     }
 
-    public List<ItemDTO> getAllItems() {
+    public List<ItemDTO> requestAllItems() {
         log.debug("Getting all items");
         return itemMapper.mapItemToDTO(itemRepository.findAll());
     }
 
-    public List<ItemDTO> getItemsOnStockStatusFiler(String stockStatusValue) {
+    public List<ItemDTO> requestItemsOnStockStatusFiler(String stockStatusValue) {
         StockStatus stockStatus = StockStatus.findStockStatusByValue(stockStatusValue);
         log.info("Getting all items with stock status " + stockStatus);
         return itemMapper.mapItemToDTO(itemRepository.findItemByStockStatus(stockStatus));

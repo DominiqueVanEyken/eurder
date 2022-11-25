@@ -31,14 +31,14 @@ public class ItemController {
     public List<ItemDTO> getAllItems(@RequestHeader String authorization) {
         securityService.validateAuthorization(authorization, Feature.CHECK_STOCK);
         log.debug("Request for all items in stock");
-        return itemService.getAllItems();
+        return itemService.requestAllItems();
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, params = "stockStatus")
     public List<ItemDTO> getAllItemsOnStockStatusFilter(@RequestHeader String authorization, @RequestParam String stockStatus) {
         securityService.validateAuthorization(authorization, Feature.CHECK_STOCK);
         log.debug("Request for all items in stock with stockStatus filter on " + stockStatus);
-        return itemService.getItemsOnStockStatusFiler(stockStatus);
+        return itemService.requestItemsOnStockStatusFiler(stockStatus);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -46,7 +46,7 @@ public class ItemController {
     public ItemDTO addNewItemToStock(@RequestHeader String authorization, @RequestBody CreateItemDTO createItemDTO) {
         securityService.validateAuthorization(authorization, Feature.CREATE_ITEM);
         log.debug("request to add new item to stock");
-        return itemService.addNewItemToStock(createItemDTO);
+        return itemService.saveItem(createItemDTO);
     }
 
     @PutMapping(value = "{itemID}/update", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
