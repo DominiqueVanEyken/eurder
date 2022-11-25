@@ -55,14 +55,15 @@ public class OrderService {
         return orderMapper.mapOrderToDTO(order, itemGroupDTOS);
     }
 
-    protected Order getOrderByOrderID(long orderID) {
+    protected Order requestOrderByOrderID(long orderID) {
         Optional<Order> order = orderRepository.findById(orderID);
         return order
                 .orElseThrow(() -> new NoSuchElementException("Order with ID " + orderID + " does not exist"));
     }
 
     public OrderDTO reOrderByOrderID(String customerID, long orderID) {
-        Order orderToReorder = getOrderByOrderID(orderID);
+        Order orderToReorder = requestOrderByOrderID(orderID);
+        validateOrderIDBelongsToCustomer(customerID, orderToReorder);
         List<ItemGroup> itemGroupsOldOrder = itemGroupRepository.findByOrder(orderToReorder);
         Order order = new Order(customerID);
         List<ItemGroup> itemGroupsToReorder = new ArrayList<>();
@@ -77,13 +78,8 @@ public class OrderService {
         return orderMapper.mapOrderToDTO(order, itemGroupDTOS);
     }
 
-    public void validateOrderIDBelongsToCustomer(String customerID, Order order, String username) {
+    public void validateOrderIDBelongsToCustomer(String customerID, Order order) {
         if (!order.getCustomerID().equals(customerID)) {
-            throw new UnauthorizedException();
-        }
-        Optional<Customer> customer = customerRepository.findById(customerID);
-        customer.orElseThrow(() -> new NoSuchElementException("Customer could not be found"));
-        if (!customer.get().getEmailAddress().equals(username)) {
             throw new UnauthorizedException();
         }
     }
