@@ -40,7 +40,7 @@ public class OrderController {
 
     @PostMapping(value = "customers/{customerID}/orders/{orderID}/order", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public OrderDTO reOrderItemsByOrderID(@RequestHeader String authorization, @PathVariable String customerID, @PathVariable String orderID) {
+    public OrderDTO reOrderItemsByOrderID(@RequestHeader String authorization, @PathVariable String customerID, @PathVariable long orderID) {
         securityService.validateAuthorization(authorization, Feature.ORDER_ITEMS);
         String username = new String(Base64.getDecoder().decode(authorization.substring("Basic ".length()))).split(":")[0];
         customerService.validateIfCustomerIDBelongsToUsername(customerID, username);

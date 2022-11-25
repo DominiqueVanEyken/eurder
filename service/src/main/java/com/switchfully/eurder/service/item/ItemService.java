@@ -45,15 +45,15 @@ public class ItemService {
         return itemMapper.mapItemToDTO(itemRepository.findItemByStockStatus(stockStatus));
     }
 
-    public Item getItemByID(String itemID) {
+    public Item getItemByID(long itemID) {
         Optional<Item> optionalItem = itemRepository.findById(itemID);
         if (optionalItem.isEmpty()) {
-            throw new NoSuchElementException("Item with ID ".concat(itemID).concat(" does not exist"));
+            throw new NoSuchElementException("Item with ID " + itemID + " does not exist");
         }
         return optionalItem.get();
     }
 
-    public ItemDTO updateItemByID(String itemID, UpdateItemDTO updateItemDTO) {
+    public ItemDTO updateItemByID(long itemID, UpdateItemDTO updateItemDTO) {
         Item itemToUpdate = getItemByID(itemID);
         itemToUpdate.updateItem(updateItemDTO.getName(), updateItemDTO.getDescription(), updateItemDTO.getPrice(), updateItemDTO.getStockCount());
         return itemMapper.mapItemToDTO(itemToUpdate);

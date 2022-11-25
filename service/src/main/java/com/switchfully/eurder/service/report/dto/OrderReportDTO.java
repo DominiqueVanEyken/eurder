@@ -3,15 +3,15 @@ package com.switchfully.eurder.service.report.dto;
 import java.util.List;
 
 public class OrderReportDTO {
-    private String orderID;
+    private long orderID;
     private List<ItemGroupReportDTO> itemGroupReports;
     private String totalOrderPrice;
 
-    public String getOrderID() {
+    public long getOrderID() {
         return orderID;
     }
 
-    public OrderReportDTO setOrderID(String orderID) {
+    public OrderReportDTO setOrderID(long orderID) {
         this.orderID = orderID;
         return this;
     }

@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-public interface ItemGroupRepository extends JpaRepository<ItemGroup, Integer> {
+public interface ItemGroupRepository extends JpaRepository<ItemGroup, Long> {
     List<ItemGroup> findByOrder(Order order);
 
     List<ItemGroup> findAllByShippingDateEquals(LocalDate shippingDate);

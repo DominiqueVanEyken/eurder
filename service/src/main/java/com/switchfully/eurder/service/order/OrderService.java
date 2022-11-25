@@ -44,7 +44,7 @@ public class OrderService {
         List<ItemGroup> itemGroups = new ArrayList<>();
         Order order = new Order(customerID);
         for (CreateItemGroupDTO itemGroupDTO : createOrderDTO.getOrderList()) {
-            String itemID = itemGroupDTO.getItemID();
+            long itemID = itemGroupDTO.getItemID();
             int amount = itemGroupDTO.getAmount();
             mapItemToItemGroupAndReduceStock(order, itemGroups, itemID, amount);
         }
@@ -54,19 +54,19 @@ public class OrderService {
         return orderMapper.mapOrderToDTO(order, itemGroupDTOS);
     }
 
-    protected Order getOrderByOrderID(String orderID) {
+    protected Order getOrderByOrderID(long orderID) {
         Optional<Order> order = orderRepository.findById(orderID);
         return order
                 .orElseThrow(() -> new NoSuchElementException("Order with ID " + orderID + " does not exist"));
     }
 
-    public OrderDTO reOrderByOrderID(String customerID, String orderID) {
+    public OrderDTO reOrderByOrderID(String customerID, long orderID) {
         Order orderToReorder = getOrderByOrderID(orderID);
         List<ItemGroup> itemGroupsOldOrder = itemGroupRepository.findByOrder(orderToReorder);
         Order order = new Order(customerID);
         List<ItemGroup> itemGroupsToReorder = new ArrayList<>();
         for (ItemGroup itemGroup : itemGroupsOldOrder) {
-            String itemID = itemGroup.getItemID();
+            long itemID = itemGroup.getItemID();
             int amount = itemGroup.getAmount();
             mapItemToItemGroupAndReduceStock(order, itemGroupsToReorder, itemID, amount);
         }
@@ -87,7 +87,7 @@ public class OrderService {
         }
     }
 
-    private void mapItemToItemGroupAndReduceStock(Order order, List<ItemGroup> itemGroups, String itemID, int amount) {
+    private void mapItemToItemGroupAndReduceStock(Order order, List<ItemGroup> itemGroups, long itemID, int amount) {
         Item item = itemRepository.findById(itemID)
                 .orElseThrow(() -> new NoSuchElementException("Item with ID " + itemID + " could not be found"));
         ItemGroup itemGroup = itemGroupMapper.mapItemToItemGroup(order, item, amount);

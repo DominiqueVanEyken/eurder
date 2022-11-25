@@ -8,11 +8,13 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "ITEM")
 public class Item implements Comparable<Item> {
-    public static final String ITEM_ID_PREFIX = "IID";
-    private static int itemIDSuffix = 1001;
+//    public static final String ITEM_ID_PREFIX = "IID";
+//    private static int itemIDSuffix = 1001;
     @Id
+    @GeneratedValue(generator = "ITEM_SEQ", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "ITEM_SEQ", sequenceName = "ITEM_SEQ", initialValue = 1001, allocationSize = 1)
     @Column(name = "ITEM_ID")
-    private String itemID;
+    private long itemID;
     @Column(name = "NAME")
     private String name;
     @Column(name = "DESCRIPTION")
@@ -26,7 +28,7 @@ public class Item implements Comparable<Item> {
     private StockStatus stockStatus;
 
     public Item(String name, String description, Price price, int stockCount) {
-        itemID = ITEM_ID_PREFIX + LocalDate.now().getYear() + itemIDSuffix++;
+//        itemID = ITEM_ID_PREFIX + LocalDate.now().getYear() + itemIDSuffix++;
         this.name = validateName(name);
         this.description = description;
         this.price = validatePrice(price);
@@ -85,7 +87,7 @@ public class Item implements Comparable<Item> {
         return LocalDate.now().plusWeeks(1);
     }
 
-    public String getItemID() {
+    public long getItemID() {
         return itemID;
     }
 

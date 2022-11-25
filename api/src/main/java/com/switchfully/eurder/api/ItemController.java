@@ -51,7 +51,7 @@ public class ItemController {
 
     @PutMapping(value = "{itemID}/update", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public ItemDTO updateAnExistingItem(@RequestHeader String authorization,@PathVariable String itemID, @RequestBody UpdateItemDTO updateItemDTO) {
+    public ItemDTO updateAnExistingItem(@RequestHeader String authorization,@PathVariable Long itemID, @RequestBody UpdateItemDTO updateItemDTO) {
         securityService.validateAuthorization(authorization, Feature.UPDATE_ITEM);
         log.debug("Request to update item with ID " + itemID);
         return itemService.updateItemByID(itemID, updateItemDTO);

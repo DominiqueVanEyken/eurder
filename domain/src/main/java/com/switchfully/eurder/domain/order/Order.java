@@ -11,11 +11,11 @@ import java.util.Objects;
 @Entity
 @Table(name = "\"ORDER\"")
 public class Order {
-    private static final String ORDER_ID_PREFIX = "OID";
-    private static int order_id_suffix = 1001;
     @Id
+    @GeneratedValue(generator = "ORDER_SEQ", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "ORDER_SEQ", sequenceName = "ORDER_SEQ", initialValue = 101, allocationSize = 1)
     @Column(name = "ORDER_ID")
-    private String orderID;
+    private long orderID;
     @Column(name = "CUSTOMER_ID")
     private String customerID;
     @Column(name = "ORDER_DATE")
@@ -28,13 +28,12 @@ public class Order {
         this.customerID = customerID;
         this.orderDate = LocalDate.now();
         totalPrice = new Price(0.0);
-        orderID = ORDER_ID_PREFIX + orderDate.getYear() + order_id_suffix++;
     }
 
     public Order() {
     }
 
-    public String getOrderID() {
+    public long getOrderID() {
         return orderID;
     }
 

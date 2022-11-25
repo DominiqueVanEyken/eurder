@@ -1,3 +1,8 @@
+-- CREATE SEQUENCES
+create sequence item_seq start with 1001 increment by 1;
+create sequence order_seq start with 101 increment by 1;
+create sequence item_group_seq start with 1 increment by 1;
+
 -- CREATE TABLE
 create table postal_code
 (
@@ -7,7 +12,7 @@ create table postal_code
 
 create table customer
 (
-    customer_id   varchar(16) primary key,
+    customer_id   varchar(36) primary key,
     first_name    varchar(32),
     last_name     varchar(32) not null,
     email         varchar(64) not null,
@@ -21,28 +26,26 @@ create table customer
 
 create table "order"
 (
-    order_id    varchar(16) primary key,
-    customer_id varchar(16) references customer,
+    order_id    integer primary key,
+    customer_id varchar(36) references customer,
     order_date  date             not null,
     total_price double precision not null
 );
 
 create table item
 (
-    item_id     varchar(16) primary key,
+    item_id     integer primary key,
     name        varchar(32)      not null,
     description varchar(32)      not null,
     price       double precision not null,
     stock_count integer          not null
 );
 
-create sequence item_group_seq start with 1 increment by 1;
-
 create table item_group
 (
     item_group_id  integer primary key,
-    order_id       varchar(16) references "order",
-    item_id        varchar(16) references item,
+    order_id       integer references "order",
+    item_id        integer references item,
     item_name      varchar(32)      not null,
     amount         integer          not null,
     shipping_date  date             not null,
@@ -59,5 +62,5 @@ values ('1111', 'consumer valley');
 
 -- CREATE ADMIN USER
 insert into customer
-values ('CID20221000', null, 'admin', 'admin@eurder.com', 'some street', '1', '0000', '012 34 56 78', 'admin@eurder',
+values ('0', null, 'admin', 'admin@eurder.com', 'some street', '1', '0000', '012 34 56 78', 'admin@eurder',
         'ADMIN');

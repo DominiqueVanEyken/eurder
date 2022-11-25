@@ -4,17 +4,17 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class OrderDTO {
-    private String orderID;
+    private Long orderID;
     private String customerID;
     private LocalDate orderDate;
     private List<ItemGroupDTO> orderList;
     private String totalPrice;
 
-    public String getOrderID() {
+    public Long getOrderID() {
         return orderID;
     }
 
-    public OrderDTO setOrderID(String orderID) {
+    public OrderDTO setOrderID(Long orderID) {
         this.orderID = orderID;
         return this;
     }

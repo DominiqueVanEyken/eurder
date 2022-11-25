@@ -2,15 +2,18 @@ package com.switchfully.eurder.domain.customer;
 
 import com.switchfully.eurder.domain.address.Address;
 import com.switchfully.eurder.domain.phonenumber.PhoneNumber;
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GeneratorType;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.ValueGenerationType;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.UUID;
 import java.util.regex.Pattern;
 @Entity
 @Table(name = "CUSTOMER")
 public class Customer {
-    private static final String CUSTOMER_ID_PREFIX = "CID";
-    private static int customer_id_suffix = 1001;
     @Id
     @Column(name = "CUSTOMER_ID")
     private String customerID;
@@ -31,7 +34,7 @@ public class Customer {
     private Role role;
 
     public Customer(String firstname, String lastname, String emailAddress, Address address, PhoneNumber phoneNumber, String password, Role role) {
-        customerID = CUSTOMER_ID_PREFIX + LocalDate.now().getYear() + customer_id_suffix++;
+        customerID = UUID.randomUUID().toString();
         this.firstname = firstname;
         this.lastname = validateName(lastname);
         this.emailAddress = validateEmailAddress(emailAddress);

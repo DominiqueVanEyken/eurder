@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ItemRepository extends JpaRepository<Item, String> {
+public interface ItemRepository extends JpaRepository<Item, Long> {
     List<Item> findItemByStockStatus(StockStatus stockStatus);
 }

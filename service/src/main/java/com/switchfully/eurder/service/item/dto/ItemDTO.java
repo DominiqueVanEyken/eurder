@@ -1,17 +1,17 @@
 package com.switchfully.eurder.service.item.dto;
 
 public class ItemDTO {
-    private String itemID;
+    private long itemID;
     private String name;
     private String description;
     private String price;
     private String stockStatus;
 
-    public String getItemID() {
+    public long getItemID() {
         return itemID;
     }
 
-    public ItemDTO setItemID(String itemID) {
+    public ItemDTO setItemID(long itemID) {
         this.itemID = itemID;
         return this;
     }

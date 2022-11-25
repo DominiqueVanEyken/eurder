@@ -16,7 +16,7 @@ public class ItemGroup implements Serializable {
     @GeneratedValue(generator = "ITEM_GROUP_SEQ", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "ITEM_GROUP_SEQ", sequenceName = "ITEM_GROUP_SEQ", initialValue = 1, allocationSize = 1)
     @Column(name = "ITEM_GROUP_ID")
-    private int itemGroupID;
+    private Long itemGroupID;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "ORDER_ID")
@@ -70,7 +70,7 @@ public class ItemGroup implements Serializable {
         return item;
     }
 
-    public String getItemID() {
+    public long getItemID() {
         return item.getItemID();
     }
 
