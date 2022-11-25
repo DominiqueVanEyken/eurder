@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -38,8 +39,11 @@ public class ItemService {
         return itemMapper.mapItemToDTO(itemRepository.findAll());
     }
 
-    public List<ItemDTO> requestItemsOnStockStatusFiler(String stockStatusValue) { // todo request als Enum
-        StockStatus stockStatus = StockStatus.findStockStatusByValue(stockStatusValue);
+    public List<ItemDTO> requestItemsOnStockStatusFiler(StockStatus stockStatus) {
+        if (!Arrays.asList(StockStatus.values()).contains(stockStatus)) {
+            throw new NoSuchElementException("Provided stock status does not exist. Choose from " + Arrays.toString(StockStatus.values()));
+        }
+        // todo request als Enum
         log.info("Getting all items with stock status " + stockStatus);
         return itemMapper.mapItemToDTO(itemRepository.findItemByStockStatus(stockStatus));
     }

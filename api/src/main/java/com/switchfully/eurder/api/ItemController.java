@@ -1,6 +1,7 @@
 package com.switchfully.eurder.api;
 
 import com.switchfully.eurder.domain.customer.Feature;
+import com.switchfully.eurder.domain.item.StockStatus;
 import com.switchfully.eurder.service.item.ItemService;
 import com.switchfully.eurder.service.item.dto.CreateItemDTO;
 import com.switchfully.eurder.service.item.dto.ItemDTO;
@@ -35,7 +36,7 @@ public class ItemController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, params = "stockStatus")
-    public List<ItemDTO> getAllItemsOnStockStatusFilter(@RequestHeader String authorization, @RequestParam String stockStatus) {
+    public List<ItemDTO> getAllItemsOnStockStatusFilter(@RequestHeader String authorization, @RequestParam StockStatus stockStatus) {
         securityService.validateAuthorization(authorization, Feature.CHECK_STOCK);
         log.debug("Request for all items in stock with stockStatus filter on " + stockStatus);
         return itemService.requestItemsOnStockStatusFiler(stockStatus);
