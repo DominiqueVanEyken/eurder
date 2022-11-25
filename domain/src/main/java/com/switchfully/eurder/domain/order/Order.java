@@ -45,10 +45,8 @@ public class Order {
         return orderDate;
     }
 
-    public void updatePrice(List<ItemGroup> itemGroups) {
-        totalPrice = new Price(itemGroups.stream()
-                .mapToDouble(ItemGroup::getTotalPriceAsDouble)
-                .sum());
+    public void updatePrice(Price price) {
+        totalPrice = price;
     }
 
     public Price getTotalPrice() {

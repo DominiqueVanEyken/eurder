@@ -1,13 +1,14 @@
 package com.switchfully.eurder.service.report.dto;
 
+import com.switchfully.eurder.domain.Price.Price;
 import com.switchfully.eurder.domain.address.Address;
 
 public class ItemGroupShippingReportDTO {
     private long itemID;
     private String itemName;
     private int amount;
-    private String pricePerUnit;
-    private String totalPrice;
+    private Price pricePerUnit;
+    private Price totalPrice;
     private Address shippingAddress;
 
     public ItemGroupShippingReportDTO setItemID(long itemID) {
@@ -25,12 +26,12 @@ public class ItemGroupShippingReportDTO {
         return this;
     }
 
-    public ItemGroupShippingReportDTO setPricePerUnit(String pricePerUnit) {
+    public ItemGroupShippingReportDTO setPricePerUnit(Price pricePerUnit) {
         this.pricePerUnit = pricePerUnit;
         return this;
     }
 
-    public ItemGroupShippingReportDTO setTotalPrice(String totalPrice) {
+    public ItemGroupShippingReportDTO setTotalPrice(Price totalPrice) {
         this.totalPrice = totalPrice;
         return this;
     }
@@ -52,11 +53,11 @@ public class ItemGroupShippingReportDTO {
         return amount;
     }
 
-    public String getPricePerUnit() {
+    public Price getPricePerUnit() {
         return pricePerUnit;
     }
 
-    public String getTotalPrice() {
+    public Price getTotalPrice() {
         return totalPrice;
     }
 
