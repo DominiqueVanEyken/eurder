@@ -43,7 +43,6 @@ public class ItemService {
         if (!Arrays.asList(StockStatus.values()).contains(stockStatus)) {
             throw new NoSuchElementException("Provided stock status does not exist. Choose from " + Arrays.toString(StockStatus.values()));
         }
-        // todo request als Enum
         log.info("Getting all items with stock status " + stockStatus);
         return itemMapper.mapItemToDTO(itemRepository.findItemByStockStatus(stockStatus));
     }

@@ -83,7 +83,7 @@ public class ItemControllerIntegrationTest {
         @Test
         void getAllItems_givenFilterForStockStatus() {
             int stockCount = (int) itemService.requestAllItems().stream()
-                    .filter(item -> item.getStockStatus().equals("LOW"))
+                    .filter(item -> item.getStockStatus().equals("STOCK_LOW"))
                     .count();
             ItemDTO[] result = RestAssured
                     .given()
