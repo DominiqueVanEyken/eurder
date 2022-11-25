@@ -174,7 +174,7 @@ public class CustomerControllerIntegrationTest {
             assertThat(result.getFirstname()).isEqualTo(createCustomerDTO.getFirstname());
             assertThat(result.getLastname()).isEqualTo(createCustomerDTO.getLastname());
             assertThat(result.getEmailAddress()).isEqualTo(createCustomerDTO.getEmailAddress());
-            assertThat(result.getAddress()).isEqualTo(address.toString());
+            assertThat(result.getAddress().toString()).isEqualTo(address.toString());
             assertThat(result.getPhoneNumber()).isEqualTo("+32 12 34 56 78");
         }
     }

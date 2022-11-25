@@ -59,10 +59,10 @@ public class OrderControllerIntegrationTest {
     @Nested
     class orderItems {
         CreateItemGroupDTO createItemGroupDTO1 = new CreateItemGroupDTO()
-                .setItemID(item1.getItemID())
+                .setItemID(1001)
                 .setAmount(2);
         CreateItemGroupDTO createItemGroupDTO2 = new CreateItemGroupDTO()
-                .setItemID(item2.getItemID())
+                .setItemID(1002)
                 .setAmount(2);
         List<CreateItemGroupDTO> createItemGroupDTOS = List.of(createItemGroupDTO1, createItemGroupDTO2);
 

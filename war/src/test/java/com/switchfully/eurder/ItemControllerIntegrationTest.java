@@ -163,7 +163,7 @@ public class ItemControllerIntegrationTest {
         }
         @Test
         void updateItem_givenValidData() {
-            String itemID = itemDTO.getItemID();
+            long itemID = itemDTO.getItemID();
             UpdateItemDTO updateItemDTO = new UpdateItemDTO()
                     .setName("update")
                     .setDescription("description")

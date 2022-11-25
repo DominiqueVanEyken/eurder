@@ -12,19 +12,20 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ItemGroupMapperTest {
     private final ItemGroupMapper itemGroupMapper = new ItemGroupMapper();
     private final Item item = new Item("name", null, new Price(1.1), 100);
-    private final String itemID = item.getItemID();
+    private final long itemID = item.getItemID();
     private final String itemName = "itemName";
     private final int amount = 1;
     private final LocalDate shippingDate = LocalDate.now().plusDays(1);
     private final Price pricePerUnit = new Price(1.1);
     private final Price totalPrice = new Price(pricePerUnit.getPrice() * amount);
-    private final Order order = new Order("CID20221001");
+    private final Order order = new Order(UUID.randomUUID().toString());
 
 
     @Test

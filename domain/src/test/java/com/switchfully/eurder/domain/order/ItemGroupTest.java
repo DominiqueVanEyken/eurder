@@ -15,8 +15,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ItemGroupTest {
     private final Item itemHighStock = new Item("name", null, new Price(1.2), 100);
     private final Item itemLowStock = new Item("name", null, new Price(1.2), 1);
-    private final String itemIDHighStock = itemHighStock.getItemID();
-    private final String itemIDLowStock = itemLowStock.getItemID();
+    private final long itemIDHighStock = itemHighStock.getItemID();
+    private final long itemIDLowStock = itemLowStock.getItemID();
     private final Order order = new Order("CID20221001");
     private final int amount = 10;
 

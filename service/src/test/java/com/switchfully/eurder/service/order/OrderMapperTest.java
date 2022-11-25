@@ -16,12 +16,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class OrderMapperTest {
-    private final String customerID = "CID20221001";
-    private final String orderID = "IID20221001";
+    private final String customerID = UUID.randomUUID().toString();
+    private final long orderID = 101L;
     private final Item item = new Item("name", null, new Price(1.1), 100);
     private final int amount = 2;
     private final LocalDate orderDate = LocalDate.now();
@@ -60,7 +61,7 @@ class OrderMapperTest {
                 .setCustomerID(customerID)
                 .setOrderDate(orderDate)
                 .setOrderList(itemGroupDTOS)
-                .setOrderID("OrderID")
+                .setOrderID(1001L)
                 .setTotalPrice(totalPrice.toString());
 
         assertThat(orderDTO).isNotNull();

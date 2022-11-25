@@ -25,7 +25,7 @@ class ReportMapperTest {
     private ItemRepository itemRepository;
     private final String customerID = "CID20221001";
     private final Item item = new Item("name", null, new Price(1.1), 100);
-    private final String itemID = item.getItemID();
+    private final long itemID = item.getItemID();
     private final int amount = 1;
     private final Order order = new Order(customerID);
     private final Address address = new Address("street", "1", new PostalCode("1111", "city"));

@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ItemMapperTest {
     private final ItemMapper itemMapper = new ItemMapper();
-    private final String itemID = "IID20221001";
+    private final long itemID = 1001;
     private final String name = "name";
     private final String description = "description";
     private final double price = 1.1;

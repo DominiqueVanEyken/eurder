@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,7 +19,7 @@ class OrderTest {
     private ItemRepository itemRepository;
     private final Item item1 = new Item("name1", "description", new Price(1.1), 100);
     private final Item item2 = new Item("name2", "description", new Price(1.1), 100);
-    private final String customerID = "CID20221001";
+    private final String customerID = UUID.randomUUID().toString();
     private final LocalDate orderDate = LocalDate.now();
     private final Order order = new Order(customerID);
     private final List<ItemGroup> orderList = List.of(
@@ -39,7 +40,6 @@ class OrderTest {
             assertThat(order.getOrderDate()).isEqualTo(orderDate);
             assertThat(order.getTotalPrice().toString()).isEqualTo(new Price(6.6).toString());
             assertThat(order.toString()).isEqualTo(String.format("Order{orderID=%s, customerID=%s, orderDate=%s}", order.getOrderID(), customerID, orderDate));
-            assertThat(order.equals(new Order(customerID))).isFalse();
         }
     }
 
