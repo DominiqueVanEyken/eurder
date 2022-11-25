@@ -21,12 +21,10 @@ public class CustomerController {
     private final Logger log = LoggerFactory.getLogger(CustomerController.class);
     private final CustomerService customerService;
     private final SecurityService securityService;
-    private final OrderService orderService;
 
-    public CustomerController(CustomerService customerService, SecurityService securityService, OrderService orderService) {
+    public CustomerController(CustomerService customerService, SecurityService securityService) {
         this.customerService = customerService;
         this.securityService = securityService;
-        this.orderService = orderService;
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)

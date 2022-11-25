@@ -33,23 +33,20 @@ public class CustomerService {
 
     public CustomerDTO createNewCustomer(CreateCustomerDTO createCustomerDTO) {
         Customer customer = customerMapper.mapDTOtoCustomer(createCustomerDTO);
-        if (isCustomerUnique(customer)) {
-            customerRepository.save(customer);
-            log.info("Saving customer with ID " + customer.getCustomerID());
-            return customerMapper.mapCustomerToDTO(customer);
+        if (!isCustomerUnique(customer)) {
+            throw new IllegalArgumentException("Customer already exists");
         }
-        throw new IllegalArgumentException("Customer already exists");
+        customerRepository.save(customer);
+        log.info("Saving customer with ID " + customer.getCustomerID());
+        return customerMapper.mapCustomerToDTO(customer);
     }
 
     public CustomerDTO getCustomerByID(String customerID) {
-        Optional<Customer> customer = customerRepository.findById(customerID);
-        if (customer.isPresent()) {
-            return customerMapper.mapCustomerToDTO(customer.get());
-        }
-        throw new NoSuchElementException("Customer with ID " + customerID + " does not exist");
+        Customer customer = customerRepository.findById(customerID).orElseThrow(() -> new NoSuchElementException("Customer with ID " + customerID + " does not exist"));
+        return customerMapper.mapCustomerToDTO(customer);
     }
 
-    public void validateIfCustomerIDBelongsToUsername(String customerID, String userName) {
+    public void validateIfCustomerIDBelongsToUsername(String customerID, String userName) { //TODO to securityService
         Customer customer = customerRepository.findById(customerID).orElseThrow(() -> new NoSuchElementException("Customer with ID " + customerID + " does not exist"));
         if (!customer.getEmailAddress().equals(userName)) {
             throw new UnauthorizedException();

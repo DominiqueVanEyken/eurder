@@ -28,22 +28,22 @@ public class OrderController {
         this.securityService = securityService;
     }
 
-    @PostMapping(value = "customers/{customerID}/orders/order", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "customers/{customerID}/orders/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public OrderDTO orderItems(@RequestHeader String authorization, @PathVariable String customerID, @RequestBody CreateOrderDTO createOrderDTO) {
         securityService.validateAuthorization(authorization, Feature.ORDER_ITEMS);
-        String username = new String(Base64.getDecoder().decode(authorization.substring("Basic ".length()))).split(":")[0];
-        customerService.validateIfCustomerIDBelongsToUsername(customerID, username);
+        String username = new String(Base64.getDecoder().decode(authorization.substring("Basic ".length()))).split(":")[0]; // todo: return vanuit securityService
+        customerService.validateIfCustomerIDBelongsToUsername(customerID, username);//TODO deel maken van securityService
         log.debug("Request for ordering items");
         return orderService.createOrder(customerID, createOrderDTO);
     }
 
-    @PostMapping(value = "customers/{customerID}/orders/{orderID}/order", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "customers/{customerID}/orders/{orderID}/reorder", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public OrderDTO reOrderItemsByOrderID(@RequestHeader String authorization, @PathVariable String customerID, @PathVariable long orderID) {
         securityService.validateAuthorization(authorization, Feature.ORDER_ITEMS);
-        String username = new String(Base64.getDecoder().decode(authorization.substring("Basic ".length()))).split(":")[0];
-        customerService.validateIfCustomerIDBelongsToUsername(customerID, username);
+        String username = new String(Base64.getDecoder().decode(authorization.substring("Basic ".length()))).split(":")[0]; // todo: return vanuit securityService
+        customerService.validateIfCustomerIDBelongsToUsername(customerID, username); //TODO deel maken van securityService
         log.debug("Requesting to reorder order with ID " + orderID);
         return orderService.reOrderByOrderID(customerID, orderID);
     }

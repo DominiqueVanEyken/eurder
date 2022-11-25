@@ -1,14 +1,15 @@
 package com.switchfully.eurder.service.order;
 
+import com.switchfully.eurder.domain.Price.Price;
 import com.switchfully.eurder.domain.exceptions.UnauthorizedException;
 import com.switchfully.eurder.domain.item.Item;
-import com.switchfully.eurder.domain.item.ItemRepository;
 import com.switchfully.eurder.domain.itemgroup.ItemGroup;
 import com.switchfully.eurder.domain.itemgroup.ItemGroupRepository;
 import com.switchfully.eurder.domain.order.Order;
 import com.switchfully.eurder.domain.order.OrderRepository;
 import com.switchfully.eurder.service.item.ItemService;
 import com.switchfully.eurder.service.itemgroup.ItemGroupMapper;
+import com.switchfully.eurder.service.itemgroup.ItemGroupService;
 import com.switchfully.eurder.service.itemgroup.dto.CreateItemGroupDTO;
 import com.switchfully.eurder.service.order.dto.CreateOrderDTO;
 import com.switchfully.eurder.service.itemgroup.dto.ItemGroupDTO;
@@ -26,28 +27,27 @@ import java.util.Optional;
 public class OrderService {
     private final OrderRepository orderRepository;
     private final OrderMapper orderMapper;
-    private final ItemGroupMapper itemGroupMapper;
-    private final ItemGroupRepository itemGroupRepository;
-    private final ItemService itemService;
+    //    private final ItemService itemService;
+//    private final ItemGroupMapper itemGroupMapper;
+//    private final ItemGroupRepository itemGroupRepository;
+    private final ItemGroupService itemGroupService;
 
-    public OrderService(OrderRepository orderRepository, ItemGroupRepository itemGroupRepository, ItemService itemService) {
+    public OrderService(OrderRepository orderRepository, ItemGroupService itemGroupService) {
         this.orderRepository = orderRepository;
-        this.itemService = itemService;
-        this.itemGroupRepository = itemGroupRepository;
+//        this.itemService = itemService;
+        this.itemGroupService = itemGroupService;
         orderMapper = new OrderMapper();
-        itemGroupMapper = new ItemGroupMapper();
+//        this.itemGroupRepository = itemGroupRepository;
+//        itemGroupMapper = new ItemGroupMapper();
     }
 
     public OrderDTO createOrder(String customerID, CreateOrderDTO createOrderDTO) {
-        List<ItemGroup> itemGroups = new ArrayList<>();
         Order order = new Order(customerID);
-        for (CreateItemGroupDTO itemGroupDTO : createOrderDTO.getOrderList()) {
-            long itemID = itemGroupDTO.getItemID();
-            int amount = itemGroupDTO.getAmount();
-            mapItemToItemGroupAndReduceStock(order, itemGroups, itemID, amount);
-        }
-        order.updatePrice(itemGroups);
-        List<ItemGroupDTO> itemGroupDTOS = itemGroupMapper.mapItemGroupToDTO(itemGroupRepository.findByOrder(order));
+        List<ItemGroupDTO> itemGroupDTOS = itemGroupService.createItemGroups(createOrderDTO.getOrderList(), order);
+        order.updatePrice(new Price(itemGroupDTOS.stream()
+                .map(ItemGroupDTO::getTotalPrice)
+                .mapToDouble(Price::getPrice)
+                .sum()));
         orderRepository.save(order);
         return orderMapper.mapOrderToDTO(order, itemGroupDTOS);
     }
@@ -61,16 +61,22 @@ public class OrderService {
     public OrderDTO reOrderByOrderID(String customerID, long orderID) {
         Order orderToReorder = requestOrderByOrderID(orderID);
         validateOrderIDBelongsToCustomer(customerID, orderToReorder);
-        List<ItemGroup> itemGroupsOldOrder = itemGroupRepository.findByOrder(orderToReorder);
+        List<ItemGroup> itemGroups = itemGroupService.getItemGroupsForOrder(orderToReorder);
         Order order = new Order(customerID);
+        List<ItemGroupDTO> itemGroupDTOS = itemGroupService.reorderItemGroups(itemGroups, order);
+//        List<ItemGroup> itemGroupsOldOrder = itemGroupRepository.findByOrder(orderToReorder);
         List<ItemGroup> itemGroupsToReorder = new ArrayList<>();
-        for (ItemGroup itemGroup : itemGroupsOldOrder) {
-            long itemID = itemGroup.getItemID();
-            int amount = itemGroup.getAmount();
-            mapItemToItemGroupAndReduceStock(order, itemGroupsToReorder, itemID, amount);
-        }
-        order.updatePrice(itemGroupsToReorder);
-        List<ItemGroupDTO> itemGroupDTOS = itemGroupMapper.mapItemGroupToDTO(itemGroupRepository.findByOrder(order));
+//        for (ItemGroup itemGroup : itemGroupsOldOrder) {
+//            long itemID = itemGroup.getItemID();
+//            int amount = itemGroup.getAmount();
+//            mapItemToItemGroupAndReduceStock(order, itemGroupsToReorder, itemID, amount);
+//        }
+        order.updatePrice(new Price(itemGroupDTOS.stream()
+                .map(ItemGroupDTO::getTotalPrice)
+                .mapToDouble(Price::getPrice)
+                .sum()));
+//        order.updatePrice(itemGroupsToReorder);
+//        List<ItemGroupDTO> itemGroupDTOS = itemGroupMapper.mapItemGroupToDTO(itemGroupRepository.findByOrder(order));
         orderRepository.save(order);
         return orderMapper.mapOrderToDTO(order, itemGroupDTOS);
     }
@@ -81,11 +87,11 @@ public class OrderService {
         }
     }
 
-    private void mapItemToItemGroupAndReduceStock(Order order, List<ItemGroup> itemGroups, long itemID, int amount) {
-        Item item = itemService.getItemByID(itemID);
-        ItemGroup itemGroup = itemGroupMapper.mapItemToItemGroup(order, item, amount);
-        itemGroupRepository.save(itemGroup);
-        itemGroups.add(itemGroup);
-        item.reduceStockByAmount(amount);
-    }
+//    private void mapItemToItemGroupAndReduceStock(Order order, List<ItemGroup> itemGroups, long itemID, int amount) {
+//        Item item = itemService.getItemByID(itemID);
+//        ItemGroup itemGroup = itemGroupMapper.mapItemToItemGroup(order, item, amount);
+//        itemGroupRepository.save(itemGroup);
+//        itemGroups.add(itemGroup);
+//        item.reduceStockByAmount(amount);
+//    }
 }

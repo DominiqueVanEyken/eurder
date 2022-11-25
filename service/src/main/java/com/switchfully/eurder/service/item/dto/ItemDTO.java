@@ -1,10 +1,12 @@
 package com.switchfully.eurder.service.item.dto;
 
+import com.switchfully.eurder.domain.Price.Price;
+
 public class ItemDTO {
     private long itemID;
     private String name;
     private String description;
-    private String price;
+    private Price price;
     private String stockStatus;
 
     public long getItemID() {
@@ -26,7 +28,7 @@ public class ItemDTO {
         return this;
     }
 
-    public ItemDTO setPrice(String price) {
+    public ItemDTO setPrice(Price price) {
         this.price = price;
         return this;
     }
@@ -44,7 +46,7 @@ public class ItemDTO {
         return description;
     }
 
-    public String getPrice() {
+    public Price getPrice() {
         return price;
     }
 

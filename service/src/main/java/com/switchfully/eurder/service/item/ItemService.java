@@ -39,18 +39,14 @@ public class ItemService {
         return itemMapper.mapItemToDTO(itemRepository.findAll());
     }
 
-    public List<ItemDTO> requestItemsOnStockStatusFiler(String stockStatusValue) {
+    public List<ItemDTO> requestItemsOnStockStatusFiler(String stockStatusValue) { // todo request als Enum
         StockStatus stockStatus = StockStatus.findStockStatusByValue(stockStatusValue);
         log.info("Getting all items with stock status " + stockStatus);
         return itemMapper.mapItemToDTO(itemRepository.findItemByStockStatus(stockStatus));
     }
 
     public Item getItemByID(long itemID) {
-        Optional<Item> optionalItem = itemRepository.findById(itemID);
-        if (optionalItem.isEmpty()) {
-            throw new NoSuchElementException("Item with ID " + itemID + " does not exist");
-        }
-        return optionalItem.get();
+        return itemRepository.findById(itemID).orElseThrow(() -> new NoSuchElementException("Item with ID " + itemID + " does not exist"));
     }
 
     public ItemDTO updateItemByID(long itemID, UpdateItemDTO updateItemDTO) {
