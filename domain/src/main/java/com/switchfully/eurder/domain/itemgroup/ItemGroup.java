@@ -38,14 +38,15 @@ public class ItemGroup implements Serializable {
     private Price totalPrice;
 
     //TODO: take out itemName, shippingDate and Price -> already defined in Item so to be called upon in constructor
-    public ItemGroup(Order order, Item item, String itemName, int amount, LocalDate shippingDate, Price pricePerUnit) {
+    public ItemGroup(Order order, Item item, int amount) {
         this.order = order;
         this.item = item;
-        this.itemName = itemName;
         this.amount = validateAmount(amount);
-        this.shippingDate = shippingDate;
-        this.pricePerUnit = pricePerUnit;
-        this.totalPrice = new Price(pricePerUnit.getPrice() * amount);
+        itemName = item.getName();
+        shippingDate = item.getShippingDateForAmount(amount);
+        pricePerUnit = item.getPriceWithUnit();
+        totalPrice = new Price(pricePerUnit.getPrice() * amount);
+        item.reduceStockByAmount(amount);
     }
 
     public ItemGroup() {

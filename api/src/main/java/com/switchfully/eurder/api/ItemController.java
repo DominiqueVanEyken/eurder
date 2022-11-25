@@ -46,7 +46,7 @@ public class ItemController {
     public ItemDTO addNewItemToStock(@RequestHeader String authorization, @RequestBody CreateItemDTO createItemDTO) {
         securityService.validateAuthorization(authorization, Feature.CREATE_ITEM);
         log.debug("request to add new item to stock");
-        return itemService.saveItem(createItemDTO);
+        return itemService.createItem(createItemDTO);
     }
 
     @PutMapping(value = "{itemID}/update", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

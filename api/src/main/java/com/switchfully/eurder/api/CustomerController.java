@@ -4,7 +4,6 @@ import com.switchfully.eurder.domain.customer.Feature;
 import com.switchfully.eurder.service.customer.CustomerService;
 import com.switchfully.eurder.service.customer.dto.CreateCustomerDTO;
 import com.switchfully.eurder.service.customer.dto.CustomerDTO;
-import com.switchfully.eurder.service.order.OrderService;
 import com.switchfully.eurder.service.security.SecurityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,13 +29,13 @@ public class CustomerController {
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public Collection<CustomerDTO> getAllCustomers(@RequestHeader String authorization) {
         securityService.validateAuthorization(authorization, Feature.GET_ALL_CUSTOMERS);
-        return customerService.getAllCustomers();
+        return customerService.RequestAllCustomers();
     }
 
     @GetMapping(value = "{customerID}", produces = MediaType.APPLICATION_JSON_VALUE)
     public CustomerDTO getCustomerByID(@RequestHeader String authorization, @PathVariable String customerID) {
         securityService.validateAuthorization(authorization, Feature.GET_CUSTOMER_DETAILS);
-        return customerService.getCustomerByID(customerID);
+        return customerService.RequestCustomerByID(customerID);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

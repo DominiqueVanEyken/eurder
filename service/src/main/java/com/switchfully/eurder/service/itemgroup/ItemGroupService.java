@@ -37,7 +37,6 @@ public class ItemGroupService {
         int amount = createItemGroupDTO.getAmount();
         ItemGroup itemGroup = itemGroupMapper.mapItemToItemGroup(order, item, amount);
         itemGroupRepository.save(itemGroup);
-        item.reduceStockByAmount(amount); // todo: verplaatsen naar constructor van itemGroup
         return itemGroupMapper.mapItemGroupToDTO(itemGroup);
     }
     public List<ItemGroupDTO> reorderItemGroups(List<ItemGroup> itemGroups, Order order) {
@@ -48,9 +47,8 @@ public class ItemGroupService {
 
     private ItemGroupDTO reorderItemGroup(ItemGroup itemGroup, Order order) {
         Item item = itemService.getItemByID(itemGroup.getItemID());
-        ItemGroup updatedItemGroup = new ItemGroup(order, item, item.getName(), itemGroup.getAmount(), item.getShippingDateForAmount(itemGroup.getAmount()), item.getPriceWithUnit());
+        ItemGroup updatedItemGroup = new ItemGroup(order, item, itemGroup.getAmount());
         itemGroupRepository.save(updatedItemGroup);
-        item.reduceStockByAmount(updatedItemGroup.getAmount());
         return itemGroupMapper.mapItemGroupToDTO(updatedItemGroup);
     }
 

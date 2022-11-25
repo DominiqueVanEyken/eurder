@@ -55,9 +55,9 @@ public class ItemControllerIntegrationTest {
     class getAllItems {
         @BeforeEach
         void fillDatabase() {
-            itemService.saveItem(item1);
-            itemService.saveItem(item2);
-            itemService.saveItem(item3);
+            itemService.createItem(item1);
+            itemService.createItem(item2);
+            itemService.createItem(item3);
         }
 
         @Test
@@ -159,7 +159,7 @@ public class ItemControllerIntegrationTest {
         private ItemDTO itemDTO;
         @BeforeEach
         void fillDatabase() {
-            itemDTO = itemService.saveItem(item1);
+            itemDTO = itemService.createItem(item1);
         }
         @Test
         void updateItem_givenValidData() {

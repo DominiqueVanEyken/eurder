@@ -2,22 +2,16 @@ package com.switchfully.eurder.service.order;
 
 import com.switchfully.eurder.domain.Price.Price;
 import com.switchfully.eurder.domain.exceptions.UnauthorizedException;
-import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.itemgroup.ItemGroup;
-import com.switchfully.eurder.domain.itemgroup.ItemGroupRepository;
 import com.switchfully.eurder.domain.order.Order;
 import com.switchfully.eurder.domain.order.OrderRepository;
-import com.switchfully.eurder.service.item.ItemService;
-import com.switchfully.eurder.service.itemgroup.ItemGroupMapper;
 import com.switchfully.eurder.service.itemgroup.ItemGroupService;
-import com.switchfully.eurder.service.itemgroup.dto.CreateItemGroupDTO;
-import com.switchfully.eurder.service.order.dto.CreateOrderDTO;
 import com.switchfully.eurder.service.itemgroup.dto.ItemGroupDTO;
+import com.switchfully.eurder.service.order.dto.CreateOrderDTO;
 import com.switchfully.eurder.service.order.dto.OrderDTO;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -27,18 +21,12 @@ import java.util.Optional;
 public class OrderService {
     private final OrderRepository orderRepository;
     private final OrderMapper orderMapper;
-    //    private final ItemService itemService;
-//    private final ItemGroupMapper itemGroupMapper;
-//    private final ItemGroupRepository itemGroupRepository;
     private final ItemGroupService itemGroupService;
 
     public OrderService(OrderRepository orderRepository, ItemGroupService itemGroupService) {
         this.orderRepository = orderRepository;
-//        this.itemService = itemService;
         this.itemGroupService = itemGroupService;
         orderMapper = new OrderMapper();
-//        this.itemGroupRepository = itemGroupRepository;
-//        itemGroupMapper = new ItemGroupMapper();
     }
 
     public OrderDTO createOrder(String customerID, CreateOrderDTO createOrderDTO) {
@@ -72,17 +60,9 @@ public class OrderService {
         return orderMapper.mapOrderToDTO(order, itemGroupDTOS);
     }
 
-    public void validateOrderIDBelongsToCustomer(String customerID, Order order) {
+    public void validateOrderIDBelongsToCustomer(String customerID, Order order) { //TODO: move to SecurityService
         if (!order.getCustomerID().equals(customerID)) {
             throw new UnauthorizedException();
         }
     }
-
-//    private void mapItemToItemGroupAndReduceStock(Order order, List<ItemGroup> itemGroups, long itemID, int amount) {
-//        Item item = itemService.getItemByID(itemID);
-//        ItemGroup itemGroup = itemGroupMapper.mapItemToItemGroup(order, item, amount);
-//        itemGroupRepository.save(itemGroup);
-//        itemGroups.add(itemGroup);
-//        item.reduceStockByAmount(amount);
-//    }
 }

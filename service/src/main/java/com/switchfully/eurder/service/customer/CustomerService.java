@@ -13,7 +13,6 @@ import javax.transaction.Transactional;
 import java.util.Collection;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -27,7 +26,7 @@ public class CustomerService {
         this.customerMapper = new CustomerMapper();
     }
 
-    public List<CustomerDTO> getAllCustomers() {
+    public List<CustomerDTO> RequestAllCustomers() {
         return customerMapper.mapCustomerToDTO(customerRepository.findAll());
     }
 
@@ -41,7 +40,7 @@ public class CustomerService {
         return customerMapper.mapCustomerToDTO(customer);
     }
 
-    public CustomerDTO getCustomerByID(String customerID) {
+    public CustomerDTO RequestCustomerByID(String customerID) {
         Customer customer = customerRepository.findById(customerID).orElseThrow(() -> new NoSuchElementException("Customer with ID " + customerID + " does not exist"));
         return customerMapper.mapCustomerToDTO(customer);
     }

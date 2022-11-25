@@ -45,6 +45,6 @@ public class ItemGroupBuilder {
     }
 
     public ItemGroup build() {
-        return new ItemGroup(order, item, itemName, amount, shippingDate, pricePerUnit);
+        return new ItemGroup(order, item, amount);
     }
 }

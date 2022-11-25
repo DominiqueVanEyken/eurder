@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -27,7 +26,7 @@ public class ItemService {
         itemMapper = new ItemMapper();
     }
 
-    public ItemDTO saveItem(CreateItemDTO createItemDTO) {
+    public ItemDTO createItem(CreateItemDTO createItemDTO) {
         Item item = itemMapper.mapDTOToItem(createItemDTO);
         itemRepository.save(item);
         log.info("Saving item with ID " + item.getItemID());
