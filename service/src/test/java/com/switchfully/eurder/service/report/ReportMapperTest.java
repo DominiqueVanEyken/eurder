@@ -7,7 +7,7 @@ import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.item.ItemRepository;
 import com.switchfully.eurder.domain.itemgroup.ItemGroup;
 import com.switchfully.eurder.domain.order.Order;
-import com.switchfully.eurder.service.order.ItemGroupMapper;
+import com.switchfully.eurder.service.itemgroup.ItemGroupMapper;
 import com.switchfully.eurder.service.report.dto.ItemGroupReportDTO;
 import com.switchfully.eurder.service.report.dto.ItemGroupShippingReportDTO;
 import com.switchfully.eurder.service.report.dto.OrderReportDTO;

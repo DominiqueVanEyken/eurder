@@ -1,7 +1,7 @@
 package com.switchfully.eurder.service.order;
 
 import com.switchfully.eurder.domain.order.Order;
-import com.switchfully.eurder.service.order.dto.ItemGroupDTO;
+import com.switchfully.eurder.service.itemgroup.dto.ItemGroupDTO;
 import com.switchfully.eurder.service.order.dto.OrderDTO;
 
 import java.util.List;

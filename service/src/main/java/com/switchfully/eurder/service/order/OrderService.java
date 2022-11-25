@@ -9,9 +9,10 @@ import com.switchfully.eurder.domain.itemgroup.ItemGroup;
 import com.switchfully.eurder.domain.itemgroup.ItemGroupRepository;
 import com.switchfully.eurder.domain.order.Order;
 import com.switchfully.eurder.domain.order.OrderRepository;
-import com.switchfully.eurder.service.order.dto.CreateItemGroupDTO;
+import com.switchfully.eurder.service.itemgroup.ItemGroupMapper;
+import com.switchfully.eurder.service.itemgroup.dto.CreateItemGroupDTO;
 import com.switchfully.eurder.service.order.dto.CreateOrderDTO;
-import com.switchfully.eurder.service.order.dto.ItemGroupDTO;
+import com.switchfully.eurder.service.itemgroup.dto.ItemGroupDTO;
 import com.switchfully.eurder.service.order.dto.OrderDTO;
 import org.springframework.stereotype.Service;
 

@@ -1,5 +1,7 @@
 package com.switchfully.eurder.service.order.dto;
 
+import com.switchfully.eurder.service.itemgroup.dto.ItemGroupDTO;
+
 import java.time.LocalDate;
 import java.util.List;
 

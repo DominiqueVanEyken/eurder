@@ -1,4 +1,4 @@
-package com.switchfully.eurder.service.order.dto;
+package com.switchfully.eurder.service.itemgroup.dto;
 
 import java.time.LocalDate;
 

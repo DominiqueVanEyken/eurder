@@ -1,10 +1,10 @@
-package com.switchfully.eurder.service.order;
+package com.switchfully.eurder.service.itemgroup;
 
 import com.switchfully.eurder.domain.item.Item;
 import com.switchfully.eurder.domain.itemgroup.ItemGroup;
 import com.switchfully.eurder.domain.itemgroup.ItemGroupBuilder;
 import com.switchfully.eurder.domain.order.Order;
-import com.switchfully.eurder.service.order.dto.ItemGroupDTO;
+import com.switchfully.eurder.service.itemgroup.dto.ItemGroupDTO;
 
 import java.util.List;
 

@@ -1,5 +1,7 @@
 package com.switchfully.eurder.service.order.dto;
 
+import com.switchfully.eurder.service.itemgroup.dto.CreateItemGroupDTO;
+
 import java.util.List;
 
 public class CreateOrderDTO {

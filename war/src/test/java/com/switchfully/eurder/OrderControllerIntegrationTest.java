@@ -15,7 +15,7 @@ import com.switchfully.eurder.domain.order.OrderRepository;
 
 import com.switchfully.eurder.domain.phonenumber.CountryCode;
 import com.switchfully.eurder.domain.phonenumber.PhoneNumber;
-import com.switchfully.eurder.service.order.dto.CreateItemGroupDTO;
+import com.switchfully.eurder.service.itemgroup.dto.CreateItemGroupDTO;
 import com.switchfully.eurder.service.order.dto.CreateOrderDTO;
 import com.switchfully.eurder.service.order.dto.OrderDTO;
 import io.restassured.RestAssured;
