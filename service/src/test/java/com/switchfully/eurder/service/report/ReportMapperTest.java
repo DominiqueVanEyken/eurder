@@ -59,7 +59,7 @@ class ReportMapperTest {
         assertThat(result.getItemID()).isEqualTo(itemGroup.getItemID());
         assertThat(result.getItemName()).isEqualTo(itemGroup.getItemName());
         assertThat(result.getAmount()).isEqualTo(itemGroup.getAmount());
-        assertThat(result.getTotalPrice()).isEqualTo(itemGroup.getTotalPrice().toString());
+        assertThat(result.getTotalPrice()).isEqualTo(itemGroup.getTotalPrice());
         assertThat(result.getPricePerUnit()).isEqualTo(itemGroup.getPricePerUnit());
         assertThat(result.getShippingAddress()).isEqualTo(address);
     }

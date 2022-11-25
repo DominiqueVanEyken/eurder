@@ -46,16 +46,16 @@ class ItemGroupMapperTest {
                 .setItemName(itemName)
                 .setAmount(amount)
                 .setShippingDate(shippingDate)
-                .setPricePerUnit(pricePerUnit.toString())
-                .setTotalPrice(totalPrice.toString());
+                .setPricePerUnit(pricePerUnit)
+                .setTotalPrice(totalPrice);
 
         assertThat(itemGroupDTO).isNotNull();
         assertThat(itemGroupDTO.getItemID()).isEqualTo(itemID);
         assertThat(itemGroupDTO.getItemName()).isEqualTo(itemName);
         assertThat(itemGroupDTO.getAmount()).isEqualTo(amount);
         assertThat(itemGroupDTO.getShippingDate()).isEqualTo(shippingDate);
-        assertThat(itemGroupDTO.getPricePerUnit()).isEqualTo(pricePerUnit.toString());
-        assertThat(itemGroupDTO.getTotalPrice()).isEqualTo(totalPrice.toString());
+        assertThat(itemGroupDTO.getPricePerUnit()).isEqualTo(pricePerUnit);
+        assertThat(itemGroupDTO.getTotalPrice()).isEqualTo(totalPrice);
     }
 
     @Test
@@ -91,8 +91,8 @@ class ItemGroupMapperTest {
         assertThat(itemGroupDTO.getItemID()).isEqualTo(itemID);
         assertThat(itemGroupDTO.getAmount()).isEqualTo(amount);
         assertThat(itemGroupDTO.getShippingDate()).isEqualTo(shippingDate);
-        assertThat(itemGroupDTO.getPricePerUnit()).isEqualTo(pricePerUnit.toString());
-        assertThat(itemGroupDTO.getTotalPrice()).isEqualTo(totalPrice.toString());
+        assertThat(itemGroupDTO.getPricePerUnit()).isEqualTo(pricePerUnit);
+        assertThat(itemGroupDTO.getTotalPrice()).isEqualTo(totalPrice);
     }
 
     @Test

@@ -129,7 +129,7 @@ public class ItemControllerIntegrationTest {
             assertThat(result).isNotNull();
             assertThat(result.getName()).isEqualTo(createItemDTO.getName());
             assertThat(result.getDescription()).isEqualTo(createItemDTO.getDescription());
-            assertThat(result.getPrice()).isEqualTo(new Price(createItemDTO.getPrice()).toString());
+            assertThat(result.getPrice()).isEqualTo(new Price(createItemDTO.getPrice()));
             assertThat(result.getStockStatus()).isEqualTo(StockStatus.STOCK_LOW.toString());
         }
 
@@ -190,7 +190,7 @@ public class ItemControllerIntegrationTest {
             assertThat(result.getItemID()).isEqualTo(itemID);
             assertThat(result.getName()).isEqualTo(updateItemDTO.getName());
             assertThat(result.getDescription()).isEqualTo(updateItemDTO.getDescription());
-            assertThat(result.getPrice()).isEqualTo(new Price(updateItemDTO.getPrice()).toString());
+            assertThat(result.getPrice()).isEqualTo(new Price(updateItemDTO.getPrice()));
             assertThat(result.getStockStatus()).isEqualTo(StockStatus.STOCK_LOW.toString());
         }
     }

@@ -42,14 +42,14 @@ class ItemMapperTest {
                 .setItemID(itemID)
                 .setName(name)
                 .setDescription(description)
-                .setPrice(new Price(price).toString())
+                .setPrice(new Price(price))
                 .setStockStatus(stockStatus.toString());
 
         assertThat(itemDTO).isNotNull();
         assertThat(itemDTO.getItemID()).isEqualTo(itemID);
         assertThat(itemDTO.getName()).isEqualTo(name);
         assertThat(itemDTO.getDescription()).isEqualTo(description);
-        assertThat(itemDTO.getPrice()).isEqualTo(new Price(price).toString());
+        assertThat(itemDTO.getPrice()).isEqualTo(new Price(price));
         assertThat(itemDTO.getStockStatus()).isEqualTo(stockStatus.toString());
     }
 
@@ -77,7 +77,7 @@ class ItemMapperTest {
         assertThat(itemDTO).isNotNull();
         assertThat(itemDTO.getName()).isEqualTo(name);
         assertThat(itemDTO.getDescription()).isEqualTo(description);
-        assertThat(itemDTO.getPrice()).isEqualTo(new Price(price).toString());
+        assertThat(itemDTO.getPrice()).isEqualTo(new Price(price));
         assertThat(itemDTO.getStockStatus()).isEqualTo(stockStatus.toString());
     }
 
@@ -106,7 +106,7 @@ class ItemMapperTest {
         assertThat(item).isNotNull();
         assertThat(item.getName()).isEqualTo(name);
         assertThat(item.getDescription()).isEqualTo(description);
-        assertThat(item.getPriceWithUnit()).isEqualTo(new Price(price).toString());
+        assertThat(item.getPriceWithUnit()).isEqualTo(new Price(price));
         assertThat(item.getStockCount()).isEqualTo(stockCount);
     }
 }

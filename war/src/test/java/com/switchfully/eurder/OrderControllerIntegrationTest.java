@@ -84,7 +84,7 @@ public class OrderControllerIntegrationTest {
                     .contentType(MediaType.APPLICATION_JSON_VALUE)
                     .headers("Authorization", "Basic " + customerBase64)
                     .when()
-                    .post("customers/" + customer.getCustomerID() + "/orders/order")
+                    .post("customers/" + customer.getCustomerID() + "/orders")
                     .then()
                     .assertThat()
                     .statusCode(HttpStatus.CREATED.value())
@@ -114,7 +114,7 @@ public class OrderControllerIntegrationTest {
                     .contentType(MediaType.APPLICATION_JSON_VALUE)
                     .headers("Authorization", "Basic " + authorization)
                     .when()
-                    .post("customers/" + customer.getCustomerID() + "/orders/order")
+                    .post("customers/" + customer.getCustomerID() + "/orders")
                     .then()
                     .assertThat()
                     .statusCode(HttpStatus.BAD_REQUEST.value());
@@ -135,7 +135,7 @@ public class OrderControllerIntegrationTest {
                     .contentType(MediaType.APPLICATION_JSON_VALUE)
                     .headers("Authorization", "Basic " + authorization)
                     .when()
-                    .post("customers/" + customer.getCustomerID() + "/orders/order")
+                    .post("customers/" + customer.getCustomerID() + "/orders")
                     .then()
                     .assertThat()
                     .statusCode(HttpStatus.BAD_REQUEST.value());
@@ -156,7 +156,7 @@ public class OrderControllerIntegrationTest {
                     .contentType(MediaType.APPLICATION_JSON_VALUE)
                     .headers("Authorization", "Basic " + authorization)
                     .when()
-                    .post("customers/invalidCustomerID/orders/order")
+                    .post("customers/invalidCustomerID/orders")
                     .then()
                     .assertThat()
                     .statusCode(HttpStatus.BAD_REQUEST.value());
@@ -172,7 +172,7 @@ public class OrderControllerIntegrationTest {
             itemRepository.save(item1);
             itemRepository.save(item2);
             itemGroupRepository.save(itemGroup1);
-            order.updatePrice(List.of(itemGroup1));
+            order.updatePrice(itemGroup1.getTotalPrice());
             orderRepository.save(order);
             Order reorder = orderRepository.findById(order.getOrderID()).get();
             Customer customer = customerRepository.findById(OrderControllerIntegrationTest.this.customer.getCustomerID()).get();
@@ -185,7 +185,7 @@ public class OrderControllerIntegrationTest {
                     .contentType(MediaType.APPLICATION_JSON_VALUE)
                     .headers("Authorization", "Basic " + customerBase64)
                     .when()
-                    .post("customers/" + reorder.getCustomerID() + "/orders/" + reorder.getOrderID() + "/order")
+                    .post("customers/" + reorder.getCustomerID() + "/orders/" + reorder.getOrderID() + "/reorder")
                     .then()
                     .assertThat()
                     .statusCode(HttpStatus.CREATED.value())
@@ -215,7 +215,7 @@ public class OrderControllerIntegrationTest {
                     .contentType(MediaType.APPLICATION_JSON_VALUE)
                     .headers("Authorization", "Basic " + customerBase64)
                     .when()
-                    .post("customers/" + order.getCustomerID() + "/orders/" + order.getOrderID() + "/order")
+                    .post("customers/" + order.getCustomerID() + "/orders/" + order.getOrderID() + "/reorder")
                     .then()
                     .assertThat()
                     .statusCode(HttpStatus.FORBIDDEN.value());
@@ -234,7 +234,7 @@ public class OrderControllerIntegrationTest {
                     .contentType(MediaType.APPLICATION_JSON_VALUE)
                     .headers("Authorization", "Basic " + customerBase64)
                     .when()
-                    .post("customers/" + customer.getCustomerID() + "/orders/invalidID/order")
+                    .post("customers/" + customer.getCustomerID() + "/orders/invalidID/reorder")
                     .then()
                     .assertThat()
                     .statusCode(HttpStatus.BAD_REQUEST.value());

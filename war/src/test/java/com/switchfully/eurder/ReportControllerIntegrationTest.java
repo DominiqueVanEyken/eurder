@@ -78,7 +78,7 @@ public class ReportControllerIntegrationTest {
             itemRepository.save(item2);
             customerRepository.save(customer);
             itemGroupRepository.save(itemGroup1);
-            order.updatePrice(List.of(itemGroup1));
+            order.updatePrice(itemGroup1.getTotalPrice());
             orderRepository.save(order);
 
             ShippingReportDTO result = RestAssured
@@ -126,7 +126,7 @@ public class ReportControllerIntegrationTest {
             itemRepository.save(item2);
             customerRepository.save(customer);
             itemGroupRepository.save(itemGroup1);
-            order.updatePrice(List.of(itemGroup1));
+            order.updatePrice(itemGroup1.getTotalPrice());
             orderRepository.save(order);
             String base64 = Base64.getEncoder().encodeToString("user@test.com:password".getBytes());
             List<ItemGroupReportDTO> itemGroupReportDTO = reportMapper.mapItemGroupToItemGroupReportDTO(List.of(itemGroup1));

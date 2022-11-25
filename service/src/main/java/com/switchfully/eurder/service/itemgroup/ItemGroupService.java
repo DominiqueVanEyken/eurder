@@ -41,12 +41,17 @@ public class ItemGroupService {
         return itemGroupMapper.mapItemGroupToDTO(itemGroup);
     }
     public List<ItemGroupDTO> reorderItemGroups(List<ItemGroup> itemGroups, Order order) {
-        return null;
+        return itemGroups.stream().
+                map(itemGroup -> reorderItemGroup(itemGroup, order))
+                .toList();
     }
 
     private ItemGroupDTO reorderItemGroup(ItemGroup itemGroup, Order order) {
         Item item = itemService.getItemByID(itemGroup.getItemID());
-        ItemGroup updatedItemGroup = new ItemGroup(order, item, item.getName(), itemGroup.getAmount(), item.getShippingDateForAmount(itemGroup.getAmount()), item.getPriceWithUnit())
+        ItemGroup updatedItemGroup = new ItemGroup(order, item, item.getName(), itemGroup.getAmount(), item.getShippingDateForAmount(itemGroup.getAmount()), item.getPriceWithUnit());
+        itemGroupRepository.save(updatedItemGroup);
+        item.reduceStockByAmount(updatedItemGroup.getAmount());
+        return itemGroupMapper.mapItemGroupToDTO(updatedItemGroup);
     }
 
     public List<ItemGroup> getItemGroupsForOrder(Order order) {

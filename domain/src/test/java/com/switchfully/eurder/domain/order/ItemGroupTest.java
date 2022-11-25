@@ -41,7 +41,7 @@ class ItemGroupTest {
             assertThat(builder.getItemName()).isEqualTo(name);
             assertThat(builder.getAmount()).isEqualTo(amount);
             assertThat(builder.getShippingDate()).isEqualTo(shippingDate);
-            assertThat(builder.getPricePerUnit()).isEqualTo(pricePerUnit.toString());
+            assertThat(builder.getPricePerUnit()).isEqualTo(pricePerUnit);
             assertThat(builder.getTotalPrice()).isEqualTo(new Price(pricePerUnit.getPrice() * amount));
         }
     }
@@ -56,7 +56,7 @@ class ItemGroupTest {
             assertThat(itemGroup.getItemID()).isEqualTo(itemIDHighStock);
             assertThat(itemGroup.getItemName()).isEqualTo(itemHighStock.getName());
             assertThat(itemGroup.getAmount()).isEqualTo(amount);
-            assertThat(itemGroup.getPricePerUnit()).isEqualTo(itemHighStock.getPrice().toString());
+            assertThat(itemGroup.getPricePerUnit()).isEqualTo(itemHighStock.getPrice());
             assertThat(itemGroup.getShippingDate()).isEqualTo(LocalDate.now().plusDays(1));
             assertThat(itemGroup.getTotalPrice()).isEqualTo(new Price(itemHighStock.getPrice().getPrice() * amount));
             assertThat(itemGroup.getTotalPriceAsDouble()).isEqualTo(itemHighStock.getPrice().getPrice() * amount);
@@ -80,7 +80,7 @@ class ItemGroupTest {
             assertThat(itemGroup.getItemID()).isEqualTo(itemIDLowStock);
             assertThat(itemGroup.getItemName()).isEqualTo(itemLowStock.getName());
             assertThat(itemGroup.getAmount()).isEqualTo(amount);
-            assertThat(itemGroup.getPricePerUnit()).isEqualTo(itemHighStock.getPrice().toString());
+            assertThat(itemGroup.getPricePerUnit()).isEqualTo(itemHighStock.getPrice());
             assertThat(itemGroup.getShippingDate()).isEqualTo(LocalDate.now().plusDays(7));
             assertThat(itemGroup.getTotalPrice()).isEqualTo(new Price(itemHighStock.getPrice().getPrice() * amount));
             assertThat(itemGroup.getTotalPriceAsDouble()).isEqualTo(itemHighStock.getPrice().getPrice() * amount);

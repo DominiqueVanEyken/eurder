@@ -45,7 +45,7 @@ public class ReportMapper {
                 .setItemName(itemGroup.getItemName())
                 .setAmount(itemGroup.getAmount())
                 .setPricePerUnit(itemGroup.getPricePerUnit())
-                .setTotalPrice(itemGroup.getTotalPrice().toString())
+                .setTotalPrice(itemGroup.getTotalPrice())
                 .setShippingAddress(shippingAddress);
     }
 }

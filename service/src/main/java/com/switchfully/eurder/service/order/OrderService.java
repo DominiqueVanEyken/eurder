@@ -64,19 +64,10 @@ public class OrderService {
         List<ItemGroup> itemGroups = itemGroupService.getItemGroupsForOrder(orderToReorder);
         Order order = new Order(customerID);
         List<ItemGroupDTO> itemGroupDTOS = itemGroupService.reorderItemGroups(itemGroups, order);
-//        List<ItemGroup> itemGroupsOldOrder = itemGroupRepository.findByOrder(orderToReorder);
-        List<ItemGroup> itemGroupsToReorder = new ArrayList<>();
-//        for (ItemGroup itemGroup : itemGroupsOldOrder) {
-//            long itemID = itemGroup.getItemID();
-//            int amount = itemGroup.getAmount();
-//            mapItemToItemGroupAndReduceStock(order, itemGroupsToReorder, itemID, amount);
-//        }
         order.updatePrice(new Price(itemGroupDTOS.stream()
                 .map(ItemGroupDTO::getTotalPrice)
                 .mapToDouble(Price::getPrice)
                 .sum()));
-//        order.updatePrice(itemGroupsToReorder);
-//        List<ItemGroupDTO> itemGroupDTOS = itemGroupMapper.mapItemGroupToDTO(itemGroupRepository.findByOrder(order));
         orderRepository.save(order);
         return orderMapper.mapOrderToDTO(order, itemGroupDTOS);
     }
