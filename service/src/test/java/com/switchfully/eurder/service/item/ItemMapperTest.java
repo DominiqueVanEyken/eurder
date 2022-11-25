@@ -106,7 +106,7 @@ class ItemMapperTest {
         assertThat(item).isNotNull();
         assertThat(item.getName()).isEqualTo(name);
         assertThat(item.getDescription()).isEqualTo(description);
-        assertThat(item.getPriceWithUnit()).isEqualTo(new Price(price));
+        assertThat(item.getPrice()).isEqualTo(new Price(price));
         assertThat(item.getStockCount()).isEqualTo(stockCount);
     }
 }

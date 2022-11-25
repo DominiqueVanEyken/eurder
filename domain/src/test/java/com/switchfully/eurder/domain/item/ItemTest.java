@@ -23,7 +23,7 @@ class ItemTest {
             assertThat(item).isNotNull();
             assertThat(item.getName()).isEqualTo(name);
             assertThat(item.getDescription()).isEqualTo(description);
-            assertThat(item.getPriceWithUnit()).isEqualTo(price);
+            assertThat(item.getPrice()).isEqualTo(price);
             assertThat(item.getStockCount()).isEqualTo(stockCount);
             assertThat(item.getStockStatus()).isEqualTo(StockStatus.STOCK_HIGH.toString());
             assertThat(item.toString()).isEqualTo(String.format("Item{itemID=%s, name=%s, description=%s, price=%s, stockCount=%d", item.getItemID(), name, description, price, stockCount));
@@ -36,7 +36,7 @@ class ItemTest {
             assertThat(item).isNotNull();
             assertThat(item.getName()).isEqualTo(name);
             assertThat(item.getDescription()).isEqualTo(description);
-            assertThat(item.getPriceWithUnit()).isEqualTo(price);
+            assertThat(item.getPrice()).isEqualTo(price);
             assertThat(item.getStockCount()).isEqualTo(stockCount);
             assertThat(item.getStockStatus()).isEqualTo(StockStatus.STOCK_HIGH.toString());
             assertThat(item.toString()).isEqualTo(String.format("Item{itemID=%s, name=%s, description=%s, price=%s, stockCount=%d", item.getItemID(), name, description, price, stockCount));
@@ -58,7 +58,7 @@ class ItemTest {
             item.updateItem(updateName, description, price.getPrice(), stockCount);
             assertThat(item.getName()).isEqualTo(updateName);
             assertThat(item.getDescription()).isEqualTo(description);
-            assertThat(item.getPriceWithUnit()).isEqualTo(price);
+            assertThat(item.getPrice()).isEqualTo(price);
             assertThat(item.getStockCount()).isEqualTo(stockCount);
             assertThat(item.getStockStatus()).isEqualTo(StockStatus.STOCK_HIGH.toString());
             assertThat(item.toString()).isEqualTo(String.format("Item{itemID=%s, name=%s, description=%s, price=%s, stockCount=%d", item.getItemID(), updateName, description, price, stockCount));

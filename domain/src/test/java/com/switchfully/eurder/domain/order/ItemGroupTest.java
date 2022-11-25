@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -17,17 +18,16 @@ class ItemGroupTest {
     private final Item itemLowStock = new Item("name", null, new Price(1.2), 1);
     private final long itemIDHighStock = itemHighStock.getItemID();
     private final long itemIDLowStock = itemLowStock.getItemID();
-    private final Order order = new Order("CID20221001");
+    private final Order order = new Order(UUID.randomUUID().toString());
     private final int amount = 10;
 
     @Nested
     class ItemGroupBuilderTest {
         @Test
         void creatingAnItemGroup_usingItemGroupBuilder() {
-            String name = "itemName";
-            int amount = 3;
+            String name = "name";
             LocalDate shippingDate = LocalDate.now();
-            Price pricePerUnit = new Price(30.5);
+            Price pricePerUnit = new Price(1.2);
 
             ItemGroup builder = new ItemGroupBuilder()
                     .setItem(itemHighStock)
@@ -40,7 +40,7 @@ class ItemGroupTest {
             assertThat(builder.getItemID()).isEqualTo(itemHighStock.getItemID());
             assertThat(builder.getItemName()).isEqualTo(name);
             assertThat(builder.getAmount()).isEqualTo(amount);
-            assertThat(builder.getShippingDate()).isEqualTo(shippingDate);
+            assertThat(builder.getShippingDate()).isEqualTo(shippingDate.plusDays(1));
             assertThat(builder.getPricePerUnit()).isEqualTo(pricePerUnit);
             assertThat(builder.getTotalPrice()).isEqualTo(new Price(pricePerUnit.getPrice() * amount));
         }
@@ -50,7 +50,7 @@ class ItemGroupTest {
     class givenValidData {
         @Test
         void creatingAnItemGroup_itemsInStock() {
-            ItemGroup itemGroup = new ItemGroup(order, itemHighStock, itemHighStock.getName(), amount, itemHighStock.getShippingDateForAmount(amount), itemHighStock.getPrice());
+            ItemGroup itemGroup = new ItemGroup(order, itemHighStock, amount);
 
             assertThat(itemGroup).isNotNull();
             assertThat(itemGroup.getItemID()).isEqualTo(itemIDHighStock);
@@ -66,7 +66,7 @@ class ItemGroupTest {
         @Test
         void setShippingDateManually() {
             LocalDate date = LocalDate.of(2022, 11, 1);
-            ItemGroup itemGroup = new ItemGroup(order, itemHighStock, itemHighStock.getName(), amount, itemHighStock.getShippingDateForAmount(amount), itemHighStock.getPrice());
+            ItemGroup itemGroup = new ItemGroup(order, itemHighStock, amount);
             itemGroup.setShippingDate(date);
 
             assertThat(itemGroup.getShippingDate()).isEqualTo(date);
@@ -74,7 +74,7 @@ class ItemGroupTest {
 
         @Test
         void creatingAnItemGroup_itemsNotInStock() {
-            ItemGroup itemGroup = new ItemGroup(order, itemLowStock, itemLowStock.getName(), amount, itemLowStock.getShippingDateForAmount(amount), itemLowStock.getPrice());
+            ItemGroup itemGroup = new ItemGroup(order, itemLowStock, amount);
 
             assertThat(itemGroup).isNotNull();
             assertThat(itemGroup.getItemID()).isEqualTo(itemIDLowStock);
@@ -94,7 +94,7 @@ class ItemGroupTest {
         @Test
         void withAmountLessThanOne() {
             String errorMessage = "The minimum requirement to order is 1";
-            assertThatThrownBy(() -> new ItemGroup(order, itemLowStock,itemHighStock.getName(), 0, itemHighStock.getShippingDateForAmount(amount), itemHighStock.getPrice()))
+            assertThatThrownBy(() -> new ItemGroup(order, itemLowStock,0))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(errorMessage);
         }

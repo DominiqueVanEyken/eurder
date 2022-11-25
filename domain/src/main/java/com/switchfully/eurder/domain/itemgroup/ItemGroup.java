@@ -43,7 +43,7 @@ public class ItemGroup implements Serializable {
         this.amount = validateAmount(amount);
         itemName = item.getName();
         shippingDate = item.getShippingDateForAmount(amount);
-        pricePerUnit = item.getPriceWithUnit();
+        pricePerUnit = item.getPrice();
         totalPrice = new Price(pricePerUnit.getPrice() * amount);
         item.reduceStockByAmount(amount);
     }

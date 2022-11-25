@@ -84,7 +84,7 @@ class ItemGroupMapperTest {
 
     @Test
     void mappingItemGroupToDTO() {
-        ItemGroup itemGroup = new ItemGroup(order, item, item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
+        ItemGroup itemGroup = new ItemGroup(order, item, amount);
         ItemGroupDTO itemGroupDTO = itemGroupMapper.mapItemGroupToDTO(itemGroup);
 
         assertThat(itemGroupDTO).isNotNull();
@@ -97,8 +97,8 @@ class ItemGroupMapperTest {
 
     @Test
     void mappingItemGroupToDTO_givenAList() {
-        ItemGroup itemGroup1 = new ItemGroup(order, item, item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
-        ItemGroup itemGroup2 = new ItemGroup(order, item, item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
+        ItemGroup itemGroup1 = new ItemGroup(order, item, amount);
+        ItemGroup itemGroup2 = new ItemGroup(order, item, amount);
         List<ItemGroupDTO> orderList = itemGroupMapper.mapItemGroupToDTO(List.of(itemGroup1, itemGroup2));
 
         assertThat(orderList).isNotNull();

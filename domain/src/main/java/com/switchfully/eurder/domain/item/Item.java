@@ -96,10 +96,6 @@ public class Item implements Comparable<Item> {
         return description;
     }
 
-    public Price getPriceWithUnit() {
-        return price;
-    }
-
     public int getStockCount() {
         return stockCount;
     }

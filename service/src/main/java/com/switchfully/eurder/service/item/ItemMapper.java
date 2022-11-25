@@ -24,7 +24,7 @@ public class ItemMapper {
                 .setItemID(item.getItemID())
                 .setName(item.getName())
                 .setDescription(item.getDescription())
-                .setPrice(item.getPriceWithUnit())
+                .setPrice(item.getPrice())
                 .setStockStatus(item.getStockStatus());
     }
 

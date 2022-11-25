@@ -67,7 +67,7 @@ public class ReportControllerIntegrationTest {
     private final Item item1 = new Item("name1", "description", new Price(1.0), 10);
     private final Item item2 = new Item("name2", "description", new Price(2.0), 5);
     private final Order order = new Order(customer.getCustomerID());
-    private final ItemGroup itemGroup1 = new ItemGroup(order, item1, item1.getName(), 1, item1.getShippingDateForAmount(1), item1.getPrice());
+    private final ItemGroup itemGroup1 = new ItemGroup(order, item1, 1);
 
     @Nested
     class gettingShippingToday {

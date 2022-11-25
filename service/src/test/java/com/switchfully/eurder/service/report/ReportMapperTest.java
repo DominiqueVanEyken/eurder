@@ -29,11 +29,11 @@ class ReportMapperTest {
     private final int amount = 1;
     private final Order order = new Order(customerID);
     private final Address address = new Address("street", "1", new PostalCode("1111", "city"));
-    private final ItemGroup itemGroup = new ItemGroup(order, item, item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
+    private final ItemGroup itemGroup = new ItemGroup(order, item, amount);
 
     @Test
     void mappingItemGroupToItemGroupReportDTO() {
-        ItemGroup itemGroup = new ItemGroup(order, item, item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
+        ItemGroup itemGroup = new ItemGroup(order, item, amount);
         ItemGroupReportDTO reportDTO = reportMapper.mapItemGroupToItemGroupReportDTO(itemGroup);
 
         assertThat(reportDTO).isNotNull();
@@ -44,8 +44,8 @@ class ReportMapperTest {
 
     @Test
     void mappingItemGroupToItemGroupReportDTO_givenList() {
-        ItemGroup itemGroup1 = new ItemGroup(order, item, item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
-        ItemGroup itemGroup2 = new ItemGroup(order, item, item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice());
+        ItemGroup itemGroup1 = new ItemGroup(order, item, amount);
+        ItemGroup itemGroup2 = new ItemGroup(order, item, amount);
         List<ItemGroupReportDTO> orderList = reportMapper.mapItemGroupToItemGroupReportDTO(List.of(itemGroup1, itemGroup2));
 
         assertThat(orderList).isNotNull();

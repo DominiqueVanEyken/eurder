@@ -23,8 +23,8 @@ class OrderTest {
     private final LocalDate orderDate = LocalDate.now();
     private final Order order = new Order(customerID);
     private final List<ItemGroup> orderList = List.of(
-            new ItemGroup(order, item1, item1.getName(), 3, item1.getShippingDateForAmount(3), item1.getPrice()),
-            new ItemGroup(order, item2, item2.getName(), 3, item2.getShippingDateForAmount(3), item2.getPrice())
+            new ItemGroup(order, item1, 3),
+            new ItemGroup(order, item2, 3)
     );
 
     @Nested

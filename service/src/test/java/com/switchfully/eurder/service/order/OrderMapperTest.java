@@ -37,7 +37,7 @@ class OrderMapperTest {
                     .setItemID(item.getItemID())
                     .setAmount(amount)
                     .setShippingDate(LocalDate.now().plusDays(1))
-                    .setPricePerUnit(item.getPriceWithUnit())
+                    .setPricePerUnit(item.getPrice())
                     .setTotalPrice(new Price(item.getPrice().getPrice() * amount))
     );
     private final Order order = new Order(customerID);
@@ -121,7 +121,7 @@ class OrderMapperTest {
 
     @Test
     void mappingOrderToDTO() {
-        List<ItemGroup> itemGroups = List.of(new ItemGroup(order, item, item.getName(), amount, item.getShippingDateForAmount(amount), item.getPrice()));
+        List<ItemGroup> itemGroups = List.of(new ItemGroup(order, item, amount));
         order.updatePrice(new Price(itemGroups.stream()
                 .map(ItemGroup::getTotalPrice)
                 .mapToDouble(Price::getPrice)
