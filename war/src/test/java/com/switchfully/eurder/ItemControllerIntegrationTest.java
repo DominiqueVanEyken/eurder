@@ -92,7 +92,7 @@ public class ItemControllerIntegrationTest {
                     .contentType(MediaType.APPLICATION_JSON_VALUE)
                     .when()
                     .headers("Authorization", "Basic " + adminBase64)
-                    .get("items?stockStatus=low")
+                    .get("items?stockStatus=STOCK_LOW")
                     .then()
                     .assertThat()
                     .statusCode(HttpStatus.OK.value())
