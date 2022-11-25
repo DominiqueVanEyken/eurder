@@ -27,7 +27,7 @@ public class ItemGroupMapper {
                 .setAmount(itemGroup.getAmount())
                 .setShippingDate(itemGroup.getShippingDate())
                 .setPricePerUnit(itemGroup.getPricePerUnit())
-                .setTotalPrice(itemGroup.getTotalPrice().toString());
+                .setTotalPrice(itemGroup.getTotalPrice());
     }
 
     public List<ItemGroupDTO> mapItemGroupToDTO(List<ItemGroup> itemGroups) {

@@ -1,5 +1,7 @@
 package com.switchfully.eurder.service.itemgroup.dto;
 
+import com.switchfully.eurder.domain.Price.Price;
+
 import java.time.LocalDate;
 
 public class ItemGroupDTO {
@@ -7,9 +9,8 @@ public class ItemGroupDTO {
     private String itemName;
     private int amount;
     private LocalDate shippingDate;
-    private String pricePerUnit;
-
-    private String totalPrice;
+    private Price pricePerUnit;
+    private Price totalPrice;
 
     public ItemGroupDTO setItemID(Long itemID) {
         this.itemID = itemID;
@@ -31,12 +32,12 @@ public class ItemGroupDTO {
         return this;
     }
 
-    public ItemGroupDTO setPricePerUnit(String pricePerUnit) {
+    public ItemGroupDTO setPricePerUnit(Price pricePerUnit) {
         this.pricePerUnit = pricePerUnit;
         return this;
     }
 
-    public ItemGroupDTO setTotalPrice(String totalPrice) {
+    public ItemGroupDTO setTotalPrice(Price totalPrice) {
         this.totalPrice = totalPrice;
         return this;
     }
@@ -57,11 +58,11 @@ public class ItemGroupDTO {
         return shippingDate;
     }
 
-    public String getPricePerUnit() {
+    public Price getPricePerUnit() {
         return pricePerUnit;
     }
 
-    public String getTotalPrice() {
+    public Price getTotalPrice() {
         return totalPrice;
     }
 }

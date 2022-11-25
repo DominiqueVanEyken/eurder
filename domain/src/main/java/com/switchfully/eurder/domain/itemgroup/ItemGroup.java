@@ -86,8 +86,8 @@ public class ItemGroup implements Serializable {
         return shippingDate;
     }
 
-    public String getPricePerUnit() {
-        return pricePerUnit.toString();
+    public Price getPricePerUnit() {
+        return pricePerUnit;
     }
 
     public Price getTotalPrice() {
