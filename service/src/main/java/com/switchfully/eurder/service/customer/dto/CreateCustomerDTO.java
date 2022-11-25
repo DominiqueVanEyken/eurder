@@ -1,13 +1,12 @@
 package com.switchfully.eurder.service.customer.dto;
 
+import com.switchfully.eurder.service.address.AddressDTO;
+
 public class CreateCustomerDTO {
     private String firstname;
     private String lastname;
     private String emailAddress;
-    private String streetName;
-    private String streetNumber;
-    private String postalCode;
-    private String cityName;
+    private AddressDTO address;
     private String countryCode;
     private String localNumber;
     private String password;
@@ -27,23 +26,8 @@ public class CreateCustomerDTO {
         return this;
     }
 
-    public CreateCustomerDTO setStreetName(String streetName) {
-        this.streetName = streetName;
-        return this;
-    }
-
-    public CreateCustomerDTO setStreetNumber(String streetNumber) {
-        this.streetNumber = streetNumber;
-        return this;
-    }
-
-    public CreateCustomerDTO setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-        return this;
-    }
-
-    public CreateCustomerDTO setCityName(String cityName) {
-        this.cityName = cityName;
+    public CreateCustomerDTO setAddress(AddressDTO address) {
+        this.address = address;
         return this;
     }
 
@@ -74,25 +58,14 @@ public class CreateCustomerDTO {
         return emailAddress;
     }
 
-    public String getStreetName() {
-        return streetName;
-    }
-
-    public String getStreetNumber() {
-        return streetNumber;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public String getCityName() {
-        return cityName;
+    public AddressDTO getAddress() {
+        return address;
     }
 
     public String getCountryCode() {
         return countryCode;
     }
+
     public String getLocalNumber() {
         return localNumber;
 

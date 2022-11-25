@@ -5,6 +5,7 @@ import com.switchfully.eurder.domain.customer.Customer;
 import com.switchfully.eurder.domain.customer.CustomerBuilder;
 import com.switchfully.eurder.domain.customer.Role;
 import com.switchfully.eurder.domain.phonenumber.PhoneNumber;
+import com.switchfully.eurder.service.address.AddressMapper;
 import com.switchfully.eurder.service.customer.dto.CreateCustomerDTO;
 import com.switchfully.eurder.service.customer.dto.CustomerDTO;
 
@@ -12,19 +13,13 @@ import java.util.Collection;
 import java.util.List;
 
 public class CustomerMapper {
+    private final AddressMapper addressMapper = new AddressMapper();
     public Customer mapDTOtoCustomer(CreateCustomerDTO createCustomerDTO) {
         return new CustomerBuilder()
                 .setFirstname(createCustomerDTO.getFirstname())
                 .setLastname(createCustomerDTO.getLastname())
                 .setEmailAddress(createCustomerDTO.getEmailAddress())
-                .setAddress(
-                        new AddressBuilder()
-                                .setStreetName(createCustomerDTO.getStreetName())
-                                .setStreetNumber(createCustomerDTO.getStreetNumber())
-                                .setPostalCode(createCustomerDTO.getPostalCode())
-                                .setCityName(createCustomerDTO.getCityName())
-                                .build()
-                        )
+                .setAddress(addressMapper.mapDTOToAddress(createCustomerDTO.getAddress()))
                 .setPhoneNumber(new PhoneNumber(createCustomerDTO.getCountryCode(), createCustomerDTO.getLocalNumber()))
                 .setPassword(createCustomerDTO.getPassword())
                 .setRole(Role.CUSTOMER)
@@ -37,7 +32,7 @@ public class CustomerMapper {
                 .setFirstname(customer.getFirstname())
                 .setLastname(customer.getLastname())
                 .setEmailAddress(customer.getEmailAddress())
-                .setAddress(customer.getAddress())
+                .setAddress(addressMapper.mapAddressToDTO(customer.getAddress()))
                 .setPhoneNumber(customer.getPhoneNumber());
     }
 

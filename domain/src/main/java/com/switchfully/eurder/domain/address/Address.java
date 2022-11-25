@@ -41,6 +41,12 @@ public class Address {
     public PostalCode getPostalCode() {
         return postalCode;
     }
+    public String getPostalCodeAsString() {
+        return postalCode.getPostalCode();
+    }
+    public String getCity() {
+        return postalCode.getCityName();
+    }
     @Override
     public String toString() {
         return String.format("%s %s, %s", streetName, streetNumber, postalCode.toString());
