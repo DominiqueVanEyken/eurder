@@ -2,13 +2,8 @@ package com.switchfully.eurder.domain.customer;
 
 import com.switchfully.eurder.domain.address.Address;
 import com.switchfully.eurder.domain.phonenumber.PhoneNumber;
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.GeneratorType;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.ValueGenerationType;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.UUID;
 import java.util.regex.Pattern;
 @Entity

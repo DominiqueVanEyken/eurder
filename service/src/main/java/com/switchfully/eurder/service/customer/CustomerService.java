@@ -5,6 +5,8 @@ import com.switchfully.eurder.domain.customer.CustomerRepository;
 import com.switchfully.eurder.domain.exceptions.UnauthorizedException;
 import com.switchfully.eurder.service.customer.dto.CreateCustomerDTO;
 import com.switchfully.eurder.service.customer.dto.CustomerDTO;
+import com.switchfully.eurder.service.security.KeycloakService;
+import com.switchfully.eurder.service.security.KeycloakUserDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -19,10 +21,12 @@ import java.util.NoSuchElementException;
 public class CustomerService {
     private final CustomerRepository customerRepository;
     private final CustomerMapper customerMapper;
+    private final KeycloakService keycloakService;
     private final Logger log = LoggerFactory.getLogger(CustomerService.class);
 
-    public CustomerService(CustomerRepository customerRepository) {
+    public CustomerService(CustomerRepository customerRepository, KeycloakService keycloakService) {
         this.customerRepository = customerRepository;
+        this.keycloakService = keycloakService;
         this.customerMapper = new CustomerMapper();
     }
 
@@ -36,6 +40,7 @@ public class CustomerService {
             throw new IllegalArgumentException("Customer already exists");
         }
         customerRepository.save(customer);
+        keycloakService.addUser(new KeycloakUserDTO(customer.getEmailAddress(), createCustomerDTO.getPassword(), customer.getRole()));
         log.info("Saving customer with ID " + customer.getCustomerID());
         return customerMapper.mapCustomerToDTO(customer);
     }

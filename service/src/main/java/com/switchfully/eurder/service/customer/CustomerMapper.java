@@ -1,6 +1,5 @@
 package com.switchfully.eurder.service.customer;
 
-import com.switchfully.eurder.domain.address.AddressBuilder;
 import com.switchfully.eurder.domain.customer.Customer;
 import com.switchfully.eurder.domain.customer.CustomerBuilder;
 import com.switchfully.eurder.domain.customer.Role;

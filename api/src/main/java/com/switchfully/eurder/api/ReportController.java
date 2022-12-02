@@ -1,14 +1,13 @@
 package com.switchfully.eurder.api;
 
-import com.switchfully.eurder.domain.customer.Feature;
 import com.switchfully.eurder.service.customer.CustomerService;
 import com.switchfully.eurder.service.report.ReportService;
 import com.switchfully.eurder.service.report.dto.ShippingReportDTO;
 import com.switchfully.eurder.service.report.dto.ReportDTO;
-import com.switchfully.eurder.service.security.SecurityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Base64;
@@ -17,28 +16,27 @@ import java.util.Base64;
 @RequestMapping
 public class ReportController {
     private final Logger log = LoggerFactory.getLogger(ReportController.class);
-    private final SecurityService securityService;
     private final CustomerService customerService;
     private final ReportService reportService;
 
-    public ReportController(SecurityService securityService, CustomerService customerService, ReportService reportService) {
-        this.securityService = securityService;
+    public ReportController(CustomerService customerService, ReportService reportService) {
         this.customerService = customerService;
         this.reportService = reportService;
     }
 
     @GetMapping(value = "customers/{customerID}/orders/report", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PreAuthorize("hasAnyAuthority('VIEW_REPORT')")
     public ReportDTO getReport(@RequestHeader String authorization, @PathVariable String customerID) {
-        securityService.validateAuthorization(authorization, Feature.VIEW_REPORT);
-        String username = new String(Base64.getDecoder().decode(authorization.substring("Basic ".length()))).split(":")[0]; //todo: return vanuit securityService
+        //TODO: fix username with accessToken => check parkshark
+        String username = new String(Base64.getDecoder().decode(authorization.substring("Basic ".length()))).split(":")[0];
         customerService.validateIfCustomerIDBelongsToUsername(customerID, username); //TODO: naar securityService
         log.debug("Requesting report for customer with ID " + customerID);
         return reportService.getReportForCustomer(customerID);
     }
 
     @GetMapping(value = "orders/shipping", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ShippingReportDTO getItemGroupsShippingToday(@RequestHeader String authorization) {
-        securityService.validateAuthorization(authorization, Feature.GET_SHIPPING_ORDER);
+    @PreAuthorize("hasAnyAuthority('GET_SHIPPING_ORDER')")
+    public ShippingReportDTO getItemGroupsShippingToday() {
         log.debug("Requesting shipping reports for today");
         return reportService.getShippingReportForToday();
     }
